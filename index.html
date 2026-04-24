@@ -1665,9 +1665,13 @@ let mainChart = null;
 function renderMainChart(){
   const all=getAllDays();const m=state.metric;
   const metaTotal=m==="adspend"?META_SPEND_TOTAL:META_REV_TOTAL;
-  /* Fixed daily meta — flat line so deviations from target are clearly visible */
-  const metaDaily=metaTotal/TD;
-  const metaByDay=all.map(()=>metaDaily);
+  /* Historical daily meta weights — learned from Jan-Mar 2026 spending patterns */
+  /* Start of month is lighter (~2.2%), peaks mid-month (~4.6%), strong finish (~4%) */
+  const META_DAILY_WEIGHTS=[0.0216,0.0221,0.0259,0.0268,0.0330,0.0280,0.0238,0.0251,0.0272,0.0280,0.0294,0.0337,0.0373,0.0389,0.0375,0.0380,0.0433,0.0464,0.0433,0.0359,0.0338,0.0324,0.0310,0.0313,0.0334,0.0355,0.0378,0.0403,0.0400,0.0393];
+  const metaByDay=all.map(d=>{
+    const w=META_DAILY_WEIGHTS[Math.min(d.day-1,29)]||1/TD;
+    return metaTotal*w;
+  });
 
   let labels,actualData,fcData,upperData,lowerData,metaLine;
   if(state.viewType==="daily"){
