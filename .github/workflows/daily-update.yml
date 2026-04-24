@@ -18,6 +18,15 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          clean: true
+
+      - name: Debug - verify update.py version
+        run: |
+          echo "Lines in update.py: $(wc -l < scripts/update.py)"
+          echo "Git commit: $(git rev-parse HEAD)"
+          grep -n "advertiser_name" scripts/update.py | head -5
 
       - name: Setup Python
         uses: actions/setup-python@v5
