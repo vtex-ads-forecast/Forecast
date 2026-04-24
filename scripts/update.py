@@ -62,7 +62,7 @@ def fetch_data(token, start_date, end_date):
     """Fetch data from Metabase card #2368 with date parameters."""
     headers = {"X-Metabase-Session": token}
 
-    # Get card info to extract the SQL query and database_id
+    # Get card info to extract template-tag IDs
     card_resp = requests.get(
         f"{METABASE_URL}/api/card/{CARD_ID}",
         headers=headers,
@@ -72,47 +72,71 @@ def fetch_data(token, start_date, end_date):
     card_info = card_resp.json()
 
     dataset_query = card_info.get("dataset_query", {})
-    db_id = card_info.get("database_id")
-    native_query = dataset_query.get("native", {}).get("query", "")
     template_tags = dataset_query.get("native", {}).get("template-tags", {})
-
-    print(f"  Database ID: {db_id}")
     print(f"  Template tags: {list(template_tags.keys())}")
-    print(f"  Query length: {len(native_query)} chars")
 
-    # Strategy: use /api/dataset with raw SQL (no row limit)
-    # Replace Metabase template tags {{name}} with actual values
-    query_sql = native_query
-    for tag_name in template_tags:
+    # Build parameters with tag IDs
+    parameters = []
+    for tag_name, tag_info in template_tags.items():
+        tag_id = tag_info.get("id", "")
         if "start" in tag_name.lower():
-            query_sql = query_sql.replace("{{" + tag_name + "}}", f"'{start_date}'")
+            parameters.append({
+                "type": "date/single", "value": start_date,
+                "target": ["variable", ["template-tag", tag_name]], "id": tag_id,
+            })
         elif "end" in tag_name.lower():
-            query_sql = query_sql.replace("{{" + tag_name + "}}", f"'{end_date}'")
+            parameters.append({
+                "type": "date/single", "value": end_date,
+                "target": ["variable", ["template-tag", tag_name]], "id": tag_id,
+            })
 
-    # Also handle optional Metabase syntax [[ ... {{tag}} ... ]]
-    # Remove the [[ ]] wrappers but keep the content (since we've already substituted)
-    import re as _re
-    query_sql = _re.sub(r'\[\[(.*?)\]\]', r'\1', query_sql, flags=_re.DOTALL)
+    # Paginated fetch — /api/card/{id}/query returns max 2000 rows
+    # Keep fetching with increasing row_count until we get all data
+    PAGE_SIZE = 2000
+    all_rows = []
+    cols = []
+    page = 0
 
-    print(f"  Executing via /api/dataset (no row limit)...")
-    resp = requests.post(
-        f"{METABASE_URL}/api/dataset",
-        headers=headers,
-        json={
-            "database": db_id,
-            "type": "native",
-            "native": {"query": query_sql},
-        },
-        timeout=300,
-    )
-    resp.raise_for_status()
-    result = resp.json()
+    while True:
+        print(f"  Fetching page {page} (rows {page * PAGE_SIZE} - {(page+1) * PAGE_SIZE})...")
+        resp = requests.post(
+            f"{METABASE_URL}/api/card/{CARD_ID}/query",
+            headers=headers,
+            json={
+                "parameters": parameters,
+                "constraints": {"max-results": PAGE_SIZE, "max-results-bare-rows": PAGE_SIZE},
+            },
+            timeout=300,
+        )
+        resp.raise_for_status()
+        result = resp.json()
 
-    # Parse response: {data: {cols: [...], rows: [...]}}
-    cols = [c.get("name", f"col_{i}") for i, c in enumerate(result.get("data", {}).get("cols", []))]
-    rows_raw = result.get("data", {}).get("rows", [])
-    print(f"  Columns: {cols}")
-    print(f"  Raw rows: {len(rows_raw)}")
+        if page == 0:
+            cols = [c.get("name", f"col_{i}") for i, c in enumerate(result.get("data", {}).get("cols", []))]
+            print(f"  Columns: {cols}")
+
+        rows_raw = result.get("data", {}).get("rows", [])
+        row_count = result.get("data", {}).get("rows_truncated", len(rows_raw))
+        print(f"  Page {page}: {len(rows_raw)} rows")
+
+        all_rows.extend(rows_raw)
+
+        # If we got fewer than PAGE_SIZE, we have all the data
+        if len(rows_raw) < PAGE_SIZE:
+            break
+
+        # Metabase doesn't support offset natively on card queries
+        # If we got exactly PAGE_SIZE, data is likely truncated
+        # Try increasing the limit for the next request
+        PAGE_SIZE = PAGE_SIZE * 5  # 10000, then 50000
+        page += 1
+
+        if page > 3:  # safety limit
+            print(f"  ⚠ Stopping after {page} pages")
+            break
+
+    rows_raw = all_rows
+    print(f"  Total raw rows: {len(rows_raw)}")
 
     if not rows_raw:
         print("⚠ No rows returned from Metabase")
