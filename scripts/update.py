@@ -62,78 +62,94 @@ def fetch_data(token, start_date, end_date):
     """Fetch data from Metabase card #2368 with date parameters."""
     headers = {"X-Metabase-Session": token}
 
-    # Try /query/json first (returns list of dicts)
-    resp = requests.post(
-        f"{METABASE_URL}/api/card/{CARD_ID}/query/json",
+    # First, get the card info to find the database_id
+    card_resp = requests.get(
+        f"{METABASE_URL}/api/card/{CARD_ID}",
         headers=headers,
-        json={"parameters": [
-            {"type": "date/single", "target": ["variable", ["template-tag", "start_date"]], "value": start_date},
-            {"type": "date/single", "target": ["variable", ["template-tag", "end_date"]], "value": end_date},
-        ]},
-        timeout=300,
+        timeout=30,
     )
-    resp.raise_for_status()
-    data = resp.json()
+    card_resp.raise_for_status()
+    card_info = card_resp.json()
+    db_id = card_info.get("database_id")
+    native_query = card_info.get("dataset_query", {}).get("native", {}).get("query", "")
 
-    if not data:
-        print("⚠ No data returned")
-        return []
+    if native_query and db_id:
+        # Use /api/dataset with the native query — more reliable for parameterized queries
+        # Replace template tags with actual values
+        query_sql = native_query
+        # Metabase template tags: {{start_date}}, {{end_date}}
+        query_sql = query_sql.replace("{{start_date}}", f"'{start_date}'")
+        query_sql = query_sql.replace("{{end_date}}", f"'{end_date}'")
 
-    # Inspect first row to determine format
-    first = data[0]
-    print(f"  Raw first row type: {type(first).__name__}, keys/len: {list(first.keys()) if isinstance(first, dict) else len(first)}")
+        print(f"  Using /api/dataset with db_id={db_id}")
+        resp = requests.post(
+            f"{METABASE_URL}/api/dataset",
+            headers=headers,
+            json={
+                "database": db_id,
+                "type": "native",
+                "native": {"query": query_sql},
+            },
+            timeout=300,
+        )
+        resp.raise_for_status()
+        result = resp.json()
+        cols = [c["name"] for c in result.get("data", {}).get("cols", [])]
+        rows_raw = result.get("data", {}).get("rows", [])
+        print(f"  Columns: {cols}")
+        print(f"  Raw rows: {len(rows_raw)}")
 
-    # If it's already a list of dicts with expected keys, return as-is
-    if isinstance(first, dict):
-        # Normalize key names (Metabase sometimes returns lowercase or different names)
-        # Expected: day, publisher_name, advertiser_name, currency_code, total_cost
-        sample_keys = list(first.keys())
-        print(f"  Column names: {sample_keys}")
+        # Convert rows to list of dicts
+        data = []
+        # Build flexible column index mapping
+        col_idx = {}
+        for i, c in enumerate(cols):
+            cl = c.lower().replace(" ", "_")
+            if "day" in cl or "date" in cl:
+                col_idx["day"] = i
+            elif "publisher" in cl and "name" in cl:
+                col_idx["publisher_name"] = i
+            elif "advertiser" in cl and "name" in cl:
+                col_idx["advertiser_name"] = i
+            elif "currency" in cl:
+                col_idx["currency_code"] = i
+            elif "cost" in cl or "total" in cl:
+                col_idx["total_cost"] = i
 
-        # Map column names flexibly
-        col_map = {}
-        for k in sample_keys:
-            kl = k.lower().replace(" ", "_")
-            if "day" in kl or "date" in kl or "dia" in kl:
-                col_map["day"] = k
-            elif "publisher" in kl and "name" in kl:
-                col_map["publisher_name"] = k
-            elif "advertiser" in kl and "name" in kl:
-                col_map["advertiser_name"] = k
-            elif "currency" in kl:
-                col_map["currency_code"] = k
-            elif "cost" in kl or "spend" in kl or "total" in kl:
-                col_map["total_cost"] = k
+        print(f"  Column index mapping: {col_idx}")
 
-        print(f"  Column mapping: {col_map}")
-
-        # Remap to standard keys
-        normalized = []
-        for row in data:
-            normalized.append({
-                "day": str(row.get(col_map.get("day", "day"), "")),
-                "publisher_name": str(row.get(col_map.get("publisher_name", "publisher_name"), "")),
-                "advertiser_name": str(row.get(col_map.get("advertiser_name", "advertiser_name"), "")),
-                "currency_code": str(row.get(col_map.get("currency_code", "currency_code"), "BRL")),
-                "total_cost": float(row.get(col_map.get("total_cost", "total_cost"), 0) or 0),
+        for row in rows_raw:
+            data.append({
+                "day": str(row[col_idx.get("day", 0)] or "")[:10],
+                "publisher_name": str(row[col_idx.get("publisher_name", 2)] or ""),
+                "advertiser_name": str(row[col_idx.get("advertiser_name", 4)] or ""),
+                "currency_code": str(row[col_idx.get("currency_code", 5)] or "BRL"),
+                "total_cost": float(row[col_idx.get("total_cost", 7)] or 0),
             })
-        data = normalized
-
-    # If it's a list of lists, convert using known column order
-    elif isinstance(first, list):
-        # Column order from the Metabase query:
-        # day, publisher_id, publisher_name, advertiser_id, advertiser_name, currency_code, campaign_id, total_cost
-        normalized = []
-        for row in data:
-            if len(row) >= 8:
-                normalized.append({
-                    "day": str(row[0] or ""),
-                    "publisher_name": str(row[2] or ""),
-                    "advertiser_name": str(row[4] or ""),
-                    "currency_code": str(row[5] or "BRL"),
-                    "total_cost": float(row[7] or 0),
+    else:
+        # Fallback: use /query/json
+        print("  Fallback: using /api/card/query/json")
+        resp = requests.post(
+            f"{METABASE_URL}/api/card/{CARD_ID}/query/json",
+            headers=headers,
+            json={"parameters": [
+                {"type": "date/single", "target": ["variable", ["template-tag", "start_date"]], "value": start_date},
+                {"type": "date/single", "target": ["variable", ["template-tag", "end_date"]], "value": end_date},
+            ]},
+            timeout=300,
+        )
+        resp.raise_for_status()
+        raw = resp.json()
+        data = []
+        for r in raw:
+            if isinstance(r, dict):
+                data.append({
+                    "day": str(r.get("day", ""))[:10],
+                    "publisher_name": str(r.get("publisher_name", "")),
+                    "advertiser_name": str(r.get("advertiser_name", "")),
+                    "currency_code": str(r.get("currency_code", "BRL")),
+                    "total_cost": float(r.get("total_cost", 0) or 0),
                 })
-        data = normalized
 
     print(f"✓ Fetched {len(data)} rows from Metabase ({start_date} to {end_date})")
     return data
