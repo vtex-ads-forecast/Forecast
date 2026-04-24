@@ -62,56 +62,56 @@ def fetch_data(token, start_date, end_date):
     """Fetch data from Metabase card #2368 with date parameters."""
     headers = {"X-Metabase-Session": token}
 
-    # Get card info to extract template-tag IDs
-    card_resp = requests.get(
-        f"{METABASE_URL}/api/card/{CARD_ID}",
-        headers=headers,
-        timeout=30,
+    # Use /api/dataset with raw SQL — no row limit, no template tag issues
+    DB_ID = 13  # from card info
+
+    query_sql = f"""
+    with metrics AS (
+        SELECT cmnd.day, cmnd.campaign_id, cmnd.publisher_id, cmnd.advertiser_id,
+               SUM(cmnd.total_clicks_cost) + SUM(cmnd.total_impressions_cost) AS total_cost,
+               p.name AS publisher_name, p.currency_code, p.is_test
+        FROM CAMPAIGNS_METRICS_NETWORK_DAY cmnd
+        JOIN publishers p ON p.id = cmnd.publisher_id
+        WHERE day BETWEEN ('{start_date}')::timestamp - INTERVAL '1 day'
+                      AND ('{end_date}')::timestamp + INTERVAL '2 days'
+        GROUP BY cmnd.day, cmnd.campaign_id, cmnd.publisher_id, cmnd.advertiser_id,
+                 p.name, p.currency_code, p.is_test
+    ),
+    costs AS (
+        SELECT r.day, r.publisher_id, r.publisher_name, r.advertiser_id,
+               a.name AS advertiser_name, r.currency_code, r.campaign_id,
+               SUM(r.total_cost) AS total_cost
+        FROM metrics r
+        LEFT JOIN advertisers a ON a.id = r.advertiser_id
+        WHERE r.day >= '{start_date}'
+          AND r.day < '{end_date}'::date + INTERVAL '1 day'
+          AND r.is_test = false
+        GROUP BY r.day, r.publisher_id, r.publisher_name, r.advertiser_id,
+                 a.name, r.currency_code, r.campaign_id
     )
-    card_resp.raise_for_status()
-    card_info = card_resp.json()
+    SELECT day, publisher_id, publisher_name, advertiser_id, advertiser_name,
+           currency_code, campaign_id, total_cost
+    FROM costs WHERE total_cost > 0 ORDER BY day DESC
+    """
 
-    dataset_query = card_info.get("dataset_query", {})
-    template_tags = dataset_query.get("native", {}).get("template-tags", {})
-    print(f"  Template tags: {list(template_tags.keys())}")
-
-    # Build parameters with tag IDs
-    parameters = []
-    for tag_name, tag_info in template_tags.items():
-        tag_id = tag_info.get("id", "")
-        if "start" in tag_name.lower():
-            parameters.append({
-                "type": "date/single", "value": start_date,
-                "target": ["variable", ["template-tag", tag_name]], "id": tag_id,
-            })
-        elif "end" in tag_name.lower():
-            parameters.append({
-                "type": "date/single", "value": end_date,
-                "target": ["variable", ["template-tag", tag_name]], "id": tag_id,
-            })
-
-    # Use /api/card/{id}/query with constraints disabled to get ALL rows
-    print(f"  Fetching via /api/card/{CARD_ID}/query (constraints disabled)...")
+    print(f"  Executing via /api/dataset (db={DB_ID}, no row limit)...")
     resp = requests.post(
-        f"{METABASE_URL}/api/card/{CARD_ID}/query",
+        f"{METABASE_URL}/api/dataset",
         headers=headers,
         json={
-            "parameters": parameters,
-            "constraints": None,
+            "database": DB_ID,
+            "type": "native",
+            "native": {"query": query_sql},
         },
         timeout=300,
     )
     resp.raise_for_status()
     result = resp.json()
 
-    # Parse response
     cols = [c.get("name", f"col_{i}") for i, c in enumerate(result.get("data", {}).get("cols", []))]
     rows_raw = result.get("data", {}).get("rows", [])
-    truncated = result.get("data", {}).get("rows_truncated", 0)
     print(f"  Columns: {cols}")
     print(f"  Total raw rows: {len(rows_raw)}")
-    if truncated:
-        print(f"  ⚠ Rows truncated: {truncated}")
     print(f"  Sample row: {rows_raw[0] if rows_raw else 'empty'}")
 
     if not rows_raw:
