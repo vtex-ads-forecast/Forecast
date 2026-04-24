@@ -62,10 +62,11 @@ def fetch_data(token, start_date, end_date):
     """Fetch data from Metabase card #2368 with date parameters."""
     headers = {"X-Metabase-Session": token}
 
-    # Use /api/dataset with raw SQL — no row limit, no template tag issues
+    # Use /api/dataset with raw SQL + LIMIT/OFFSET pagination to bypass 2000 row cap
     DB_ID = 13  # from card info
+    PAGE_SIZE = 2000
 
-    query_sql = f"""
+    base_sql = f"""
     with metrics AS (
         SELECT cmnd.day, cmnd.campaign_id, cmnd.publisher_id, cmnd.advertiser_id,
                SUM(cmnd.total_clicks_cost) + SUM(cmnd.total_impressions_cost) AS total_cost,
@@ -91,28 +92,49 @@ def fetch_data(token, start_date, end_date):
     )
     SELECT day, publisher_id, publisher_name, advertiser_id, advertiser_name,
            currency_code, campaign_id, total_cost
-    FROM costs WHERE total_cost > 0 ORDER BY day DESC
+    FROM costs WHERE total_cost > 0 ORDER BY day DESC, publisher_id, advertiser_id
     """
 
-    print(f"  Executing via /api/dataset (db={DB_ID}, no row limit)...")
-    resp = requests.post(
-        f"{METABASE_URL}/api/dataset",
-        headers=headers,
-        json={
-            "database": DB_ID,
-            "type": "native",
-            "native": {"query": query_sql},
-        },
-        timeout=300,
-    )
-    resp.raise_for_status()
-    result = resp.json()
+    all_rows = []
+    cols = []
+    offset = 0
 
-    cols = [c.get("name", f"col_{i}") for i, c in enumerate(result.get("data", {}).get("cols", []))]
-    rows_raw = result.get("data", {}).get("rows", [])
-    print(f"  Columns: {cols}")
-    print(f"  Total raw rows: {len(rows_raw)}")
-    print(f"  Sample row: {rows_raw[0] if rows_raw else 'empty'}")
+    while True:
+        paginated_sql = f"{base_sql} LIMIT {PAGE_SIZE} OFFSET {offset}"
+        print(f"  Fetching offset={offset} limit={PAGE_SIZE}...")
+        resp = requests.post(
+            f"{METABASE_URL}/api/dataset",
+            headers=headers,
+            json={
+                "database": DB_ID,
+                "type": "native",
+                "native": {"query": paginated_sql},
+            },
+            timeout=300,
+        )
+        resp.raise_for_status()
+        result = resp.json()
+
+        if not cols:
+            cols = [c.get("name", f"col_{i}") for i, c in enumerate(result.get("data", {}).get("cols", []))]
+            print(f"  Columns: {cols}")
+
+        page_rows = result.get("data", {}).get("rows", [])
+        print(f"  Got {len(page_rows)} rows")
+        all_rows.extend(page_rows)
+
+        if len(page_rows) < PAGE_SIZE:
+            break  # last page
+
+        offset += PAGE_SIZE
+        if offset > 50000:  # safety limit
+            print("  ⚠ Safety limit reached at 50000 rows")
+            break
+
+    rows_raw = all_rows
+    print(f"  Total rows fetched: {len(rows_raw)}")
+    if rows_raw:
+        print(f"  Sample row: {rows_raw[0]}")
 
     if not rows_raw:
         print("⚠ No rows returned from Metabase")
