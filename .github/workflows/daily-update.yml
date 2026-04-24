@@ -40,7 +40,7 @@ jobs:
         env:
           METABASE_USER: ${{ secrets.METABASE_USER }}
           METABASE_PASS: ${{ secrets.METABASE_PASS }}
-          FORCE_UPDATE: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
+          FORCE_UPDATE: "0"
         run: python scripts/update.py
 
       - name: Commit and push changes
