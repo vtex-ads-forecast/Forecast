@@ -62,7 +62,7 @@ def fetch_data(token, start_date, end_date):
     """Fetch data from Metabase card #2368 with date parameters."""
     headers = {"X-Metabase-Session": token}
 
-    # Get card info to extract template-tag IDs and database_id
+    # Get card info to extract the SQL query and database_id
     card_resp = requests.get(
         f"{METABASE_URL}/api/card/{CARD_ID}",
         headers=headers,
@@ -71,40 +71,37 @@ def fetch_data(token, start_date, end_date):
     card_resp.raise_for_status()
     card_info = card_resp.json()
 
-    # Extract template tags to build correct parameter targets
     dataset_query = card_info.get("dataset_query", {})
+    db_id = card_info.get("database_id")
+    native_query = dataset_query.get("native", {}).get("query", "")
     template_tags = dataset_query.get("native", {}).get("template-tags", {})
-    print(f"  Template tags found: {list(template_tags.keys())}")
 
-    # Build parameters list matching the card's template tags
-    parameters = []
-    for tag_name, tag_info in template_tags.items():
-        tag_id = tag_info.get("id", "")
-        tag_type = tag_info.get("type", "text")
+    print(f"  Database ID: {db_id}")
+    print(f"  Template tags: {list(template_tags.keys())}")
+    print(f"  Query length: {len(native_query)} chars")
+
+    # Strategy: use /api/dataset with raw SQL (no row limit)
+    # Replace Metabase template tags {{name}} with actual values
+    query_sql = native_query
+    for tag_name in template_tags:
         if "start" in tag_name.lower():
-            parameters.append({
-                "type": "date/single",
-                "value": start_date,
-                "target": ["variable", ["template-tag", tag_name]],
-                "id": tag_id,
-            })
+            query_sql = query_sql.replace("{{" + tag_name + "}}", f"'{start_date}'")
         elif "end" in tag_name.lower():
-            parameters.append({
-                "type": "date/single",
-                "value": end_date,
-                "target": ["variable", ["template-tag", tag_name]],
-                "id": tag_id,
-            })
+            query_sql = query_sql.replace("{{" + tag_name + "}}", f"'{end_date}'")
 
-    print(f"  Parameters: {parameters}")
+    # Also handle optional Metabase syntax [[ ... {{tag}} ... ]]
+    # Remove the [[ ]] wrappers but keep the content (since we've already substituted)
+    import re as _re
+    query_sql = _re.sub(r'\[\[(.*?)\]\]', r'\1', query_sql, flags=_re.DOTALL)
 
-    # Use /api/card/{id}/query with proper parameters + no row limit
+    print(f"  Executing via /api/dataset (no row limit)...")
     resp = requests.post(
-        f"{METABASE_URL}/api/card/{CARD_ID}/query",
+        f"{METABASE_URL}/api/dataset",
         headers=headers,
         json={
-            "parameters": parameters,
-            "constraints": {"max-results": 100000, "max-results-bare-rows": 100000},
+            "database": db_id,
+            "type": "native",
+            "native": {"query": query_sql},
         },
         timeout=300,
     )
@@ -321,12 +318,21 @@ def apply_updates(html, data, pub_seg, pub_tr):
     current_na = get_current_na(html)
     new_na = max(new_days)  # e.g., 22 if days 20-22 were added
 
-    if new_na <= current_na:
-        print(f"⚠ Data already up to date (NA={current_na}, new max day={new_na}). Skipping.")
+    # Check for --force flag or FORCE_UPDATE env var
+    force = "--force" in sys.argv or os.environ.get("FORCE_UPDATE") == "1"
+
+    if new_na <= current_na and not force:
+        print(f"⚠ Data already up to date (NA={current_na}, new max day={new_na}). Use --force to re-process.")
         return html
 
-    # Only process days that are actually new
-    days_to_add = [d for d in new_days if d > current_na]
+    # If forcing and same day, we re-process all days in the data
+    if new_na <= current_na and force:
+        print(f"  Forcing re-process for days {new_days} (NA stays {current_na})")
+        days_to_add = new_days
+    else:
+        # Only process days that are actually new
+        days_to_add = [d for d in new_days if d > current_na]
+
     if not days_to_add:
         print("⚠ No new days to add. Skipping.")
         return html
