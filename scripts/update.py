@@ -90,57 +90,60 @@ def fetch_data(token, start_date, end_date):
                 "target": ["variable", ["template-tag", tag_name]], "id": tag_id,
             })
 
-    # Use /api/card/{id}/query/csv — returns ALL rows without limit
-    import csv
-    import io
-
-    print(f"  Fetching via /query/csv (no row limit)...")
+    # Use /api/card/{id}/query with constraints disabled to get ALL rows
+    print(f"  Fetching via /api/card/{CARD_ID}/query (constraints disabled)...")
     resp = requests.post(
-        f"{METABASE_URL}/api/card/{CARD_ID}/query/csv",
+        f"{METABASE_URL}/api/card/{CARD_ID}/query",
         headers=headers,
-        json={"parameters": parameters},
+        json={
+            "parameters": parameters,
+            "constraints": None,
+        },
         timeout=300,
     )
     resp.raise_for_status()
+    result = resp.json()
 
-    # Parse CSV response
-    reader = csv.DictReader(io.StringIO(resp.text))
-    cols = reader.fieldnames or []
-    rows_raw = list(reader)
+    # Parse response
+    cols = [c.get("name", f"col_{i}") for i, c in enumerate(result.get("data", {}).get("cols", []))]
+    rows_raw = result.get("data", {}).get("rows", [])
+    truncated = result.get("data", {}).get("rows_truncated", 0)
     print(f"  Columns: {cols}")
     print(f"  Total raw rows: {len(rows_raw)}")
+    if truncated:
+        print(f"  ⚠ Rows truncated: {truncated}")
     print(f"  Sample row: {rows_raw[0] if rows_raw else 'empty'}")
 
     if not rows_raw:
         print("⚠ No rows returned from Metabase")
         return []
 
-    # Map CSV column names to standard keys (CSV returns dicts)
-    col_map = {}
-    for c in cols:
+    # Build column index mapping (rows are arrays from /query endpoint)
+    col_idx = {}
+    for i, c in enumerate(cols):
         cl = c.lower().replace(" ", "_")
         if "day" in cl or "date" in cl:
-            col_map["day"] = c
+            col_idx["day"] = i
         elif "publisher" in cl and "name" in cl:
-            col_map["publisher_name"] = c
+            col_idx["publisher_name"] = i
         elif "advertiser" in cl and "name" in cl:
-            col_map["advertiser_name"] = c
+            col_idx["advertiser_name"] = i
         elif "currency" in cl:
-            col_map["currency_code"] = c
+            col_idx["currency_code"] = i
         elif "cost" in cl or "total" in cl:
-            col_map["total_cost"] = c
+            col_idx["total_cost"] = i
 
-    print(f"  Column mapping: {col_map}")
+    print(f"  Column index mapping: {col_idx}")
 
-    # Convert CSV dicts to standardized dicts
+    # Convert rows (arrays) to standardized dicts
     data = []
     for row in rows_raw:
         data.append({
-            "day": str(row.get(col_map.get("day", "day"), "") or "")[:10],
-            "publisher_name": str(row.get(col_map.get("publisher_name", "publisher_name"), "") or ""),
-            "advertiser_name": str(row.get(col_map.get("advertiser_name", "advertiser_name"), "") or ""),
-            "currency_code": str(row.get(col_map.get("currency_code", "currency_code"), "BRL") or "BRL"),
-            "total_cost": float(row.get(col_map.get("total_cost", "total_cost"), 0) or 0),
+            "day": str(row[col_idx.get("day", 0)] or "")[:10],
+            "publisher_name": str(row[col_idx.get("publisher_name", 2)] or ""),
+            "advertiser_name": str(row[col_idx.get("advertiser_name", 4)] or ""),
+            "currency_code": str(row[col_idx.get("currency_code", 5)] or "BRL"),
+            "total_cost": float(row[col_idx.get("total_cost", 7)] or 0),
         })
 
     print(f"✓ Fetched {len(data)} rows from Metabase ({start_date} to {end_date})")
