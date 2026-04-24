@@ -60,17 +60,81 @@ def metabase_auth():
 # ─── FETCH DATA ───────────────────────────────────────────────────────
 def fetch_data(token, start_date, end_date):
     """Fetch data from Metabase card #2368 with date parameters."""
+    headers = {"X-Metabase-Session": token}
+
+    # Try /query/json first (returns list of dicts)
     resp = requests.post(
         f"{METABASE_URL}/api/card/{CARD_ID}/query/json",
-        headers={"X-Metabase-Session": token},
+        headers=headers,
         json={"parameters": [
             {"type": "date/single", "target": ["variable", ["template-tag", "start_date"]], "value": start_date},
             {"type": "date/single", "target": ["variable", ["template-tag", "end_date"]], "value": end_date},
         ]},
-        timeout=120,
+        timeout=300,
     )
     resp.raise_for_status()
     data = resp.json()
+
+    if not data:
+        print("⚠ No data returned")
+        return []
+
+    # Inspect first row to determine format
+    first = data[0]
+    print(f"  Raw first row type: {type(first).__name__}, keys/len: {list(first.keys()) if isinstance(first, dict) else len(first)}")
+
+    # If it's already a list of dicts with expected keys, return as-is
+    if isinstance(first, dict):
+        # Normalize key names (Metabase sometimes returns lowercase or different names)
+        # Expected: day, publisher_name, advertiser_name, currency_code, total_cost
+        sample_keys = list(first.keys())
+        print(f"  Column names: {sample_keys}")
+
+        # Map column names flexibly
+        col_map = {}
+        for k in sample_keys:
+            kl = k.lower().replace(" ", "_")
+            if "day" in kl or "date" in kl or "dia" in kl:
+                col_map["day"] = k
+            elif "publisher" in kl and "name" in kl:
+                col_map["publisher_name"] = k
+            elif "advertiser" in kl and "name" in kl:
+                col_map["advertiser_name"] = k
+            elif "currency" in kl:
+                col_map["currency_code"] = k
+            elif "cost" in kl or "spend" in kl or "total" in kl:
+                col_map["total_cost"] = k
+
+        print(f"  Column mapping: {col_map}")
+
+        # Remap to standard keys
+        normalized = []
+        for row in data:
+            normalized.append({
+                "day": str(row.get(col_map.get("day", "day"), "")),
+                "publisher_name": str(row.get(col_map.get("publisher_name", "publisher_name"), "")),
+                "advertiser_name": str(row.get(col_map.get("advertiser_name", "advertiser_name"), "")),
+                "currency_code": str(row.get(col_map.get("currency_code", "currency_code"), "BRL")),
+                "total_cost": float(row.get(col_map.get("total_cost", "total_cost"), 0) or 0),
+            })
+        data = normalized
+
+    # If it's a list of lists, convert using known column order
+    elif isinstance(first, list):
+        # Column order from the Metabase query:
+        # day, publisher_id, publisher_name, advertiser_id, advertiser_name, currency_code, campaign_id, total_cost
+        normalized = []
+        for row in data:
+            if len(row) >= 8:
+                normalized.append({
+                    "day": str(row[0] or ""),
+                    "publisher_name": str(row[2] or ""),
+                    "advertiser_name": str(row[4] or ""),
+                    "currency_code": str(row[5] or "BRL"),
+                    "total_cost": float(row[7] or 0),
+                })
+        data = normalized
+
     print(f"✓ Fetched {len(data)} rows from Metabase ({start_date} to {end_date})")
     return data
 
@@ -154,18 +218,22 @@ def process_rows(raw_data, pub_seg, pub_tr):
     """
     rows = []
     for r in raw_data:
-        adv = (r.get("advertiser_name") or "").strip()
-        low = adv.lower()
-        if any(x in low for x in EXCLUDE_PATTERNS):
+        try:
+            adv = (r.get("advertiser_name") or "").strip()
+            low = adv.lower()
+            if any(x in low for x in EXCLUDE_PATTERNS):
+                continue
+            cost = float(r.get("total_cost") or 0)
+            if cost <= 0:
+                continue
+            day_str = str(r.get("day", ""))[:10]
+            day = datetime.strptime(day_str, "%Y-%m-%d")
+            pub = (r.get("publisher_name") or "").strip()
+            curr = (r.get("currency_code") or "BRL").strip()
+            rows.append({"day": day, "pub": pub, "adv": adv, "currency": curr, "cost": cost})
+        except Exception as e:
+            print(f"  ⚠ Skipping row: {e} — row: {r}")
             continue
-        cost = float(r.get("total_cost") or 0)
-        if cost <= 0:
-            continue
-        day_str = str(r.get("day", ""))[:10]
-        day = datetime.strptime(day_str, "%Y-%m-%d")
-        pub = (r.get("publisher_name") or "").strip()
-        curr = (r.get("currency_code") or "BRL").strip()
-        rows.append({"day": day, "pub": pub, "adv": adv, "currency": curr, "cost": cost})
 
     print(f"✓ Processed {len(rows)} valid rows")
 
