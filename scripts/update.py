@@ -98,11 +98,14 @@ def fetch_data(token, start_date, end_date):
 
     print(f"  Parameters: {parameters}")
 
-    # Use /api/card/{id}/query with proper parameters
+    # Use /api/card/{id}/query with proper parameters + no row limit
     resp = requests.post(
         f"{METABASE_URL}/api/card/{CARD_ID}/query",
         headers=headers,
-        json={"parameters": parameters},
+        json={
+            "parameters": parameters,
+            "constraints": {"max-results": 100000, "max-results-bare-rows": 100000},
+        },
         timeout=300,
     )
     resp.raise_for_status()

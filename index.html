@@ -453,6 +453,10 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
   </div>
   <div class="content">
     <!-- Dashboard summary cards -->
+    <div style="background:#FFF7ED;border:1px solid #FDBA74;border-radius:8px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;font-size:13px;color:#92400E">
+      <span style="font-size:16px">🧪</span>
+      <span><strong>Modo simulação</strong> — os cenários criados aqui são para análise exploratória e não alteram os dados oficiais do dashboard.</span>
+    </div>
     <div class="sc-dash-grid" id="sc-dash"></div>
 
     <!-- Scenario Builder -->
@@ -547,8 +551,8 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
       </div>
     </div>
 
-    <!-- Opportunities Section (integrated) -->
-    <div class="sc-section">
+    <!-- Opportunities Section (hidden — pending concept review) -->
+    <div class="sc-section" id="sc-opp-section" style="display:none">
       <div class="sc-section-header">
         <h3>💡 Oportunidades de Migração</h3>
         <div style="display:flex;gap:12px;align-items:center">
@@ -1661,9 +1665,9 @@ let mainChart = null;
 function renderMainChart(){
   const all=getAllDays();const m=state.metric;
   const metaTotal=m==="adspend"?META_SPEND_TOTAL:META_REV_TOTAL;
-  /* Distribute META following the model's daily pattern */
-  const totalSpend=all.reduce((s,d)=>s+d.adspend,0);
-  const metaByDay=all.map(d=>totalSpend>0?metaTotal*(d.adspend/totalSpend):metaTotal/TD);
+  /* Fixed daily meta — flat line so deviations from target are clearly visible */
+  const metaDaily=metaTotal/TD;
+  const metaByDay=all.map(()=>metaDaily);
 
   let labels,actualData,fcData,upperData,lowerData,metaLine;
   if(state.viewType==="daily"){
@@ -2513,9 +2517,9 @@ function renderScDash() {
       <div class="sc-dash-sub">Meta: ${fB(META_REV_TOTAL)}</div>
     </div>
     <div class="sc-dash-card">
-      <div class="sc-dash-label">Oportunidades Disponíveis</div>
-      <div class="sc-dash-val">${oppCount}</div>
-      <div class="sc-dash-sub">Migrações possíveis</div>
+      <div class="sc-dash-label">Cenários Ativos</div>
+      <div class="sc-dash-val">${scenarios.length}</div>
+      <div class="sc-dash-sub">Simulações criadas</div>
     </div>
   `;
 }
@@ -2945,32 +2949,7 @@ function applyRole() {
       if (!el.classList.contains('viewer-disabled')) el.classList.add('viewer-disabled');
     });
 
-    // SCENARIOS PAGE: disable "Adicionar cenário" button, form inputs, apply/clear buttons
-    const addScenarioBtn = document.querySelector('#page-scenarios .sc-btn-primary');
-    if (addScenarioBtn && addScenarioBtn.textContent.includes('Adicionar')) {
-      addScenarioBtn.disabled = true;
-      if (!addScenarioBtn.classList.contains('viewer-disabled')) addScenarioBtn.classList.add('viewer-disabled');
-    }
-    const scFormInputs = document.querySelectorAll('#page-scenarios .sc-select, #page-scenarios .sc-input, #page-scenarios input[type="radio"]');
-    scFormInputs.forEach(el => {
-      el.disabled = true;
-      if (!el.classList.contains('viewer-disabled')) el.classList.add('viewer-disabled');
-    });
-    // Disable model toggle buttons in scenario form (they are .toggle-btn)
-    const scModelToggles = document.querySelectorAll('#page-scenarios .toggle-btn');
-    scModelToggles.forEach(btn => {
-      btn.disabled = true;
-      if (!btn.classList.contains('viewer-disabled')) btn.classList.add('viewer-disabled');
-    });
-    // Disable apply/clear buttons in scenario form
-    const scAllBtns = document.querySelectorAll('#page-scenarios .sc-btn');
-    scAllBtns.forEach(btn => {
-      const text = btn.textContent;
-      if (text.includes('Aplicar') || text.includes('Limpar')) {
-        btn.disabled = true;
-        if (!btn.classList.contains('viewer-disabled')) btn.classList.add('viewer-disabled');
-      }
-    });
+    // SCENARIOS PAGE: enabled for all users (simulation only, not official data)
   } else {
     // ADMIN MODE: enable all previously disabled controls
     const allDisabled = document.querySelectorAll('.viewer-disabled');
