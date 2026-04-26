@@ -284,6 +284,9 @@ def process_rows(raw_data, pub_seg, pub_tr):
         fx = FX_RATES.get(r["currency"], 1.0)
         cost_brl = r["cost"] * fx
         seg = pub_seg.get(r["pub"], "Long Tail")
+        # Never touch "Others" segment — it is manually managed only
+        if seg == "Others":
+            seg = "Long Tail"
         is_net = "vtexads" in r["adv"].lower()
         tri = pub_tr.get(r["pub"], {"tech": 0.1, "net": 0.15})
         tr = tri["net"] if is_net else tri["tech"]
@@ -311,6 +314,9 @@ def process_rows(raw_data, pub_seg, pub_tr):
     for r in rows:
         fx = FX_RATES.get(r["currency"], 1.0)
         seg = pub_seg.get(r["pub"], "Long Tail")
+        # Never touch "Others" segment — it is manually managed only
+        if seg == "Others":
+            seg = "Long Tail"
         daily_seg[seg][r["day"].day] += r["cost"] * fx
 
     # New days (sorted)
@@ -449,7 +455,7 @@ def apply_updates(html, data, pub_seg, pub_tr):
     rda_end = html.find("};", rda_start) + 2
     rda_block = html[rda_start:rda_end]
 
-    for seg in ["Electronics", "Pharma", "LATAM", "Beauty", "Long Tail", "Home Center", "Others", "Groceries"]:
+    for seg in ["Electronics", "Pharma", "LATAM", "Beauty", "Long Tail", "Home Center", "Groceries"]:
         seg_daily = daily_seg.get(seg, {})
         new_vals = [str(round(seg_daily.get(d, 0))) for d in days_to_add]
         pat = rf'"{seg}":\[([^\]]+)\]'
