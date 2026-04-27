@@ -2794,6 +2794,7 @@ function updSettingsSeg(idx, newSeg) {
   });
   _saveSettingsOverrides();
   showSettingsToast("Segmento de " + p.publisher + " atualizado para " + newSeg);
+  renderAll();
   renderSettings();
 }
 
@@ -2816,7 +2817,9 @@ function updSettingsTR(idx, field, val) {
     }
   });
   _saveSettingsOverrides();
-  showSettingsToast(field === 'trTech' ? 'TR Tech' : 'TR Network' + " de " + p.publisher + " → " + val + "%");
+  showSettingsToast((field === 'trTech' ? 'TR Tech' : 'TR Network') + " de " + p.publisher + " → " + val + "%");
+  renderAll();
+  renderSettings();
 }
 
 function showSettingsToast(msg) {
