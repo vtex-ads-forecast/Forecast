@@ -652,6 +652,18 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
   <div class="content">
 
     <!-- Alerts for uncataloged publishers -->
+    <!-- Deflator AdNetwork -->
+    <div style="background:#fff;border:1px solid #E0E0E6;border-radius:10px;padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#1A1A2E;margin-bottom:2px">Deflator Ad Network</div>
+        <div style="font-size:12px;color:#6B7785">Write-off sobre o Ad Spend Network que não gera receita (provisão). Impacta a receita projetada.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <input id="deflator-input" type="number" step="0.1" value="6.5" min="0" max="50" style="width:70px;padding:8px 10px;border:1px solid #E0E0E6;border-radius:6px;font-size:14px;font-weight:600;text-align:right;font-family:inherit" onchange="updateDeflator(this.value)" class="admin-only">
+        <span style="font-size:14px;font-weight:600;color:#1A1A2E">%</span>
+      </div>
+    </div>
+
     <div id="settings-alerts" style="margin-bottom:20px"></div>
 
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
@@ -904,6 +916,25 @@ const META_APRIL={
 /* Blended TR from REAL data — recalculated dynamically when TRs change */
 let _realSpendTech=0,_realSpendNet=0,_realRevTech=0,_realRevNet=0,_realSpendTotal=0,_realRevTotal=0;
 let BLENDED_TR=0,BLENDED_TR_TECH=0.10,BLENDED_TR_NET=0.15;
+let _deflatorPct = 6.5;
+let _deflatorAmount = 0;
+const _LS_DEFLATOR_KEY = 'vtex_ads_forecast_deflator';
+
+function _loadDeflator() {
+  try {
+    var v = localStorage.getItem(_LS_DEFLATOR_KEY);
+    if (v !== null) _deflatorPct = parseFloat(v);
+  } catch(e) {}
+  var el = document.getElementById('deflator-input');
+  if (el) el.value = _deflatorPct;
+}
+function updateDeflator(val) {
+  _deflatorPct = parseFloat(val) || 0;
+  try { localStorage.setItem(_LS_DEFLATOR_KEY, _deflatorPct); } catch(e) {}
+  renderAll();
+  renderSettings();
+  showSettingsToast('Deflator AdNetwork → ' + _deflatorPct + '%');
+}
 
 function recalcBlendedTR() {
   _realSpendTech=0;_realSpendNet=0;_realRevTech=0;_realRevNet=0;_realSpendTotal=0;_realRevTotal=0;
@@ -920,8 +951,13 @@ function recalcBlendedTR() {
       _realRevTotal += spT * trT + spN * trN;
     });
   });
-  BLENDED_TR = _realSpendTotal > 0 ? _realRevTotal / _realSpendTotal : 0;
   BLENDED_TR_TECH = _realSpendTech > 0 ? _realRevTech / _realSpendTech : 0.10;
+  var rawTrNet = _realSpendNet > 0 ? _realRevNet / _realSpendNet : 0.15;
+  var deflatorRate = _deflatorPct / 100;
+  _deflatorAmount = _realSpendNet * deflatorRate * rawTrNet;
+  _realRevNet = _realRevNet - _deflatorAmount;
+  _realRevTotal = _realRevTech + _realRevNet;
+  BLENDED_TR = _realSpendTotal > 0 ? _realRevTotal / _realSpendTotal : 0;
   BLENDED_TR_NET = _realSpendNet > 0 ? _realRevNet / _realSpendNet : 0.15;
 }
 recalcBlendedTR();
@@ -1545,13 +1581,16 @@ function renderKPIs() {
     detailCard('AdNetwork', 'R$ ' + fB(spProjNet), 'Real: ' + fB(_realSpendNet) + ' + Fc: ' + fB(spFc * tRatioNet)),
   ].join('');
 
-  /* Receita details — use real REAL_APRIL rev + forecast rev split */
+  /* Receita details — use real REAL_APRIL rev + forecast rev split, with deflator on Network */
   const rvProjTech = _realRevTech + (spFc * tRatioTech * BLENDED_TR_TECH);
-  const rvProjNet  = _realRevNet  + (spFc * tRatioNet  * BLENDED_TR_NET);
+  const fcNetRev = spFc * tRatioNet * (BLENDED_TR_NET > 0 ? BLENDED_TR_NET : 0.15);
+  const rvProjNet  = _realRevNet + fcNetRev;
+  const deflatorLabel = _deflatorPct > 0 ? ' (defl. ' + _deflatorPct + '%)' : '';
   const rvDetails = [
     detailCard('Others', 'R$ ' + fB(oRev), 'Offsite + Instore + Fees'),
     detailCard('AdTech', 'R$ ' + fB(rvProjTech), 'Real: ' + fB(_realRevTech) + ' + Fc: ' + fB(spFc * tRatioTech * BLENDED_TR_TECH)),
-    detailCard('AdNetwork', 'R$ ' + fB(rvProjNet), 'Real: ' + fB(_realRevNet) + ' + Fc: ' + fB(spFc * tRatioNet * BLENDED_TR_NET)),
+    detailCard('AdNetwork' + deflatorLabel, 'R$ ' + fB(rvProjNet), 'Real: ' + fB(_realRevNet) + ' + Fc: ' + fB(fcNetRev)),
+    _deflatorPct > 0 ? detailCard('Write-off', '<span style="color:#D97706">-R$ ' + fB(_deflatorAmount) + '</span>', 'Deflator ' + _deflatorPct + '% do AdSpend Net') : '',
   ].join('');
 
     const kpiHtml = section('spend', 'Ad Spend', spReal, spProj, spMeta, spGap, momSpend, mtdSpend, spDetails)
@@ -2828,6 +2867,8 @@ function exportSettingsJson() {
   showSettingsToast('settings.json exportado! Faça commit no repo para aplicar para todos.');
 }
 _loadSettingsOverrides();
+_loadDeflator();
+recalcBlendedTR();
 
 function updSettingsSeg(idx, newSeg) {
   const rows = _getSettingsRows();
