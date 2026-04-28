@@ -25,6 +25,10 @@ from collections import defaultdict
 METABASE_URL = "https://metabase.newtail.com.br"
 CARD_ID = 2368
 HTML_PATH = os.path.join(os.path.dirname(__file__), "..", "index.html")
+SETTINGS_PATH = os.path.join(os.path.dirname(__file__), "..", "settings.json")
+
+# Segments that are NEVER touched by automated updates (manually managed only)
+PROTECTED_SEGMENTS = {"Others"}
 
 # Exchange rates (foreign currency → BRL)
 FX_RATES = {
@@ -172,6 +176,22 @@ def fetch_data(token, start_date, end_date):
     return data
 
 
+# ─── SETTINGS (shared TR overrides) ──────────────────────────────────
+def load_settings():
+    """Load settings.json if it exists. Returns { pub: {trTech, trNetwork, seg} }."""
+    if not os.path.exists(SETTINGS_PATH):
+        print("  ℹ No settings.json found — using HTML defaults")
+        return {}
+    try:
+        with open(SETTINGS_PATH, "r", encoding="utf-8") as f:
+            settings = json.load(f)
+        print(f"✓ Loaded settings.json ({len(settings)} publishers)")
+        return settings
+    except Exception as e:
+        print(f"  ⚠ Failed to load settings.json: {e}")
+        return {}
+
+
 # ─── PARSE HTML ───────────────────────────────────────────────────────
 def load_html():
     """Load the dashboard HTML and extract current state."""
@@ -233,7 +253,23 @@ def extract_pub_mapping(html):
             pub_seg[pname] = seg
             pub_tr[pname] = {"tech": float(pm.group(2)), "net": float(pm.group(3))}
 
-    print(f"✓ Extracted {len(pub_seg)} publisher mappings")
+    print(f"✓ Extracted {len(pub_seg)} publisher mappings from HTML")
+
+    # Apply settings.json overrides (source of truth for TRs)
+    settings = load_settings()
+    overrides_applied = 0
+    for pname, ov in settings.items():
+        if pname in pub_tr:
+            if ov.get("trTech") is not None:
+                pub_tr[pname]["tech"] = ov["trTech"]
+            if ov.get("trNetwork") is not None:
+                pub_tr[pname]["net"] = ov["trNetwork"]
+            overrides_applied += 1
+        if pname in pub_seg and ov.get("seg"):
+            pub_seg[pname] = ov["seg"]
+    if overrides_applied:
+        print(f"  ✓ Applied {overrides_applied} TR overrides from settings.json")
+
     return pub_seg, pub_tr
 
 
@@ -387,6 +423,10 @@ def apply_updates(html, data, pub_seg, pub_tr):
 
     # 3. Update REAL_APRIL segments + publishers
     for seg, delta in seg_delta.items():
+        # NEVER touch protected segments
+        if seg in PROTECTED_SEGMENTS:
+            print(f"  ⚠ Skipping protected segment: {seg}")
+            continue
         pat = rf'"{seg}":\{{spendReal:(\d+),revReal:(\d+),spendTech:(\d+),spendNetwork:(\d+),revTech:(\d+),revNetwork:(\d+)'
 
         # For "Long Tail" — need to skip the publisher named "Long Tail" and find the segment
@@ -470,6 +510,8 @@ def apply_updates(html, data, pub_seg, pub_tr):
 
     # 5. Update REAL_MONTHLY 2026-04 entries
     for seg in seg_delta:
+        if seg in PROTECTED_SEGMENTS:
+            continue
         seg_rm = seg  # same key in REAL_MONTHLY
         pat = rf'"{seg_rm}":(.*?"2026-04":\{{spend:(\d+),rev:(\d+)\}})'
         m = re.search(pat, html)

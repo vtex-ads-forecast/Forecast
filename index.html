@@ -656,6 +656,10 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
 
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
       <h3 style="font-size:15px;font-weight:700">📋 Configurações por Publisher</h3>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button onclick="exportSettingsJson()" style="padding:8px 16px;background:#0F3E99;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap" class="admin-only">⬇ Exportar settings.json</button>
+        <span id="settings-sync-status" style="font-size:11px;color:#6B7280"></span>
+      </div>
       <div class="settings-search" style="display:flex;gap:8px;align-items:center">
         <input id="settings-filter-text" type="text" placeholder="Buscar publisher..." oninput="renderSettings()" style="padding:8px 12px;border:1px solid #E0E0E6;border-radius:6px;font-size:13px;font-family:inherit">
         <select id="settings-filter-seg" onchange="renderSettings()" style="padding:8px 12px;border:1px solid #E0E0E6;border-radius:6px;font-size:13px;font-family:inherit;background:#fff">
@@ -2741,40 +2745,73 @@ function renderSettings() {
 /* ── Settings persistence ── */
 const _LS_SETTINGS_KEY = 'vtex_ads_forecast_settings';
 function _saveSettingsOverrides() {
-  /* Store per-publisher overrides: { "PubName": { seg:"NewSeg", trTech:0.1, trNetwork:0.15 } } */
-  const overrides = {};
+  var overrides = _buildOverridesSnapshot();
+  try { localStorage.setItem(_LS_SETTINGS_KEY, JSON.stringify(overrides)); } catch(e) {}
+}
+function _buildOverridesSnapshot() {
+  var overrides = {};
   Object.entries(META_APRIL).forEach(function([seg, data]) {
     if (!data.publishers) return;
     Object.entries(data.publishers).forEach(function([pub, pd]) {
       overrides[pub] = { seg: seg, trTech: pd.trTech, trNetwork: pd.trNetwork };
     });
   });
-  try { localStorage.setItem(_LS_SETTINGS_KEY, JSON.stringify(overrides)); } catch(e) {}
+  Object.entries(REAL_APRIL).forEach(function([seg, data]) {
+    if (!data.publishers) return;
+    Object.entries(data.publishers).forEach(function([pub, pd]) {
+      if (!overrides[pub]) {
+        overrides[pub] = { seg: seg, trTech: pd.trTech, trNetwork: pd.trNetwork };
+      }
+    });
+  });
+  return overrides;
+}
+function _applyOverrides(overrides) {
+  if (!overrides) return;
+  Object.entries(overrides).forEach(function([pub, ov]) {
+    [META_APRIL, REAL_APRIL].forEach(function(store) {
+      Object.entries(store).forEach(function([seg, data]) {
+        if (!data.publishers || !data.publishers[pub]) return;
+        if (ov.trTech !== undefined) data.publishers[pub].trTech = ov.trTech;
+        if (ov.trNetwork !== undefined) data.publishers[pub].trNetwork = ov.trNetwork;
+        if (ov.seg && ov.seg !== seg) {
+          var pubData = data.publishers[pub];
+          delete data.publishers[pub];
+          if (!store[ov.seg]) store[ov.seg] = store === META_APRIL ? {spendMeta:0,revMeta:0,publishers:{}} : {spendReal:0,revReal:0,publishers:{}};
+          if (!store[ov.seg].publishers) store[ov.seg].publishers = {};
+          store[ov.seg].publishers[pub] = pubData;
+        }
+      });
+    });
+  });
 }
 function _loadSettingsOverrides() {
   try {
-    const raw = localStorage.getItem(_LS_SETTINGS_KEY);
-    if (!raw) return;
-    const overrides = JSON.parse(raw);
-    Object.entries(overrides).forEach(function([pub, ov]) {
-      /* Apply TR overrides to META_APRIL and REAL_APRIL */
-      [META_APRIL, REAL_APRIL].forEach(function(store) {
-        Object.entries(store).forEach(function([seg, data]) {
-          if (!data.publishers || !data.publishers[pub]) return;
-          if (ov.trTech !== undefined) data.publishers[pub].trTech = ov.trTech;
-          if (ov.trNetwork !== undefined) data.publishers[pub].trNetwork = ov.trNetwork;
-          /* Handle segment move */
-          if (ov.seg && ov.seg !== seg) {
-            const pubData = data.publishers[pub];
-            delete data.publishers[pub];
-            if (!store[ov.seg]) store[ov.seg] = store === META_APRIL ? {spendMeta:0,revMeta:0,publishers:{}} : {spendReal:0,revReal:0,publishers:{}};
-            if (!store[ov.seg].publishers) store[ov.seg].publishers = {};
-            store[ov.seg].publishers[pub] = pubData;
-          }
-        });
-      });
-    });
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'settings.json?t=' + Date.now(), false);
+    xhr.send();
+    if (xhr.status === 200) {
+      var shared = JSON.parse(xhr.responseText);
+      _applyOverrides(shared);
+      var el = document.getElementById('settings-sync-status');
+      if (el) el.textContent = '✓ settings.json carregado';
+    }
   } catch(e) {}
+  try {
+    var raw = localStorage.getItem(_LS_SETTINGS_KEY);
+    if (raw) _applyOverrides(JSON.parse(raw));
+  } catch(e) {}
+}
+function exportSettingsJson() {
+  var overrides = _buildOverridesSnapshot();
+  var json = JSON.stringify(overrides, null, 2);
+  var blob = new Blob([json], {type: 'application/json'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'settings.json';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+  showSettingsToast('settings.json exportado! Faça commit no repo para aplicar para todos.');
 }
 _loadSettingsOverrides();
 

@@ -1,0 +1,767 @@
+{
+  "CASAS BAHIA ADS": {
+    "seg": "Electronics",
+    "trTech": 0.07,
+    "trNetwork": 0.1
+  },
+  "KABUM": {
+    "seg": "Electronics",
+    "trTech": 0.13,
+    "trNetwork": 0.18
+  },
+  "BEMOL": {
+    "seg": "Electronics",
+    "trTech": 0.2,
+    "trNetwork": 0.2
+  },
+  "AMERICANAS": {
+    "seg": "Electronics",
+    "trTech": 0.15,
+    "trNetwork": 0.25
+  },
+  "FAST SHOP": {
+    "seg": "Electronics",
+    "trTech": 0.05,
+    "trNetwork": 0.15
+  },
+  "ELETRO ANGELONI": {
+    "seg": "Electronics",
+    "trTech": 0.0,
+    "trNetwork": 0.3
+  },
+  "DROGARIA SÃO PAULO ADS": {
+    "seg": "Pharma",
+    "trTech": 0.1,
+    "trNetwork": 0.2
+  },
+  "PAGUE MENOS": {
+    "seg": "Pharma",
+    "trTech": 0.09,
+    "trNetwork": 0.09
+  },
+  "PANVEL": {
+    "seg": "Pharma",
+    "trTech": 0.1,
+    "trNetwork": 0.18
+  },
+  "DROGAL ADS": {
+    "seg": "Pharma",
+    "trTech": 0.0,
+    "trNetwork": 0.5
+  },
+  "FARMACITY CONECT": {
+    "seg": "LATAM",
+    "trTech": 0.135,
+    "trNetwork": 0.0
+  },
+  "Olimpica": {
+    "seg": "LATAM",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "DIA ADS": {
+    "seg": "LATAM",
+    "trTech": 0.15,
+    "trNetwork": 0.0
+  },
+  "LOCATEL": {
+    "seg": "LATAM",
+    "trTech": 0.135,
+    "trNetwork": 0.0
+  },
+  "SHOPSTAR": {
+    "seg": "LATAM",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "Long Tail": {
+    "seg": "LATAM",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "SEPHORA ADS PUBLISHER": {
+    "seg": "Beauty",
+    "trTech": 0.05,
+    "trNetwork": 0.18
+  },
+  "ÉPOCA COSMÉTICOS ADS": {
+    "seg": "Beauty",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "AMOBELEZA": {
+    "seg": "Beauty",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "HAPVIDA - PUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "GROWD ADS": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15
+  },
+  "VENÂNCIO": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.3
+  },
+  "RETAIL MEDIA CASAS BAHIA STAGING": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "CIA LATINO AMERICANA DE MEDICAMENTOS": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "CLUBBI": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "FARMÁCIA INDIANA ADS": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.5
+  },
+  "PETLOVE ADS": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "PROMOFARMA - PUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.2,
+    "trNetwork": 0.35
+  },
+  "MERCANTIL ATACADO": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.5
+  },
+  "LOJAS IMPÉRIO ADS": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "BRETAS": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.25
+  },
+  "MERCANTIL NOVA ERA LTDA": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.5
+  },
+  "ROSSI DELIVERY - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "COBASI ADS": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "PAULISTÃO ATACADISTA": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "BRAMIL EM CASA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "KABUM STAGING": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "VIOLETA EXPRESS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "HIROTA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SFURTADO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "DECATLHON ADS": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "PINHEIRO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "BEMOL QA (STAGING)": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "NORDESTÃO SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "REDE COMPRAS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "FONSECA SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "TONIN SUPERATACADO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SIMPATIA ONLINE - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "TIAOZINHO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "ARMAZEM DO GRÃO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "BRETAS - PUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.3
+  },
+  "FERREIRA EM CASA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "FLEX - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "CENTRAL - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "DINIZ SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "PÉROLA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "UNICOMPRA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "PILAR - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "ENXUTO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "DELTASUPER - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "CAMBUI - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SUPERMERCADOS DAOLIO": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "REDEMARKET - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "CARVALHO SUPERSHOP - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "SANTAREM SUPERMERCADO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "VILLARREAL ONLINE - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "OXAN SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "PERIM - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "SUPERMERCADO MANAÍRA": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "GARCIA SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "POC LIVELO - HOMOLOG - PUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "VILA SUL - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "HIPER BERGAMINI - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "GUARANI SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "ARCOMIX - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "MEU PRATA SUPERMERCADO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "ATACADISTA MEGA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "FEIRA NOVA EM CASA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SUPER ECONÔMICO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "PORTO EM CASA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SAN MICHEL - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "STYLLUS SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "VILA RICA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "FÊNIX SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "JAGUARE": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "FRADEILHA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "VIP COMMERCE - SUBPUBLISHER SANDBOX": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "SORRISO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "FAVORITO SUPERMERCADOS": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "JB DE FRUTAL - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "REDETOP - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "ROYAL SUPERMERCADO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SILVEIRA EM CASA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "CELEIRO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "DE ANGELINA SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "IPANEMA SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SÃO JOÃO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "SUPERVILLE SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "AMERICANAS STAGING": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "MERCADO AJUBÁ": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "COOCERQUI SUPERMERCADO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "PRÓ BRAZILIAN - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SUPER VALE - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "VISCARDI - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "VIEIRAO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "ALABARCE DELIVERY - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "CENTRAL DELIVERY - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "PECITO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SUPERMERCADO DO ROBERTO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "VIPCOMMERCE STAGING - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "FEDERZONI - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "VTEX GROCERY": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "LUZITANA EM CASA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "ARMAÇÃO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "MEGA SUPERMERCADO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "FASOUTO - VIPCOMMERCE SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "FRUTTO DA TERRA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "TRENTO SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "CALEGARIS EM CASA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "HIPER NATASHA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "EMPORIOPIRANA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "BISTURI DISTRIBUIDORA DE MATERIAL HOSPITALAR LTDA": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "NIPPO - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "BUSCAPE STAGING": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "DROGAL ADS HML": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "2 BEM CASA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "URBANIC - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SUPER G SUPERMERCADOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "CENTERPAO ATE VOCE - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "LEROY MERLIN STAGING": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "MEVO FARMA": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.3
+  },
+  "MERCADO DO JOAO CARLOS - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SUPERSUL - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "AUCHAN POC": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "DIVVINO": {
+    "seg": "Long Tail",
+    "trTech": 0.0,
+    "trNetwork": 0.1
+  },
+  "CLUBBI STAGING": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "VTEX ELETRO STORE": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "MADEIRA ADS": {
+    "seg": "Home Center",
+    "trTech": 0.09,
+    "trNetwork": 0.0
+  },
+  "LEROY MERLIN": {
+    "seg": "Home Center",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "TENDA": {
+    "seg": "Groceries",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "BUSCAPE": {
+    "seg": "Others",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "ZOOM": {
+    "seg": "Others",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "PICPAY": {
+    "seg": "Others",
+    "trTech": 0.0903,
+    "trNetwork": 0.0
+  },
+  "VTEX - DEMO STORE B2C": {
+    "seg": "Others",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "PREZUNIC": {
+    "seg": "Groceries",
+    "trTech": 0.0,
+    "trNetwork": 0.3
+  },
+  "ZONA SUL ADS": {
+    "seg": "Groceries",
+    "trTech": 0.0,
+    "trNetwork": 0.2
+  },
+  "Super Nosso": {
+    "seg": "Groceries",
+    "trTech": 0.05,
+    "trNetwork": 0.15
+  },
+  "GABRBOSA": {
+    "seg": "Groceries",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "GBARBOSA - PUBLISHER": {
+    "seg": "Groceries",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SUPERMERCADO SAVEGNAGO": {
+    "seg": "Groceries",
+    "trTech": 0.1,
+    "trNetwork": 0.15
+  },
+  "SUPER ANGELONI": {
+    "seg": "Groceries",
+    "trTech": 0.1,
+    "trNetwork": 0.3
+  },
+  "SUPER MUFFATO DELIVERY": {
+    "seg": "Groceries",
+    "trTech": 0.0,
+    "trNetwork": 0.8
+  },
+  "BISTEK SUPERMERCADOS": {
+    "seg": "Groceries",
+    "trTech": 0.0,
+    "trNetwork": 0.25
+  }
+}
