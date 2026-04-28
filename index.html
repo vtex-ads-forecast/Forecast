@@ -901,16 +901,30 @@ const META_APRIL={
 "Other Incomes":{spendMeta:0,revMeta:170000,publishers:{"Americanas Fixed":{spendMeta:0,revMeta:150000,spendTech:0,spendNetwork:0,trTech:0.1,trNetwork:0.15},"Zona Sul Data Mktplace":{spendMeta:0,revMeta:20000,spendTech:0,spendNetwork:0,trTech:0.1,trNetwork:0.15}}},
 };
 
-/* Blended TR from REAL data */
+/* Blended TR from REAL data — recalculated dynamically when TRs change */
 let _realSpendTech=0,_realSpendNet=0,_realRevTech=0,_realRevNet=0,_realSpendTotal=0,_realRevTotal=0;
-Object.values(REAL_APRIL).forEach(seg=>{
-  _realSpendTech+=seg.spendTech||0;_realSpendNet+=seg.spendNetwork||0;
-  _realRevTech+=seg.revTech||0;_realRevNet+=seg.revNetwork||0;
-  _realSpendTotal+=seg.spendReal||0;_realRevTotal+=seg.revReal||0;
-});
-const BLENDED_TR=_realRevTotal/_realSpendTotal;
-const BLENDED_TR_TECH=_realSpendTech>0?_realRevTech/_realSpendTech:0.10;
-const BLENDED_TR_NET=_realSpendNet>0?_realRevNet/_realSpendNet:0.15;
+let BLENDED_TR=0,BLENDED_TR_TECH=0.10,BLENDED_TR_NET=0.15;
+
+function recalcBlendedTR() {
+  _realSpendTech=0;_realSpendNet=0;_realRevTech=0;_realRevNet=0;_realSpendTotal=0;_realRevTotal=0;
+  Object.values(REAL_APRIL).forEach(function(seg){
+    if (!seg.publishers) return;
+    Object.values(seg.publishers).forEach(function(p){
+      var spT = p.spendTech||0, spN = p.spendNetwork||0;
+      var trT = p.trTech||0, trN = p.trNetwork||0;
+      _realSpendTech += spT;
+      _realSpendNet += spN;
+      _realRevTech += spT * trT;
+      _realRevNet += spN * trN;
+      _realSpendTotal += (p.spendReal||0);
+      _realRevTotal += spT * trT + spN * trN;
+    });
+  });
+  BLENDED_TR = _realSpendTotal > 0 ? _realRevTotal / _realSpendTotal : 0;
+  BLENDED_TR_TECH = _realSpendTech > 0 ? _realRevTech / _realSpendTech : 0.10;
+  BLENDED_TR_NET = _realSpendNet > 0 ? _realRevNet / _realSpendNet : 0.15;
+}
+recalcBlendedTR();
 const META_AD_SPEND=META_SPEND_TOTAL;
 const META_AD_REV=META_REV_TOTAL-(META_APRIL["Performance Fee"]?.revMeta||0)-(META_APRIL["Other Incomes"]?.revMeta||0);
 
@@ -3090,6 +3104,7 @@ function updateMonthUI() {
 // ============================================================================
 
 function renderAll() {
+  recalcBlendedTR();
   const m = MONTHS_DATA[state.selectedMonth];
   const isCurrent = m.status === 'current';
 
