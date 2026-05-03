@@ -712,8 +712,8 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
 
 const NA = 0;  // Actual days in May (none yet)
 const TD = 31;  // Total May days
-const PREV_MONTH_SPEND = 9550607;
-const PREV_MONTH_REV = 1193215;
+const PREV_MONTH_SPEND = 11018043;
+const PREV_MONTH_REV = 1370731;
 const META_SPEND_TOTAL = 18642352;
 const META_REV_TOTAL = 3046614;
 const ADV_AVG_FACTOR = TD / NA;
@@ -799,14 +799,14 @@ const META_AD_SPEND=META_SPEND_TOTAL;
 const META_AD_REV=META_REV_TOTAL-(META_APRIL["Performance Fee"]?.revMeta||0)-(META_APRIL["Other Incomes"]?.revMeta||0);
 
 const REAL_MONTHLY={
-"Electronics":{"2026-01":{spend:4532768,rev:427571},"2026-02":{spend:4499301,rev:416799},"2026-03":{spend:6705012,rev:635197},"2026-04":{spend:48698,rev:11923}},
-"Pharma":{"2026-01":{spend:2246300,rev:401895},"2026-02":{spend:2515977,rev:450582},"2026-03":{spend:4215500,rev:762373},"2026-04":{spend:2164893,rev:372824}},
-"LATAM":{"2026-01":{spend:387831,rev:52434},"2026-02":{spend:347927,rev:47153},"2026-03":{spend:676806,rev:90498},"2026-04":{spend:483296,rev:63970}},
-"Beauty":{"2026-01":{spend:401585,rev:24911},"2026-02":{spend:449565,rev:26904},"2026-03":{spend:644188,rev:39773},"2026-04":{spend:290683,rev:20749}},
-"Long Tail":{"2026-01":{spend:116966,rev:21632},"2026-02":{spend:144105,rev:23003},"2026-03":{spend:190291,rev:32679},"2026-04":{spend:246066,rev:31360}},
-"Home Center":{"2026-01":{spend:180595,rev:16985},"2026-02":{spend:155630,rev:14422},"2026-03":{spend:251609,rev:23815},"2026-04":{spend:165893,rev:15554}},
+"Electronics":{"2026-01":{spend:4532768,rev:427571},"2026-02":{spend:4499301,rev:416799},"2026-03":{spend:6705012,rev:635197},"2026-04":{spend:684276,rev:70173}},
+"Pharma":{"2026-01":{spend:2246300,rev:401895},"2026-02":{spend:2515977,rev:450582},"2026-03":{spend:4215500,rev:762373},"2026-04":{spend:2603275,rev:449833}},
+"LATAM":{"2026-01":{spend:387831,rev:52434},"2026-02":{spend:347927,rev:47153},"2026-03":{spend:676806,rev:90498},"2026-04":{spend:589158,rev:78267}},
+"Beauty":{"2026-01":{spend:401585,rev:24911},"2026-02":{spend:449565,rev:26904},"2026-03":{spend:644188,rev:39773},"2026-04":{spend:367193,rev:25156}},
+"Long Tail":{"2026-01":{spend:116966,rev:21632},"2026-02":{spend:144105,rev:23003},"2026-03":{spend:190291,rev:32679},"2026-04":{spend:430505,rev:51342}},
+"Home Center":{"2026-01":{spend:180595,rev:16985},"2026-02":{spend:155630,rev:14422},"2026-03":{spend:251609,rev:23815},"2026-04":{spend:187078,rev:17562}},
 "Others":{"2026-01":{spend:66678,rev:6668},"2026-02":{spend:68422,rev:6642},"2026-03":{spend:111882,rev:11163},"2026-04":{spend:37728,rev:3760}},
-"Groceries":{"2026-01":{spend:39198,rev:9312},"2026-02":{spend:54930,rev:13656},"2026-03":{spend:108669,rev:27699},"2026-04":{spend:36790,rev:8771}},
+"Groceries":{"2026-01":{spend:39198,rev:9312},"2026-02":{spend:54930,rev:13656},"2026-03":{spend:108669,rev:27699},"2026-04":{spend:42270,rev:10334}},
 };
 
 /* ── Build DISPLAY_SEGMENTS directly from spreadsheet META_APRIL values ── */
@@ -942,8 +942,8 @@ const MONTHS_DATA = {
   "2026-04": {
     status: "closed", label: "Abril 2026", days: 30, actualDays: 30,
     metaSpend: 16211039, metaRev: 2558171,
-    realSpend: 9550607,
-    realRev: 1193215,
+    realSpend: 11018043,
+    realRev: 1370731,
     segMetas: {Beauty:783315,Electronics:7140542,Groceries:135439,"Home Center":272141,Pharma:4643437,"Others Segments":148019,"Long Tail":251720,"LATAM":1646637},
     others: [],
     forecastUsed: null
