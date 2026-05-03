@@ -5,7 +5,19 @@ on:
     # Roda todo dia às 09:00 UTC (06:00 BRT)
     - cron: '0 9 * * *'
   workflow_dispatch:
-    # Permite rodar manualmente pelo GitHub (botão "Run workflow")
+    inputs:
+      start_date:
+        description: 'Start date (YYYY-MM-DD). Leave empty for yesterday.'
+        required: false
+        default: ''
+      end_date:
+        description: 'End date (YYYY-MM-DD). Leave empty for yesterday.'
+        required: false
+        default: ''
+      force:
+        description: 'Force update even if data exists (1=yes)'
+        required: false
+        default: '0'
 
 permissions:
   contents: write
@@ -40,8 +52,17 @@ jobs:
         env:
           METABASE_USER: ${{ secrets.METABASE_USER }}
           METABASE_PASS: ${{ secrets.METABASE_PASS }}
-          FORCE_UPDATE: "0"
-        run: python scripts/update.py
+          FORCE_UPDATE: ${{ github.event.inputs.force || '0' }}
+        run: |
+          START="${{ github.event.inputs.start_date }}"
+          END="${{ github.event.inputs.end_date }}"
+          if [ -n "$START" ] && [ -n "$END" ]; then
+            python scripts/update.py "$START" "$END"
+          elif [ -n "$START" ]; then
+            python scripts/update.py "$START" "$START"
+          else
+            python scripts/update.py
+          fi
 
       - name: Commit and push changes
         run: |

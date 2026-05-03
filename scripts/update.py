@@ -384,22 +384,34 @@ def apply_updates(html, data, pub_seg, pub_tr, start_date="2026-05-01"):
     # Check for --force flag or FORCE_UPDATE env var
     force = "--force" in sys.argv or os.environ.get("FORCE_UPDATE") == "1"
 
-    if new_na <= current_na and not force:
-        print(f"⚠ Data already up to date (NA={current_na}, new max day={new_na}). Use --force to re-process.")
+    # Find which days are missing from ACTUALS (gaps)
+    actuals_m = re.search(r'const ACTUALS = \[(.*?)\];', html)
+    existing_days = set()
+    if actuals_m and actuals_m.group(1).strip():
+        for dm in re.finditer(r'"day":\s*(\d+)', actuals_m.group(1)):
+            existing_days.add(int(dm.group(1)))
+
+    missing_days = [d for d in new_days if d not in existing_days]
+
+    if not missing_days and new_na <= current_na and not force:
+        print(f"⚠ Data already up to date (NA={current_na}, all days present). Use --force to re-process.")
         return html
 
-    # If forcing and same day, we re-process all days in the data
-    if new_na <= current_na and force:
-        print(f"  Forcing re-process for days {new_days} (NA stays {current_na})")
+    if force:
         days_to_add = new_days
+        print(f"  Forcing re-process for days {new_days}")
+    elif missing_days:
+        days_to_add = missing_days
+        print(f"  Filling gap days: {missing_days}")
     else:
-        # Only process days that are actually new
         days_to_add = [d for d in new_days if d > current_na]
 
     if not days_to_add:
         print("⚠ No new days to add. Skipping.")
         return html
 
+    # NA = highest day we have data for
+    new_na = max(new_na, current_na)
     print(f"  Adding days {days_to_add} (NA: {current_na} → {new_na})")
 
     # 1. Update NA
@@ -409,22 +421,24 @@ def apply_updates(html, data, pub_seg, pub_tr, start_date="2026-05-01"):
         html,
     )
 
-    # 2. Append to ACTUALS
-    new_entries = ", ".join(
-        [f'{{"day": {d}, "adspend": {round(daily_brl[d])}}}' for d in days_to_add]
-    )
-    if current_na == 0:
-        # Empty ACTUALS — replace the empty array
-        html = html.replace("const ACTUALS = [];", f"const ACTUALS = [{new_entries}];")
-        print("  ✓ ACTUALS initialized")
-    else:
-        last_actual = re.search(r'(\{"day": ' + str(current_na) + r', "adspend": \d+\})\];', html)
-        if last_actual:
-            html = html.replace(
-                last_actual.group(0),
-                last_actual.group(1) + ", " + new_entries + "];",
-            )
-            print("  ✓ ACTUALS updated")
+    # 2. Update ACTUALS — rebuild with all days sorted
+    actuals_m2 = re.search(r'const ACTUALS = \[(.*?)\];', html)
+    if actuals_m2:
+        # Parse existing entries
+        all_actuals = {}
+        for dm in re.finditer(r'\{"day":\s*(\d+),\s*"adspend":\s*(\d+)\}', actuals_m2.group(1)):
+            all_actuals[int(dm.group(1))] = int(dm.group(2))
+        # Add/update new days
+        for d in days_to_add:
+            if d not in all_actuals or force:
+                all_actuals[d] = round(daily_brl[d])
+        # Rebuild sorted
+        sorted_days = sorted(all_actuals.keys())
+        entries_str = ", ".join(
+            [f'{{"day": {d}, "adspend": {all_actuals[d]}}}' for d in sorted_days]
+        )
+        html = html.replace(actuals_m2.group(0), f"const ACTUALS = [{entries_str}];")
+        print(f"  ✓ ACTUALS updated ({len(sorted_days)} days)")
 
     # 3. Update REAL_APRIL segments + publishers
     for seg, delta in seg_delta.items():
