@@ -492,23 +492,61 @@ def apply_updates(html, data, pub_seg, pub_tr, start_date="2026-05-01"):
                         int(pm.group(6)) + round(pd["rvN"]),
                     )
                     html = html.replace(old_pub, new_pub, 1)
+                else:
+                    # New publisher — add to the segment's publishers:{} block
+                    tri = pub_tr.get(pub, {"tech": 0.1, "net": 0.15})
+                    new_pub_entry = '"{}":{{spendReal:{},revReal:{},spendTech:{},spendNetwork:{},revTech:{},revNetwork:{},trTech:{},trNetwork:{}}}'.format(
+                        pub, round(pd["sp"]), round(pd["rv"]),
+                        round(pd["spT"]), round(pd["spN"]),
+                        round(pd["rvT"]), round(pd["rvN"]),
+                        tri["tech"], tri["net"],
+                    )
+                    # Find the publishers:{} block for this segment
+                    seg_pat = rf'"{re.escape(seg)}":\{{spendReal:'
+                    seg_pos = html.find(f'"{seg}":{{spendReal:')
+                    if seg == "Long Tail":
+                        # Special handling: find Long Tail after LATAM
+                        latam_s = html.find('"LATAM":{spendReal:')
+                        d2 = 0
+                        for ii in range(latam_s, len(html)):
+                            if html[ii] == "{": d2 += 1
+                            elif html[ii] == "}":
+                                d2 -= 1
+                                if d2 == 0:
+                                    seg_pos = html.find('"Long Tail":{spendReal:', ii)
+                                    break
+                    if seg_pos != -1:
+                        pub_block_start = html.find("publishers:{", seg_pos)
+                        if pub_block_start != -1:
+                            pub_inner = pub_block_start + len("publishers:{")
+                            # Check if publishers block is empty
+                            if html[pub_inner] == "}":
+                                html = html[:pub_inner] + new_pub_entry + html[pub_inner:]
+                            else:
+                                html = html[:pub_inner] + new_pub_entry + "," + html[pub_inner:]
+                            print(f"    + Added new publisher: {pub} → {seg}")
 
     print("  ✓ REAL_APRIL updated")
 
-    # 4. Update REAL_DAILY_APR — append daily values per segment
+    # 4. Update REAL_DAILY_APR — append daily values per segment (dynamic)
     rda_start = html.find("const REAL_DAILY_APR={")
     rda_end = html.find("};", rda_start) + 2
     rda_block = html[rda_start:rda_end]
 
-    for seg in ["Electronics", "Pharma", "LATAM", "Beauty", "Long Tail", "Home Center", "Groceries"]:
+    # Extract all segment names dynamically from REAL_DAILY_APR
+    rda_segs = re.findall(r'"([^"]+)":\[', rda_block)
+    for seg in rda_segs:
         seg_daily = daily_seg.get(seg, {})
         new_vals = [str(round(seg_daily.get(d, 0))) for d in days_to_add]
-        pat = rf'"{seg}":\[([^\]]+)\]'
+        pat = rf'"{re.escape(seg)}":\[([^\]]*)\]'
         m = re.search(pat, rda_block)
         if m:
             old_arr = m.group(1)
-            new_arr = old_arr + "," + ",".join(new_vals)
-            rda_block = rda_block.replace(f'"{seg}":[{old_arr}]', f'"{seg}":[{new_arr}]', 1)
+            if old_arr:
+                new_arr = old_arr + "," + ",".join(new_vals)
+            else:
+                new_arr = ",".join(new_vals)
+            rda_block = rda_block.replace(m.group(0), f'"{seg}":[{new_arr}]', 1)
 
     html = html[:rda_start] + rda_block + html[rda_end:]
     print("  ✓ REAL_DAILY_APR updated")
@@ -563,7 +601,11 @@ def apply_updates(html, data, pub_seg, pub_tr, start_date="2026-05-01"):
 
     print("  ✓ REAL_MONTHLY updated")
 
-    # 6. Update ADV_DATA
+    # 6. Update ADV_DATA (dynamic month key)
+    month_abbr_map = {1:"jan",2:"feb",3:"mar",4:"apr",5:"may",6:"jun",7:"jul",8:"aug",9:"sep",10:"oct",11:"nov",12:"dec"}
+    cur_month_num = int(start_date[5:7])
+    cur_month_key = month_abbr_map.get(cur_month_num, "may")
+
     adv_m = re.search(r"const ADV_DATA = (\[.*?\]);", html, re.DOTALL)
     if adv_m:
         adv_data = json.loads(adv_m.group(1))
@@ -575,24 +617,26 @@ def apply_updates(html, data, pub_seg, pub_tr, start_date="2026-05-01"):
             if adv_name in adv_by_name:
                 a = adv_by_name[adv_name]
                 a["sp"] += raw_spend
-                a["apr"] += raw_spend
+                a[cur_month_key] = a.get(cur_month_key, 0) + raw_spend
                 is_net = "vtexads" in adv_name.lower()
-                a["st"] = 0 if is_net else a["apr"]
-                a["sn"] = a["apr"] if is_net else 0
+                a["st"] = 0 if is_net else a.get(cur_month_key, 0)
+                a["sn"] = a.get(cur_month_key, 0) if is_net else 0
                 updated += 1
             else:
                 seg = pub_seg.get(nd["pub"], "Long Tail")
                 is_net = "vtexads" in adv_name.lower()
                 tri = pub_tr.get(nd["pub"], {"tech": 0.1, "net": 0.15})
                 tr = tri["net"] if is_net else tri["tech"]
-                adv_data.append({
+                new_adv = {
                     "n": adv_name, "sp": raw_spend,
                     "st": 0 if is_net else raw_spend,
                     "sn": raw_spend if is_net else 0,
                     "pub": nd["pub"], "seg": seg, "tr": tr,
                     "status": "new", "avg30": 0,
-                    "jan": 0, "feb": 0, "mar": 0, "apr": raw_spend,
-                })
+                    "jan": 0, "feb": 0, "mar": 0, "apr": 0,
+                }
+                new_adv[cur_month_key] = raw_spend
+                adv_data.append(new_adv)
                 added += 1
 
         new_adv_json = json.dumps(adv_data, ensure_ascii=False)
