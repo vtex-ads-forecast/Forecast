@@ -259,21 +259,81 @@ def extract_pub_mapping(html):
 
     print(f"✓ Extracted {len(pub_seg)} publisher mappings from HTML")
 
-    # Apply settings.json overrides (source of truth for TRs)
+    # settings.json is the PRIMARY source of truth for segments and TRs
     settings = load_settings()
-    overrides_applied = 0
+    added = 0
+    overrides = 0
     for pname, ov in settings.items():
-        if pname in pub_tr:
+        # Add ALL publishers from settings.json (not just those already in REAL_APRIL)
+        if pname not in pub_seg:
+            if ov.get("seg"):
+                pub_seg[pname] = ov["seg"]
+            pub_tr[pname] = {
+                "tech": ov.get("trTech", 0.1),
+                "net": ov.get("trNetwork", 0.15),
+            }
+            added += 1
+        else:
+            # Override existing entries
             if ov.get("trTech") is not None:
                 pub_tr[pname]["tech"] = ov["trTech"]
             if ov.get("trNetwork") is not None:
                 pub_tr[pname]["net"] = ov["trNetwork"]
-            overrides_applied += 1
-        if pname in pub_seg and ov.get("seg"):
-            pub_seg[pname] = ov["seg"]
-    if overrides_applied:
-        print(f"  ✓ Applied {overrides_applied} TR overrides from settings.json")
+            if ov.get("seg"):
+                pub_seg[pname] = ov["seg"]
+            overrides += 1
+    if added:
+        print(f"  ✓ Added {added} publisher mappings from settings.json")
+    if overrides:
+        print(f"  ✓ Applied {overrides} TR overrides from settings.json")
 
+    # Also extract mappings from META_APRIL as backup
+    meta_start = html.find("const META_APRIL=")
+    if meta_start != -1:
+        meta_depth = 0
+        meta_end = meta_start
+        for i in range(html.find("{", meta_start), len(html)):
+            if html[i] == "{": meta_depth += 1
+            elif html[i] == "}":
+                meta_depth -= 1
+                if meta_depth == 0:
+                    meta_end = i + 1
+                    break
+        meta_block = html[meta_start:meta_end]
+        meta_added = 0
+        for seg_m in re.finditer(r'"([^"]+)":\{spendMeta:', meta_block):
+            seg_name = seg_m.group(1)
+            # Find publishers in this META segment
+            seg_pos = seg_m.start()
+            pub_section = meta_block.find("publishers:{", seg_pos)
+            if pub_section == -1:
+                continue
+            inner = pub_section + len("publishers:{")
+            d2 = 1
+            inner_end = inner
+            for i2 in range(inner, len(meta_block)):
+                if meta_block[i2] == "{": d2 += 1
+                elif meta_block[i2] == "}":
+                    d2 -= 1
+                    if d2 == 0:
+                        inner_end = i2
+                        break
+            pub_inner = meta_block[inner:inner_end]
+            for pm2 in re.finditer(r'"([^"]+)":\{spendMeta:', pub_inner):
+                mp = pm2.group(1)
+                if mp not in pub_seg:
+                    pub_seg[mp] = seg_name
+                    tr_t = re.search(r'trTech:([\d.]+)', pub_inner[pm2.start():])
+                    tr_n = re.search(r'trNetwork:([\d.]+)', pub_inner[pm2.start():])
+                    pub_tr[mp] = {
+                        "tech": float(tr_t.group(1)) if tr_t else 0.1,
+                        "net": float(tr_n.group(1)) if tr_n else 0.15,
+                    }
+                    meta_added += 1
+        if meta_added:
+            print(f"  ✓ Added {meta_added} publisher mappings from META_APRIL")
+
+    print(f"  Total publisher mappings: {len(pub_seg)}")
     return pub_seg, pub_tr
 
 
