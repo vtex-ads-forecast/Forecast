@@ -27,7 +27,11 @@ CARD_ID = 2368
 HTML_PATH = os.path.join(os.path.dirname(__file__), "..", "index.html")
 SETTINGS_PATH = os.path.join(os.path.dirname(__file__), "..", "settings.json")
 
-# Segments that are NEVER touched by automated updates (manually managed only)
+# ⚠️ CRITICAL: The "Others" tab and "Others" segment are MANUALLY managed by the user.
+# NEVER modify, reset, or touch them in ANY automated script or code change.
+# This includes: othersStore, othersData, localStorage Others, MONTHS_DATA.others,
+# and the "Others" segment in REAL_APRIL / REAL_MONTHLY.
+# Only the user can modify these values through the dashboard UI.
 PROTECTED_SEGMENTS = {"Others"}
 
 # Exchange rates (foreign currency → BRL)
