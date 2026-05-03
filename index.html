@@ -716,7 +716,7 @@ const PREV_MONTH_SPEND = 11018043;
 const PREV_MONTH_REV = 1370731;
 const META_SPEND_TOTAL = 18642352;
 const META_REV_TOTAL = 3046614;
-const ADV_AVG_FACTOR = TD / NA;
+const ADV_AVG_FACTOR = NA > 0 ? TD / NA : TD;
 
 // ACTUALS - Real April spend by day
 const ACTUALS = [{"day": 2, "adspend": 325267}];
@@ -1136,7 +1136,7 @@ let state = {
 // Advertisers page variables
 let advBm = '';  // '' = all, 'tech', 'network'
 let advPageInit = false;
-const ADV_PROJ = TD / NA;  // monthly projection factor
+const ADV_PROJ = NA > 0 ? TD / NA : TD;  // monthly projection factor
 
 // Scenarios page variables
 let scenarios = [];
@@ -1220,6 +1220,7 @@ function getTotals() {
 // ============================================================================
 
 function fcLinear(){
+  if (NA === 0) return [];
   const avgDaily = REALIZED_TOTAL / NA;
   const r = [];
   for (let d = NA + 1; d <= TD; d++) r.push({day: d, adspend: Math.round(avgDaily)});
@@ -1227,6 +1228,7 @@ function fcLinear(){
 }
 
 function fcWeighted(){
+  if (NA === 0) return [];
   const mt = REALIZED_TOTAL / (NA / TD);
   const ww = [.18, .20, .22, .40];
   const r = [];
@@ -1264,7 +1266,7 @@ function fcML(){
   // Day-of-week effects from actuals (19 days)
   const dow_effects = [0, 0, 0, 0, 0, 0, 0];
   const dow_counts = [0, 0, 0, 0, 0, 0, 0];
-  const actuals_avg = REALIZED_TOTAL / NA;
+  const actuals_avg = NA > 0 ? REALIZED_TOTAL / NA : 0;
 
   ACTUALS.forEach(d => {
     const dow = (d.day - 1) % 7;  // 0=Mon, 6=Sun
@@ -1298,7 +1300,7 @@ function getTotalForecast() {
 }
 
 function getProjectionFactor() {
-  return getTotalForecast() / REALIZED_TOTAL;
+  return REALIZED_TOTAL > 0 ? getTotalForecast() / REALIZED_TOTAL : 1;
 }
 
 function getAllDays() {
