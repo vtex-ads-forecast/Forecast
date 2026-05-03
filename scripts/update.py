@@ -369,7 +369,7 @@ def process_rows(raw_data, pub_seg, pub_tr):
 
 
 # ─── APPLY UPDATES TO HTML ──────────────────────────────────────────
-def apply_updates(html, data, pub_seg, pub_tr):
+def apply_updates(html, data, pub_seg, pub_tr, start_date="2026-05-01"):
     """Apply all computed deltas to the dashboard HTML."""
     new_days = data["new_days"]
     daily_brl = data["daily_brl"]
@@ -405,7 +405,7 @@ def apply_updates(html, data, pub_seg, pub_tr):
     # 1. Update NA
     html = re.sub(
         r"const NA\s*=\s*\d+;.*",
-        f"const NA = {new_na};  // Actual days in April (1-{new_na})",
+        f"const NA = {new_na};  // Actual days in current month (1-{new_na})",
         html,
     )
 
@@ -413,13 +413,18 @@ def apply_updates(html, data, pub_seg, pub_tr):
     new_entries = ", ".join(
         [f'{{"day": {d}, "adspend": {round(daily_brl[d])}}}' for d in days_to_add]
     )
-    last_actual = re.search(r'(\{"day": ' + str(current_na) + r', "adspend": \d+\})\];', html)
-    if last_actual:
-        html = html.replace(
-            last_actual.group(0),
-            last_actual.group(1) + ", " + new_entries + "];",
-        )
-        print("  ✓ ACTUALS updated")
+    if current_na == 0:
+        # Empty ACTUALS — replace the empty array
+        html = html.replace("const ACTUALS = [];", f"const ACTUALS = [{new_entries}];")
+        print("  ✓ ACTUALS initialized")
+    else:
+        last_actual = re.search(r'(\{"day": ' + str(current_na) + r', "adspend": \d+\})\];', html)
+        if last_actual:
+            html = html.replace(
+                last_actual.group(0),
+                last_actual.group(1) + ", " + new_entries + "];",
+            )
+            print("  ✓ ACTUALS updated")
 
     # 3. Update REAL_APRIL segments + publishers
     for seg, delta in seg_delta.items():
@@ -508,25 +513,53 @@ def apply_updates(html, data, pub_seg, pub_tr):
     html = html[:rda_start] + rda_block + html[rda_end:]
     print("  ✓ REAL_DAILY_APR updated")
 
-    # 5. Update REAL_MONTHLY 2026-04 entries
+    # 5. Update REAL_MONTHLY entries for current month
+    # Detect month from the data being processed
+    current_month_key = f"{days_to_add[0]:02d}" if False else None
+    # Use the actual date from the data
+    data_month = datetime(int(start_date[:4]), int(start_date[5:7]), 1)
+    month_key = data_month.strftime("%Y-%m")
+    print(f"  Updating REAL_MONTHLY for {month_key}")
+
     for seg in seg_delta:
         if seg in PROTECTED_SEGMENTS:
             continue
-        seg_rm = seg  # same key in REAL_MONTHLY
-        pat = rf'"{seg_rm}":(.*?"2026-04":\{{spend:(\d+),rev:(\d+)\}})'
-        m = re.search(pat, html)
-        if m:
-            old_sp = int(m.group(2))
-            old_rv = int(m.group(3))
-            delta = seg_delta[seg]
-            old_str = f'"2026-04":{{spend:{old_sp},rev:{old_rv}}}'
-            new_str = f'"2026-04":{{spend:{old_sp + round(delta["sp"])},rev:{old_rv + round(delta["rv"])}}}'
-            rm_start = html.find(f'"{seg_rm}":', html.find("const REAL_MONTHLY"))
-            if rm_start != -1:
-                rm_end = html.find("},", rm_start) + 2
-                rm_block = html[rm_start:rm_end]
-                rm_block = rm_block.replace(old_str, new_str, 1)
-                html = html[:rm_start] + rm_block + html[rm_end:]
+        seg_rm = seg
+        rm_start_search = html.find("const REAL_MONTHLY")
+        seg_start = html.find(f'"{seg_rm}":', rm_start_search)
+        if seg_start == -1:
+            continue
+
+        # Find the closing of this segment's monthly object
+        depth = 0
+        seg_obj_start = html.find("{", seg_start + len(f'"{seg_rm}":'))
+        seg_obj_end = seg_obj_start
+        for i in range(seg_obj_start, len(html)):
+            if html[i] == "{": depth += 1
+            elif html[i] == "}":
+                depth -= 1
+                if depth == 0:
+                    seg_obj_end = i
+                    break
+
+        seg_block = html[seg_obj_start:seg_obj_end + 1]
+        delta = seg_delta[seg]
+
+        if f'"{month_key}"' in seg_block:
+            # Update existing entry
+            pat = rf'"{month_key}":\{{spend:(\d+),rev:(\d+)\}}'
+            m = re.search(pat, seg_block)
+            if m:
+                old_sp = int(m.group(1))
+                old_rv = int(m.group(2))
+                old_str = f'"{month_key}":{{spend:{old_sp},rev:{old_rv}}}'
+                new_str = f'"{month_key}":{{spend:{old_sp + round(delta["sp"])},rev:{old_rv + round(delta["rv"])}}}'
+                new_block = seg_block.replace(old_str, new_str, 1)
+                html = html[:seg_obj_start] + new_block + html[seg_obj_end + 1:]
+        else:
+            # Add new entry
+            insert = f',"{month_key}":{{spend:{round(delta["sp"])},rev:{round(delta["rv"])}}}'
+            html = html[:seg_obj_end] + insert + html[seg_obj_end:]
 
     print("  ✓ REAL_MONTHLY updated")
 
@@ -601,7 +634,7 @@ def main():
     data = process_rows(raw_data, pub_seg, pub_tr)
 
     # 5. Apply
-    html = apply_updates(html, data, pub_seg, pub_tr)
+    html = apply_updates(html, data, pub_seg, pub_tr, start_date)
 
     # 6. Save
     with open(HTML_PATH, "w", encoding="utf-8") as f:
