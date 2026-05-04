@@ -1368,14 +1368,19 @@ function pctStr(v) { return (v * 100).toFixed(1) + '%'; }
 
 function gapClass(v) { return v >= 0 ? 'gap-pos' : 'gap-neg'; }
 
-function toggleSeg(seg) { openSegs.has(seg) ? openSegs.delete(seg) : openSegs.add(seg); renderSegments(); }
+function toggleSeg(seg) { openSegs.has(seg) ? openSegs.delete(seg) : openSegs.add(seg); _renderSegTable(); }
 
-function togglePub(key) { openPubs.has(key) ? openPubs.delete(key) : openPubs.add(key); renderSegments(); }
+function togglePub(key) { openPubs.has(key) ? openPubs.delete(key) : openPubs.add(key); _renderSegTable(); }
+
+function _renderSegTable() {
+  var m = MONTHS_DATA[state.selectedMonth];
+  if (m && m.status === 'current') { renderSegments(); } else { renderClosedMonth(); }
+}
 
 function toggleSegSort(col) {
   if (segSortCol === col) { segSortDir = segSortDir === 'desc' ? 'asc' : 'desc'; }
   else { segSortCol = col; segSortDir = 'desc'; }
-  renderSegments();
+  _renderSegTable();
 }
 
 function getTotals() {
@@ -1809,7 +1814,7 @@ function toggleSort(sortState, col) {
     sortState.col = col;
     sortState.dir = 'desc';
   }
-  renderSegments();
+  _renderSegTable();
 }
 
 function sortIndicator(sortState, col) {
@@ -3211,7 +3216,18 @@ function renderClosedMonth() {
   const m = MONTHS_DATA[mk];
   const prevMk = getPrevMonth(mk);
   const prev = prevMk ? MONTHS_DATA[prevMk] : null;
-  const segReal = getMonthSegmentReal(mk);
+
+  /* Prefer CLOSED_DETAIL for segment-level values (authoritative per-publisher data) */
+  const detail = CLOSED_DETAIL[mk];
+  let segReal;
+  if (detail && detail.real) {
+    segReal = {};
+    Object.entries(detail.real).forEach(function(e) {
+      segReal[e[0]] = { spend: e[1].spendReal || 0, rev: e[1].revReal || 0 };
+    });
+  } else {
+    segReal = getMonthSegmentReal(mk);
+  }
 
   /* Reuse comp-grid for closed month summary */
   const compGrid = document.getElementById('comp-grid');
@@ -3286,13 +3302,8 @@ function renderClosedMonth() {
   /* Segments table: full breakdown for closed months with publisher detail */
   const segTable = document.getElementById('seg-table');
   if (segTable) {
-    const detail = CLOSED_DETAIL[mk];
-    const hasDetail = !!detail;
+    const hasDetail = !!(detail && detail.real);
     const closedReal = hasDetail ? detail.real : null;
-
-    /* Map segment names between REAL_MONTHLY keys and CLOSED_DETAIL keys */
-    const closedSegMap = {"Others":"Others","Groceries":"Groceries","Beauty":"Beauty","Electronics":"Electronics",
-      "Pharma":"Pharma","LATAM":"LATAM","Long Tail":"Long Tail","Home Center":"Home Center"};
 
     let totalSp=0, totalRv=0, totalMeta=0;
     let rows='';
@@ -3310,7 +3321,7 @@ function renderClosedMonth() {
       const ating = segMeta > 0 ? ((d.spend / segMeta) * 100).toFixed(0) + '%' : '—';
       const color = SEG_C[seg] || '#8DB6CD';
       const isOpen = openSegs.has(seg);
-      const cReal = closedReal ? closedReal[closedSegMap[seg]||seg] : null;
+      const cReal = closedReal ? closedReal[seg] : null;
       const pubCount = cReal && cReal.publishers ? Object.keys(cReal.publishers).length : 0;
       const countLabel = hasDetail && pubCount > 0 ? pubCount+' pub'+(pubCount!==1?'s':'') : '';
       const clickAttr = hasDetail && pubCount > 0 ? ' onclick="toggleSeg(\''+seg.replace(/'/g,"\\'")+'\')" style="cursor:pointer"' : '';
