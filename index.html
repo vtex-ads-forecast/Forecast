@@ -808,6 +808,184 @@ const REAL_MONTHLY={
 "Others":{"2026-01":{spend:66678,rev:6668},"2026-02":{spend:68422,rev:6642},"2026-03":{spend:111882,rev:11163},"2026-04":{spend:37728,rev:3760}},
 "Groceries":{"2026-01":{spend:39198,rev:9312},"2026-02":{spend:54930,rev:13656},"2026-03":{spend:108669,rev:27699},"2026-04":{spend:42270,rev:10334},"2026-05":{spend:3642,rev:1014}},
 };
+/* ── Closed months: detailed per-publisher data (archived when month closes) ── */
+const REAL_CLOSED_APR={
+"Electronics":{spendReal:4682781,revReal:443217,spendTech:4590417,spendNetwork:92364,revTech:427040,revNetwork:16178,publishers:{
+  "CASAS BAHIA ADS":{spendReal:3115781,revReal:218565,spendTech:3100414,spendNetwork:15365,revTech:217029,revNetwork:1538,trTotal:0.0702,trTech:0.07,trNetwork:0.1},
+  "KABUM":{spendReal:1065413,revReal:140947,spendTech:1016540,spendNetwork:48873,revTech:132150,revNetwork:8797,trTotal:0.1323,trTech:0.13,trNetwork:0.18},
+  "BEMOL":{spendReal:301401,revReal:60280,spendTech:296253,spendNetwork:5149,revTech:59251,revNetwork:1031,trTotal:0.2,trTech:0.2,trNetwork:0.2},
+  "AMERICANAS":{spendReal:110369,revReal:17843,spendTech:97489,spendNetwork:12879,revTech:14623,revNetwork:3221,trTotal:0.1604,trTech:0.15,trNetwork:0.25},
+  "FAST SHOP":{spendReal:89285,revReal:5421,spendTech:79720,spendNetwork:9564,revTech:3986,revNetwork:1434,trTotal:0.0605,trTech:0.05,trNetwork:0.15},
+  "ELETRO ANGELONI":{spendReal:535,revReal:161,spendTech:0,spendNetwork:535,revTech:0,revNetwork:161,trTotal:0.3,trTech:0,trNetwork:0.3}
+}},
+"Pharma":{spendReal:3483902,revReal:603571,spendTech:300194,spendNetwork:3183706,revTech:29297,revNetwork:574273,publishers:{
+  "DROGARIA SÃO PAULO ADS":{spendReal:2069546,revReal:402361,spendTech:115502,spendNetwork:1954045,revTech:11550,revNetwork:390809,trTotal:0.1939,trTech:0.1,trNetwork:0.2},
+  "PAGUE MENOS":{spendReal:816506,revReal:73487,spendTech:72211,spendNetwork:744294,revTech:6499,revNetwork:66986,trTotal:0.09,trTech:0.09,trNetwork:0.09},
+  "PANVEL":{spendReal:506872,revReal:82237,spendTech:112483,spendNetwork:394391,revTech:11247,revNetwork:70990,trTotal:0.1607,trTech:0.1,trNetwork:0.18},
+  "DROGAL ADS":{spendReal:90976,revReal:45488,spendTech:0,spendNetwork:90976,revTech:0,revNetwork:45488,trTotal:0.5,trTech:0,trNetwork:0.5}
+}},
+"LATAM":{spendReal:805723,revReal:107525,spendTech:805723,spendNetwork:0,revTech:107525,revNetwork:0,publishers:{
+  "FARMACITY CONECT":{spendReal:758094,revReal:102343,spendTech:758094,spendNetwork:0,revTech:102343,revNetwork:0,trTotal:0.135,trTech:0.135,trNetwork:0},
+  "Olimpica":{spendReal:38043,revReal:3804,spendTech:38043,spendNetwork:0,revTech:3804,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "DIA ADS":{spendReal:5628,revReal:845,spendTech:5628,spendNetwork:0,revTech:845,revNetwork:0,trTotal:0.15,trTech:0.15,trNetwork:0},
+  "LOCATEL":{spendReal:3940,revReal:533,spendTech:3940,spendNetwork:0,revTech:533,revNetwork:0,trTotal:0.135,trTech:0.135,trNetwork:0},
+  "SHOPSTAR":{spendReal:14,revReal:1,spendTech:14,spendNetwork:0,revTech:1,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "Long Tail":{spendReal:2,revReal:0,spendTech:2,spendNetwork:0,revTech:0,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0}
+}},
+"Beauty":{spendReal:526974,revReal:36037,spendTech:444143,spendNetwork:82832,revTech:22206,revNetwork:13831,publishers:{
+  "SEPHORA ADS PUBLISHER":{spendReal:513308,revReal:34657,spendTech:444143,spendNetwork:69167,revTech:22206,revNetwork:12450,trTotal:0.0704,trTech:0.05,trNetwork:0.18},
+  "ÉPOCA COSMÉTICOS ADS":{spendReal:13396,revReal:1339,spendTech:0,spendNetwork:13396,revTech:0,revNetwork:1339,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "AMOBELEZA":{spendReal:271,revReal:41,spendTech:0,spendNetwork:271,revTech:0,revNetwork:41,trTotal:0.15,trTech:0,trNetwork:0.15}
+}},
+"Long Tail":{spendReal:724775,revReal:83877,spendTech:610852,spendNetwork:113923,revTech:61140,revNetwork:22736,publishers:{
+  "HAPVIDA - PUBLISHER":{spendReal:530024,revReal:53002,spendTech:530024,spendNetwork:0,revTech:53002,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "GROWD ADS":{spendReal:51844,revReal:6668,spendTech:22150,spendNetwork:29693,revTech:2215,revNetwork:4455,trTotal:0.1258,trTech:0.1,trNetwork:0.15},
+  "VENÂNCIO":{spendReal:15899,revReal:4769,spendTech:1,spendNetwork:15899,revTech:0,revNetwork:4769,trTotal:0.3,trTech:0.1,trNetwork:0.3},
+  "RETAIL MEDIA CASAS BAHIA STAGING":{spendReal:8745,revReal:875,spendTech:8745,spendNetwork:0,revTech:875,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "CIA LATINO AMERICANA DE MEDICAMENTOS":{spendReal:9936,revReal:1490,spendTech:0,spendNetwork:9936,revTech:0,revNetwork:1490,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "CLUBBI":{spendReal:7499,revReal:750,spendTech:7499,spendNetwork:0,revTech:750,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "FARMÁCIA INDIANA ADS":{spendReal:6756,revReal:3378,spendTech:0,spendNetwork:6756,revTech:0,revNetwork:3378,trTotal:0.5,trTech:0,trNetwork:0.5},
+  "PETLOVE ADS":{spendReal:21425,revReal:2143,spendTech:0,spendNetwork:21425,revTech:0,revNetwork:2143,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "PROMOFARMA - PUBLISHER":{spendReal:3209,revReal:1039,spendTech:557,spendNetwork:2652,revTech:112,revNetwork:928,trTotal:0.3253,trTech:0.2,trNetwork:0.35},
+  "MERCANTIL ATACADO":{spendReal:2826,revReal:1413,spendTech:0,spendNetwork:2826,revTech:0,revNetwork:1413,trTotal:0.5,trTech:0,trNetwork:0.5},
+  "LOJAS IMPÉRIO ADS":{spendReal:2592,revReal:258,spendTech:2592,spendNetwork:0,revTech:258,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "BRETAS":{spendReal:1222,revReal:305,spendTech:0,spendNetwork:1222,revTech:0,revNetwork:305,trTotal:0.25,trTech:0,trNetwork:0.25},
+  "MERCANTIL NOVA ERA LTDA":{spendReal:1072,revReal:537,spendTech:0,spendNetwork:1072,revTech:0,revNetwork:537,trTotal:0.5,trTech:0,trNetwork:0.5},
+  "ROSSI DELIVERY - SUBPUBLISHER":{spendReal:1109,revReal:167,spendTech:0,spendNetwork:1109,revTech:0,revNetwork:167,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "COBASI ADS":{spendReal:643,revReal:64,spendTech:643,spendNetwork:0,revTech:64,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "PAULISTÃO ATACADISTA":{spendReal:800,revReal:120,spendTech:0,spendNetwork:800,revTech:0,revNetwork:120,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "BRAMIL EM CASA - SUBPUBLISHER":{spendReal:796,revReal:119,spendTech:0,spendNetwork:796,revTech:0,revNetwork:119,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "KABUM STAGING":{spendReal:807,revReal:81,spendTech:807,spendNetwork:0,revTech:81,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "VIOLETA EXPRESS - SUBPUBLISHER":{spendReal:513,revReal:77,spendTech:0,spendNetwork:513,revTech:0,revNetwork:77,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "HIROTA - SUBPUBLISHER":{spendReal:849,revReal:128,spendTech:0,spendNetwork:849,revTech:0,revNetwork:128,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SFURTADO - SUBPUBLISHER":{spendReal:587,revReal:89,spendTech:0,spendNetwork:587,revTech:0,revNetwork:89,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "DECATLHON ADS":{spendReal:237,revReal:24,spendTech:237,spendNetwork:0,revTech:24,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "PINHEIRO - SUBPUBLISHER":{spendReal:365,revReal:54,spendTech:0,spendNetwork:365,revTech:0,revNetwork:54,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "BEMOL QA (STAGING)":{spendReal:212,revReal:21,spendTech:212,spendNetwork:0,revTech:21,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "NORDESTÃO SUPERMERCADOS - SUBPUBLISHER":{spendReal:408,revReal:62,spendTech:0,spendNetwork:408,revTech:0,revNetwork:62,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "REDE COMPRAS - SUBPUBLISHER":{spendReal:308,revReal:46,spendTech:0,spendNetwork:308,revTech:0,revNetwork:46,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "FONSECA SUPERMERCADOS - SUBPUBLISHER":{spendReal:272,revReal:40,spendTech:0,spendNetwork:272,revTech:0,revNetwork:40,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "TONIN SUPERATACADO - SUBPUBLISHER":{spendReal:272,revReal:41,spendTech:0,spendNetwork:272,revTech:0,revNetwork:41,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SIMPATIA ONLINE - SUBPUBLISHER":{spendReal:251,revReal:26,spendTech:0,spendNetwork:251,revTech:0,revNetwork:26,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "TIAOZINHO - SUBPUBLISHER":{spendReal:171,revReal:25,spendTech:0,spendNetwork:171,revTech:0,revNetwork:25,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "ARMAZEM DO GRÃO - SUBPUBLISHER":{spendReal:285,revReal:42,spendTech:0,spendNetwork:285,revTech:0,revNetwork:42,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "BRETAS - PUBLISHER":{spendReal:124,revReal:37,spendTech:0,spendNetwork:124,revTech:0,revNetwork:37,trTotal:0.3,trTech:0,trNetwork:0.3},
+  "FERREIRA EM CASA - SUBPUBLISHER":{spendReal:188,revReal:29,spendTech:0,spendNetwork:188,revTech:0,revNetwork:29,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "FLEX - SUBPUBLISHER":{spendReal:196,revReal:30,spendTech:0,spendNetwork:196,revTech:0,revNetwork:30,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "CENTRAL - SUBPUBLISHER":{spendReal:173,revReal:25,spendTech:0,spendNetwork:173,revTech:0,revNetwork:25,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "DINIZ SUPERMERCADOS - SUBPUBLISHER":{spendReal:153,revReal:23,spendTech:0,spendNetwork:153,revTech:0,revNetwork:23,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "PÉROLA - SUBPUBLISHER":{spendReal:147,revReal:21,spendTech:0,spendNetwork:147,revTech:0,revNetwork:21,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "UNICOMPRA - SUBPUBLISHER":{spendReal:203,revReal:31,spendTech:0,spendNetwork:203,revTech:0,revNetwork:31,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "PILAR - SUBPUBLISHER":{spendReal:176,revReal:18,spendTech:0,spendNetwork:176,revTech:0,revNetwork:18,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "ENXUTO - SUBPUBLISHER":{spendReal:127,revReal:19,spendTech:0,spendNetwork:127,revTech:0,revNetwork:19,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "DELTASUPER - SUBPUBLISHER":{spendReal:179,revReal:26,spendTech:0,spendNetwork:179,revTech:0,revNetwork:26,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "CAMBUI - SUBPUBLISHER":{spendReal:143,revReal:22,spendTech:0,spendNetwork:143,revTech:0,revNetwork:22,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SUPERMERCADOS DAOLIO":{spendReal:151,revReal:23,spendTech:0,spendNetwork:151,revTech:0,revNetwork:23,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "REDEMARKET - SUBPUBLISHER":{spendReal:115,revReal:11,spendTech:0,spendNetwork:115,revTech:0,revNetwork:11,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "CARVALHO SUPERSHOP - SUBPUBLISHER":{spendReal:123,revReal:13,spendTech:0,spendNetwork:123,revTech:0,revNetwork:13,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "SANTAREM SUPERMERCADO - SUBPUBLISHER":{spendReal:109,revReal:16,spendTech:0,spendNetwork:109,revTech:0,revNetwork:16,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "VILLARREAL ONLINE - SUBPUBLISHER":{spendReal:124,revReal:19,spendTech:0,spendNetwork:124,revTech:0,revNetwork:19,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "OXAN SUPERMERCADOS - SUBPUBLISHER":{spendReal:84,revReal:12,spendTech:0,spendNetwork:84,revTech:0,revNetwork:12,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "PERIM - SUBPUBLISHER":{spendReal:127,revReal:12,spendTech:0,spendNetwork:127,revTech:0,revNetwork:12,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "SUPERMERCADO MANAÍRA":{spendReal:115,revReal:17,spendTech:0,spendNetwork:115,revTech:0,revNetwork:17,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "GARCIA SUPERMERCADOS - SUBPUBLISHER":{spendReal:72,revReal:11,spendTech:0,spendNetwork:72,revTech:0,revNetwork:11,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "POC LIVELO - HOMOLOG - PUBLISHER":{spendReal:50,revReal:5,spendTech:50,spendNetwork:0,revTech:5,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "VILA SUL - SUBPUBLISHER":{spendReal:92,revReal:13,spendTech:0,spendNetwork:92,revTech:0,revNetwork:13,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "HIPER BERGAMINI - SUBPUBLISHER":{spendReal:102,revReal:16,spendTech:0,spendNetwork:102,revTech:0,revNetwork:16,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "GUARANI SUPERMERCADOS - SUBPUBLISHER":{spendReal:82,revReal:12,spendTech:0,spendNetwork:82,revTech:0,revNetwork:12,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "ARCOMIX - SUBPUBLISHER":{spendReal:60,revReal:5,spendTech:0,spendNetwork:60,revTech:0,revNetwork:5,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "MEU PRATA SUPERMERCADO - SUBPUBLISHER":{spendReal:66,revReal:6,spendTech:0,spendNetwork:66,revTech:0,revNetwork:6,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "ATACADISTA MEGA - SUBPUBLISHER":{spendReal:63,revReal:9,spendTech:0,spendNetwork:63,revTech:0,revNetwork:9,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "FEIRA NOVA EM CASA - SUBPUBLISHER":{spendReal:79,revReal:11,spendTech:0,spendNetwork:79,revTech:0,revNetwork:11,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SUPER ECONÔMICO - SUBPUBLISHER":{spendReal:38,revReal:3,spendTech:0,spendNetwork:38,revTech:0,revNetwork:3,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "PORTO EM CASA - SUBPUBLISHER":{spendReal:56,revReal:7,spendTech:0,spendNetwork:56,revTech:0,revNetwork:7,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SAN MICHEL - SUBPUBLISHER":{spendReal:65,revReal:6,spendTech:0,spendNetwork:65,revTech:0,revNetwork:6,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "STYLLUS SUPERMERCADOS - SUBPUBLISHER":{spendReal:44,revReal:3,spendTech:0,spendNetwork:44,revTech:0,revNetwork:3,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "VILA RICA - SUBPUBLISHER":{spendReal:52,revReal:7,spendTech:0,spendNetwork:52,revTech:0,revNetwork:7,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "FÊNIX SUPERMERCADOS - SUBPUBLISHER":{spendReal:78,revReal:12,spendTech:0,spendNetwork:78,revTech:0,revNetwork:12,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "JAGUARE":{spendReal:49,revReal:7,spendTech:0,spendNetwork:49,revTech:0,revNetwork:7,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "FRADEILHA - SUBPUBLISHER":{spendReal:77,revReal:10,spendTech:0,spendNetwork:77,revTech:0,revNetwork:10,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "VIP COMMERCE - SUBPUBLISHER SANDBOX":{spendReal:33,revReal:3,spendTech:33,spendNetwork:0,revTech:3,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "SORRISO - SUBPUBLISHER":{spendReal:54,revReal:8,spendTech:0,spendNetwork:54,revTech:0,revNetwork:8,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "FAVORITO SUPERMERCADOS":{spendReal:49,revReal:8,spendTech:0,spendNetwork:49,revTech:0,revNetwork:8,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "JB DE FRUTAL - SUBPUBLISHER":{spendReal:32,revReal:2,spendTech:0,spendNetwork:32,revTech:0,revNetwork:2,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "REDETOP - SUBPUBLISHER":{spendReal:40,revReal:6,spendTech:0,spendNetwork:40,revTech:0,revNetwork:6,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "ROYAL SUPERMERCADO - SUBPUBLISHER":{spendReal:30,revReal:4,spendTech:0,spendNetwork:30,revTech:0,revNetwork:4,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SILVEIRA EM CASA - SUBPUBLISHER":{spendReal:32,revReal:2,spendTech:0,spendNetwork:32,revTech:0,revNetwork:2,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "CELEIRO - SUBPUBLISHER":{spendReal:36,revReal:3,spendTech:0,spendNetwork:36,revTech:0,revNetwork:3,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "DE ANGELINA SUPERMERCADOS - SUBPUBLISHER":{spendReal:46,revReal:7,spendTech:0,spendNetwork:46,revTech:0,revNetwork:7,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "IPANEMA SUPERMERCADOS - SUBPUBLISHER":{spendReal:43,revReal:6,spendTech:0,spendNetwork:43,revTech:0,revNetwork:6,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SÃO JOÃO - SUBPUBLISHER":{spendReal:29,revReal:2,spendTech:0,spendNetwork:29,revTech:0,revNetwork:2,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "SUPERVILLE SUPERMERCADOS - SUBPUBLISHER":{spendReal:37,revReal:5,spendTech:0,spendNetwork:37,revTech:0,revNetwork:5,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "AMERICANAS STAGING":{spendReal:18,revReal:2,spendTech:18,spendNetwork:0,revTech:2,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "MERCADO AJUBÁ":{spendReal:26,revReal:5,spendTech:0,spendNetwork:26,revTech:0,revNetwork:5,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "COOCERQUI SUPERMERCADO - SUBPUBLISHER":{spendReal:29,revReal:3,spendTech:0,spendNetwork:29,revTech:0,revNetwork:3,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "PRÓ BRAZILIAN - SUBPUBLISHER":{spendReal:27,revReal:4,spendTech:0,spendNetwork:27,revTech:0,revNetwork:4,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SUPER VALE - SUBPUBLISHER":{spendReal:19,revReal:2,spendTech:0,spendNetwork:19,revTech:0,revNetwork:2,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "VISCARDI - SUBPUBLISHER":{spendReal:28,revReal:2,spendTech:0,spendNetwork:28,revTech:0,revNetwork:2,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "VIEIRAO - SUBPUBLISHER":{spendReal:28,revReal:3,spendTech:0,spendNetwork:28,revTech:0,revNetwork:3,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "ALABARCE DELIVERY - SUBPUBLISHER":{spendReal:45,revReal:6,spendTech:0,spendNetwork:45,revTech:0,revNetwork:6,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "CENTRAL DELIVERY - SUBPUBLISHER":{spendReal:47,revReal:7,spendTech:0,spendNetwork:47,revTech:0,revNetwork:7,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "PECITO - SUBPUBLISHER":{spendReal:24,revReal:3,spendTech:0,spendNetwork:24,revTech:0,revNetwork:3,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SUPERMERCADO DO ROBERTO - SUBPUBLISHER":{spendReal:26,revReal:3,spendTech:0,spendNetwork:26,revTech:0,revNetwork:3,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "VIPCOMMERCE STAGING - SUBPUBLISHER":{spendReal:36,revReal:3,spendTech:36,spendNetwork:0,revTech:3,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "FEDERZONI - SUBPUBLISHER":{spendReal:17,revReal:2,spendTech:0,spendNetwork:17,revTech:0,revNetwork:2,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "VTEX GROCERY":{spendReal:15,revReal:1,spendTech:15,spendNetwork:0,revTech:1,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "LUZITANA EM CASA - SUBPUBLISHER":{spendReal:16,revReal:1,spendTech:0,spendNetwork:16,revTech:0,revNetwork:1,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "ARMAÇÃO - SUBPUBLISHER":{spendReal:20,revReal:3,spendTech:0,spendNetwork:20,revTech:0,revNetwork:3,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "MEGA SUPERMERCADO - SUBPUBLISHER":{spendReal:29,revReal:2,spendTech:0,spendNetwork:29,revTech:0,revNetwork:2,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "FASOUTO - VIPCOMMERCE SUBPUBLISHER":{spendReal:18,revReal:2,spendTech:0,spendNetwork:18,revTech:0,revNetwork:2,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "FRUTTO DA TERRA - SUBPUBLISHER":{spendReal:14,revReal:2,spendTech:0,spendNetwork:14,revTech:0,revNetwork:2,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "TRENTO SUPERMERCADOS - SUBPUBLISHER":{spendReal:18,revReal:2,spendTech:0,spendNetwork:18,revTech:0,revNetwork:2,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "CALEGARIS EM CASA - SUBPUBLISHER":{spendReal:15,revReal:1,spendTech:0,spendNetwork:15,revTech:0,revNetwork:1,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "HIPER NATASHA - SUBPUBLISHER":{spendReal:7,revReal:1,spendTech:0,spendNetwork:7,revTech:0,revNetwork:1,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "EMPORIOPIRANA - SUBPUBLISHER":{spendReal:6,revReal:1,spendTech:0,spendNetwork:6,revTech:0,revNetwork:1,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "BISTURI DISTRIBUIDORA DE MATERIAL HOSPITALAR LTDA":{spendReal:9,revReal:1,spendTech:0,spendNetwork:9,revTech:0,revNetwork:1,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "NIPPO - SUBPUBLISHER":{spendReal:11,revReal:1,spendTech:0,spendNetwork:11,revTech:0,revNetwork:1,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "BUSCAPE STAGING":{spendReal:4,revReal:0,spendTech:4,spendNetwork:0,revTech:0,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "DROGAL ADS HML":{spendReal:4,revReal:0,spendTech:4,spendNetwork:0,revTech:0,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "2 BEM CASA - SUBPUBLISHER":{spendReal:13,revReal:2,spendTech:0,spendNetwork:13,revTech:0,revNetwork:2,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "URBANIC - SUBPUBLISHER":{spendReal:17,revReal:2,spendTech:0,spendNetwork:17,revTech:0,revNetwork:2,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SUPER G SUPERMERCADOS - SUBPUBLISHER":{spendReal:3,revReal:0,spendTech:0,spendNetwork:3,revTech:0,revNetwork:0,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "CENTERPAO ATE VOCE - SUBPUBLISHER":{spendReal:3,revReal:0,spendTech:0,spendNetwork:3,revTech:0,revNetwork:0,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "LEROY MERLIN STAGING":{spendReal:3,revReal:0,spendTech:3,spendNetwork:0,revTech:0,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "MEVO FARMA":{spendReal:2,revReal:1,spendTech:0,spendNetwork:2,revTech:0,revNetwork:1,trTotal:0.3,trTech:0,trNetwork:0.3},
+  "MERCADO DO JOAO CARLOS - SUBPUBLISHER":{spendReal:7,revReal:0,spendTech:0,spendNetwork:7,revTech:0,revNetwork:0,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SUPERSUL - SUBPUBLISHER":{spendReal:2,revReal:0,spendTech:0,spendNetwork:2,revTech:0,revNetwork:0,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "AUCHAN POC":{spendReal:2,revReal:0,spendTech:2,spendNetwork:0,revTech:0,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "DIVVINO":{spendReal:1,revReal:0,spendTech:0,spendNetwork:1,revTech:0,revNetwork:0,trTotal:0.1,trTech:0,trNetwork:0.1},
+  "CLUBBI STAGING":{spendReal:0,revReal:0,spendTech:0,spendNetwork:0,revTech:0,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "VTEX ELETRO STORE":{spendReal:1,revReal:0,spendTech:1,spendNetwork:0,revTech:0,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0}
+}},
+"Home Center":{spendReal:247739,revReal:23276,spendTech:247739,spendNetwork:0,revTech:23276,revNetwork:0,publishers:{
+  "MADEIRA ADS":{spendReal:149640,revReal:13468,spendTech:149640,spendNetwork:0,revTech:13468,revNetwork:0,trTotal:0.09,trTech:0.09,trNetwork:0},
+  "LEROY MERLIN":{spendReal:98098,revReal:9810,spendTech:98098,spendNetwork:0,revTech:9810,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0}
+}},
+"Others":{spendReal:39403,revReal:3928,spendTech:28767,spendNetwork:10637,revTech:2865,revNetwork:1064,publishers:{
+  "TENDA":{spendReal:28593,revReal:2859,spendTech:17957,spendNetwork:10637,revTech:1796,revNetwork:1064,trTotal:0.1,trTech:0.1,trNetwork:0.1},
+  "BUSCAPE":{spendReal:6156,revReal:615,spendTech:6156,spendNetwork:0,revTech:615,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "ZOOM":{spendReal:4257,revReal:428,spendTech:4257,spendNetwork:0,revTech:428,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0},
+  "PICPAY":{spendReal:1301,revReal:117,spendTech:1301,spendNetwork:0,revTech:117,revNetwork:0,trTotal:0.0903,trTech:0.0903,trNetwork:0},
+  "VTEX - DEMO STORE B2C":{spendReal:1,revReal:0,spendTech:1,spendNetwork:0,revTech:0,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0}
+}},
+"Groceries":{spendReal:52153,revReal:12882,spendTech:279,spendNetwork:51874,revTech:25,revNetwork:12855,publishers:{
+  "PREZUNIC":{spendReal:18040,revReal:5412,spendTech:0,spendNetwork:18040,revTech:0,revNetwork:5412,trTotal:0.3,trTech:0,trNetwork:0.3},
+  "ZONA SUL ADS":{spendReal:8720,revReal:1743,spendTech:0,spendNetwork:8720,revTech:0,revNetwork:1743,trTotal:0.2,trTech:0,trNetwork:0.2},
+  "Super Nosso":{spendReal:4699,revReal:703,spendTech:15,spendNetwork:4684,revTech:1,revNetwork:703,trTotal:0.1497,trTech:0.05,trNetwork:0.15},
+  "GABRBOSA":{spendReal:4459,revReal:669,spendTech:0,spendNetwork:4459,revTech:0,revNetwork:669,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "GBARBOSA - PUBLISHER":{spendReal:7549,revReal:1132,spendTech:0,spendNetwork:7549,revTech:0,revNetwork:1132,trTotal:0.15,trTech:0,trNetwork:0.15},
+  "SUPERMERCADO SAVEGNAGO":{spendReal:3275,revReal:490,spendTech:54,spendNetwork:3221,revTech:4,revNetwork:482,trTotal:0.1492,trTech:0.1,trNetwork:0.15},
+  "SUPER ANGELONI":{spendReal:3050,revReal:874,spendTech:202,spendNetwork:2848,revTech:20,revNetwork:854,trTotal:0.279,trTech:0.1,trNetwork:0.3},
+  "SUPER MUFFATO DELIVERY":{spendReal:2307,revReal:1846,spendTech:0,spendNetwork:2307,revTech:0,revNetwork:1846,trTotal:0.8,trTech:0,trNetwork:0.8},
+  "BISTEK SUPERMERCADOS":{spendReal:45,revReal:12,spendTech:0,spendNetwork:45,revTech:0,revNetwork:12,trTotal:0.25,trTech:0,trNetwork:0.25},
+  "TENDA":{spendReal:8,revReal:1,spendTech:8,spendNetwork:0,revTech:1,revNetwork:0,trTotal:0.1,trTech:0.1,trNetwork:0}
+}},
+};
+
+const CLOSED_DETAIL = {
+  "2026-04": { real: REAL_CLOSED_APR }
+};
+
 
 /* ── Build DISPLAY_SEGMENTS directly from spreadsheet META_APRIL values ── */
 
@@ -3066,45 +3244,135 @@ function renderClosedMonth() {
       </tbody>`;
   }
 
-  /* Chart: show segment breakdown bar for closed month */
+  /* Chart: day-by-day for closed month (spend diário + meta) */
   const chartTitle = document.getElementById('chart-title');
-  if (chartTitle) chartTitle.textContent = 'Resultado por Segmento — ' + m.label;
+  if (chartTitle) chartTitle.textContent = 'Evolução Diária — ' + m.label;
 
   if (mainChart) mainChart.destroy();
   const ctx = document.getElementById('mainChart')?.getContext('2d');
   if (ctx) {
-    const segLabels = Object.keys(segReal);
-    const segSpends = segLabels.map(s => segReal[s].spend);
-    const segColors = segLabels.map(s => SEG_C[s] || '#8DB6CD');
-    mainChart = new Chart(ctx, {
-      type: 'bar',
-      data: { labels: segLabels, datasets: [{label: 'Spend Real', data: segSpends, backgroundColor: segColors}] },
-      options: { responsive: true, plugins: {legend:{display:false}}, scales: {y:{ticks:{callback:v=>fB(v)}}} }
-    });
+    const spArr = MONTHLY_DAILY_CUMUL_SPEND[mk];
+    const rvArr = MONTHLY_DAILY_CUMUL_REV[mk];
+    if (spArr && spArr.length > 0) {
+      const labels = spArr.map(function(_,i){ return String(i+1); });
+      const dailySpend = spArr.map(function(v,i){ return i===0 ? v : v - spArr[i-1]; });
+      const metaDaily = m.metaSpend / m.days;
+      const metaLine = labels.map(function(){ return metaDaily; });
+
+      mainChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {label:'Ad Spend Diário',data:dailySpend,backgroundColor:'rgba(15,62,153,0.5)',borderColor:'#0F3E99',borderWidth:1,order:2},
+            {label:'Meta Diária',data:metaLine,type:'line',borderColor:'#FFB100',borderDash:[4,4],borderWidth:1.5,pointRadius:0,fill:false,order:1}
+          ]
+        },
+        options:{responsive:true,plugins:{legend:{display:true,position:'bottom'},tooltip:{callbacks:{label:function(ctx){var v=ctx.parsed.y;return v===null?null:ctx.dataset.label+': '+fF(v)}}}},scales:{x:{grid:{display:false}},y:{ticks:{callback:function(v){return fB(v)}},grid:{color:'#F0F0F5'}}},interaction:{intersect:false,mode:'index'}}
+      });
+    } else {
+      /* Fallback: segment bar chart */
+      const segLabels = Object.keys(segReal);
+      const segSpends = segLabels.map(function(s){ return segReal[s].spend; });
+      const segColors = segLabels.map(function(s){ return SEG_C[s]||'#8DB6CD'; });
+      mainChart = new Chart(ctx, {
+        type: 'bar',
+        data: { labels: segLabels, datasets: [{label: 'Spend Real', data: segSpends, backgroundColor: segColors}] },
+        options: { responsive: true, plugins: {legend:{display:false}}, scales: {y:{ticks:{callback:function(v){return fB(v)}}}} }
+      });
+    }
   }
 
-  /* Segments table: simplified for closed month */
+  /* Segments table: full breakdown for closed months with publisher detail */
   const segTable = document.getElementById('seg-table');
   if (segTable) {
-    let rows = '';
-    let totalSp = 0, totalRv = 0;
-    Object.entries(segReal).forEach(([seg, d]) => {
+    const detail = CLOSED_DETAIL[mk];
+    const hasDetail = !!detail;
+    const closedReal = hasDetail ? detail.real : null;
+
+    /* Map segment names between REAL_MONTHLY keys and CLOSED_DETAIL keys */
+    const closedSegMap = {"Others":"Others","Groceries":"Groceries","Beauty":"Beauty","Electronics":"Electronics",
+      "Pharma":"Pharma","LATAM":"LATAM","Long Tail":"Long Tail","Home Center":"Home Center"};
+
+    let totalSp=0, totalRv=0, totalMeta=0;
+    let rows='';
+
+    /* Build sorted segment list */
+    const segEntries = Object.entries(segReal);
+    segEntries.sort(function(a,b){ return b[1].spend - a[1].spend; });
+
+    segEntries.forEach(function(entry){
+      const seg = entry[0], d = entry[1];
       totalSp += d.spend; totalRv += d.rev;
-      const segMeta = m.segMetas?.[seg === 'Groceries' ? 'Grocery' : seg] || 0;
+      const segMeta = m.segMetas?.[seg==='Groceries'?'Grocery':seg] || m.segMetas?.[seg] || 0;
+      totalMeta += segMeta;
       const gap = d.spend - segMeta;
-      rows += `<tr>
-        <td style="font-weight:600;text-align:left"><span class="seg-dot" style="background:${SEG_C[seg]||'#8DB6CD'}"></span>${seg}</td>
-        <td style="text-align:right">${fB(d.spend)}</td>
-        <td style="text-align:right">${fB(d.rev)}</td>
-        <td style="text-align:right">${segMeta > 0 ? fB(segMeta) : '—'}</td>
-        <td style="text-align:right" class="${gap>=0?'gap-pos':'gap-neg'}">${segMeta > 0 ? gapSign(gap)+fB(Math.abs(gap)) : '—'}</td>
-      </tr>`;
+      const ating = segMeta > 0 ? ((d.spend / segMeta) * 100).toFixed(0) + '%' : '—';
+      const color = SEG_C[seg] || '#8DB6CD';
+      const isOpen = openSegs.has(seg);
+      const cReal = closedReal ? closedReal[closedSegMap[seg]||seg] : null;
+      const pubCount = cReal && cReal.publishers ? Object.keys(cReal.publishers).length : 0;
+      const countLabel = hasDetail && pubCount > 0 ? pubCount+' pub'+(pubCount!==1?'s':'') : '';
+      const clickAttr = hasDetail && pubCount > 0 ? ' onclick="toggleSeg(\''+seg.replace(/'/g,"\\'")+'\')" style="cursor:pointer"' : '';
+
+      rows += '<tr class="seg-row-seg"'+clickAttr+'>';
+      rows += '<td style="font-weight:600;text-align:left">';
+      if (hasDetail && pubCount > 0) rows += '<span class="seg-chevron'+(isOpen?' open':'')+'">▶</span>';
+      rows += '<span class="seg-dot" style="background:'+color+'"></span>'+seg;
+      if (countLabel) rows += '<span style="color:#6B7785;font-weight:400;margin-left:6px;font-size:10px">'+countLabel+'</span>';
+      rows += '</td>';
+      rows += '<td style="text-align:right">'+fB(d.spend)+'</td>';
+      rows += '<td style="text-align:right">'+fB(d.rev)+'</td>';
+      rows += '<td style="text-align:right">'+(segMeta>0?fB(segMeta):'—')+'</td>';
+      rows += '<td style="text-align:right" class="'+(gap>=0?'gap-pos':'gap-neg')+'">'+(segMeta>0?gapSign(gap)+fB(Math.abs(gap)):'—')+'</td>';
+      rows += '<td style="text-align:right">'+ating+'</td>';
+      rows += '</tr>';
+
+      /* Publisher sub-rows when expanded */
+      if (isOpen && cReal && cReal.publishers) {
+        var pubs = Object.entries(cReal.publishers).sort(function(a,b){ return (b[1].spendReal||0) - (a[1].spendReal||0); });
+        pubs.forEach(function(pe){
+          var pName = pe[0], p = pe[1];
+          var pubKey = seg+'::'+pName;
+          var pOpen = openPubs.has(pubKey);
+          var pTR = p.spendReal > 0 ? ((p.revReal / p.spendReal) * 100).toFixed(1) + '%' : '—';
+
+          rows += '<tr class="seg-row-pub" onclick="togglePub(\''+pubKey.replace(/'/g,"\\'")+'\')" style="cursor:pointer">';
+          rows += '<td style="padding-left:24px"><span class="seg-chevron'+(pOpen?' open':'')+'">▶</span>'+pName+'<span style="color:#6B7785;font-weight:400;margin-left:6px;font-size:10px">TR '+pTR+'</span></td>';
+          rows += '<td style="text-align:right">'+fB(p.spendReal||0)+'</td>';
+          rows += '<td style="text-align:right">'+fB(p.revReal||0)+'</td>';
+          rows += '<td style="text-align:right">—</td>';
+          rows += '<td style="text-align:right">—</td>';
+          rows += '<td style="text-align:right">—</td>';
+          rows += '</tr>';
+
+          /* Tech / Network breakdown */
+          if (pOpen) {
+            var spT = p.spendTech||0, spN = p.spendNetwork||0;
+            var rvT = p.revTech||0, rvN = p.revNetwork||0;
+            var trT = p.trTech!==undefined ? (p.trTech*100).toFixed(1)+'%' : '—';
+            var trN = p.trNetwork!==undefined ? (p.trNetwork*100).toFixed(1)+'%' : '—';
+            if (spT > 0 || rvT > 0) {
+              rows += '<tr class="seg-row-biz"><td style="padding-left:48px"><span class="seg-biz-tag seg-biz-tech">Tech</span>TR '+trT+'</td>';
+              rows += '<td style="text-align:right">'+fB(spT)+'</td><td style="text-align:right">'+fB(rvT)+'</td>';
+              rows += '<td style="text-align:right">—</td><td style="text-align:right">—</td><td style="text-align:right">—</td></tr>';
+            }
+            if (spN > 0 || rvN > 0) {
+              rows += '<tr class="seg-row-biz"><td style="padding-left:48px"><span class="seg-biz-tag seg-biz-net">Network</span>TR '+trN+'</td>';
+              rows += '<td style="text-align:right">'+fB(spN)+'</td><td style="text-align:right">'+fB(rvN)+'</td>';
+              rows += '<td style="text-align:right">—</td><td style="text-align:right">—</td><td style="text-align:right">—</td></tr>';
+            }
+          }
+        });
+      }
     });
-    segTable.innerHTML = `
-      <thead><tr><th style="text-align:left">Segmento</th><th style="text-align:right">Spend Real</th><th style="text-align:right">Rev Real</th><th style="text-align:right">Meta Spend</th><th style="text-align:right">Gap</th></tr></thead>
-      <tbody>${rows}
-        <tr style="font-weight:700;border-top:2px solid #0F3E99"><td>TOTAL</td><td style="text-align:right">${fB(totalSp)}</td><td style="text-align:right">${fB(totalRv)}</td><td style="text-align:right">${fB(m.metaSpend)}</td><td style="text-align:right" class="${(totalSp-m.metaSpend)>=0?'gap-pos':'gap-neg'}">${gapSign(totalSp-m.metaSpend)+fB(Math.abs(totalSp-m.metaSpend))}</td></tr>
-      </tbody>`;
+
+    var totalGap = totalSp - totalMeta;
+    var totalAting = totalMeta > 0 ? ((totalSp / totalMeta) * 100).toFixed(0)+'%' : '—';
+    segTable.innerHTML = '<thead><tr><th style="text-align:left">Segmento / Publisher</th><th style="text-align:right">Spend</th><th style="text-align:right">Receita</th><th style="text-align:right">Meta</th><th style="text-align:right">Gap</th><th style="text-align:right">Ating.</th></tr></thead>'
+      + '<tbody>'+rows
+      + '<tr style="font-weight:700;border-top:2px solid #0F3E99"><td>TOTAL</td><td style="text-align:right">'+fB(totalSp)+'</td><td style="text-align:right">'+fB(totalRv)+'</td><td style="text-align:right">'+fB(totalMeta)+'</td><td style="text-align:right" class="'+(totalGap>=0?'gap-pos':'gap-neg')+'">'+gapSign(totalGap)+fB(Math.abs(totalGap))+'</td><td style="text-align:right">'+totalAting+'</td></tr>'
+      + '</tbody>';
   }
 }
 
