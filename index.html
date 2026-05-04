@@ -324,7 +324,7 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
     <div style="display:flex;align-items:center;gap:16px">
       <div style="display:flex;align-items:center;gap:4px;background:#F8F7FC;padding:4px 8px;border-radius:6px;font-size:13px;font-weight:500">
         <button onclick="navMonth(-1)" style="background:none;border:none;cursor:pointer;font-size:16px;padding:2px 6px;color:#0F3E99;border-radius:4px" onmouseover="this.style.background='#E8E6F0'" onmouseout="this.style.background='none'">◀</button>
-        <span id="month-label" style="min-width:100px;text-align:center">📅 Abril 2026</span>
+        <span id="month-label" style="min-width:100px;text-align:center"></span>
         <button onclick="navMonth(1)" style="background:none;border:none;cursor:pointer;font-size:16px;padding:2px 6px;color:#0F3E99;border-radius:4px" onmouseover="this.style.background='#E8E6F0'" onmouseout="this.style.background='none'">▶</button>
       </div>
       <span style="cursor:pointer;font-size:18px">🔔</span>
@@ -3405,6 +3405,17 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize role system UI
   updateRoleBadge();
   applyRole();
+
+  // Set initial month label + nav arrows
+  var initM = MONTHS_DATA[state.selectedMonth];
+  if (initM) document.getElementById('month-label').textContent = '📅 ' + initM.label;
+  var initIdx = AVAILABLE_MONTHS.indexOf(state.selectedMonth);
+  document.querySelectorAll('#month-label').forEach(function(el) {
+    var prev = el.previousElementSibling;
+    var next = el.nextElementSibling;
+    if (prev) prev.style.opacity = initIdx > 0 ? '1' : '0.3';
+    if (next) next.style.opacity = initIdx < AVAILABLE_MONTHS.length - 1 ? '1' : '0.3';
+  });
 
   // Render page
   renderAll();
