@@ -2982,7 +2982,6 @@ function renderOthers(){
     <div class="summary-card"><div style="font-size:12px;color:#6B7785;margin-bottom:8px;font-weight:500">Total Forecast (Ads)</div><div style="font-size:22px;font-weight:700">${fB(t.proj.revenue)}</div><div style="font-size:12px;color:#6B7785;margin-top:4px">Revenue via modelos</div></div>
     <div class="summary-card"><div style="font-size:12px;color:#6B7785;margin-bottom:8px;font-weight:500">Total Others (Fixo)</div><div style="font-size:22px;font-weight:700;color:#FFB100">${fB(t.o.revenue)}</div><div style="font-size:12px;color:#6B7785;margin-top:4px">Offsite + Instore + Fees</div></div>
     <div class="summary-card highlight"><div style="font-size:12px;color:#0F3E99;margin-bottom:8px;font-weight:600">TOTAL GERAL</div><div style="font-size:22px;font-weight:700;color:#0F3E99">${fB(t.t.revenue)}</div><div style="font-size:12px;color:#6B7785;margin-top:4px">Forecast + Others</div></div>`;
-  applyRole();
 }
 
 function updOther(id,k,v){othersData=othersData.map(r=>r.id===id?{...r,[k]:k==="cat"||k==="desc"?v:Number(v)||0}:r);renderOthers();renderKPIs();renderComp()}
@@ -3073,17 +3072,7 @@ function applyRole() {
       if (!el.classList.contains('viewer-disabled')) el.classList.add('viewer-disabled');
     });
 
-    // OTHERS TAB: disable add button and all inputs/deletes
-    const addOthersBtn = document.querySelector('#tab-others .btn-primary');
-    if (addOthersBtn) {
-      addOthersBtn.disabled = true;
-      if (!addOthersBtn.classList.contains('viewer-disabled')) addOthersBtn.classList.add('viewer-disabled');
-    }
-    const othersInputs = document.querySelectorAll('#tab-others .others-input, #tab-others .btn-delete');
-    othersInputs.forEach(el => {
-      el.disabled = true;
-      if (!el.classList.contains('viewer-disabled')) el.classList.add('viewer-disabled');
-    });
+    // OTHERS TAB: always enabled — manual input by user regardless of role
 
     // SCENARIOS PAGE: enabled for all users (simulation only, not official data)
   } else {
