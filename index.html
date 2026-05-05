@@ -2988,7 +2988,7 @@ function updOther(id,k,v){othersData=othersData.map(r=>r.id===id?{...r,[k]:k==="
 
 function delOther(id){othersData=othersData.filter(r=>r.id!==id);renderOthers();renderKPIs();renderComp()}
 
-function addOthersRow(){othersData.push({id:Date.now(),cat:"",spend:0,rev:0,desc:""});_saveOthersStore();renderOthers()}
+function addOthersRow(){othersData=othersData.concat([{id:Date.now(),cat:"",spend:0,rev:0,desc:""}]);renderOthers();renderKPIs();renderComp()}
 
 // ============================================================================
 // PAGE NAVIGATION
