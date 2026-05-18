@@ -1,12 +1,12 @@
 {
   "CASAS BAHIA ADS": {
     "seg": "Electronics",
-    "trTech": 0.07,
+    "trTech": 0.085,
     "trNetwork": 0.1
   },
   "KABUM": {
     "seg": "Electronics",
-    "trTech": 0.13,
+    "trTech": 0.07,
     "trNetwork": 0.18
   },
   "BEMOL": {
@@ -51,8 +51,8 @@
   },
   "FARMACITY CONECT": {
     "seg": "LATAM",
-    "trTech": 0.135,
-    "trNetwork": 0.0
+    "trTech": 0.2,
+    "trNetwork": 0.15
   },
   "Olimpica": {
     "seg": "LATAM",
@@ -81,12 +81,12 @@
   },
   "SEPHORA ADS PUBLISHER": {
     "seg": "Beauty",
-    "trTech": 0.05,
+    "trTech": 0.08,
     "trNetwork": 0.18
   },
   "ÉPOCA COSMÉTICOS ADS": {
     "seg": "Beauty",
-    "trTech": 0.0,
+    "trTech": 0.1,
     "trNetwork": 0.1
   },
   "AMOBELEZA": {
@@ -96,8 +96,8 @@
   },
   "HAPVIDA - PUBLISHER": {
     "seg": "Long Tail",
-    "trTech": 0.1,
-    "trNetwork": 0.0
+    "trTech": 0.0,
+    "trNetwork": 0.15
   },
   "GROWD ADS": {
     "seg": "Long Tail",
@@ -687,12 +687,12 @@
   "MADEIRA ADS": {
     "seg": "Home Center",
     "trTech": 0.09,
-    "trNetwork": 0.0
+    "trNetwork": 0.09
   },
   "LEROY MERLIN": {
     "seg": "Home Center",
     "trTech": 0.1,
-    "trNetwork": 0.0
+    "trNetwork": 0.16
   },
   "TENDA": {
     "seg": "Groceries",
@@ -763,5 +763,15 @@
     "seg": "Groceries",
     "trTech": 0.0,
     "trNetwork": 0.25
+  },
+  "OLIMPICA CO - PUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15
+  },
+  "TENDA ATACADO - PUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15
   }
 }
