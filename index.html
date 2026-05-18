@@ -426,6 +426,7 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
           <p style="margin-top:4px;font-size:13px;color:#6B7785">Valores manuais — não passam por forecast.</p>
         </div>
         <button class="btn-primary" onclick="addOthersRow()">＋ Adicionar</button>
+        <button class="btn-outline" onclick="exportOthersJson()" style="margin-left:8px" title="Exportar para compartilhar com todos">⬇ Exportar others.json</button>
       </div>
       <div class="table-card" style="margin-bottom:0">
         <table>
@@ -1237,27 +1238,65 @@ const _OTHERS_DEFAULTS = {
   ]
 };
 const _LS_KEY = 'vtex_ads_forecast_others';
-function _loadOthersStore() {
+function _loadOthersShared() {
+  /* Load shared others.json (same pattern as settings.json) */
   try {
-    const raw = localStorage.getItem(_LS_KEY);
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'others.json?t=' + Date.now(), false);
+    xhr.send();
+    if (xhr.status === 200) return JSON.parse(xhr.responseText);
+  } catch(e) {}
+  return null;
+}
+function _loadOthersStore() {
+  /* Priority: others.json > localStorage > _OTHERS_DEFAULTS
+     others.json is the shared source of truth (committed to repo).
+     localStorage only adds months NOT present in others.json. */
+  var shared = _loadOthersShared();
+  if (shared) {
+    // others.json is the baseline — always wins
+    var store = {};
+    Object.keys(shared).forEach(function(mk) { store[mk] = shared[mk]; });
+    // Keep extra months from localStorage that aren't in others.json
+    try {
+      var raw = localStorage.getItem(_LS_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        Object.keys(parsed).forEach(function(mk) {
+          if (!store[mk]) store[mk] = parsed[mk];
+        });
+      }
+    } catch(e) {}
+    return store;
+  }
+  // Fallback: no others.json → use localStorage or defaults
+  try {
+    var raw = localStorage.getItem(_LS_KEY);
     if (raw) {
-      const parsed = JSON.parse(raw);
-      // Merge: use saved data for months that exist, defaults for the rest
-      const store = {};
+      var parsed = JSON.parse(raw);
+      var store = {};
       Object.keys(_OTHERS_DEFAULTS).forEach(function(mk) {
         store[mk] = parsed[mk] !== undefined ? parsed[mk] : JSON.parse(JSON.stringify(_OTHERS_DEFAULTS[mk]));
       });
-      // Also keep any extra months the user may have added
       Object.keys(parsed).forEach(function(mk) {
         if (!store[mk]) store[mk] = parsed[mk];
       });
       return store;
     }
-  } catch(e) { /* localStorage unavailable or corrupt — use defaults */ }
+  } catch(e) {}
   return JSON.parse(JSON.stringify(_OTHERS_DEFAULTS));
 }
 function _saveOthersStore() {
   try { localStorage.setItem(_LS_KEY, JSON.stringify(othersStore)); } catch(e) {}
+}
+function exportOthersJson() {
+  var json = JSON.stringify(othersStore, null, 2);
+  var blob = new Blob([json], {type: 'application/json'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'others.json'; a.click();
+  URL.revokeObjectURL(url);
+  showSettingsToast('others.json exportado! Faça commit no repo para aplicar para todos.');
 }
 const othersStore = _loadOthersStore();
 
