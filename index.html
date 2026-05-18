@@ -1299,16 +1299,16 @@ function _promptGhToken() {
   return false;
 }
 
-function _commitFileToGithub(path, content, message) {
+function _commitFileToGithub(path, content, message, _retry) {
   var token = _getGhToken();
   if (!token) {
     if (!_promptGhToken()) { showSettingsToast('Token necessário para salvar no repo.'); return Promise.reject('no token'); }
     token = _getGhToken();
   }
   var apiUrl = 'https://api.github.com/repos/' + _GH_OWNER + '/' + _GH_REPO + '/contents/' + path;
-  // First get current file SHA
-  return fetch(apiUrl + '?ref=' + _GH_BRANCH, {
-    headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+  return fetch(apiUrl + '?ref=' + _GH_BRANCH + '&t=' + Date.now(), {
+    headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' },
+    cache: 'no-store'
   })
   .then(function(r) { return r.ok ? r.json() : null; })
   .then(function(existing) {
@@ -1325,6 +1325,10 @@ function _commitFileToGithub(path, content, message) {
     });
   })
   .then(function(r) {
+    if (r.status === 409 || r.status === 422) {
+      if (!_retry) return _commitFileToGithub(path, content, message, true); // retry once with fresh SHA
+      return r.json().then(function(j) { throw new Error(j.message || r.status); });
+    }
     if (!r.ok) return r.json().then(function(j) { throw new Error(j.message || r.status); });
     return r.json();
   });
