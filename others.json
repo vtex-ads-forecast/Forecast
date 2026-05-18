@@ -3,13 +3,63 @@
   "2026-02": [],
   "2026-03": [],
   "2026-04": [
-    {"id": 1, "cat": "Instore + Offsite", "spend": 0, "rev": 0, "desc": "Retail media instore"},
-    {"id": 2, "cat": "Performance Fee", "spend": 0, "rev": 125000, "desc": "Fees de performance"},
-    {"id": 3, "cat": "Other Incomes", "spend": 0, "rev": 50000, "desc": "Outras receitas recorrentes"}
+    {
+      "id": 1,
+      "cat": "Instore + Offsite",
+      "spend": 0,
+      "rev": 0,
+      "desc": "Retail media instore"
+    },
+    {
+      "id": 2,
+      "cat": "Performance Fee",
+      "spend": 0,
+      "rev": 125000,
+      "desc": "Fees de performance"
+    },
+    {
+      "id": 3,
+      "cat": "Other Incomes",
+      "spend": 0,
+      "rev": 50000,
+      "desc": "Outras receitas recorrentes"
+    }
   ],
   "2026-05": [
-    {"id": 4, "cat": "Fees", "spend": 0, "rev": 150000, "desc": "Americanas"},
-    {"id": 5, "cat": "Other Incomes", "spend": 0, "rev": 25000, "desc": "Zona Sul"},
-    {"id": 6, "cat": "Performance Fee", "spend": 0, "rev": 15000, "desc": "Vult"}
+    {
+      "id": 4,
+      "cat": "Fees",
+      "spend": 0,
+      "rev": 150000,
+      "desc": "Americanas"
+    },
+    {
+      "id": 5,
+      "cat": "Other Incomes",
+      "spend": 0,
+      "rev": 25000,
+      "desc": "Zona Sul"
+    },
+    {
+      "id": 6,
+      "cat": "Performance Fee",
+      "spend": 0,
+      "rev": 15000,
+      "desc": "Vult"
+    },
+    {
+      "id": 1779124223035,
+      "cat": "",
+      "spend": 0,
+      "rev": 0,
+      "desc": ""
+    },
+    {
+      "id": 1779124224184,
+      "cat": "",
+      "spend": 0,
+      "rev": 0,
+      "desc": ""
+    }
   ]
 }
