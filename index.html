@@ -426,7 +426,8 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
           <p style="margin-top:4px;font-size:13px;color:#6B7785">Valores manuais — não passam por forecast.</p>
         </div>
         <button class="btn-primary" onclick="addOthersRow()">＋ Adicionar</button>
-        <button class="btn-outline" onclick="exportOthersJson()" style="margin-left:8px" title="Exportar para compartilhar com todos">⬇ Exportar others.json</button>
+        <button class="btn-outline" onclick="exportOthersJson()" style="margin-left:8px" title="Baixar others.json">⬇ Exportar</button>
+        <button class="btn-outline" onclick="_promptGhToken()" style="margin-left:8px" title="Configurar token do GitHub para auto-save">🔑 Token</button>
       </div>
       <div class="table-card" style="margin-bottom:0">
         <table>
@@ -1286,8 +1287,64 @@ function _loadOthersStore() {
   } catch(e) {}
   return JSON.parse(JSON.stringify(_OTHERS_DEFAULTS));
 }
+/* ── GitHub auto-commit infrastructure ── */
+var _GH_OWNER = 'vtex-ads-forecast', _GH_REPO = 'Forecast', _GH_BRANCH = 'main';
+var _GH_TOKEN_KEY = 'vtex_ads_gh_token';
+function _getGhToken() { try { return localStorage.getItem(_GH_TOKEN_KEY) || ''; } catch(e) { return ''; } }
+function _setGhToken(t) { try { localStorage.setItem(_GH_TOKEN_KEY, t.trim()); } catch(e) {} }
+
+function _promptGhToken() {
+  var t = prompt('Cole seu GitHub Personal Access Token (fine-grained, com permissão Contents read/write):');
+  if (t && t.trim()) { _setGhToken(t); showSettingsToast('Token salvo!'); return true; }
+  return false;
+}
+
+function _commitFileToGithub(path, content, message) {
+  var token = _getGhToken();
+  if (!token) {
+    if (!_promptGhToken()) { showSettingsToast('Token necessário para salvar no repo.'); return Promise.reject('no token'); }
+    token = _getGhToken();
+  }
+  var apiUrl = 'https://api.github.com/repos/' + _GH_OWNER + '/' + _GH_REPO + '/contents/' + path;
+  // First get current file SHA
+  return fetch(apiUrl + '?ref=' + _GH_BRANCH, {
+    headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+  })
+  .then(function(r) { return r.ok ? r.json() : null; })
+  .then(function(existing) {
+    var body = {
+      message: message || 'update ' + path,
+      content: btoa(unescape(encodeURIComponent(content))),
+      branch: _GH_BRANCH
+    };
+    if (existing && existing.sha) body.sha = existing.sha;
+    return fetch(apiUrl, {
+      method: 'PUT',
+      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+  })
+  .then(function(r) {
+    if (!r.ok) return r.json().then(function(j) { throw new Error(j.message || r.status); });
+    return r.json();
+  });
+}
+
+/* Debounced auto-commit for others.json */
+var _othersCommitTimer = null;
+function _scheduleOthersCommit() {
+  if (_othersCommitTimer) clearTimeout(_othersCommitTimer);
+  _othersCommitTimer = setTimeout(function() {
+    var json = JSON.stringify(othersStore, null, 2) + '\n';
+    _commitFileToGithub('others.json', json, 'chore: update others.json via dashboard')
+      .then(function() { showSettingsToast('Others salvo no repo ✓'); })
+      .catch(function(e) { showSettingsToast('Erro ao salvar: ' + e.message); });
+  }, 2000); // 2s debounce
+}
+
 function _saveOthersStore() {
   try { localStorage.setItem(_LS_KEY, JSON.stringify(othersStore)); } catch(e) {}
+  _scheduleOthersCommit();
 }
 function exportOthersJson() {
   var json = JSON.stringify(othersStore, null, 2);
@@ -1296,7 +1353,7 @@ function exportOthersJson() {
   var a = document.createElement('a');
   a.href = url; a.download = 'others.json'; a.click();
   URL.revokeObjectURL(url);
-  showSettingsToast('others.json exportado! Faça commit no repo para aplicar para todos.');
+  showSettingsToast('others.json exportado!');
 }
 const othersStore = _loadOthersStore();
 
