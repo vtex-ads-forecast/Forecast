@@ -1429,12 +1429,19 @@ function getTotals() {
   const fSpend = fc.reduce((s,d) => s + d.adspend, 0);
   const oSpend = othersData.reduce((s,r) => s + r.spend, 0);
   const oRev = othersData.reduce((s,r) => s + r.rev, 0);
+  /* Compute realized revenue from per-publisher dynamic TR (same as breakdown) */
+  var aRev = 0;
+  Object.values(DISPLAY_REAL).forEach(function(seg) {
+    if (seg.publishers) aRev += calcSegRevenue(seg);
+  });
+  /* Forecast revenue uses BLENDED_TR (weighted average) */
+  const fRev = fSpend * BLENDED_TR;
   return {
-    a: {adspend: aSpend, revenue: aSpend * BLENDED_TR},
-    f: {adspend: fSpend, revenue: fSpend * BLENDED_TR},
+    a: {adspend: aSpend, revenue: aRev},
+    f: {adspend: fSpend, revenue: fRev},
     o: {adspend: oSpend, revenue: oRev},
-    proj: {adspend: aSpend + fSpend, revenue: (aSpend + fSpend) * BLENDED_TR},
-    t: {adspend: aSpend + fSpend + oSpend, revenue: (aSpend + fSpend) * BLENDED_TR + oRev}
+    proj: {adspend: aSpend + fSpend, revenue: aRev + fRev},
+    t: {adspend: aSpend + fSpend + oSpend, revenue: aRev + fRev + oRev}
   };
 }
 
