@@ -1621,9 +1621,9 @@ function renderKPIs() {
 
   if (isCurrent) {
     const t = getTotals();
-    spReal = t.a.adspend; spFc = t.f.adspend; spProj = t.t.adspend;
+    spReal = t.a.adspend + t.o.adspend; spFc = t.f.adspend; spProj = t.t.adspend;
     spMeta = META_SPEND_TOTAL; spGap = spProj - spMeta; oSpend = t.o.adspend;
-    rvReal = t.a.revenue; rvFc = t.f.revenue; rvProj = t.t.revenue;
+    rvReal = t.a.revenue + t.o.revenue; rvFc = t.f.revenue; rvProj = t.t.revenue;
     rvMeta = META_REV_TOTAL; rvGap = rvProj - rvMeta; oRev = t.o.revenue;
   } else {
     /* Read Others from store for this closed month */
