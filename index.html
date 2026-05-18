@@ -1014,13 +1014,18 @@ function _buildLTpubs(ltSpendMeta, ltRevMeta) {
   return pubs;
 }
 
-/* Other Revenues = Instore+Offsite + Performance Fee + Other Incomes */
-const _otherRevSpendMeta = (META_APRIL["Instore + Offsite"]?.spendMeta||0)
-  + (META_APRIL["Performance Fee"]?.spendMeta||0)
-  + (META_APRIL["Other Incomes"]?.spendMeta||0);
-const _otherRevRevMeta = (META_APRIL["Instore + Offsite"]?.revMeta||0)
-  + (META_APRIL["Performance Fee"]?.revMeta||0)
+/* Offsite + Instore — has both adspend and revenue meta */
+const _instoreSpendMeta = (META_APRIL["Instore + Offsite"]?.spendMeta||0);
+const _instoreRevMeta = (META_APRIL["Instore + Offsite"]?.revMeta||0);
+const _instorePubs = Object.assign({}, META_APRIL["Instore + Offsite"]?.publishers||{});
+
+/* Fees = Performance Fee + Other Incomes — revenue only */
+const _feesSpendMeta = 0;
+const _feesRevMeta = (META_APRIL["Performance Fee"]?.revMeta||0)
   + (META_APRIL["Other Incomes"]?.revMeta||0);
+const _feesPubs = Object.assign({},
+  META_APRIL["Performance Fee"]?.publishers||{},
+  META_APRIL["Other Incomes"]?.publishers||{});
 
 /* Other Segments = Others Segments + Soft Launch BR + New Publishers BR */
 const _otherSegSpendMeta = (META_APRIL["Others Segments"]?.spendMeta||0)
@@ -1034,11 +1039,7 @@ const _otherSegPubs = Object.assign({},
   META_APRIL["Soft Launch New Publishers BR"]?.publishers||{},
   META_APRIL["New Publishers BR"]?.publishers||{});
 
-/* Other Revenues publishers */
-const _otherRevPubs = Object.assign({},
-  META_APRIL["Instore + Offsite"]?.publishers||{},
-  META_APRIL["Performance Fee"]?.publishers||{},
-  META_APRIL["Other Incomes"]?.publishers||{});
+/* (Other Revenues publishers replaced by _instorePubs + _feesPubs above) */
 
 const DISPLAY_SEGMENTS = {
   "Beauty":       { spendMeta: META_APRIL["Beauty"].spendMeta,       revMeta: META_APRIL["Beauty"].revMeta,       publishers: META_APRIL["Beauty"].publishers },
@@ -1049,7 +1050,8 @@ const DISPLAY_SEGMENTS = {
   "LATAM":        { spendMeta: META_APRIL["LATAM"].spendMeta,        revMeta: META_APRIL["LATAM"].revMeta,        publishers: META_APRIL["LATAM"].publishers },
   "Long Tail":    { spendMeta: META_APRIL["Long Tail"].spendMeta,    revMeta: META_APRIL["Long Tail"].revMeta,    publishers: _buildLTpubs(META_APRIL["Long Tail"].spendMeta, META_APRIL["Long Tail"].revMeta) },
   "Other Segments": { spendMeta: _otherSegSpendMeta, revMeta: _otherSegRevMeta, publishers: _otherSegPubs },
-  "Other Revenues": { spendMeta: _otherRevSpendMeta, revMeta: _otherRevRevMeta, publishers: _otherRevPubs },
+  "Offsite + Instore": { spendMeta: _instoreSpendMeta, revMeta: _instoreRevMeta, publishers: _instorePubs },
+  "Fees": { spendMeta: _feesSpendMeta, revMeta: _feesRevMeta, publishers: _feesPubs },
 };
 
 /* Map REAL_APRIL to consolidated display segments */
@@ -1062,7 +1064,8 @@ const DISPLAY_REAL={
   "LATAM":{spendReal:REAL_APRIL["LATAM"]?.spendReal||0,revReal:REAL_APRIL["LATAM"]?.revReal||0,publishers:REAL_APRIL["LATAM"]?.publishers||{}},
   "Long Tail":{spendReal:REAL_APRIL["Long Tail"]?.spendReal||0,revReal:REAL_APRIL["Long Tail"]?.revReal||0,publishers:REAL_APRIL["Long Tail"]?.publishers||{}},
   "Other Segments":{spendReal:REAL_APRIL["Others"]?.spendReal||0,revReal:REAL_APRIL["Others"]?.revReal||0,publishers:REAL_APRIL["Others"]?.publishers||{}},
-  "Other Revenues":{spendReal:0,revReal:0,publishers:{}}
+  "Offsite + Instore":{spendReal:0,revReal:0,publishers:{}},
+  "Fees":{spendReal:0,revReal:0,publishers:{}}
 };
 
 const REAL_DAILY_APR={"Electronics":[0,157203,132424,173720,203459,202197,205867,221701,202684,184099,217521,227020,220297,217318,227338,206440,199402],"Pharma":[0,107191,100579,113430,108047,105248,114871,118719,111201,101387,135105,142034,140985,126222,120229,112478,113903],"LATAM":[0,24077,27157,29359,29418,33420,35165,34401,30550,35073,125169,107747,117869,71542,51397,45698,52578],"Beauty":[0,16583,16869,16955,17535,16722,15495,16472,16100,17129,18043,17082,16728,15816,17746,20057,20406],"Long Tail":[325267,28043,27974,66468,59342,47703,42206,40027,28032,22698,50444,49603,50029,48786,52797,37272,25247],"Home Center":[0,8055,7704,7791,8171,8370,7155,7930,8101,8010,8680,9264,9171,8846,8678,8408,8598],"Groceries":[0,2272,1370,880,1406,1253,2101,1857,1747,1272,1420,1502,1649,1622,1636,1500,2791],"Others Segments":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Soft Launch New Publishers BR":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"New Publishers BR":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Instore + Offsite":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]};
@@ -1379,7 +1382,8 @@ const SEG_C = {
   'Home Center': '#10B981',
   'Other Segments': '#6B7785',
   'Groceries': '#06B6D4',
-  'Other Revenues': '#14B8A6',
+  'Offsite + Instore': '#14B8A6',
+  'Fees': '#8B5CF6',
   'Instore + Offsite': '#F59E0B',
   'Performance Fee': '#8B5CF6',
   'Other Incomes': '#10B981'
@@ -1953,6 +1957,10 @@ function renderSegments(){
   let totalRealSpend = 0;
   Object.values(DISPLAY_REAL).forEach(seg => totalRealSpend += seg.spendReal || 0);
 
+  /* Category groups for Others-based segments */
+  const _instoreCats = ["Offsite","Instore","Instore + Offsite"];
+  const _feesCats = ["Performance Fee","Fees","Other Incomes"];
+
   /* Pre-compute segment values for sorting */
   const segComputed = {};
   const segKeys0 = Object.keys(DISPLAY_SEGMENTS);
@@ -1960,9 +1968,14 @@ function renderSegments(){
     const meta = DISPLAY_SEGMENTS[seg];
     const real = DISPLAY_REAL[seg];
     let spR, spF, rvR, rvF;
-    if (seg === "Other Revenues") {
-      spR = 0; spF = 0;
-      rvR = othersData.reduce(function(s,o){return s+o.rev},0); rvF = 0;
+    if (seg === "Offsite + Instore") {
+      const od = othersData.filter(function(o){return _instoreCats.indexOf(o.cat)!==-1});
+      spR = od.reduce(function(s,o){return s+o.spend},0); spF = 0;
+      rvR = od.reduce(function(s,o){return s+o.rev},0); rvF = 0;
+    } else if (seg === "Fees") {
+      const od = othersData.filter(function(o){return _feesCats.indexOf(o.cat)!==-1});
+      spR = od.reduce(function(s,o){return s+o.spend},0); spF = 0;
+      rvR = od.reduce(function(s,o){return s+o.rev},0); rvF = 0;
     } else {
       spR = real.spendReal || 0;
       const w = totalRealSpend > 0 ? spR / totalRealSpend : 0;
@@ -2019,16 +2032,21 @@ function renderSegments(){
     const isOpen=openSegs.has(seg);
     const color=SEG_C[seg]||'#8DB6CD';
 
-    /* For "Other Revenues", use othersData totals; for others, compute from real weights */
+    /* For Others-based segments, use filtered othersData; for others, compute from real weights */
     let segSpReal, segSpFc, segRevReal, segRevFc, segTR;
 
-    if(seg==="Other Revenues"){
-      segSpReal=0;
-      const othersTotal=othersData.reduce((s,o)=>s+o.rev,0);
-      segRevReal=othersTotal;
-      segSpFc=0;
-      segRevFc=0;
-      segTR=othersTotal>0?othersTotal/1:1.0;
+    if(seg==="Offsite + Instore"){
+      const od=othersData.filter(function(o){return _instoreCats.indexOf(o.cat)!==-1});
+      segSpReal=od.reduce((s,o)=>s+o.spend,0);
+      segRevReal=od.reduce((s,o)=>s+o.rev,0);
+      segSpFc=0; segRevFc=0;
+      segTR=segSpReal>0?segRevReal/segSpReal:1.0;
+    } else if(seg==="Fees"){
+      const od=othersData.filter(function(o){return _feesCats.indexOf(o.cat)!==-1});
+      segSpReal=od.reduce((s,o)=>s+o.spend,0);
+      segRevReal=od.reduce((s,o)=>s+o.rev,0);
+      segSpFc=0; segRevFc=0;
+      segTR=segSpReal>0?segRevReal/segSpReal:1.0;
     } else {
       segSpReal=real.spendReal||0;
       const segRealWeight=totalRealSpend>0?(real.spendReal||0)/totalRealSpend:0;
@@ -2049,9 +2067,12 @@ function renderSegments(){
     gtSpReal+=segSpReal;gtSpProj+=segSpProj;gtSpMeta+=meta.spendMeta;
     gtRevReal+=segRevReal;gtRevProj+=segRevProj;gtRevMeta+=meta.revMeta;
 
-    const othersCount = seg==="Other Revenues" ? othersData.length : 0;
-    const pubCount = seg==="Other Revenues" ? othersCount : Object.keys(meta.publishers).length;
-    const countLabel = seg==="Other Revenues" ? `${othersCount} lançamento${othersCount!==1?'s':''}` : `${pubCount} pub${pubCount!==1?'s':''}`;
+    const isOthersSeg = (seg==="Offsite + Instore" || seg==="Fees");
+    const othersFiltered = seg==="Offsite + Instore" ? othersData.filter(function(o){return _instoreCats.indexOf(o.cat)!==-1})
+      : seg==="Fees" ? othersData.filter(function(o){return _feesCats.indexOf(o.cat)!==-1}) : [];
+    const othersCount = othersFiltered.length;
+    const pubCount = isOthersSeg ? othersCount : Object.keys(meta.publishers).length;
+    const countLabel = isOthersSeg ? `${othersCount} lançamento${othersCount!==1?'s':''}` : `${pubCount} pub${pubCount!==1?'s':''}`;
     html+=`<tr class="seg-row-seg" onclick="toggleSeg('${seg}')">
       <td><span class="seg-chevron${isOpen?' open':''}">▶</span><span class="seg-dot" style="background:${color}"></span>${seg}<span style="color:#6B7785;font-weight:400;margin-left:6px;font-size:10px">${countLabel}</span></td>
       <td style="text-align:right">${fB(segSpReal)}</td>
@@ -2064,9 +2085,9 @@ function renderSegments(){
       <td style="text-align:right" class="${gapClass(segRevGap)}">${gapSign(segRevGap)}${fB(Math.abs(segRevGap))}</td>
     </tr>`;
 
-    /* Show Others entries for Other Revenues segment */
-    if(isOpen && seg==="Other Revenues"){
-      const od = othersData;
+    /* Show Others entries for Offsite+Instore and Fees segments */
+    if(isOpen && isOthersSeg){
+      const od = othersFiltered;
       if(od.length === 0){
         html+=`<tr class="seg-row-pub"><td colspan="9" style="color:#6B7785;font-style:italic;padding-left:40px">Nenhum lançamento — adicione na aba Others</td></tr>`;
       } else {
@@ -2087,7 +2108,7 @@ function renderSegments(){
     }
 
     /* Show publishers for regular segments */
-    if(isOpen && seg!=="Other Revenues"){
+    if(isOpen && !isOthersSeg){
       const realPubs=real.publishers||{};
       const pubs=Object.entries(meta.publishers).sort((a,b)=>b[1].spendMeta-a[1].spendMeta);
       pubs.forEach(([pubName,pubMeta])=>{
@@ -2829,7 +2850,7 @@ function findOpportunities() {
 function _getSettingsRows() {
   const rows = [];
   const seen = new Set();
-  const allDisplaySegs = ["Beauty","Electronics","Pharma","Groceries","Home Center","LATAM","Long Tail","Other Segments","Other Revenues"];
+  const allDisplaySegs = ["Beauty","Electronics","Pharma","Groceries","Home Center","LATAM","Long Tail","Other Segments","Offsite + Instore","Fees"];
 
   /* Cataloged publishers from META_APRIL */
   Object.entries(META_APRIL).forEach(([seg, data]) => {
@@ -3023,9 +3044,9 @@ function _recalcAfterOverrides() {
       data.revTech=rt; data.revNetwork=rn;
     });
   }
-  /* Recalc META_APRIL segment totals from publishers */
+  /* Recalc META_APRIL segment totals from publishers (skip Long Tail — meta is fixed) */
   Object.entries(META_APRIL).forEach(function([seg, data]) {
-    if (!data.publishers) return;
+    if (!data.publishers || seg === 'Long Tail') return;
     var sp=0,rv=0;
     Object.values(data.publishers).forEach(function(p) {
       sp += p.spendMeta||0; rv += p.revMeta||0;
@@ -3160,7 +3181,7 @@ function showSettingsToast(msg) {
 
 function renderOthers(){
   document.getElementById("others-tbody").innerHTML=othersData.map(r=>`<tr>
-    <td><select class="others-input" onchange="updOther(${r.id},'cat',this.value)">${["","Offsite","Instore","Performance Fee","Fees","Other Incomes"].map(c=>`<option value="${c}"${r.cat===c?" selected":""}>${c||"Selecionar..."}</option>`).join("")}</select></td>
+    <td><select class="others-input" onchange="updOther(${r.id},'cat',this.value)">${["","Instore + Offsite","Offsite","Instore","Performance Fee","Fees","Other Incomes"].map(c=>`<option value="${c}"${r.cat===c?" selected":""}>${c||"Selecionar..."}</option>`).join("")}</select></td>
     <td><input class="others-input" value="${r.desc}" onchange="updOther(${r.id},'desc',this.value)" placeholder="Descrição..."></td>
     <td><input class="others-input" type="number" value="${r.spend}" onchange="updOther(${r.id},'spend',this.value)"></td>
     <td><input class="others-input" type="number" value="${r.rev}" onchange="updOther(${r.id},'rev',this.value)"></td>
@@ -3175,11 +3196,11 @@ function renderOthers(){
     <div class="summary-card highlight"><div style="font-size:12px;color:#0F3E99;margin-bottom:8px;font-weight:600">TOTAL GERAL</div><div style="font-size:22px;font-weight:700;color:#0F3E99">${fB(t.t.revenue)}</div><div style="font-size:12px;color:#6B7785;margin-top:4px">Forecast + Others</div></div>`;
 }
 
-function updOther(id,k,v){othersData=othersData.map(r=>r.id===id?{...r,[k]:k==="cat"||k==="desc"?v:Number(v)||0}:r);renderOthers();renderKPIs();renderComp()}
+function updOther(id,k,v){othersData=othersData.map(r=>r.id===id?{...r,[k]:k==="cat"||k==="desc"?v:Number(v)||0}:r);renderOthers();renderKPIs();renderComp();_renderSegTable()}
 
-function delOther(id){othersData=othersData.filter(r=>r.id!==id);renderOthers();renderKPIs();renderComp()}
+function delOther(id){othersData=othersData.filter(r=>r.id!==id);renderOthers();renderKPIs();renderComp();_renderSegTable()}
 
-function addOthersRow(){othersData=othersData.concat([{id:Date.now(),cat:"",spend:0,rev:0,desc:""}]);renderOthers();renderKPIs();renderComp()}
+function addOthersRow(){othersData=othersData.concat([{id:Date.now(),cat:"",spend:0,rev:0,desc:""}]);renderOthers();renderKPIs();renderComp();_renderSegTable()}
 
 // ============================================================================
 // PAGE NAVIGATION
