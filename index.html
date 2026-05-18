@@ -1648,12 +1648,17 @@ function renderKPIs() {
   const momRev = prevRev ? ((rvProj - prevRev) / prevRev) : null;
 
   /* MTD comparison — Realizado: compare day-N of current vs day-N of previous month
+     Include Others from previous month for fair comparison.
      For closed months, MTD full = MoM, so skip (avoid duplicate badge) */
   let mtdSpend = null, mtdRev = null;
   if (isCurrent && prevMk) {
     const prevMtd = getMTD(prevMk, NA);
-    if (prevMtd && prevMtd.spend > 0) mtdSpend = (spReal - prevMtd.spend) / prevMtd.spend;
-    if (prevMtd && prevMtd.rev > 0) mtdRev = (rvReal - prevMtd.rev) / prevMtd.rev;
+    if (prevMtd) {
+      const prevMtdSp = prevMtd.spend + prevOSp;
+      const prevMtdRv = prevMtd.rev + prevORv;
+      if (prevMtdSp > 0) mtdSpend = (spReal - prevMtdSp) / prevMtdSp;
+      if (prevMtdRv > 0) mtdRev = (rvReal - prevMtdRv) / prevMtdRv;
+    }
   }
 
   function momBadge(mom, prevLbl, suffix) {
