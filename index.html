@@ -2864,7 +2864,8 @@ function _buildOverridesSnapshot() {
 function _applyOverrides(overrides) {
   if (!overrides) return;
   Object.entries(overrides).forEach(function([pub, ov]) {
-    [META_APRIL, REAL_APRIL].forEach(function(store) {
+    [META_APRIL, REAL_APRIL, REAL_CLOSED_APR].forEach(function(store) {
+      if (!store) return;
       Object.entries(store).forEach(function([seg, data]) {
         if (!data.publishers || !data.publishers[pub]) return;
         if (ov.trTech !== undefined) data.publishers[pub].trTech = ov.trTech;
@@ -2872,13 +2873,74 @@ function _applyOverrides(overrides) {
         if (ov.seg && ov.seg !== seg) {
           var pubData = data.publishers[pub];
           delete data.publishers[pub];
-          if (!store[ov.seg]) store[ov.seg] = store === META_APRIL ? {spendMeta:0,revMeta:0,publishers:{}} : {spendReal:0,revReal:0,publishers:{}};
+          if (!store[ov.seg]) store[ov.seg] = {spendReal:0,revReal:0,spendTech:0,spendNetwork:0,revTech:0,revNetwork:0,publishers:{}};
           if (!store[ov.seg].publishers) store[ov.seg].publishers = {};
           store[ov.seg].publishers[pub] = pubData;
         }
       });
     });
   });
+}
+/* Recalculate segment totals + DISPLAY_REAL/DISPLAY_SEGMENTS after overrides move publishers */
+function _recalcAfterOverrides() {
+  /* Recalc REAL_APRIL segment totals from publishers */
+  Object.entries(REAL_APRIL).forEach(function([seg, data]) {
+    if (!data.publishers) return;
+    var sp=0,rv=0,st=0,sn=0,rt=0,rn=0;
+    Object.values(data.publishers).forEach(function(p) {
+      sp += p.spendReal||0; rv += p.revReal||0;
+      st += p.spendTech||0; sn += p.spendNetwork||0;
+      rt += p.revTech||0; rn += p.revNetwork||0;
+    });
+    data.spendReal=sp; data.revReal=rv;
+    data.spendTech=st; data.spendNetwork=sn;
+    data.revTech=rt; data.revNetwork=rn;
+  });
+  /* Recalc REAL_CLOSED_APR segment totals from publishers */
+  if (typeof REAL_CLOSED_APR !== 'undefined') {
+    Object.entries(REAL_CLOSED_APR).forEach(function([seg, data]) {
+      if (!data.publishers) return;
+      var sp=0,rv=0,st=0,sn=0,rt=0,rn=0;
+      Object.values(data.publishers).forEach(function(p) {
+        sp += p.spendReal||0; rv += p.revReal||0;
+        st += p.spendTech||0; sn += p.spendNetwork||0;
+        rt += p.revTech||0; rn += p.revNetwork||0;
+      });
+      data.spendReal=sp; data.revReal=rv;
+      data.spendTech=st; data.spendNetwork=sn;
+      data.revTech=rt; data.revNetwork=rn;
+    });
+  }
+  /* Recalc META_APRIL segment totals from publishers */
+  Object.entries(META_APRIL).forEach(function([seg, data]) {
+    if (!data.publishers) return;
+    var sp=0,rv=0;
+    Object.values(data.publishers).forEach(function(p) {
+      sp += p.spendMeta||0; rv += p.revMeta||0;
+    });
+    data.spendMeta=sp; data.revMeta=rv;
+  });
+  /* Refresh DISPLAY_REAL with recalculated values */
+  var drMap = {"Beauty":"Beauty","Electronics":"Electronics","Pharma":"Pharma","Groceries":"Groceries","Home Center":"Home Center","LATAM":"LATAM","Long Tail":"Long Tail","Other Segments":"Others"};
+  Object.entries(drMap).forEach(function([dk, rk]) {
+    var rd = REAL_APRIL[rk];
+    if (rd && DISPLAY_REAL[dk]) {
+      DISPLAY_REAL[dk].spendReal = rd.spendReal||0;
+      DISPLAY_REAL[dk].revReal = rd.revReal||0;
+    }
+  });
+  /* Refresh DISPLAY_SEGMENTS with recalculated values */
+  Object.keys(DISPLAY_SEGMENTS).forEach(function(dk) {
+    var md = META_APRIL[dk];
+    if (md && DISPLAY_SEGMENTS[dk]) {
+      DISPLAY_SEGMENTS[dk].spendMeta = md.spendMeta||0;
+      DISPLAY_SEGMENTS[dk].revMeta = md.revMeta||0;
+    }
+  });
+  /* Recalc REALIZED_TOTAL from DISPLAY_REAL */
+  var newTotal = 0;
+  Object.values(DISPLAY_REAL).forEach(function(seg) { newTotal += seg.spendReal||0; });
+  /* NA stays the same — just segment distribution changed */
 }
 function _loadSettingsOverrides() {
   try {
@@ -2909,6 +2971,7 @@ function exportSettingsJson() {
   showSettingsToast('settings.json exportado! Faça commit no repo para aplicar para todos.');
 }
 _loadSettingsOverrides();
+_recalcAfterOverrides();
 _loadDeflator();
 recalcBlendedTR();
 
@@ -2926,6 +2989,17 @@ function updSettingsSeg(idx, newSeg) {
       META_APRIL[newSeg].publishers[p.publisher] = pubData;
     }
   });
+  /* Find and update in REAL_APRIL */
+  Object.entries(REAL_APRIL).forEach(([seg, data]) => {
+    if (data.publishers && data.publishers[p.publisher]) {
+      const pubData = data.publishers[p.publisher];
+      delete data.publishers[p.publisher];
+      if (!REAL_APRIL[newSeg]) REAL_APRIL[newSeg] = {spendReal:0, revReal:0, spendTech:0, spendNetwork:0, revTech:0, revNetwork:0, publishers:{}};
+      if (!REAL_APRIL[newSeg].publishers) REAL_APRIL[newSeg].publishers = {};
+      REAL_APRIL[newSeg].publishers[p.publisher] = pubData;
+    }
+  });
+  _recalcAfterOverrides();
   _saveSettingsOverrides();
   showSettingsToast("Segmento de " + p.publisher + " atualizado para " + newSeg);
   renderAll();

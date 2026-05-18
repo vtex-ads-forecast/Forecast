@@ -765,11 +765,91 @@
     "trNetwork": 0.25
   },
   "OLIMPICA CO - PUBLISHER": {
+    "seg": "LATAM",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "TENDA ATACADO - PUBLISHER": {
+    "seg": "Groceries",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "GBARBOSA": {
+    "seg": "Groceries",
+    "trTech": 0.0,
+    "trNetwork": 0.15
+  },
+  "SUPER NOSSO": {
+    "seg": "Groceries",
+    "trTech": 0.05,
+    "trNetwork": 0.15
+  },
+  "PICPAY PUBLISHER": {
+    "seg": "Others",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "FARMACITYQA": {
+    "seg": "LATAM",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "SHOPSTAR PUBLISHER": {
+    "seg": "LATAM",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "SHOPSTAR PUBLISHER HML": {
+    "seg": "LATAM",
+    "trTech": 0.1,
+    "trNetwork": 0.0
+  },
+  "CARROSSEL NO LAR - SUBPUBLISHER": {
     "seg": "Long Tail",
     "trTech": 0.1,
     "trNetwork": 0.15
   },
-  "TENDA ATACADO - PUBLISHER": {
+  "CVC - PUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15
+  },
+  "EITRI PUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15
+  },
+  "IRMÃOS SILVA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15
+  },
+  "LIVELO - PUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15
+  },
+  "LIVELO - PUBLISHER HML": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15
+  },
+  "MARKETPLACE CUIDAÊ - PUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15
+  },
+  "ON CITY - PUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15
+  },
+  "SILVA INDAIA - SUBPUBLISHER": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15
+  },
+  "SUPER XTRA - PUBLISHER": {
     "seg": "Long Tail",
     "trTech": 0.1,
     "trNetwork": 0.15
