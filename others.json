@@ -60,6 +60,13 @@
       "spend": 0,
       "rev": 33500,
       "desc": "Globo"
+    },
+    {
+      "id": 1779216917878,
+      "cat": "Fees",
+      "spend": 0,
+      "rev": 0,
+      "desc": "Clubbi"
     }
   ]
 }
