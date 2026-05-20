@@ -251,6 +251,26 @@ def build_excel(raw_data, pub_seg, pub_tr, output_path):
     print(f"✓ Saved to {output_path}")
 
 
+def get_month_ranges(start, end):
+    """Split a date range into per-month chunks."""
+    from datetime import datetime, timedelta
+    import calendar
+    s = datetime.strptime(start, "%Y-%m-%d")
+    e = datetime.strptime(end, "%Y-%m-%d")
+    ranges = []
+    cur = s
+    while cur <= e:
+        last_day = min(calendar.monthrange(cur.year, cur.month)[1], e.day if cur.year == e.year and cur.month == e.month else 31)
+        month_end = cur.replace(day=last_day)
+        ranges.append((cur.strftime("%Y-%m-%d"), month_end.strftime("%Y-%m-%d")))
+        # Move to first day of next month
+        if cur.month == 12:
+            cur = cur.replace(year=cur.year+1, month=1, day=1)
+        else:
+            cur = cur.replace(month=cur.month+1, day=1)
+    return ranges
+
+
 def main():
     if len(sys.argv) >= 3:
         start, end = sys.argv[1], sys.argv[2]
@@ -263,14 +283,23 @@ def main():
     print(f"{'='*60}\n")
 
     token = metabase_auth()
-    raw = fetch_data(token, start, end)
-    if not raw:
+
+    # Fetch month by month to avoid Metabase timeout
+    month_ranges = get_month_ranges(start, end)
+    all_raw = []
+    for ms, me in month_ranges:
+        print(f"\n── Fetching {ms} → {me} ──")
+        raw = fetch_data(token, ms, me)
+        all_raw.extend(raw)
+        print(f"  Running total: {len(all_raw)} rows")
+
+    if not all_raw:
         print("⚠ No data. Exiting.")
         return
 
     pub_seg, pub_tr = load_pub_mapping()
     output = os.path.join(os.path.dirname(__file__), "..", "VTEX_Ads_Dados_Jan_Mai_2026.xlsx")
-    build_excel(raw, pub_seg, pub_tr, output)
+    build_excel(all_raw, pub_seg, pub_tr, output)
 
 
 if __name__ == "__main__":
