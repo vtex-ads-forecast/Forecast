@@ -1,0 +1,52 @@
+name: Export Excel Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: 'Start date (YYYY-MM-DD)'
+        required: false
+        default: '2026-01-01'
+      end_date:
+        description: 'End date (YYYY-MM-DD)'
+        required: false
+        default: '2026-05-20'
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests openpyxl
+
+      - name: Run export
+        env:
+          METABASE_USER: ${{ secrets.METABASE_USER }}
+          METABASE_PASS: ${{ secrets.METABASE_PASS }}
+        run: |
+          python scripts/export_excel.py "${{ github.event.inputs.start_date }}" "${{ github.event.inputs.end_date }}"
+
+      - name: Upload Excel artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: VTEX_Ads_Dados
+          path: VTEX_Ads_Dados_Jan_Mai_2026.xlsx
+
+      - name: Commit Excel to repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add VTEX_Ads_Dados_Jan_Mai_2026.xlsx
+          git diff --staged --quiet || git commit -m "chore: export Excel data (${{ github.event.inputs.start_date }} → ${{ github.event.inputs.end_date }})"
+          git push
