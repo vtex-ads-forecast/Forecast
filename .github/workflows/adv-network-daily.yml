@@ -1,4 +1,8 @@
 name: AdNetwork Daily Report
+# NOTA: A execução diária automática é feita DENTRO do workflow "Daily Gap Report — Slack",
+# que busca os dados AdNetwork como passo inline (sem commit). Este workflow existe para
+# rodar manualmente quando você precisar atualizar adv_network_daily.json no repositório
+# (ex: backfill histórico, debug).
 
 on:
   workflow_dispatch:

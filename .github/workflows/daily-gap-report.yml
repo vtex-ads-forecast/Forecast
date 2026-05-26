@@ -1,0 +1,49 @@
+name: Daily Gap Report — Slack
+
+# Dispara SOMENTE quando "Daily Dashboard Update" completar com sucesso.
+# Isso garante que index.html já tem os dados D-1 antes de gerar o report.
+on:
+  workflow_run:
+    workflows: ["Daily Dashboard Update"]
+    types:
+      - completed
+  workflow_dispatch:  # permite disparo manual para testes
+
+permissions:
+  contents: read
+
+jobs:
+  gap-report:
+    runs-on: ubuntu-latest
+
+    # Em execuções automáticas, só prosseguir se o dashboard update teve sucesso.
+    # Em dispatch manual, sempre executa.
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+
+    steps:
+      - name: Checkout (main, pós-update)
+        uses: actions/checkout@v4
+        with:
+          ref: main   # garante que temos o index.html mais recente (commitado pelo daily-update)
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests matplotlib
+
+      - name: Fetch AdNetwork daily data (D-1 fresco)
+        env:
+          METABASE_USER: ${{ secrets.METABASE_USER }}
+          METABASE_PASS: ${{ secrets.METABASE_PASS }}
+        run: python scripts/daily_adv_network.py
+
+      - name: Generate chart and post to Slack
+        env:
+          SLACK_BOT_TOKEN:  ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+        run: python scripts/daily_gap_report.py
