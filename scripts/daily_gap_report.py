@@ -274,7 +274,7 @@ def format_text(actuals: list, na: int, td: int, meta_total: float,
 CHART_PNG  = ROOT / "gap_report_latest.png"
 REPORT_JSON = ROOT / "gap_report_latest.json"
 
-GITHUB_RAW_BASE = "https://raw.githubusercontent.com/vtex-ads-forecast/Forecast/main"
+GITHUB_PAGES_BASE = "https://vtex-ads-forecast.github.io/Forecast"
 
 
 def save_outputs(chart_png: bytes, text: str, na: int, td: int):
@@ -288,7 +288,7 @@ def save_outputs(chart_png: bytes, text: str, na: int, td: int):
     # Salvar JSON com texto e metadados para a Cowork scheduled task
     data = {
         "text": text,
-        "chart_url": f"{GITHUB_RAW_BASE}/gap_report_latest.png",
+        "chart_url": f"{GITHUB_PAGES_BASE}/gap_report_latest.png",
         "na": na,
         "td": td,
         "generated_at": datetime.now(timezone.utc).isoformat(),
