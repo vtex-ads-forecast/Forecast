@@ -269,63 +269,37 @@ def format_text(actuals: list, na: int, td: int, meta_total: float,
     return "\n".join(lines)
 
 
-# ── Slack ──────────────────────────────────────────────────────────────────
+# ── Output ─────────────────────────────────────────────────────────────────
 
-def slack_post_image(token: str, channel: str, text: str,
-                     image_bytes: bytes, filename: str = "gap_report.png"):
-    """Faz upload da imagem via Slack Files API v2 e posta no canal."""
-    headers = {"Authorization": f"Bearer {token}"}
+CHART_PNG  = ROOT / "gap_report_latest.png"
+REPORT_JSON = ROOT / "gap_report_latest.json"
 
-    # 1) Obter upload URL
-    r = requests.get(
-        "https://slack.com/api/files.getUploadURLExternal",
-        headers=headers,
-        params={"filename": filename, "length": len(image_bytes)},
-        timeout=30,
-    )
-    r.raise_for_status()
-    data = r.json()
-    if not data.get("ok"):
-        raise RuntimeError(f"files.getUploadURLExternal falhou: {data.get('error')}")
-    upload_url = data["upload_url"]
-    file_id    = data["file_id"]
+GITHUB_RAW_BASE = "https://raw.githubusercontent.com/vtex-ads-forecast/Forecast/main"
 
-    # 2) Upload do arquivo
-    r = requests.post(
-        upload_url,
-        data=image_bytes,
-        headers={"Content-Type": "image/png"},
-        timeout=60,
-    )
-    r.raise_for_status()
 
-    # 3) Completar upload e compartilhar no canal
-    r = requests.post(
-        "https://slack.com/api/files.completeUploadExternal",
-        headers=headers,
-        json={
-            "files": [{"id": file_id, "title": f"Gap Report D — {MONTH_NAME}"}],
-            "channel_id": channel,
-            "initial_comment": text,
-        },
-        timeout=30,
-    )
-    r.raise_for_status()
-    data = r.json()
-    if not data.get("ok"):
-        raise RuntimeError(f"files.completeUploadExternal falhou: {data.get('error')}")
+def save_outputs(chart_png: bytes, text: str, na: int, td: int):
+    """Salva gráfico e JSON no repo para serem servidos pelo GitHub Pages."""
+    from datetime import datetime, timezone
 
-    print(f"✓ Postado no Slack (canal {channel})")
+    # Salvar imagem
+    CHART_PNG.write_bytes(chart_png)
+    print(f"✓ Gráfico salvo em {CHART_PNG}")
+
+    # Salvar JSON com texto e metadados para a Cowork scheduled task
+    data = {
+        "text": text,
+        "chart_url": f"{GITHUB_RAW_BASE}/gap_report_latest.png",
+        "na": na,
+        "td": td,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+    }
+    REPORT_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"✓ JSON salvo em {REPORT_JSON}")
 
 
 # ── Main ───────────────────────────────────────────────────────────────────
 
 def main():
-    slack_token   = os.environ.get("SLACK_BOT_TOKEN")
-    slack_channel = os.environ.get("SLACK_CHANNEL_ID")
-    if not slack_token or not slack_channel:
-        raise ValueError("SLACK_BOT_TOKEN e SLACK_CHANNEL_ID são obrigatórios")
-
     # Carregar dados do index.html
     actuals, na, td, meta_total = load_html_data()
     print(f"✓ ACTUALS: {len(actuals)} dias | NA={na} | TD={td} | Meta=R${meta_total:,.0f}")
@@ -354,8 +328,8 @@ def main():
     text = format_text(actuals, na, td, meta_total, proj, adv_data)
     print("✓ Texto:\n" + text)
 
-    # Postar no Slack
-    slack_post_image(slack_token, slack_channel, text, chart_png)
+    # Salvar arquivos no repo (GitHub Actions fará o commit)
+    save_outputs(chart_png, text, na, td)
     print("✓ Concluído!")
 
 
