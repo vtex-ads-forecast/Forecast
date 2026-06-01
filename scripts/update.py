@@ -402,10 +402,11 @@ def process_rows(raw_data, pub_seg, pub_tr):
         pub_delta[seg][r["pub"]][f"sp{key}"] += cost_brl
         pub_delta[seg][r["pub"]][f"rv{key}"] += rev
 
-    # Advertiser deltas (raw currency for ADV_DATA)
+    # Advertiser deltas (BRL-converted, consistent with seg_delta/pub_delta)
     adv_delta = defaultdict(lambda: {"spend": 0, "pub": "", "curr": ""})
     for r in rows:
-        adv_delta[r["adv"]]["spend"] += r["cost"]
+        fx = FX_RATES.get(r["currency"], 1.0)
+        adv_delta[r["adv"]]["spend"] += r["cost"] * fx
         adv_delta[r["adv"]]["pub"] = r["pub"]
         adv_delta[r["adv"]]["curr"] = r["currency"]
 

@@ -788,6 +788,19 @@ function recalcBlendedTR() {
       _realRevTotal += spT * trT + spN * trN;
     });
   });
+  /* ADV_DATA is the authoritative source for AdNetwork spend (advertiser-level).
+     REAL_APRIL publisher-level spendNetwork can drift due to incremental rounding
+     in update.py. Use ADV_DATA sum(sn) to correct the total, preserving the
+     publisher-level TR weighting for revenue calculation. */
+  var advNetSpend = ADV_DATA.filter(function(a){ return a.n && a.n.toLowerCase().indexOf('vtexads') >= 0; })
+                            .reduce(function(s,a){ return s + (a.sn||0); }, 0);
+  if (advNetSpend > 0) {
+    var correctionRatio = advNetSpend / (_realSpendNet || 1);
+    _realSpendNet = advNetSpend;
+    _realSpendTotal = _realSpendTech + _realSpendNet;
+    _realRevNet = _realRevNet * correctionRatio;
+    _realRevTotal = _realRevTech + _realRevNet;
+  }
   BLENDED_TR_TECH = _realSpendTech > 0 ? _realRevTech / _realSpendTech : 0.10;
   var rawTrNet = _realSpendNet > 0 ? _realRevNet / _realSpendNet : 0.15;
   var deflatorRate = _deflatorPct / 100;

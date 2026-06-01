@@ -271,7 +271,7 @@ def format_text(actuals: list, na: int, td: int, meta_total: float,
 
 # ── Output ─────────────────────────────────────────────────────────────────
 
-CHART_PNG  = ROOT / "gap_report_latest.png"
+CHART_PNG   = ROOT / "gap_report_latest.png"
 REPORT_JSON = ROOT / "gap_report_latest.json"
 
 GITHUB_PAGES_BASE = "https://vtex-ads-forecast.github.io/Forecast"
@@ -281,11 +281,9 @@ def save_outputs(chart_png: bytes, text: str, na: int, td: int):
     """Salva gráfico e JSON no repo para serem servidos pelo GitHub Pages."""
     from datetime import datetime, timezone
 
-    # Salvar imagem
     CHART_PNG.write_bytes(chart_png)
     print(f"✓ Gráfico salvo em {CHART_PNG}")
 
-    # Salvar JSON com texto e metadados para a Cowork scheduled task
     data = {
         "text": text,
         "chart_url": f"{GITHUB_PAGES_BASE}/gap_report_latest.png",
@@ -295,6 +293,47 @@ def save_outputs(chart_png: bytes, text: str, na: int, td: int):
     }
     REPORT_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"✓ JSON salvo em {REPORT_JSON}")
+
+
+# ── Slack posting ───────────────────────────────────────────────────────────
+
+def post_to_slack(text: str, png_bytes: bytes, token: str, channel_id: str):
+    """Faz upload do PNG como arquivo e posta o texto como initial_comment."""
+    headers = {"Authorization": f"Bearer {token}"}
+
+    # 1. Obter URL de upload
+    resp = requests.post(
+        "https://slack.com/api/files.getUploadURLExternal",
+        headers=headers,
+        data={"filename": "gap_report.png", "length": len(png_bytes)},
+    )
+    resp.raise_for_status()
+    data = resp.json()
+    if not data.get("ok"):
+        raise RuntimeError(f"getUploadURLExternal falhou: {data}")
+    upload_url = data["upload_url"]
+    file_id    = data["file_id"]
+
+    # 2. Enviar bytes do PNG
+    put = requests.post(upload_url, data=png_bytes,
+                        headers={"Content-Type": "image/png"})
+    put.raise_for_status()
+
+    # 3. Completar upload no canal com o texto como initial_comment
+    complete = requests.post(
+        "https://slack.com/api/files.completeUploadExternal",
+        headers={**headers, "Content-Type": "application/json"},
+        json={
+            "files": [{"id": file_id}],
+            "channel_id": channel_id,
+            "initial_comment": text,
+        },
+    )
+    complete.raise_for_status()
+    result = complete.json()
+    if not result.get("ok"):
+        raise RuntimeError(f"completeUploadExternal falhou: {result}")
+    print(f"✓ Slack: PNG enviado como arquivo (file_id={file_id})")
 
 
 # ── Main ───────────────────────────────────────────────────────────────────
@@ -330,6 +369,15 @@ def main():
 
     # Salvar arquivos no repo (GitHub Actions fará o commit)
     save_outputs(chart_png, text, na, td)
+
+    # Postar no Slack via API (requer SLACK_BOT_TOKEN e SLACK_CHANNEL_ID)
+    slack_token   = os.getenv("SLACK_BOT_TOKEN")
+    slack_channel = os.getenv("SLACK_CHANNEL_ID", "C0AG5P92PLZ")
+    if slack_token:
+        post_to_slack(text, chart_png, slack_token, slack_channel)
+    else:
+        print("⚠️  SLACK_BOT_TOKEN não definido — pulando post no Slack")
+
     print("✓ Concluído!")
 
 

@@ -42,7 +42,10 @@ jobs:
           METABASE_PASS: ${{ secrets.METABASE_PASS }}
         run: python scripts/daily_adv_network.py
 
-      - name: Generate chart and report JSON
+      - name: Generate chart, report JSON and post to Slack
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: C0AG5P92PLZ
         run: python scripts/daily_gap_report.py
 
       - name: Commit gap_report_latest files
