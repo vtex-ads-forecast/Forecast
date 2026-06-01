@@ -790,17 +790,18 @@ function recalcBlendedTR() {
   });
   /* ADV_DATA is the authoritative source for AdNetwork spend total.
      REAL_APRIL publisher-level spendNetwork drifts due to incremental rounding. */
-  var advNetSpend = (typeof ADV_DATA !== 'undefined') ?
-    ADV_DATA.filter(function(a){ return a.n && a.n.toLowerCase().indexOf('vtexads') >= 0; })
-            .reduce(function(s,a){ return s + (a.sn||0); }, 0) : 0;
-  if (advNetSpend > 0 && _realSpendNet > 0) {
-    var netDiff = advNetSpend - _realSpendNet;
-    var correctionRatio = advNetSpend / _realSpendNet;
-    _realSpendNet = advNetSpend;
-    _realSpendTotal += netDiff;
-    _realRevNet = _realRevNet * correctionRatio;
-    _realRevTotal = _realRevTech + _realRevNet;
-  }
+  try {
+    var advNetSpend = ADV_DATA.filter(function(a){ return a.n && a.n.toLowerCase().indexOf('vtexads') >= 0; })
+              .reduce(function(s,a){ return s + (a.sn||0); }, 0);
+    if (advNetSpend > 0 && _realSpendNet > 0) {
+      var netDiff = advNetSpend - _realSpendNet;
+      var correctionRatio = advNetSpend / _realSpendNet;
+      _realSpendNet = advNetSpend;
+      _realSpendTotal += netDiff;
+      _realRevNet = _realRevNet * correctionRatio;
+      _realRevTotal = _realRevTech + _realRevNet;
+    }
+  } catch(e) { /* ADV_DATA not yet initialized on first call */ }
   BLENDED_TR_TECH = _realSpendTech > 0 ? _realRevTech / _realSpendTech : 0.10;
   var rawTrNet = _realSpendNet > 0 ? _realRevNet / _realSpendNet : 0.15;
   var deflatorRate = _deflatorPct / 100;
