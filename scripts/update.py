@@ -433,6 +433,286 @@ def process_rows(raw_data, pub_seg, pub_tr):
     }
 
 
+# ─── MONTH TRANSITION ──────────────────────────────────────────────
+MONTH_NAMES = {
+    1: "Janeiro", 2: "Fevereiro", 3: "Março", 4: "Abril",
+    5: "Maio", 6: "Junho", 7: "Julho", 8: "Agosto",
+    9: "Setembro", 10: "Outubro", 11: "Novembro", 12: "Dezembro",
+}
+
+def get_current_month_from_html(html):
+    """Detect which month is currently 'current' in the dashboard."""
+    m = re.search(r'"(\d{4}-\d{2})":\s*\{\s*status:\s*"current"', html)
+    return m.group(1) if m else None
+
+def days_in_month(year, month):
+    """Return the number of days in a given month."""
+    import calendar
+    return calendar.monthrange(year, month)[1]
+
+def close_month_and_open_new(html, new_month_key):
+    """
+    Close the current month and open a new one.
+    Steps:
+    1. Change current month status from "current" to "closed" in MONTHS_DATA
+    2. Copy REAL_APRIL → REAL_CLOSED_NEW and add to CLOSED_DETAIL
+    3. Build cumulative daily spend/rev arrays for the closing month
+    4. Reset REAL_APRIL to empty segments (preserve structure from META_APRIL)
+    5. Reset NA=0, TD=new month days, ACTUALS=[]
+    6. Reset REAL_DAILY_APR to empty arrays
+    7. Reset ADV_DATA: move current month spend to historical, zero out sn/st
+    8. Add new month entry to MONTHS_DATA as "current"
+    """
+    cur_month = get_current_month_from_html(html)
+    if not cur_month:
+        print("  ⚠ No current month found in MONTHS_DATA")
+        return html
+
+    cur_year, cur_mon = int(cur_month[:4]), int(cur_month[5:7])
+    new_year, new_mon = int(new_month_key[:4]), int(new_month_key[5:7])
+    new_td = days_in_month(new_year, new_mon)
+    new_label = f"{MONTH_NAMES[new_mon]} {new_year}"
+
+    print(f"\n{'='*60}")
+    print(f"  MONTH TRANSITION: {cur_month} → {new_month_key}")
+    print(f"  New month: {new_label} ({new_td} days)")
+    print(f"{'='*60}")
+
+    # --- Step 1: Close current month in MONTHS_DATA ---
+    # Change status: "current" to "closed" and fix computed fields
+    cur_na = get_current_na(html)
+    # Get REALIZED_TOTAL from ACTUALS
+    actuals_m = re.search(r'const ACTUALS = \[(.*?)\];', html)
+    actuals_total = 0
+    if actuals_m and actuals_m.group(1).strip():
+        for dm in re.finditer(r'"adspend":\s*(\d+)', actuals_m.group(1)):
+            actuals_total += int(dm.group(1))
+
+    # Read current META totals
+    meta_sp_m = re.search(r'const META_SPEND_TOTAL\s*=\s*(\d+)', html)
+    meta_rv_m = re.search(r'const META_REV_TOTAL\s*=\s*(\d+)', html)
+    meta_sp = int(meta_sp_m.group(1)) if meta_sp_m else 0
+    meta_rv = int(meta_rv_m.group(1)) if meta_rv_m else 0
+
+    # Read blended TR for revenue estimate
+    blended_m = re.search(r'BLENDED_TR\s*=\s*([\d.]+)', html)
+    blended_tr = float(blended_m.group(1)) if blended_m else 0.1
+    actuals_rev = round(actuals_total * blended_tr)
+
+    # Replace the current month block in MONTHS_DATA
+    old_current = re.search(
+        rf'"{cur_month}":\s*\{{[^}}]*status:\s*"current"[^}}]*\}}',
+        html
+    )
+    if old_current:
+        new_closed = (
+            f'"{cur_month}":{{status:"closed",label:"{MONTH_NAMES[cur_mon]} {cur_year}",'
+            f'days:{cur_na},actualDays:{cur_na},'
+            f'metaSpend:{meta_sp},metaRev:{meta_rv},'
+            f'realSpend:{actuals_total},realRev:{actuals_rev},'
+            f'segMetas:null,others:[],forecastUsed:null}}'
+        )
+        html = html[:old_current.start()] + new_closed + html[old_current.end():]
+        print(f"  ✓ Closed {cur_month} in MONTHS_DATA (realSpend={actuals_total:,})")
+
+    # --- Step 2: Copy REAL_APRIL → CLOSED_DETAIL ---
+    # Create a new const for the closed month's detail
+    ra_m = re.search(r'(const REAL_APRIL\s*=\s*\{)', html)
+    ra_start = ra_m.start(1)
+    depth = 0
+    for i in range(html.find('{', ra_start), len(html)):
+        if html[i] == '{': depth += 1
+        elif html[i] == '}': depth -= 1
+        if depth == 0:
+            ra_end = i + 1
+            break
+    ra_block = html[ra_start:ra_end]
+    closed_var = f'REAL_CLOSED_{cur_month.replace("-","_")}'
+
+    # Extract just the value (everything after the =)
+    eq_pos = ra_block.find('=')
+    ra_value = ra_block[eq_pos + 1:].strip()  # The {...} object
+
+    # Insert the closed data before CLOSED_DETAIL
+    cd_pos = html.find('const CLOSED_DETAIL')
+    closed_const = f'const {closed_var} = {ra_value};\n\n'
+    html = html[:cd_pos] + closed_const + html[cd_pos:]
+
+    # Add to CLOSED_DETAIL
+    cd_m = re.search(r'const CLOSED_DETAIL\s*=\s*\{', html)
+    insert_pos = html.find('}', cd_m.end())
+    new_entry = f',\n  "{cur_month}": {{ real: {closed_var} }}'
+    # Check if CLOSED_DETAIL is empty
+    block = html[cd_m.end():insert_pos].strip()
+    if block:
+        html = html[:insert_pos] + new_entry + html[insert_pos:]
+    else:
+        html = html[:insert_pos] + f'\n  "{cur_month}": {{ real: {closed_var} }}' + html[insert_pos:]
+    print(f"  ✓ Saved {cur_month} detail as {closed_var}")
+
+    # --- Step 3: Build cumulative daily arrays ---
+    if actuals_m and actuals_m.group(1).strip():
+        day_spend = {}
+        for dm in re.finditer(r'\{"day":\s*(\d+),\s*"adspend":\s*(\d+)\}', actuals_m.group(1)):
+            day_spend[int(dm.group(1))] = int(dm.group(2))
+
+        cumul_spend = []
+        running = 0
+        for d in sorted(day_spend.keys()):
+            running += day_spend[d]
+            cumul_spend.append(running)
+
+        # For revenue, approximate with blended TR
+        cumul_rev = [round(s * blended_tr) for s in cumul_spend]
+
+        # Add to MONTHLY_DAILY_CUMUL_SPEND
+        cumul_sp_m = re.search(r'(const MONTHLY_DAILY_CUMUL_SPEND\s*=\s*\{)', html)
+        close_brace = html.find('};', cumul_sp_m.end())
+        # Check if previous entry already has trailing comma
+        pre = html[:close_brace].rstrip()
+        sep = '' if pre.endswith(',') else ','
+        sp_entry = f'{sep}\n  "{cur_month}": [{",".join(str(x) for x in cumul_spend)}]\n'
+        html = html[:close_brace] + sp_entry + html[close_brace:]
+
+        cumul_rv_m = re.search(r'(const MONTHLY_DAILY_CUMUL_REV\s*=\s*\{)', html)
+        close_brace2 = html.find('};', cumul_rv_m.end())
+        pre2 = html[:close_brace2].rstrip()
+        sep2 = '' if pre2.endswith(',') else ','
+        rv_entry = f'{sep2}\n  "{cur_month}": [{",".join(str(x) for x in cumul_rev)}]\n'
+        html = html[:close_brace2] + rv_entry + html[close_brace2:]
+        print(f"  ✓ Added cumulative daily arrays for {cur_month}")
+
+    # --- Step 4: Reset REAL_APRIL ---
+    # Get TOP-LEVEL segment names from REAL_APRIL (not publisher names inside them)
+    # Top-level segments are at depth 1 inside the REAL_APRIL object.
+    # We parse by finding keys that appear right after the opening { or after a }},
+    ra_m3 = re.search(r'const REAL_APRIL\s*=\s*\{', html)
+    ra_block_text = html[ra_m3.start():]
+    seg_names = []
+    # Walk the structure at depth 1
+    brace_pos = ra_block_text.find('{')
+    depth = 0
+    i = brace_pos
+    while i < len(ra_block_text):
+        c = ra_block_text[i]
+        if c == '{':
+            depth += 1
+        elif c == '}':
+            depth -= 1
+            if depth == 0:
+                break
+        elif c == '"' and depth == 1:
+            # Found a top-level key
+            end_q = ra_block_text.find('"', i + 1)
+            seg_names.append(ra_block_text[i+1:end_q])
+            # Skip to after this segment's value
+            colon = ra_block_text.find(':', end_q)
+            # Find the opening { of the segment value
+            seg_brace = ra_block_text.find('{', colon)
+            d2 = 0
+            j = seg_brace
+            while j < len(ra_block_text):
+                if ra_block_text[j] == '{': d2 += 1
+                elif ra_block_text[j] == '}': d2 -= 1
+                if d2 == 0:
+                    i = j + 1
+                    break
+                j += 1
+            continue
+        i += 1
+
+    empty_segs = {}
+    for seg in seg_names:
+        empty_segs[seg] = '{spendReal:0,revReal:0,spendTech:0,spendNetwork:0,revTech:0,revNetwork:0,publishers:{}}'
+
+    new_ra = 'const REAL_APRIL={' + ',\n'.join(
+        f'"{s}":{v}' for s, v in empty_segs.items()
+    ) + '}'
+
+    # Need to re-find REAL_APRIL position (it may have shifted after inserts)
+    ra_m2 = re.search(r'const REAL_APRIL\s*=\s*\{', html)
+    first_brace = html.find('{', ra_m2.start())
+    depth = 0
+    for i in range(first_brace, len(html)):
+        if html[i] == '{': depth += 1
+        elif html[i] == '}':
+            depth -= 1
+            if depth == 0:
+                ra_end2 = i + 1
+                break
+    html = html[:ra_m2.start()] + new_ra + html[ra_end2:]
+    print(f"  ✓ Reset REAL_APRIL ({len(seg_names)} segments)")
+
+    # --- Step 5: Reset NA, TD, ACTUALS ---
+    html = re.sub(r'const NA\s*=\s*\d+;.*', f'const NA = 0;  // Actual days in current month (1-0)', html)
+    html = re.sub(r'const TD\s*=\s*\d+;.*', f'const TD = {new_td};  // Total {MONTH_NAMES[new_mon]} days', html)
+    html = re.sub(r'const ACTUALS\s*=\s*\[.*?\];', 'const ACTUALS = [];', html)
+    print(f"  ✓ Reset NA=0, TD={new_td}, ACTUALS=[]")
+
+    # --- Step 6: Reset REAL_DAILY_APR ---
+    rda_m = re.search(r'const REAL_DAILY_APR\s*=\s*\{', html)
+    if rda_m:
+        rda_brace = html.find('{', rda_m.start())
+        depth = 0
+        for i in range(rda_brace, len(html)):
+            if html[i] == '{': depth += 1
+            elif html[i] == '}':
+                depth -= 1
+                if depth == 0:
+                    rda_end = i + 1
+                    break
+        empty_rda = 'const REAL_DAILY_APR = {' + ','.join(f'"{s}":[]' for s in seg_names) + '}'
+        html = html[:rda_m.start()] + empty_rda + html[rda_end:]
+        print(f"  ✓ Reset REAL_DAILY_APR")
+
+    # --- Step 7: Reset ADV_DATA ---
+    month_abbr = {1:"jan",2:"feb",3:"mar",4:"apr",5:"may",6:"jun",7:"jul",8:"aug",9:"sep",10:"oct",11:"nov",12:"dec"}
+    cur_abbr = month_abbr[cur_mon]
+
+    adv_m = re.search(r"const ADV_DATA = (\[.*?\]);", html, re.DOTALL)
+    if adv_m:
+        adv_data = json.loads(adv_m.group(1))
+        for a in adv_data:
+            # Move current month to historical field, zero out running fields
+            a["sp"] = 0
+            a["st"] = 0
+            a["sn"] = 0
+        new_adv_json = json.dumps(adv_data, ensure_ascii=False)
+        html = html.replace(adv_m.group(0), f"const ADV_DATA = {new_adv_json};", 1)
+        print(f"  ✓ Reset ADV_DATA ({len(adv_data)} advertisers)")
+
+    # --- Step 8: Add new month to MONTHS_DATA ---
+    # Find MONTHS_DATA block and its closing };
+    md_m = re.search(r'const MONTHS_DATA\s*=\s*\{', html)
+    md_brace_start = html.find('{', md_m.start())
+    depth = 0
+    md_end = md_brace_start
+    for i in range(md_brace_start, len(html)):
+        if html[i] == '{': depth += 1
+        elif html[i] == '}':
+            depth -= 1
+            if depth == 0:
+                md_end = i
+                break
+
+    new_month_entry = (
+        f',\n  "{new_month_key}": {{\n'
+        f'    status: "current", label: "{new_label}", days: TD, actualDays: NA,\n'
+        f'    metaSpend: META_SPEND_TOTAL, metaRev: META_REV_TOTAL,\n'
+        f'    realSpend: REALIZED_TOTAL,\n'
+        f'    realRev: REALIZED_TOTAL * BLENDED_TR,\n'
+        f'    segMetas: null,\n'
+        f'    others: null,\n'
+        f'    forecastUsed: null\n'
+        f'  }}'
+    )
+    html = html[:md_end] + new_month_entry + '\n' + html[md_end:]
+    print(f"  ✓ Added {new_month_key} to MONTHS_DATA as current")
+
+    print(f"\n  ✓ Month transition complete: {cur_month} → {new_month_key}")
+    return html
+
+
 # ─── APPLY UPDATES TO HTML ──────────────────────────────────────────
 def apply_updates(html, data, pub_seg, pub_tr, start_date="2026-05-01"):
     """Apply all computed deltas to the dashboard HTML."""
@@ -751,6 +1031,18 @@ def main():
 
     # 3. Load HTML + extract mappings
     html = load_html()
+
+    # 3b. Check if we need a month transition
+    data_month_key = f"{start_date[:4]}-{start_date[5:7]}"
+    current_month_key = get_current_month_from_html(html)
+    if current_month_key and data_month_key != current_month_key:
+        print(f"\n⚡ Data month ({data_month_key}) differs from dashboard month ({current_month_key})")
+        html = close_month_and_open_new(html, data_month_key)
+        # Save intermediate state before applying new data
+        with open(HTML_PATH, "w", encoding="utf-8") as f:
+            f.write(html)
+        print("  ✓ Intermediate save after month transition")
+
     pub_seg, pub_tr = extract_pub_mapping(html)
 
     # 4. Process
