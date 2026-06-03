@@ -200,7 +200,15 @@ def load_settings():
 def load_html():
     """Load the dashboard HTML and extract current state."""
     with open(HTML_PATH, "r", encoding="utf-8") as f:
-        return f.read()
+        html = f.read()
+    # Safety: if file has duplicated content, extract first complete document
+    if html.count('<script>') > 1:
+        print(f"  ⚠ Input HTML has {html.count('<script>')} script tags — extracting first copy")
+        end = html.find('</html>')
+        if end > 0:
+            html = html[:end + len('</html>')]
+        print(f"  ✓ Cleaned to {html.count('<script>')} script tag, {len(html)} chars")
+    return html
 
 
 def extract_pub_mapping(html):
@@ -1063,11 +1071,28 @@ def main():
     # 5. Apply
     html = apply_updates(html, data, pub_seg, pub_tr, start_date)
 
-    # 6. Save
+    # 6. Safety: detect and fix duplicated content
+    script_count = html.count('<script>')
+    if script_count > 1:
+        print(f"\n⚠ DUPLICATION DETECTED ({script_count} script tags). Extracting first copy...")
+        end_pos = html.find('</html>')
+        if end_pos > 0:
+            html = html[:end_pos + len('</html>')]
+        print(f"  Fixed: {len(html)} chars, {html.count('<script>')} script tag(s)")
+
+    # 7. Save
     with open(HTML_PATH, "w", encoding="utf-8") as f:
         f.write(html)
+
+    # Verify output
+    with open(HTML_PATH, "r", encoding="utf-8") as f:
+        verify = f.read()
+    v_scripts = verify.count('<script>')
+    v_lines = verify.count('\n') + 1
     print(f"\n✓ Dashboard saved to {HTML_PATH}")
-    print(f"  New NA = {get_current_na(html)}")
+    print(f"  Lines: {v_lines}, Scripts: {v_scripts}, NA = {get_current_na(verify)}")
+    if v_scripts > 1:
+        print(f"  ⚠ WARNING: Output still has {v_scripts} script tags!")
 
 
 if __name__ == "__main__":
