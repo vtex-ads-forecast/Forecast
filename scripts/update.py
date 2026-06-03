@@ -506,27 +506,34 @@ def apply_updates(html, data, pub_seg, pub_tr, start_date="2026-05-01"):
         print(f"  ✓ ACTUALS updated ({len(sorted_days)} days)")
 
     # 3. Update REAL_APRIL segments + publishers
-    for seg, delta in seg_delta.items():
-        # NEVER touch protected segments
-        if seg in PROTECTED_SEGMENTS:
-            print(f"  ⚠ Skipping protected segment: {seg}")
-            continue
-        pat = rf'"{seg}":\{{spendReal:(\d+),revReal:(\d+),spendTech:(\d+),spendNetwork:(\d+),revTech:(\d+),revNetwork:(\d+)'
+    # CRITICAL: Find REAL_APRIL block offset to avoid matching REAL_CLOSED data
+    ra_offset = html.find("const REAL_APRIL=")
+    if ra_offset == -1:
+        ra_offset = html.find("const REAL_APRIL =")
+    if ra_offset == -1:
+        print("  ⚠ REAL_APRIL not found, skipping segment updates")
+    else:
+        # Find end of REAL_APRIL block
+        ra_brace = html.find("{", ra_offset)
+        d = 0
+        ra_block_end = ra_brace
+        for i in range(ra_brace, len(html)):
+            if html[i] == "{": d += 1
+            elif html[i] == "}":
+                d -= 1
+                if d == 0:
+                    ra_block_end = i + 1
+                    break
 
-        # For "Long Tail" — need to skip the publisher named "Long Tail" and find the segment
-        if seg == "Long Tail":
-            # Find LATAM block end first
-            latam_start = html.find('"LATAM":{spendReal:')
-            depth = 0
-            latam_end = latam_start
-            for i in range(latam_start, len(html)):
-                if html[i] == "{": depth += 1
-                elif html[i] == "}":
-                    depth -= 1
-                    if depth == 0:
-                        latam_end = i + 1
-                        break
-            m = re.search(pat, html[latam_end:])
+        for seg, delta in seg_delta.items():
+            if seg in PROTECTED_SEGMENTS:
+                print(f"  ⚠ Skipping protected segment: {seg}")
+                continue
+            pat = rf'"{seg}":\{{spendReal:(\d+),revReal:(\d+),spendTech:(\d+),spendNetwork:(\d+),revTech:(\d+),revNetwork:(\d+)'
+
+            # Search only within REAL_APRIL block
+            ra_text = html[ra_offset:ra_block_end]
+            m = re.search(pat, ra_text)
             if m:
                 old_str = m.group(0)
                 new_str = '"{}":{{spendReal:{},revReal:{},spendTech:{},spendNetwork:{},revTech:{},revNetwork:{}'.format(
@@ -538,72 +545,54 @@ def apply_updates(html, data, pub_seg, pub_tr, start_date="2026-05-01"):
                     int(m.group(5)) + round(delta["rvT"]),
                     int(m.group(6)) + round(delta["rvN"]),
                 )
-                html = html[:latam_end] + html[latam_end:].replace(old_str, new_str, 1)
-        else:
-            m = re.search(pat, html)
-            if m:
-                old_str = m.group(0)
-                new_str = '"{}":{{spendReal:{},revReal:{},spendTech:{},spendNetwork:{},revTech:{},revNetwork:{}'.format(
-                    seg,
-                    int(m.group(1)) + round(delta["sp"]),
-                    int(m.group(2)) + round(delta["rv"]),
-                    int(m.group(3)) + round(delta["spT"]),
-                    int(m.group(4)) + round(delta["spN"]),
-                    int(m.group(5)) + round(delta["rvT"]),
-                    int(m.group(6)) + round(delta["rvN"]),
-                )
-                html = html.replace(old_str, new_str, 1)
+                # Replace within the REAL_APRIL region only
+                abs_pos = ra_offset + m.start()
+                html = html[:abs_pos] + new_str + html[abs_pos + len(old_str):]
+                # Recalculate block end after replacement
+                ra_block_end += len(new_str) - len(old_str)
 
-        # Update publishers within segment
-        if seg in pub_delta:
-            for pub, pd in pub_delta[seg].items():
-                ppat = rf'"{re.escape(pub)}":\{{spendReal:(\d+),revReal:(\d+),spendTech:(\d+),spendNetwork:(\d+),revTech:(\d+),revNetwork:(\d+)'
-                pm = re.search(ppat, html)
-                if pm:
-                    old_pub = pm.group(0)
-                    new_pub = '"{}":{{spendReal:{},revReal:{},spendTech:{},spendNetwork:{},revTech:{},revNetwork:{}'.format(
-                        pub,
-                        int(pm.group(1)) + round(pd["sp"]),
-                        int(pm.group(2)) + round(pd["rv"]),
-                        int(pm.group(3)) + round(pd["spT"]),
-                        int(pm.group(4)) + round(pd["spN"]),
-                        int(pm.group(5)) + round(pd["rvT"]),
-                        int(pm.group(6)) + round(pd["rvN"]),
-                    )
-                    html = html.replace(old_pub, new_pub, 1)
-                else:
-                    # New publisher — add to the segment's publishers:{} block
-                    tri = pub_tr.get(pub, {"tech": 0.1, "net": 0.15})
-                    new_pub_entry = '"{}":{{spendReal:{},revReal:{},spendTech:{},spendNetwork:{},revTech:{},revNetwork:{},trTech:{},trNetwork:{}}}'.format(
-                        pub, round(pd["sp"]), round(pd["rv"]),
-                        round(pd["spT"]), round(pd["spN"]),
-                        round(pd["rvT"]), round(pd["rvN"]),
-                        tri["tech"], tri["net"],
-                    )
-                    # Find the publishers:{} block for this segment
-                    seg_pat = rf'"{re.escape(seg)}":\{{spendReal:'
-                    seg_pos = html.find(f'"{seg}":{{spendReal:')
-                    if seg == "Long Tail":
-                        # Special handling: find Long Tail after LATAM
-                        latam_s = html.find('"LATAM":{spendReal:')
-                        d2 = 0
-                        for ii in range(latam_s, len(html)):
-                            if html[ii] == "{": d2 += 1
-                            elif html[ii] == "}":
-                                d2 -= 1
-                                if d2 == 0:
-                                    seg_pos = html.find('"Long Tail":{spendReal:', ii)
-                                    break
-                    if seg_pos != -1:
-                        pub_block_start = html.find("publishers:{", seg_pos)
-                        if pub_block_start != -1:
-                            pub_inner = pub_block_start + len("publishers:{")
-                            # Check if publishers block is empty
-                            if html[pub_inner] == "}":
-                                html = html[:pub_inner] + new_pub_entry + html[pub_inner:]
-                            else:
-                                html = html[:pub_inner] + new_pub_entry + "," + html[pub_inner:]
-                            print(f"    + Added new publisher: {pub} → {seg}")
+            # Update publishers within segment (scoped to REAL_APRIL)
+            if seg in pub_delta:
+                for pub, pd in pub_delta[seg].items():
+                    ppat = rf'"{re.escape(pub)}":\{{spendReal:(\d+),revReal:(\d+),spendTech:(\d+),spendNetwork:(\d+),revTech:(\d+),revNetwork:(\d+)'
+                    ra_text = html[ra_offset:ra_block_end]
+                    pm = re.search(ppat, ra_text)
+                    if pm:
+                        old_pub = pm.group(0)
+                        new_pub = '"{}":{{spendReal:{},revReal:{},spendTech:{},spendNetwork:{},revTech:{},revNetwork:{}'.format(
+                            pub,
+                            int(pm.group(1)) + round(pd["sp"]),
+                            int(pm.group(2)) + round(pd["rv"]),
+                            int(pm.group(3)) + round(pd["spT"]),
+                            int(pm.group(4)) + round(pd["spN"]),
+                            int(pm.group(5)) + round(pd["rvT"]),
+                            int(pm.group(6)) + round(pd["rvN"]),
+                        )
+                        abs_pos = ra_offset + pm.start()
+                        html = html[:abs_pos] + new_pub + html[abs_pos + len(old_pub):]
+                        ra_block_end += len(new_pub) - len(old_pub)
+                    else:
+                        # New publisher — add to the segment's publishers:{} block
+                        tri = pub_tr.get(pub, {"tech": 0.1, "net": 0.15})
+                        new_pub_entry = '"{}":{{spendReal:{},revReal:{},spendTech:{},spendNetwork:{},revTech:{},revNetwork:{},trTech:{},trNetwork:{}}}'.format(
+                            pub, round(pd["sp"]), round(pd["rv"]),
+                            round(pd["spT"]), round(pd["spN"]),
+                            round(pd["rvT"]), round(pd["rvN"]),
+                            tri["tech"], tri["net"],
+                        )
+                        # Find the publishers:{} block within REAL_APRIL for this segment
+                        ra_text = html[ra_offset:ra_block_end]
+                        seg_pos = ra_text.find(f'"{seg}":{{spendReal:')
+                        if seg_pos != -1:
+                            pub_block_start = ra_text.find("publishers:{", seg_pos)
+                            if pub_block_start != -1:
+                                abs_pub_inner = ra_offset + pub_block_start + len("publishers:{")
+                                if html[abs_pub_inner] == "}":
+                                    html = html[:abs_pub_inner] + new_pub_entry + html[abs_pub_inner:]
+                                else:
+                                    html = html[:abs_pub_inner] + new_pub_entry + "," + html[abs_pub_inner:]
+                                ra_block_end += len(new_pub_entry) + (0 if html[abs_pub_inner] == "}" else 1)
+                                print(f"    + Added new publisher: {pub} → {seg}")
 
     print("  ✓ REAL_APRIL updated")
 
