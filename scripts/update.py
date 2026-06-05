@@ -1071,28 +1071,18 @@ def main():
     # 5. Apply
     html = apply_updates(html, data, pub_seg, pub_tr, start_date)
 
-    # 6. Safety: detect and fix duplicated content
-    script_count = html.count('<script>')
-    if script_count > 1:
-        print(f"\n⚠ DUPLICATION DETECTED ({script_count} script tags). Extracting first copy...")
-        end_pos = html.find('</html>')
-        if end_pos > 0:
-            html = html[:end_pos + len('</html>')]
-        print(f"  Fixed: {len(html)} chars, {html.count('<script>')} script tag(s)")
+    # 6. Safety: ALWAYS truncate at first </html> — prevents ANY duplication
+    end_pos = html.find('</html>')
+    if end_pos > 0:
+        html = html[:end_pos + len('</html>')]
+
+    print(f"\n  Pre-save check: {len(html)} chars, {html.count('<script>')} script(s)")
 
     # 7. Save
     with open(HTML_PATH, "w", encoding="utf-8") as f:
         f.write(html)
-
-    # Verify output
-    with open(HTML_PATH, "r", encoding="utf-8") as f:
-        verify = f.read()
-    v_scripts = verify.count('<script>')
-    v_lines = verify.count('\n') + 1
-    print(f"\n✓ Dashboard saved to {HTML_PATH}")
-    print(f"  Lines: {v_lines}, Scripts: {v_scripts}, NA = {get_current_na(verify)}")
-    if v_scripts > 1:
-        print(f"  ⚠ WARNING: Output still has {v_scripts} script tags!")
+    print(f"✓ Dashboard saved to {HTML_PATH}")
+    print(f"  NA = {get_current_na(html)}")
 
 
 if __name__ == "__main__":

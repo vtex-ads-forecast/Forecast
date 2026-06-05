@@ -64,15 +64,8 @@ jobs:
             python scripts/update.py
           fi
 
-      - name: Verify and fix output
-        run: |
-          SCRIPTS=$(grep -c '<script>' index.html || true)
-          LINES=$(wc -l < index.html)
-          echo "Output: $LINES lines, $SCRIPTS script tags"
-          if [ "$SCRIPTS" -gt 1 ]; then
-            echo "DUPLICATED! Fixing..."
-            python3 scripts/dedup_html.py
-          fi
+      - name: Ensure no duplication
+        run: python3 scripts/dedup_html.py
 
       - name: Commit and push changes
         run: |
