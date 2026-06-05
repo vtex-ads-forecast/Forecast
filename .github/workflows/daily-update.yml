@@ -64,6 +64,23 @@ jobs:
             python scripts/update.py
           fi
 
+      - name: Verify and fix output
+        run: |
+          SCRIPTS=$(grep -c '<script>' index.html || true)
+          LINES=$(wc -l < index.html)
+          echo "Output: $LINES lines, $SCRIPTS script tags"
+          if [ "$SCRIPTS" -gt 1 ]; then
+            echo "⚠ DUPLICATED! Extracting first document..."
+            python3 -c "
+with open('index.html') as f: html = f.read()
+end = html.find('</html>')
+if end > 0:
+    clean = html[:end+7]
+    with open('index.html', 'w') as f: f.write(clean)
+    print(f'Fixed: {len(clean)} chars, {clean.count(chr(10))+1} lines')
+"
+          fi
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
