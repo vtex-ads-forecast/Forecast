@@ -201,13 +201,17 @@ def load_html():
     """Load the dashboard HTML and extract current state."""
     with open(HTML_PATH, "r", encoding="utf-8") as f:
         html = f.read()
-    # Safety: if file has duplicated content, extract first complete document
-    if html.count('<script>') > 1:
-        print(f"  ⚠ Input HTML has {html.count('<script>')} script tags — extracting first copy")
-        end = html.find('</html>')
-        if end > 0:
-            html = html[:end + len('</html>')]
-        print(f"  ✓ Cleaned to {html.count('<script>')} script tag, {len(html)} chars")
+    # Safety: detect duplicated content by finding second <html tag
+    first_html = html.find('<html')
+    second_html = html.find('<html', first_html + 1) if first_html >= 0 else -1
+    if second_html > 0:
+        print(f"  ⚠ DUPLICATED INPUT ({len(html)} chars, 2nd <html at {second_html})")
+        html = html[:second_html].rstrip()
+        if '</body>' not in html[-50:]:
+            html += '\n</body>'
+        if '</html>' not in html[-50:]:
+            html += '\n</html>'
+        print(f"  ✓ Fixed to {len(html)} chars")
     return html
 
 
@@ -1071,12 +1075,18 @@ def main():
     # 5. Apply
     html = apply_updates(html, data, pub_seg, pub_tr, start_date)
 
-    # 6. Safety: ALWAYS truncate at first </html> — prevents ANY duplication
-    end_pos = html.find('</html>')
-    if end_pos > 0:
-        html = html[:end_pos + len('</html>')]
+    # 6. Safety: detect and remove duplicated HTML content
+    first_html = html.find('<html')
+    second_html = html.find('<html', first_html + 1) if first_html >= 0 else -1
+    if second_html > 0:
+        html = html[:second_html].rstrip()
+        if '</body>' not in html[-50:]:
+            html += '\n</body>'
+        if '</html>' not in html[-50:]:
+            html += '\n</html>'
+        print(f"\n  ⚠ DEDUP: cut at second <html (pos {second_html})")
 
-    print(f"\n  Pre-save check: {len(html)} chars, {html.count('<script>')} script(s)")
+    print(f"\n  Pre-save: {len(html)} chars, {html.count('<script>')} script(s), {html.count('<body')} body tag(s)")
 
     # 7. Save
     with open(HTML_PATH, "w", encoding="utf-8") as f:
