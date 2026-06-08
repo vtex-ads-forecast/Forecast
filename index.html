@@ -1683,21 +1683,17 @@ function renderKPIs() {
   const momSpend = prevSpend ? ((spProj - prevSpend) / prevSpend) : null;
   const momRev = prevRev ? ((rvProj - prevRev) / prevRev) : null;
 
-  /* MTD comparison — Realizado: compare day-N of current vs day-N of previous month
-     Include Others from previous month for fair comparison.
-     For closed months, MTD full = MoM, so skip (avoid duplicate badge) */
+  /* MTD comparison — Realizado: compare ads-only day-N of current vs day-N of previous month.
+     Others are excluded because they are lump sums, not daily data. */
   let mtdSpend = null, mtdRev = null;
   if (isCurrent && prevMk) {
     const prevMtd = getMTD(prevMk, NA);
     if (prevMtd) {
-      /* Prorate previous Others by day ratio for fair MTD comparison */
-      const prevDays = prevMd ? prevMd.days : 30;
-      const prevOSpMtd = prevOSp * (NA / prevDays);
-      const prevORvMtd = prevORv * (NA / prevDays);
-      const prevMtdSp = prevMtd.spend + prevOSpMtd;
-      const prevMtdRv = prevMtd.rev + prevORvMtd;
-      if (prevMtdSp > 0) mtdSpend = (spReal - prevMtdSp) / prevMtdSp;
-      if (prevMtdRv > 0) mtdRev = (rvReal - prevMtdRv) / prevMtdRv;
+      /* Compare ads-only (exclude Others from both sides for fair comparison) */
+      const curAdsSp = spReal - oSpend;
+      const curAdsRv = rvReal - oRev;
+      if (prevMtd.spend > 0) mtdSpend = (curAdsSp - prevMtd.spend) / prevMtd.spend;
+      if (prevMtd.rev > 0) mtdRev = (curAdsRv - prevMtd.rev) / prevMtd.rev;
     }
   }
 
