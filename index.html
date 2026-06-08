@@ -1690,8 +1690,12 @@ function renderKPIs() {
   if (isCurrent && prevMk) {
     const prevMtd = getMTD(prevMk, NA);
     if (prevMtd) {
-      const prevMtdSp = prevMtd.spend + prevOSp;
-      const prevMtdRv = prevMtd.rev + prevORv;
+      /* Prorate previous Others by day ratio for fair MTD comparison */
+      const prevDays = prevMd ? prevMd.days : 30;
+      const prevOSpMtd = prevOSp * (NA / prevDays);
+      const prevORvMtd = prevORv * (NA / prevDays);
+      const prevMtdSp = prevMtd.spend + prevOSpMtd;
+      const prevMtdRv = prevMtd.rev + prevORvMtd;
       if (prevMtdSp > 0) mtdSpend = (spReal - prevMtdSp) / prevMtdSp;
       if (prevMtdRv > 0) mtdRev = (rvReal - prevMtdRv) / prevMtdRv;
     }
