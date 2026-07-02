@@ -153,6 +153,13 @@
       "spend": 156000,
       "rev": 31200,
       "desc": "Offsite Nubank"
+    },
+    {
+      "id": 1782996769390,
+      "cat": "",
+      "spend": 0,
+      "rev": 0,
+      "desc": ""
     }
   ]
 }
