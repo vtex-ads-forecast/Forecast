@@ -188,8 +188,15 @@
       "id": 1783960997966,
       "cat": "Performance Fee",
       "spend": 0,
-      "rev": 0,
+      "rev": 40000,
       "desc": "Novo nordisk performance fee"
+    },
+    {
+      "id": 1783961018493,
+      "cat": "",
+      "spend": 0,
+      "rev": 0,
+      "desc": ""
     }
   ]
 }
