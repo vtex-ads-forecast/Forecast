@@ -195,8 +195,15 @@
       "id": 1783961018493,
       "cat": "Performance Fee",
       "spend": 0,
-      "rev": 0,
+      "rev": 11000,
       "desc": "petlove (validar marca)"
+    },
+    {
+      "id": 1783961030960,
+      "cat": "",
+      "spend": 0,
+      "rev": 0,
+      "desc": ""
     }
   ]
 }
