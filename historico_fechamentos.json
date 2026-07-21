@@ -1,0 +1,7553 @@
+{
+ "_leia_me": "REALIZADO OFICIAL dos fechamentos mensais (fonte: planilhas de Closing, aba Database). charge = receita network real (teto de PI, waived e bonificadas aplicados) — usar charge, não spend x TR. Gerado do vault Finance VTEX Ads em 2026-07-21. NÃO editar na mão; regerado pelo Claude a cada fechamento.",
+ "totais_mensais": {
+  "2026-01": {
+   "spendTech": 5429930.56,
+   "spendNetwork": 2524088.06,
+   "charge": 2036386.26,
+   "comissao": 518873.59,
+   "repasse": 1783691.23,
+   "receitaLiquida": 771568.62,
+   "conversaoChargeSpend": 0.8068
+  },
+  "2026-02": {
+   "spendTech": 5451780.33,
+   "spendNetwork": 2783341.12,
+   "charge": 2578770.39,
+   "comissao": 502829.92,
+   "repasse": 2096860.85,
+   "receitaLiquida": 984739.46,
+   "conversaoChargeSpend": 0.9265
+  },
+  "2026-03": {
+   "spendTech": 8413602.8,
+   "spendNetwork": 4491510.22,
+   "charge": 4301473.7,
+   "comissao": 607408.73,
+   "repasse": 3408430.95,
+   "receitaLiquida": 1500451.48,
+   "conversaoChargeSpend": 0.9577
+  },
+  "2026-04": {
+   "spendTech": 7330894.02,
+   "spendNetwork": 3746724.35,
+   "charge": 3468879.46,
+   "comissao": 547729.4,
+   "repasse": 2840935.34,
+   "receitaLiquida": 1175673.52,
+   "conversaoChargeSpend": 0.9258
+  },
+  "2026-05": {
+   "spendTech": 10147917.13,
+   "spendNetwork": 4378565.64,
+   "charge": 4174872.19,
+   "comissao": 726537.05,
+   "repasse": 3359385.41,
+   "receitaLiquida": 1542023.83,
+   "conversaoChargeSpend": 0.9535
+  },
+  "2026-06": {
+   "spendTech": 9340376.64,
+   "spendNetwork": 4965485.0,
+   "charge": 4813520.34,
+   "comissao": 763870.81,
+   "repasse": 3791843.02,
+   "receitaLiquida": 1785548.13,
+   "conversaoChargeSpend": 0.9694
+  }
+ },
+ "por_publisher": {
+  "2026-01": {
+   "2 BEM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 16.1,
+    "charge": 13.63,
+    "comissao": 0.0,
+    "repasse": 12.4,
+    "receitaLiquida": 1.22
+   },
+   "AIQFOME PUBLISHER - SANDBOX": {
+    "spendTech": 0.26,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.03,
+    "repasse": 0.0,
+    "receitaLiquida": 0.03
+   },
+   "ALABARCE DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 29.0,
+    "charge": 20.85,
+    "comissao": 0.0,
+    "repasse": 17.38,
+    "receitaLiquida": 3.48
+   },
+   "AMERICANAS": {
+    "spendTech": 44986.72,
+    "spendNetwork": 3934.8,
+    "charge": 2860.88,
+    "comissao": 6748.01,
+    "repasse": 2164.86,
+    "receitaLiquida": 7444.03
+   },
+   "AMERICANAS STAGING": {
+    "spendTech": 18.42,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "AMOBELEZA": {
+    "spendTech": 0.0,
+    "spendNetwork": 21796.01,
+    "charge": 20626.64,
+    "comissao": 0.0,
+    "repasse": 16985.57,
+    "receitaLiquida": 3641.07
+   },
+   "ARMAÇÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 34.9,
+    "charge": 29.63,
+    "comissao": 0.0,
+    "repasse": 25.61,
+    "receitaLiquida": 4.02
+   },
+   "ATACADISTA MEGA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 117.3,
+    "charge": 95.06,
+    "comissao": 0.0,
+    "repasse": 81.93,
+    "receitaLiquida": 13.14
+   },
+   "BEM MAIS FARMA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.5,
+    "charge": 1.43,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 1.43
+   },
+   "BEM MAIS SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 22.1,
+    "charge": 18.78,
+    "comissao": 0.0,
+    "repasse": 16.82,
+    "receitaLiquida": 1.96
+   },
+   "BEMOL": {
+    "spendTech": 206231.64,
+    "spendNetwork": 30057.38,
+    "charge": 27402.64,
+    "comissao": 41246.33,
+    "repasse": 22810.64,
+    "receitaLiquida": 45838.33
+   },
+   "BEMOL QA (STAGING)": {
+    "spendTech": 16.87,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "BIGGY ADS": {
+    "spendTech": 0.6,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.06,
+    "repasse": 0.0,
+    "receitaLiquida": 0.06
+   },
+   "BISTEK SUPERMERCADOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 47.2,
+    "charge": 14.15,
+    "comissao": 0.0,
+    "repasse": 31.13,
+    "receitaLiquida": -16.98
+   },
+   "BRETAS": {
+    "spendTech": 0.0,
+    "spendNetwork": 381.5,
+    "charge": 293.39,
+    "comissao": 0.0,
+    "repasse": 228.08,
+    "receitaLiquida": 65.31
+   },
+   "BUSCAPE": {
+    "spendTech": 9824.25,
+    "spendNetwork": 2032.91,
+    "charge": 1866.93,
+    "comissao": 982.42,
+    "repasse": 1707.24,
+    "receitaLiquida": 1142.12
+   },
+   "BUSCAPE STAGING": {
+    "spendTech": 7.16,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "CALEGARIS EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 25.1,
+    "charge": 22.14,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 22.14
+   },
+   "CAMBUI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 244.9,
+    "charge": 227.72,
+    "comissao": 0.0,
+    "repasse": 187.95,
+    "receitaLiquida": 39.77
+   },
+   "CASAS BAHIA ADS": {
+    "spendTech": 2790577.37,
+    "spendNetwork": 233943.37,
+    "charge": 234355.86,
+    "comissao": 206502.73,
+    "repasse": 211630.11,
+    "receitaLiquida": 229228.47
+   },
+   "CENTRAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 314.42,
+    "charge": 291.32,
+    "comissao": 0.0,
+    "repasse": 248.7,
+    "receitaLiquida": 42.63
+   },
+   "CENTRAL DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 63.9,
+    "charge": 63.9,
+    "comissao": 0.0,
+    "repasse": 52.74,
+    "receitaLiquida": 11.16
+   },
+   "CIA LATINO AMERICANA DE MEDICAMENTOS": {
+    "spendTech": 1044.04,
+    "spendNetwork": 8140.45,
+    "charge": 3591.91,
+    "comissao": 104.4,
+    "repasse": 5651.5,
+    "receitaLiquida": -1955.19
+   },
+   "CLUBBI": {
+    "spendTech": 5431.75,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 543.18,
+    "repasse": 0.0,
+    "receitaLiquida": 543.18
+   },
+   "CLUBBI STAGING": {
+    "spendTech": 0.56,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "COBASI ADS": {
+    "spendTech": 974.4,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 97.44,
+    "repasse": 0.0,
+    "receitaLiquida": 97.44
+   },
+   "DE ANGELINA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 116.1,
+    "charge": 98.16,
+    "comissao": 0.0,
+    "repasse": 84.48,
+    "receitaLiquida": 13.68
+   },
+   "DECATLHON ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 852.4,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 703.53,
+    "receitaLiquida": -703.53
+   },
+   "DECISAO - LIGA ATACAREJO": {
+    "spendTech": 0.0,
+    "spendNetwork": 14.4,
+    "charge": 8.92,
+    "comissao": 0.0,
+    "repasse": 8.52,
+    "receitaLiquida": 0.4
+   },
+   "DIA ADS": {
+    "spendTech": 5749.98,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 862.5,
+    "repasse": 0.0,
+    "receitaLiquida": 862.5
+   },
+   "DROGAL ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 97643.8,
+    "charge": 60481.91,
+    "comissao": 0.0,
+    "repasse": 39685.13,
+    "receitaLiquida": 20796.78
+   },
+   "DROGARIA SÃO PAULO ADS": {
+    "spendTech": 134226.82,
+    "spendNetwork": 1229723.49,
+    "charge": 954027.92,
+    "comissao": 13422.68,
+    "repasse": 809875.8,
+    "receitaLiquida": 157574.81
+   },
+   "ELETRO ANGELONI": {
+    "spendTech": 0.0,
+    "spendNetwork": 3623.02,
+    "charge": 3533.02,
+    "comissao": 0.0,
+    "repasse": 2915.98,
+    "receitaLiquida": 617.04
+   },
+   "ENXUTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 183.8,
+    "charge": 165.32,
+    "comissao": 0.0,
+    "repasse": 141.07,
+    "receitaLiquida": 24.25
+   },
+   "FARMACITY CONECT": {
+    "spendTech": 382971.98,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 51701.22,
+    "repasse": 0.0,
+    "receitaLiquida": 51701.22
+   },
+   "FARMACITYQA": {
+    "spendTech": 10.24,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "FARMÁCIA INDIANA ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 9879.73,
+    "charge": 6754.23,
+    "comissao": 0.0,
+    "repasse": 4015.72,
+    "receitaLiquida": 2738.51
+   },
+   "FARMÁCIAS SÃO JOÃO": {
+    "spendTech": 0.0,
+    "spendNetwork": 20.8,
+    "charge": 20.8,
+    "comissao": 0.0,
+    "repasse": 17.17,
+    "receitaLiquida": 3.63
+   },
+   "FASOUTO - VIPCOMMERCE SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 112.4,
+    "charge": 66.23,
+    "comissao": 0.0,
+    "repasse": 54.66,
+    "receitaLiquida": 11.57
+   },
+   "FAST SHOP": {
+    "spendTech": 70784.36,
+    "spendNetwork": 19569.8,
+    "charge": 18961.02,
+    "comissao": 3539.22,
+    "repasse": 16149.23,
+    "receitaLiquida": 6351.01
+   },
+   "FAVORITO SUPERMERCADOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 123.2,
+    "charge": 115.04,
+    "comissao": 0.0,
+    "repasse": 94.95,
+    "receitaLiquida": 20.09
+   },
+   "FEDERZONI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 41.7,
+    "charge": 40.3,
+    "comissao": 0.0,
+    "repasse": 34.42,
+    "receitaLiquida": 5.88
+   },
+   "FEIRA NOVA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 596.0,
+    "charge": 511.0,
+    "comissao": 0.0,
+    "repasse": 448.66,
+    "receitaLiquida": 62.34
+   },
+   "FERREIRA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 100.0,
+    "charge": 100.0,
+    "comissao": 0.0,
+    "repasse": 82.53,
+    "receitaLiquida": 17.47
+   },
+   "FLEX - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 295.2,
+    "charge": 272.26,
+    "comissao": 0.0,
+    "repasse": 228.76,
+    "receitaLiquida": 43.51
+   },
+   "FONSECA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 365.7,
+    "charge": 339.29,
+    "comissao": 0.0,
+    "repasse": 282.51,
+    "receitaLiquida": 56.78
+   },
+   "FRADEILHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 125.9,
+    "charge": 105.11,
+    "comissao": 0.0,
+    "repasse": 95.58,
+    "receitaLiquida": 9.53
+   },
+   "FRUTTO DA TERRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 14.0,
+    "charge": 13.1,
+    "comissao": 0.0,
+    "repasse": 11.55,
+    "receitaLiquida": 1.55
+   },
+   "FÊNIX SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 103.8,
+    "charge": 96.5,
+    "comissao": 0.0,
+    "repasse": 79.65,
+    "receitaLiquida": 16.85
+   },
+   "GARCIA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 179.1,
+    "charge": 145.38,
+    "comissao": 0.0,
+    "repasse": 122.3,
+    "receitaLiquida": 23.08
+   },
+   "GBARBOSA": {
+    "spendTech": 0.0,
+    "spendNetwork": 6607.8,
+    "charge": 4756.96,
+    "comissao": 0.0,
+    "repasse": 3983.64,
+    "receitaLiquida": 773.32
+   },
+   "GROWD ADS": {
+    "spendTech": 26295.6,
+    "spendNetwork": 20258.88,
+    "charge": 11809.37,
+    "comissao": 2629.56,
+    "repasse": 14029.65,
+    "receitaLiquida": 409.28
+   },
+   "GRUPO MATEUS": {
+    "spendTech": 0.0,
+    "spendNetwork": 172.67,
+    "charge": 86.84,
+    "comissao": 0.0,
+    "repasse": 103.89,
+    "receitaLiquida": -17.05
+   },
+   "GUARANI SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 162.3,
+    "charge": 134.86,
+    "comissao": 0.0,
+    "repasse": 113.04,
+    "receitaLiquida": 21.82
+   },
+   "HAPVIDA - PUBLISHER": {
+    "spendTech": 0.02,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "HIPER BERGAMINI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 301.1,
+    "charge": 269.79,
+    "comissao": 0.0,
+    "repasse": 229.19,
+    "receitaLiquida": 40.6
+   },
+   "HIPER NATASHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 32.7,
+    "charge": 22.18,
+    "comissao": 0.0,
+    "repasse": 18.3,
+    "receitaLiquida": 3.87
+   },
+   "HORTIFRUTI BR - NATURAL DA TERRA - PUBLISHER - HML": {
+    "spendTech": 46.22,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 4.62,
+    "repasse": 0.0,
+    "receitaLiquida": 4.62
+   },
+   "IKESAKI": {
+    "spendTech": 0.0,
+    "spendNetwork": 62.0,
+    "charge": 26.61,
+    "comissao": 0.0,
+    "repasse": 21.96,
+    "receitaLiquida": 4.65
+   },
+   "IPANEMA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 71.9,
+    "charge": 66.63,
+    "comissao": 0.0,
+    "repasse": 58.46,
+    "receitaLiquida": 8.17
+   },
+   "JAGUARE": {
+    "spendTech": 0.0,
+    "spendNetwork": 84.2,
+    "charge": 76.56,
+    "comissao": 0.0,
+    "repasse": 66.66,
+    "receitaLiquida": 9.91
+   },
+   "KABUM": {
+    "spendTech": 1105719.27,
+    "spendNetwork": 3104.5,
+    "charge": 2930.0,
+    "comissao": 147060.66,
+    "repasse": 2332.92,
+    "receitaLiquida": 147657.74
+   },
+   "KABUM STAGING": {
+    "spendTech": 1068.91,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "LEROY MERLIN": {
+    "spendTech": 47892.41,
+    "spendNetwork": 18042.94,
+    "charge": 18042.94,
+    "comissao": 4789.24,
+    "repasse": 14716.54,
+    "receitaLiquida": 8115.64
+   },
+   "LEROY MERLIN STAGING": {
+    "spendTech": 10.62,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "LOCATEL": {
+    "spendTech": 1104.32,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 149.08,
+    "repasse": 0.0,
+    "receitaLiquida": 149.08
+   },
+   "LOJAS IMPÉRIO ADS": {
+    "spendTech": 259.2,
+    "spendNetwork": 1959.5,
+    "charge": 0.0,
+    "comissao": 25.92,
+    "repasse": 0.0,
+    "receitaLiquida": 25.92
+   },
+   "LUZITANA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 32.0,
+    "charge": 28.35,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 28.35
+   },
+   "MADEIRA ADS": {
+    "spendTech": 112415.3,
+    "spendNetwork": 2244.33,
+    "charge": 2244.33,
+    "comissao": 10117.38,
+    "repasse": 1983.11,
+    "receitaLiquida": 10378.59
+   },
+   "MADEIRA MADEIRA - PUBLISHER TESTE": {
+    "spendTech": 3.6,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "MERCADO AJUBÁ": {
+    "spendTech": 0.0,
+    "spendNetwork": 19.2,
+    "charge": 19.2,
+    "comissao": 0.0,
+    "repasse": 15.85,
+    "receitaLiquida": 3.35
+   },
+   "MERCADO DO JOAO CARLOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 0.7,
+    "charge": 0.7,
+    "comissao": 0.0,
+    "repasse": 0.58,
+    "receitaLiquida": 0.12
+   },
+   "MERCANTIL ATACADO": {
+    "spendTech": 0.0,
+    "spendNetwork": 670.7,
+    "charge": 529.14,
+    "comissao": 0.0,
+    "repasse": 270.0,
+    "receitaLiquida": 259.13
+   },
+   "MERCANTIL NOVA ERA LTDA": {
+    "spendTech": 0.0,
+    "spendNetwork": 289.8,
+    "charge": 220.08,
+    "comissao": 0.0,
+    "repasse": 120.34,
+    "receitaLiquida": 99.73
+   },
+   "MESCHKE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 155.7,
+    "charge": 151.19,
+    "comissao": 0.0,
+    "repasse": 124.79,
+    "receitaLiquida": 26.41
+   },
+   "MEVO FARMA": {
+    "spendTech": 0.0,
+    "spendNetwork": 1042.95,
+    "charge": 732.3,
+    "comissao": 0.0,
+    "repasse": 631.88,
+    "receitaLiquida": 100.42
+   },
+   "NIPPO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 18.1,
+    "charge": 17.67,
+    "comissao": 0.0,
+    "repasse": 14.58,
+    "receitaLiquida": 3.09
+   },
+   "OLIMPICA CO - PUBLISHER": {
+    "spendTech": 184.0,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "OXAN SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 120.0,
+    "charge": 111.02,
+    "comissao": 0.0,
+    "repasse": 95.67,
+    "receitaLiquida": 15.35
+   },
+   "PAGUE MENOS": {
+    "spendTech": 41831.0,
+    "spendNetwork": 436904.22,
+    "charge": 358331.25,
+    "comissao": 3764.79,
+    "repasse": 341696.17,
+    "receitaLiquida": 20399.87
+   },
+   "PANVEL": {
+    "spendTech": 55689.44,
+    "spendNetwork": 250280.42,
+    "charge": 206767.87,
+    "comissao": 5568.94,
+    "repasse": 184991.11,
+    "receitaLiquida": 27345.7
+   },
+   "PAULISTÃO ATACADISTA": {
+    "spendTech": 0.0,
+    "spendNetwork": 126.5,
+    "charge": 111.47,
+    "comissao": 0.0,
+    "repasse": 95.47,
+    "receitaLiquida": 16.0
+   },
+   "PECITO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 43.6,
+    "charge": 37.93,
+    "comissao": 0.0,
+    "repasse": 32.79,
+    "receitaLiquida": 5.14
+   },
+   "PERIM - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 208.5,
+    "charge": 189.44,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 189.44
+   },
+   "PETLOVE ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 12445.53,
+    "charge": 12072.93,
+    "comissao": 0.0,
+    "repasse": 9968.85,
+    "receitaLiquida": 2104.08
+   },
+   "PICPAY STAGING PUBLISHER": {
+    "spendTech": 38.66,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "PILAR - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 203.7,
+    "charge": 183.97,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 183.97
+   },
+   "POC NUBANK - PUBLISHER": {
+    "spendTech": 0.2,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "PORTO EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 76.7,
+    "charge": 68.59,
+    "comissao": 0.0,
+    "repasse": 58.34,
+    "receitaLiquida": 10.25
+   },
+   "PREZUNIC": {
+    "spendTech": 0.0,
+    "spendNetwork": 10811.59,
+    "charge": 7295.65,
+    "comissao": 0.0,
+    "repasse": 6543.07,
+    "receitaLiquida": 752.58
+   },
+   "PROMOFARMA - PUBLISHER": {
+    "spendTech": 10.8,
+    "spendNetwork": 1360.0,
+    "charge": 788.0,
+    "comissao": 2.16,
+    "repasse": 601.3,
+    "receitaLiquida": 188.86
+   },
+   "PRÓ BRAZILIAN - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 80.0,
+    "charge": 79.3,
+    "comissao": 0.0,
+    "repasse": 66.03,
+    "receitaLiquida": 13.27
+   },
+   "PÉROLA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 173.6,
+    "charge": 139.64,
+    "comissao": 0.0,
+    "repasse": 129.28,
+    "receitaLiquida": 10.36
+   },
+   "REDETOP - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 96.3,
+    "charge": 86.95,
+    "comissao": 0.0,
+    "repasse": 72.92,
+    "receitaLiquida": 14.03
+   },
+   "RETAIL MEDIA CASAS BAHIA STAGING": {
+    "spendTech": 174.67,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "ROYAL SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 56.0,
+    "charge": 51.22,
+    "comissao": 0.0,
+    "repasse": 42.85,
+    "receitaLiquida": 8.37
+   },
+   "SANTAREM SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 174.2,
+    "charge": 138.18,
+    "comissao": 0.0,
+    "repasse": 118.25,
+    "receitaLiquida": 19.92
+   },
+   "SEPHORA ADS PUBLISHER": {
+    "spendTech": 352842.6,
+    "spendNetwork": 16308.1,
+    "charge": 16308.1,
+    "comissao": 15877.92,
+    "repasse": 12984.84,
+    "receitaLiquida": 19201.18
+   },
+   "SHOPSTAR PUBLISHER": {
+    "spendTech": 145.39,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "SORRISO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 74.1,
+    "charge": 66.8,
+    "comissao": 0.0,
+    "repasse": 55.13,
+    "receitaLiquida": 11.67
+   },
+   "SUPER ANGELONI": {
+    "spendTech": 0.0,
+    "spendNetwork": 2043.4,
+    "charge": 1021.87,
+    "comissao": 0.0,
+    "repasse": 1442.85,
+    "receitaLiquida": -420.98
+   },
+   "SUPER G SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.6,
+    "charge": 7.9,
+    "comissao": 0.0,
+    "repasse": 7.1,
+    "receitaLiquida": 0.8
+   },
+   "SUPER LOCAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 12.0,
+    "charge": 10.6,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 10.6
+   },
+   "SUPER MUFFATO DELIVERY": {
+    "spendTech": 0.0,
+    "spendNetwork": 1790.7,
+    "charge": 270.76,
+    "comissao": 0.0,
+    "repasse": 334.17,
+    "receitaLiquida": -63.41
+   },
+   "SUPERMERCADO DO ROBERTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 59.1,
+    "charge": 56.52,
+    "comissao": 0.0,
+    "repasse": 46.65,
+    "receitaLiquida": 9.87
+   },
+   "SUPERMERCADO DONA MARIA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 0.7,
+    "charge": 0.7,
+    "comissao": 0.0,
+    "repasse": 0.58,
+    "receitaLiquida": 0.12
+   },
+   "SUPERMERCADO MANAÍRA": {
+    "spendTech": 0.0,
+    "spendNetwork": 389.1,
+    "charge": 325.54,
+    "comissao": 0.0,
+    "repasse": 268.68,
+    "receitaLiquida": 56.85
+   },
+   "SUPERMERCADO SAVEGNAGO": {
+    "spendTech": 2.36,
+    "spendNetwork": 4630.5,
+    "charge": 2810.07,
+    "comissao": 0.24,
+    "repasse": 3057.56,
+    "receitaLiquida": -247.26
+   },
+   "SUPERMERCADOS DAOLIO": {
+    "spendTech": 0.0,
+    "spendNetwork": 256.3,
+    "charge": 237.77,
+    "comissao": 0.0,
+    "repasse": 199.13,
+    "receitaLiquida": 38.64
+   },
+   "SUPERSUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 16.6,
+    "charge": 13.81,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 13.81
+   },
+   "SUPERVILLE SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 72.7,
+    "charge": 54.91,
+    "comissao": 0.0,
+    "repasse": 51.67,
+    "receitaLiquida": 3.23
+   },
+   "Super Nosso": {
+    "spendTech": 19.8,
+    "spendNetwork": 6383.3,
+    "charge": 1778.11,
+    "comissao": 0.99,
+    "repasse": 5036.13,
+    "receitaLiquida": -3257.03
+   },
+   "SÃO RAFAEL SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 7.7,
+    "charge": 7.7,
+    "comissao": 0.0,
+    "repasse": 6.36,
+    "receitaLiquida": 1.34
+   },
+   "TELERIO ADS": {
+    "spendTech": 1083.85,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 108.39,
+    "repasse": 0.0,
+    "receitaLiquida": 108.39
+   },
+   "TENDA ATACADO - RETAIL MEDIA - PUBLISHER": {
+    "spendTech": 16503.66,
+    "spendNetwork": 22489.7,
+    "charge": 17442.9,
+    "comissao": 1650.37,
+    "repasse": 14541.76,
+    "receitaLiquida": 4551.51
+   },
+   "TENDA ATACADO ADS HML": {
+    "spendTech": 12.32,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1.23,
+    "repasse": 0.0,
+    "receitaLiquida": 1.23
+   },
+   "TIAOZINHO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 316.2,
+    "charge": 309.0,
+    "comissao": 0.0,
+    "repasse": 260.98,
+    "receitaLiquida": 48.02
+   },
+   "TONIN SUPERATACADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 360.3,
+    "charge": 325.72,
+    "comissao": 0.0,
+    "repasse": 273.62,
+    "receitaLiquida": 52.1
+   },
+   "TRENTO SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 15.5,
+    "charge": 13.78,
+    "comissao": 0.0,
+    "repasse": 11.38,
+    "receitaLiquida": 2.41
+   },
+   "UNICOMPRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 345.7,
+    "charge": 311.34,
+    "comissao": 0.0,
+    "repasse": 256.97,
+    "receitaLiquida": 54.38
+   },
+   "URBANIC - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 31.9,
+    "charge": 31.2,
+    "comissao": 0.0,
+    "repasse": 26.33,
+    "receitaLiquida": 4.87
+   },
+   "VENÂNCIO": {
+    "spendTech": 0.0,
+    "spendNetwork": 15294.41,
+    "charge": 12650.71,
+    "comissao": 0.0,
+    "repasse": 9590.06,
+    "receitaLiquida": 3060.65
+   },
+   "VIEIRAO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 48.2,
+    "charge": 40.57,
+    "comissao": 0.0,
+    "repasse": 34.64,
+    "receitaLiquida": 5.93
+   },
+   "VILA RICA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 42.7,
+    "charge": 29.6,
+    "comissao": 0.0,
+    "repasse": 24.43,
+    "receitaLiquida": 5.17
+   },
+   "VILA SUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 129.2,
+    "charge": 118.83,
+    "comissao": 0.0,
+    "repasse": 100.96,
+    "receitaLiquida": 17.86
+   },
+   "VILLARREAL ONLINE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 203.7,
+    "charge": 189.28,
+    "comissao": 0.0,
+    "repasse": 161.92,
+    "receitaLiquida": 27.36
+   },
+   "VIP COMMERCE - SUBPUBLISHER SANDBOX": {
+    "spendTech": 40.01,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 4.0,
+    "repasse": 0.0,
+    "receitaLiquida": 4.0
+   },
+   "VR ADS": {
+    "spendTech": 871.61,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 87.16,
+    "repasse": 0.0,
+    "receitaLiquida": 87.16
+   },
+   "VTEX ELETRO STORE": {
+    "spendTech": 0.04,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "VTEX GROCERY": {
+    "spendTech": 0.22,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.02,
+    "repasse": 0.0,
+    "receitaLiquida": 0.02
+   },
+   "ZONA SUL ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 6630.5,
+    "charge": 4098.28,
+    "comissao": 0.0,
+    "repasse": 4350.3,
+    "receitaLiquida": -252.02
+   },
+   "ZOOM": {
+    "spendTech": 12807.04,
+    "spendNetwork": 2106.09,
+    "charge": 2004.26,
+    "comissao": 1280.7,
+    "repasse": 1786.57,
+    "receitaLiquida": 1498.4
+   },
+   "ÉPOCA COSMÉTICOS ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 10638.05,
+    "charge": 9578.15,
+    "comissao": 0.0,
+    "repasse": 8448.12,
+    "receitaLiquida": 1130.03
+   }
+  },
+  "2026-02": {
+   "2 BEM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 19.3,
+    "charge": 13.28,
+    "comissao": 0.0,
+    "repasse": 10.96,
+    "receitaLiquida": 2.32
+   },
+   "AIQFOME PUBLISHER - SANDBOX": {
+    "spendTech": 0.12,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.01,
+    "repasse": 0.0,
+    "receitaLiquida": 0.01
+   },
+   "ALABARCE DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 50.1,
+    "charge": 35.92,
+    "comissao": 0.0,
+    "repasse": 29.64,
+    "receitaLiquida": 6.27
+   },
+   "AMERICANAS": {
+    "spendTech": 55528.83,
+    "spendNetwork": 7149.2,
+    "charge": 6265.92,
+    "comissao": 8329.32,
+    "repasse": 4727.19,
+    "receitaLiquida": 9868.05
+   },
+   "AMERICANAS STAGING": {
+    "spendTech": 28.56,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "AMOBELEZA": {
+    "spendTech": 0.0,
+    "spendNetwork": 14036.05,
+    "charge": 14024.08,
+    "comissao": 0.0,
+    "repasse": 11574.77,
+    "receitaLiquida": 2449.3
+   },
+   "ARCOMIX - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 29.1,
+    "charge": 19.46,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 19.46
+   },
+   "ARMAZEM DO GRÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 559.6,
+    "charge": 366.1,
+    "comissao": 0.0,
+    "repasse": 302.16,
+    "receitaLiquida": 63.94
+   },
+   "ARMAÇÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 20.4,
+    "charge": 17.3,
+    "comissao": 0.0,
+    "repasse": 14.28,
+    "receitaLiquida": 3.02
+   },
+   "ATACADISTA MEGA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 40.4,
+    "charge": 25.48,
+    "comissao": 0.0,
+    "repasse": 21.03,
+    "receitaLiquida": 4.45
+   },
+   "BEM MAIS FARMA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.0,
+    "charge": 2.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 2.0
+   },
+   "BEMOL": {
+    "spendTech": 206595.76,
+    "spendNetwork": 9923.14,
+    "charge": 9708.59,
+    "comissao": 41319.15,
+    "repasse": 7608.77,
+    "receitaLiquida": 43418.97
+   },
+   "BEMOL QA (STAGING)": {
+    "spendTech": 21.04,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "BISTEK SUPERMERCADOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 112.9,
+    "charge": 95.96,
+    "comissao": 0.0,
+    "repasse": 78.3,
+    "receitaLiquida": 17.66
+   },
+   "BISTURI DISTRIBUIDORA DE MATERIAL HOSPITALAR LTDA": {
+    "spendTech": 0.0,
+    "spendNetwork": 6.0,
+    "charge": 3.78,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 3.78
+   },
+   "BRAMIL EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 1216.0,
+    "charge": 829.22,
+    "comissao": 0.0,
+    "repasse": 684.4,
+    "receitaLiquida": 144.82
+   },
+   "BRETAS": {
+    "spendTech": 0.0,
+    "spendNetwork": 1050.0,
+    "charge": 996.6,
+    "comissao": 0.0,
+    "repasse": 734.97,
+    "receitaLiquida": 261.63
+   },
+   "BRETAS - PUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 412.9,
+    "charge": 409.21,
+    "comissao": 0.0,
+    "repasse": 337.74,
+    "receitaLiquida": 71.47
+   },
+   "BUSCAPE": {
+    "spendTech": 9664.28,
+    "spendNetwork": 469.11,
+    "charge": 468.67,
+    "comissao": 966.43,
+    "repasse": 409.57,
+    "receitaLiquida": 1025.53
+   },
+   "BUSCAPE STAGING": {
+    "spendTech": 6.18,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "CALEGARIS EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 33.0,
+    "charge": 21.18,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 21.18
+   },
+   "CAMBUI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 284.1,
+    "charge": 188.77,
+    "comissao": 0.0,
+    "repasse": 155.8,
+    "receitaLiquida": 32.97
+   },
+   "CARVALHO SUPERSHOP - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 217.1,
+    "charge": 143.93,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 143.93
+   },
+   "CASAS BAHIA ADS": {
+    "spendTech": 2907073.25,
+    "spendNetwork": 163283.51,
+    "charge": 134257.08,
+    "comissao": 215123.42,
+    "repasse": 143401.93,
+    "receitaLiquida": 205978.57
+   },
+   "CELEIRO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 52.8,
+    "charge": 33.82,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 33.82
+   },
+   "CENTRAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 220.4,
+    "charge": 151.15,
+    "comissao": 0.0,
+    "repasse": 124.75,
+    "receitaLiquida": 26.4
+   },
+   "CENTRAL DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 42.9,
+    "charge": 27.05,
+    "comissao": 0.0,
+    "repasse": 22.33,
+    "receitaLiquida": 4.73
+   },
+   "CHEDRAUI MX - PUBLISHER": {
+    "spendTech": 0.18,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "CIA LATINO AMERICANA DE MEDICAMENTOS": {
+    "spendTech": 977.34,
+    "spendNetwork": 6813.34,
+    "charge": 6400.12,
+    "comissao": 97.73,
+    "repasse": 5355.76,
+    "receitaLiquida": 1142.1
+   },
+   "CLUBBI": {
+    "spendTech": 7136.2,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 713.62,
+    "repasse": 0.0,
+    "receitaLiquida": 713.62
+   },
+   "CLUBBI STAGING": {
+    "spendTech": 0.86,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "COBASI ADS": {
+    "spendTech": 726.0,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 72.6,
+    "repasse": 0.0,
+    "receitaLiquida": 72.6
+   },
+   "DE ANGELINA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 157.7,
+    "charge": 105.25,
+    "comissao": 0.0,
+    "repasse": 86.87,
+    "receitaLiquida": 18.38
+   },
+   "DECISAO - LIGA ATACAREJO": {
+    "spendTech": 0.0,
+    "spendNetwork": 24.9,
+    "charge": 20.02,
+    "comissao": 0.0,
+    "repasse": 16.53,
+    "receitaLiquida": 3.5
+   },
+   "DELTASUPER - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 447.1,
+    "charge": 291.86,
+    "comissao": 0.0,
+    "repasse": 240.89,
+    "receitaLiquida": 50.97
+   },
+   "DIA ADS": {
+    "spendTech": 12663.07,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1899.46,
+    "repasse": 0.0,
+    "receitaLiquida": 1899.46
+   },
+   "DINIZ SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 402.1,
+    "charge": 290.15,
+    "comissao": 0.0,
+    "repasse": 239.48,
+    "receitaLiquida": 50.67
+   },
+   "DROGAL ADS": {
+    "spendTech": 50.0,
+    "spendNetwork": 83618.45,
+    "charge": 77441.23,
+    "comissao": 0.0,
+    "repasse": 38487.74,
+    "receitaLiquida": 38953.49
+   },
+   "DROGAL ADS HML": {
+    "spendTech": 62.34,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "DROGARIA SÃO PAULO ADS": {
+    "spendTech": 85929.68,
+    "spendNetwork": 1471629.58,
+    "charge": 1367838.82,
+    "comissao": 2287.23,
+    "repasse": 1063745.17,
+    "receitaLiquida": 306380.88
+   },
+   "ELETRO ANGELONI": {
+    "spendTech": 0.0,
+    "spendNetwork": 2503.4,
+    "charge": 2503.4,
+    "comissao": 0.0,
+    "repasse": 2066.18,
+    "receitaLiquida": 437.22
+   },
+   "ENXUTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 157.7,
+    "charge": 104.22,
+    "comissao": 0.0,
+    "repasse": 86.02,
+    "receitaLiquida": 18.2
+   },
+   "FARMACITY CONECT": {
+    "spendTech": 335420.93,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 45281.83,
+    "repasse": 0.0,
+    "receitaLiquida": 45281.83
+   },
+   "FARMACITYQA": {
+    "spendTech": 14.89,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "FARMÁCIA INDIANA ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 5920.59,
+    "charge": 5443.6,
+    "comissao": 0.0,
+    "repasse": 2708.21,
+    "receitaLiquida": 2735.4
+   },
+   "FASOUTO - VIPCOMMERCE SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 56.5,
+    "charge": 54.84,
+    "comissao": 0.0,
+    "repasse": 45.26,
+    "receitaLiquida": 9.58
+   },
+   "FAST SHOP": {
+    "spendTech": 78008.44,
+    "spendNetwork": 14616.02,
+    "charge": 14474.8,
+    "comissao": 3900.42,
+    "repasse": 12063.33,
+    "receitaLiquida": 6311.89
+   },
+   "FAVORITO SUPERMERCADOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 59.8,
+    "charge": 39.93,
+    "comissao": 0.0,
+    "repasse": 32.96,
+    "receitaLiquida": 6.97
+   },
+   "FEDERZONI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 41.4,
+    "charge": 26.37,
+    "comissao": 0.0,
+    "repasse": 21.76,
+    "receitaLiquida": 4.61
+   },
+   "FEIRA NOVA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 268.7,
+    "charge": 190.92,
+    "comissao": 0.0,
+    "repasse": 157.57,
+    "receitaLiquida": 33.34
+   },
+   "FLEX - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 299.3,
+    "charge": 198.14,
+    "comissao": 0.0,
+    "repasse": 163.53,
+    "receitaLiquida": 34.6
+   },
+   "FONSECA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 449.8,
+    "charge": 306.97,
+    "comissao": 0.0,
+    "repasse": 253.36,
+    "receitaLiquida": 53.61
+   },
+   "FRADEILHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 163.0,
+    "charge": 109.08,
+    "comissao": 0.0,
+    "repasse": 90.03,
+    "receitaLiquida": 19.05
+   },
+   "FRUTTO DA TERRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 22.9,
+    "charge": 14.7,
+    "comissao": 0.0,
+    "repasse": 12.13,
+    "receitaLiquida": 2.57
+   },
+   "FÊNIX SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 159.07,
+    "charge": 111.4,
+    "comissao": 0.0,
+    "repasse": 91.94,
+    "receitaLiquida": 19.46
+   },
+   "GARCIA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 145.87,
+    "charge": 96.43,
+    "comissao": 0.0,
+    "repasse": 79.58,
+    "receitaLiquida": 16.84
+   },
+   "GBARBOSA": {
+    "spendTech": 0.0,
+    "spendNetwork": 7713.6,
+    "charge": 7050.33,
+    "comissao": 0.0,
+    "repasse": 5501.19,
+    "receitaLiquida": 1549.14
+   },
+   "GBARBOSA - PUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2261.99,
+    "charge": 2241.77,
+    "comissao": 0.0,
+    "repasse": 1850.25,
+    "receitaLiquida": 391.53
+   },
+   "GROWD ADS": {
+    "spendTech": 32727.92,
+    "spendNetwork": 13123.5,
+    "charge": 11991.3,
+    "comissao": 3272.79,
+    "repasse": 10212.53,
+    "receitaLiquida": 5051.57
+   },
+   "GRUPO MATEUS": {
+    "spendTech": 0.0,
+    "spendNetwork": 199.94,
+    "charge": 154.08,
+    "comissao": 0.0,
+    "repasse": 149.63,
+    "receitaLiquida": 4.45
+   },
+   "GUARANI SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 105.2,
+    "charge": 75.58,
+    "comissao": 0.0,
+    "repasse": 62.38,
+    "receitaLiquida": 13.2
+   },
+   "HAPVIDA - PUBLISHER": {
+    "spendTech": 261.9,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "HIPER BERGAMINI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 219.0,
+    "charge": 140.96,
+    "comissao": 0.0,
+    "repasse": 116.34,
+    "receitaLiquida": 24.62
+   },
+   "HIPER NATASHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 20.1,
+    "charge": 13.41,
+    "comissao": 0.0,
+    "repasse": 11.07,
+    "receitaLiquida": 2.34
+   },
+   "HIROTA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 930.3,
+    "charge": 632.97,
+    "comissao": 0.0,
+    "repasse": 522.43,
+    "receitaLiquida": 110.55
+   },
+   "HORTIFRUTI BR - NATURAL DA TERRA - PUBLISHER - HML": {
+    "spendTech": 74.78,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 7.48,
+    "repasse": 0.0,
+    "receitaLiquida": 7.48
+   },
+   "IPANEMA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 65.8,
+    "charge": 42.01,
+    "comissao": 0.0,
+    "repasse": 34.68,
+    "receitaLiquida": 7.34
+   },
+   "JAGUARE": {
+    "spendTech": 0.0,
+    "spendNetwork": 94.5,
+    "charge": 63.18,
+    "comissao": 0.0,
+    "repasse": 52.14,
+    "receitaLiquida": 11.03
+   },
+   "JB DE FRUTAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 59.7,
+    "charge": 42.08,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 42.08
+   },
+   "KABUM": {
+    "spendTech": 1043483.61,
+    "spendNetwork": 8858.3,
+    "charge": 5980.2,
+    "comissao": 138783.32,
+    "repasse": 4761.55,
+    "receitaLiquida": 140001.97
+   },
+   "KABUM STAGING": {
+    "spendTech": 883.42,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "LEROY MERLIN": {
+    "spendTech": 41394.31,
+    "spendNetwork": 182.0,
+    "charge": 0.0,
+    "comissao": 4139.43,
+    "repasse": 161.7,
+    "receitaLiquida": 3977.73
+   },
+   "LEROY MERLIN STAGING": {
+    "spendTech": 10.28,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "LOCATEL": {
+    "spendTech": 1624.42,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 219.3,
+    "repasse": 0.0,
+    "receitaLiquida": 219.3
+   },
+   "LOJAS IMPÉRIO ADS": {
+    "spendTech": 565.2,
+    "spendNetwork": 3040.5,
+    "charge": 0.0,
+    "comissao": 56.52,
+    "repasse": 0.0,
+    "receitaLiquida": 56.52
+   },
+   "LUZITANA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 10.4,
+    "charge": 8.41,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 8.41
+   },
+   "MADEIRA ADS": {
+    "spendTech": 114048.53,
+    "spendNetwork": 5.25,
+    "charge": 0.0,
+    "comissao": 10264.37,
+    "repasse": 4.66,
+    "receitaLiquida": 10259.7
+   },
+   "MADEIRA MADEIRA - PUBLISHER TESTE": {
+    "spendTech": 0.6,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "MERCADO AJUBÁ": {
+    "spendTech": 0.0,
+    "spendNetwork": 39.9,
+    "charge": 25.16,
+    "comissao": 0.0,
+    "repasse": 20.77,
+    "receitaLiquida": 4.39
+   },
+   "MERCADO DO JOAO CARLOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.8,
+    "charge": 5.55,
+    "comissao": 0.0,
+    "repasse": 4.58,
+    "receitaLiquida": 0.97
+   },
+   "MERCANTIL ATACADO": {
+    "spendTech": 0.0,
+    "spendNetwork": 1774.9,
+    "charge": 1649.04,
+    "comissao": 0.0,
+    "repasse": 833.74,
+    "receitaLiquida": 815.3
+   },
+   "MERCANTIL NOVA ERA LTDA": {
+    "spendTech": 0.0,
+    "spendNetwork": 1154.64,
+    "charge": 1125.82,
+    "comissao": 0.0,
+    "repasse": 552.91,
+    "receitaLiquida": 572.92
+   },
+   "MESCHKE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 149.9,
+    "charge": 101.44,
+    "comissao": 0.0,
+    "repasse": 83.72,
+    "receitaLiquida": 17.72
+   },
+   "MEU PRATA SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 34.5,
+    "charge": 28.81,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 28.81
+   },
+   "MEVO FARMA": {
+    "spendTech": 0.0,
+    "spendNetwork": 645.79,
+    "charge": 626.03,
+    "comissao": 0.0,
+    "repasse": 427.43,
+    "receitaLiquida": 198.6
+   },
+   "NIPPO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 22.9,
+    "charge": 15.18,
+    "comissao": 0.0,
+    "repasse": 12.53,
+    "receitaLiquida": 2.65
+   },
+   "NORDESTÃO SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 483.0,
+    "charge": 317.53,
+    "comissao": 0.0,
+    "repasse": 262.07,
+    "receitaLiquida": 55.46
+   },
+   "OLIMPICA CO - PUBLISHER": {
+    "spendTech": 163.22,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "OXAN SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 126.1,
+    "charge": 89.28,
+    "comissao": 0.0,
+    "repasse": 73.68,
+    "receitaLiquida": 15.59
+   },
+   "PAGUE MENOS": {
+    "spendTech": 24963.74,
+    "spendNetwork": 519377.98,
+    "charge": 493274.94,
+    "comissao": 1179.04,
+    "repasse": 446063.87,
+    "receitaLiquida": 48390.1
+   },
+   "PANVEL": {
+    "spendTech": 32685.16,
+    "spendNetwork": 297722.26,
+    "charge": 287803.01,
+    "comissao": 3268.52,
+    "repasse": 238807.93,
+    "receitaLiquida": 52263.6
+   },
+   "PAULISTÃO ATACADISTA": {
+    "spendTech": 0.0,
+    "spendNetwork": 697.7,
+    "charge": 682.01,
+    "comissao": 0.0,
+    "repasse": 565.6,
+    "receitaLiquida": 116.4
+   },
+   "PECITO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 50.1,
+    "charge": 36.29,
+    "comissao": 0.0,
+    "repasse": 29.95,
+    "receitaLiquida": 6.34
+   },
+   "PERIM - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 208.3,
+    "charge": 142.08,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 142.08
+   },
+   "PETLOVE ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 18656.6,
+    "charge": 9011.6,
+    "comissao": 0.0,
+    "repasse": 7437.72,
+    "receitaLiquida": 1573.88
+   },
+   "PICPAY PUBLISHER": {
+    "spendTech": 20000.0,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 2000.0,
+    "repasse": 0.0,
+    "receitaLiquida": 2000.0
+   },
+   "PICPAY STAGING PUBLISHER": {
+    "spendTech": 59.94,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "PILAR - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 237.0,
+    "charge": 157.63,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 157.63
+   },
+   "PINHEIRO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 546.4,
+    "charge": 367.12,
+    "comissao": 0.0,
+    "repasse": 303.0,
+    "receitaLiquida": 64.12
+   },
+   "PORTO EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 44.6,
+    "charge": 33.08,
+    "comissao": 0.0,
+    "repasse": 27.3,
+    "receitaLiquida": 5.78
+   },
+   "PREZUNIC": {
+    "spendTech": 0.0,
+    "spendNetwork": 14447.11,
+    "charge": 13409.74,
+    "comissao": 0.0,
+    "repasse": 10298.45,
+    "receitaLiquida": 3111.29
+   },
+   "PROMOFARMA - PUBLISHER": {
+    "spendTech": 278.46,
+    "spendNetwork": 1451.24,
+    "charge": 1257.59,
+    "comissao": 55.69,
+    "repasse": 837.24,
+    "receitaLiquida": 476.04
+   },
+   "PRÓ BRAZILIAN - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 25.3,
+    "charge": 15.96,
+    "comissao": 0.0,
+    "repasse": 13.17,
+    "receitaLiquida": 2.79
+   },
+   "PÉROLA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 216.3,
+    "charge": 149.63,
+    "comissao": 0.0,
+    "repasse": 123.5,
+    "receitaLiquida": 26.13
+   },
+   "REDE COMPRAS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 300.6,
+    "charge": 209.15,
+    "comissao": 0.0,
+    "repasse": 172.62,
+    "receitaLiquida": 36.53
+   },
+   "REDETOP - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 178.1,
+    "charge": 113.43,
+    "comissao": 0.0,
+    "repasse": 93.62,
+    "receitaLiquida": 19.81
+   },
+   "RETAIL MEDIA CASAS BAHIA STAGING": {
+    "spendTech": 17254.17,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "ROSSI DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 791.47,
+    "charge": 537.44,
+    "comissao": 0.0,
+    "repasse": 443.58,
+    "receitaLiquida": 93.86
+   },
+   "ROYAL SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 41.7,
+    "charge": 26.56,
+    "comissao": 0.0,
+    "repasse": 21.92,
+    "receitaLiquida": 4.64
+   },
+   "SAN MICHEL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 63.6,
+    "charge": 43.8,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 43.8
+   },
+   "SANTAREM SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 273.2,
+    "charge": 190.43,
+    "comissao": 0.0,
+    "repasse": 157.17,
+    "receitaLiquida": 33.26
+   },
+   "SEPHORA ADS PUBLISHER": {
+    "spendTech": 409887.81,
+    "spendNetwork": 21752.9,
+    "charge": 17145.1,
+    "comissao": 18444.95,
+    "repasse": 13651.27,
+    "receitaLiquida": 21938.78
+   },
+   "SFURTADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 747.27,
+    "charge": 618.42,
+    "comissao": 0.0,
+    "repasse": 510.41,
+    "receitaLiquida": 108.01
+   },
+   "SHOPSTAR PUBLISHER": {
+    "spendTech": 0.95,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "SILVEIRA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 40.1,
+    "charge": 27.87,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 27.87
+   },
+   "SIMPATIA ONLINE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 57.2,
+    "charge": 47.63,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 47.63
+   },
+   "SORRISO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 60.3,
+    "charge": 43.57,
+    "comissao": 0.0,
+    "repasse": 35.96,
+    "receitaLiquida": 7.61
+   },
+   "SUPER ANGELONI": {
+    "spendTech": 0.0,
+    "spendNetwork": 4544.8,
+    "charge": 3954.58,
+    "comissao": 0.0,
+    "repasse": 3676.98,
+    "receitaLiquida": 277.61
+   },
+   "SUPER G SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.6,
+    "charge": 1.64,
+    "comissao": 0.0,
+    "repasse": 1.35,
+    "receitaLiquida": 0.29
+   },
+   "SUPER LOCAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.0,
+    "charge": 1.26,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 1.26
+   },
+   "SUPER MUFFATO DELIVERY": {
+    "spendTech": 0.0,
+    "spendNetwork": 3264.0,
+    "charge": 2877.68,
+    "comissao": 0.0,
+    "repasse": 601.51,
+    "receitaLiquida": 2276.17
+   },
+   "SUPER XTRA - PUBLISHER": {
+    "spendTech": 3.24,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "SUPERMERCADO DO ROBERTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 62.7,
+    "charge": 40.65,
+    "comissao": 0.0,
+    "repasse": 33.55,
+    "receitaLiquida": 7.1
+   },
+   "SUPERMERCADO MANAÍRA": {
+    "spendTech": 0.0,
+    "spendNetwork": 290.4,
+    "charge": 195.7,
+    "comissao": 0.0,
+    "repasse": 161.52,
+    "receitaLiquida": 34.18
+   },
+   "SUPERMERCADO SAVEGNAGO": {
+    "spendTech": 110.38,
+    "spendNetwork": 4782.14,
+    "charge": 4372.16,
+    "comissao": 11.04,
+    "repasse": 3858.37,
+    "receitaLiquida": 524.84
+   },
+   "SUPERMERCADOS DAOLIO": {
+    "spendTech": 0.0,
+    "spendNetwork": 308.3,
+    "charge": 204.4,
+    "comissao": 0.0,
+    "repasse": 168.7,
+    "receitaLiquida": 35.7
+   },
+   "SUPERSUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 15.3,
+    "charge": 11.5,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 11.5
+   },
+   "SUPERVILLE SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 66.6,
+    "charge": 45.69,
+    "comissao": 0.0,
+    "repasse": 37.71,
+    "receitaLiquida": 7.98
+   },
+   "Super Nosso": {
+    "spendTech": 31.8,
+    "spendNetwork": 8607.2,
+    "charge": 8022.65,
+    "comissao": 1.59,
+    "repasse": 6932.41,
+    "receitaLiquida": 1091.83
+   },
+   "TELERIO ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 66.04,
+    "charge": 66.03,
+    "comissao": 0.0,
+    "repasse": 44.88,
+    "receitaLiquida": 21.15
+   },
+   "TENDA ATACADO - RETAIL MEDIA - PUBLISHER": {
+    "spendTech": 5601.12,
+    "spendNetwork": 26475.98,
+    "charge": 23779.16,
+    "comissao": 560.11,
+    "repasse": 20076.01,
+    "receitaLiquida": 4263.26
+   },
+   "TENDA ATACADO ADS HML": {
+    "spendTech": 19.84,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1.98,
+    "repasse": 0.0,
+    "receitaLiquida": 1.98
+   },
+   "TIAOZINHO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 388.7,
+    "charge": 245.65,
+    "comissao": 0.0,
+    "repasse": 202.75,
+    "receitaLiquida": 42.9
+   },
+   "TONIN SUPERATACADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 348.6,
+    "charge": 238.31,
+    "comissao": 0.0,
+    "repasse": 196.69,
+    "receitaLiquida": 41.62
+   },
+   "TRENTO SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 66.1,
+    "charge": 42.79,
+    "comissao": 0.0,
+    "repasse": 35.32,
+    "receitaLiquida": 7.47
+   },
+   "UNICOMPRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 285.2,
+    "charge": 221.23,
+    "comissao": 0.0,
+    "repasse": 182.59,
+    "receitaLiquida": 38.64
+   },
+   "URBANIC - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 17.7,
+    "charge": 11.16,
+    "comissao": 0.0,
+    "repasse": 9.21,
+    "receitaLiquida": 1.95
+   },
+   "VENÂNCIO": {
+    "spendTech": 0.0,
+    "spendNetwork": 11709.46,
+    "charge": 18884.16,
+    "comissao": 0.0,
+    "repasse": 7449.35,
+    "receitaLiquida": 11434.81
+   },
+   "VIEIRAO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 42.5,
+    "charge": 28.65,
+    "comissao": 0.0,
+    "repasse": 23.65,
+    "receitaLiquida": 5.0
+   },
+   "VILA RICA - SUBPUBLISHER": {
+    "spendTech": 0.7,
+    "spendNetwork": 17.4,
+    "charge": 12.34,
+    "comissao": 0.07,
+    "repasse": 10.18,
+    "receitaLiquida": 2.23
+   },
+   "VILA SUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 89.2,
+    "charge": 60.69,
+    "comissao": 0.0,
+    "repasse": 50.09,
+    "receitaLiquida": 10.6
+   },
+   "VILLARREAL ONLINE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 285.6,
+    "charge": 194.96,
+    "comissao": 0.0,
+    "repasse": 160.91,
+    "receitaLiquida": 34.05
+   },
+   "VIOLETA EXPRESS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 1926.0,
+    "charge": 1339.22,
+    "comissao": 0.0,
+    "repasse": 1105.32,
+    "receitaLiquida": 233.89
+   },
+   "VIP COMMERCE - SUBPUBLISHER SANDBOX": {
+    "spendTech": 47.91,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 4.79,
+    "repasse": 0.0,
+    "receitaLiquida": 4.79
+   },
+   "VIPCOMMERCE STAGING - SUBPUBLISHER": {
+    "spendTech": 11.9,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "VR ADS HML": {
+    "spendTech": 55.04,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 5.5,
+    "repasse": 0.0,
+    "receitaLiquida": 5.5
+   },
+   "VTEX ELETRO STORE": {
+    "spendTech": 0.06,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.01,
+    "repasse": 0.0,
+    "receitaLiquida": 0.01
+   },
+   "VTEX GROCERY": {
+    "spendTech": 1.46,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.15,
+    "repasse": 0.0,
+    "receitaLiquida": 0.15
+   },
+   "ZONA SUL ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 8759.8,
+    "charge": 7684.27,
+    "comissao": 0.0,
+    "repasse": 6479.22,
+    "receitaLiquida": 1205.05
+   },
+   "ZOOM": {
+    "spendTech": 5620.51,
+    "spendNetwork": 523.58,
+    "charge": 523.58,
+    "comissao": 562.05,
+    "repasse": 457.56,
+    "receitaLiquida": 628.07
+   },
+   "ÉPOCA COSMÉTICOS ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 3888.15,
+    "charge": 3779.28,
+    "comissao": 0.0,
+    "repasse": 3315.87,
+    "receitaLiquida": 463.41
+   }
+  },
+  "2026-03": {
+   "2 BEM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 29.66,
+    "charge": 14.43,
+    "comissao": 0.0,
+    "repasse": 11.3,
+    "receitaLiquida": 3.12
+   },
+   "AIQFOME PUBLISHER - SANDBOX": {
+    "spendTech": 0.16,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.02,
+    "repasse": 0.0,
+    "receitaLiquida": 0.02
+   },
+   "ALABARCE DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 44.81,
+    "charge": 23.44,
+    "comissao": 0.0,
+    "repasse": 18.47,
+    "receitaLiquida": 4.97
+   },
+   "AMERICANAS": {
+    "spendTech": 344202.0,
+    "spendNetwork": 28603.39,
+    "charge": 23800.82,
+    "comissao": 51630.3,
+    "repasse": 17332.95,
+    "receitaLiquida": 58098.17
+   },
+   "AMERICANAS STAGING": {
+    "spendTech": 23.64,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "AMOBELEZA": {
+    "spendTech": 0.0,
+    "spendNetwork": 1170.2,
+    "charge": 1140.52,
+    "comissao": 0.0,
+    "repasse": 941.33,
+    "receitaLiquida": 199.19
+   },
+   "ARCOMIX - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 403.48,
+    "charge": 38.62,
+    "comissao": 0.0,
+    "repasse": 30.29,
+    "receitaLiquida": 8.33
+   },
+   "ARMAZEM DO GRÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 500.07,
+    "charge": 229.86,
+    "comissao": 0.0,
+    "repasse": 181.47,
+    "receitaLiquida": 48.39
+   },
+   "ARMAÇÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.71,
+    "charge": 3.99,
+    "comissao": 0.0,
+    "repasse": 3.1,
+    "receitaLiquida": 0.89
+   },
+   "ATACADISTA MEGA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 116.17,
+    "charge": 65.68,
+    "comissao": 0.0,
+    "repasse": 52.45,
+    "receitaLiquida": 13.23
+   },
+   "BEMOL": {
+    "spendTech": 247426.5,
+    "spendNetwork": 10367.67,
+    "charge": 9773.4,
+    "comissao": 49485.3,
+    "repasse": 7614.16,
+    "receitaLiquida": 51644.54
+   },
+   "BEMOL QA (STAGING)": {
+    "spendTech": 41.12,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "BIGGY ADS": {
+    "spendTech": 1.2,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.12,
+    "repasse": 0.0,
+    "receitaLiquida": 0.12
+   },
+   "BISTEK SUPERMERCADOS": {
+    "spendTech": 7.0,
+    "spendNetwork": 118.69,
+    "charge": 108.08,
+    "comissao": 1.4,
+    "repasse": 78.71,
+    "receitaLiquida": 30.77
+   },
+   "BISTURI DISTRIBUIDORA DE MATERIAL HOSPITALAR LTDA": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.0,
+    "charge": 2.1,
+    "comissao": 0.0,
+    "repasse": 1.63,
+    "receitaLiquida": 0.47
+   },
+   "BOI BOM CARNES E FRIOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.95,
+    "charge": 4.5,
+    "comissao": 0.0,
+    "repasse": 3.71,
+    "receitaLiquida": 0.79
+   },
+   "BRAMIL EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 1792.63,
+    "charge": 958.37,
+    "comissao": 0.0,
+    "repasse": 767.65,
+    "receitaLiquida": 190.72
+   },
+   "BRETAS": {
+    "spendTech": 0.0,
+    "spendNetwork": 2440.1,
+    "charge": 1734.06,
+    "comissao": 0.0,
+    "repasse": 1262.83,
+    "receitaLiquida": 471.23
+   },
+   "BRETAS - PUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 858.23,
+    "charge": 637.61,
+    "comissao": 0.0,
+    "repasse": 433.39,
+    "receitaLiquida": 204.23
+   },
+   "BUSCAPE": {
+    "spendTech": 23368.41,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 2336.84,
+    "repasse": 0.0,
+    "receitaLiquida": 2336.84
+   },
+   "BUSCAPE STAGING": {
+    "spendTech": 41.9,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "CALEGARIS EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 17.02,
+    "charge": 9.13,
+    "comissao": 0.0,
+    "repasse": 7.3,
+    "receitaLiquida": 1.83
+   },
+   "CAMBUI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 279.09,
+    "charge": 151.98,
+    "comissao": 0.0,
+    "repasse": 119.4,
+    "receitaLiquida": 32.59
+   },
+   "CARVALHO SUPERSHOP - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 271.81,
+    "charge": 106.76,
+    "comissao": 0.0,
+    "repasse": 84.26,
+    "receitaLiquida": 22.5
+   },
+   "CASAS BAHIA ADS": {
+    "spendTech": 4242971.66,
+    "spendNetwork": 35539.08,
+    "charge": 18952.9,
+    "comissao": 339437.73,
+    "repasse": 31379.71,
+    "receitaLiquida": 327010.93
+   },
+   "CELEIRO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 90.43,
+    "charge": 42.14,
+    "comissao": 0.0,
+    "repasse": 33.8,
+    "receitaLiquida": 8.34
+   },
+   "CENTRAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 332.97,
+    "charge": 185.07,
+    "comissao": 0.0,
+    "repasse": 145.94,
+    "receitaLiquida": 39.13
+   },
+   "CENTRAL DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 70.25,
+    "charge": 34.09,
+    "comissao": 0.0,
+    "repasse": 27.83,
+    "receitaLiquida": 6.26
+   },
+   "CHEDRAUI MX - PUBLISHER": {
+    "spendTech": 0.88,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.09,
+    "repasse": 0.0,
+    "receitaLiquida": 0.09
+   },
+   "CIA LATINO AMERICANA DE MEDICAMENTOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 8757.07,
+    "charge": 8196.19,
+    "comissao": 0.0,
+    "repasse": 6782.51,
+    "receitaLiquida": 1413.68
+   },
+   "CIDADE BRANCA - QUADRI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 6.1,
+    "charge": 3.2,
+    "comissao": 0.0,
+    "repasse": 2.48,
+    "receitaLiquida": 0.71
+   },
+   "CLUBBI": {
+    "spendTech": 10316.8,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "CLUBBI STAGING": {
+    "spendTech": 4.0,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "COBASI ADS": {
+    "spendTech": 1051.2,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 105.12,
+    "repasse": 0.0,
+    "receitaLiquida": 105.12
+   },
+   "DE ANGELINA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 85.4,
+    "charge": 54.92,
+    "comissao": 0.0,
+    "repasse": 43.74,
+    "receitaLiquida": 11.17
+   },
+   "DELTASUPER - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 399.4,
+    "charge": 168.75,
+    "comissao": 0.0,
+    "repasse": 135.66,
+    "receitaLiquida": 33.1
+   },
+   "DIA ADS": {
+    "spendTech": 19960.32,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 2994.05,
+    "repasse": 0.0,
+    "receitaLiquida": 2994.05
+   },
+   "DIA ADS HML": {
+    "spendTech": 6.51,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "DINIZ SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 518.47,
+    "charge": 285.65,
+    "comissao": 0.0,
+    "repasse": 230.96,
+    "receitaLiquida": 54.69
+   },
+   "DROGAL ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 109010.53,
+    "charge": 104129.67,
+    "comissao": 0.0,
+    "repasse": 50335.56,
+    "receitaLiquida": 53794.11
+   },
+   "DROGAL ADS HML": {
+    "spendTech": 120.06,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "DROGARIA CATARINENSE": {
+    "spendTech": 0.0,
+    "spendNetwork": 202.0,
+    "charge": 196.68,
+    "comissao": 0.0,
+    "repasse": 162.33,
+    "receitaLiquida": 34.35
+   },
+   "DROGARIA SÃO PAULO ADS": {
+    "spendTech": 68293.33,
+    "spendNetwork": 2661627.79,
+    "charge": 2625286.4,
+    "comissao": 0.0,
+    "repasse": 1980271.55,
+    "receitaLiquida": 645014.85
+   },
+   "DROGARIAS FERREIRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 6.66,
+    "charge": 3.15,
+    "comissao": 0.0,
+    "repasse": 2.44,
+    "receitaLiquida": 0.7
+   },
+   "ELETRO ANGELONI": {
+    "spendTech": 0.0,
+    "spendNetwork": 3467.58,
+    "charge": 3467.58,
+    "comissao": 0.0,
+    "repasse": 2356.91,
+    "receitaLiquida": 1110.67
+   },
+   "ENXUTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 220.52,
+    "charge": 117.02,
+    "comissao": 0.0,
+    "repasse": 91.96,
+    "receitaLiquida": 25.06
+   },
+   "FARMACITY CONECT": {
+    "spendTech": 622440.1,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 84029.41,
+    "repasse": 0.0,
+    "receitaLiquida": 84029.41
+   },
+   "FARMACITYQA": {
+    "spendTech": 6.51,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "FARMÁCIA INDIANA ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 8048.54,
+    "charge": 7455.75,
+    "comissao": 0.0,
+    "repasse": 3588.11,
+    "receitaLiquida": 3867.64
+   },
+   "FASOUTO - VIPCOMMERCE SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 100.86,
+    "charge": 73.08,
+    "comissao": 0.0,
+    "repasse": 59.61,
+    "receitaLiquida": 13.48
+   },
+   "FAST SHOP": {
+    "spendTech": 118687.29,
+    "spendNetwork": 5930.45,
+    "charge": 5930.45,
+    "comissao": 5934.36,
+    "repasse": 4894.7,
+    "receitaLiquida": 6970.12
+   },
+   "FAVORITO SUPERMERCADOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 232.02,
+    "charge": 60.72,
+    "comissao": 0.0,
+    "repasse": 48.44,
+    "receitaLiquida": 12.28
+   },
+   "FEDERZONI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 67.79,
+    "charge": 31.91,
+    "comissao": 0.0,
+    "repasse": 25.18,
+    "receitaLiquida": 6.73
+   },
+   "FEIRA NOVA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 203.67,
+    "charge": 113.87,
+    "comissao": 0.0,
+    "repasse": 90.85,
+    "receitaLiquida": 23.02
+   },
+   "FERREIRA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 354.46,
+    "charge": 147.77,
+    "comissao": 0.0,
+    "repasse": 114.78,
+    "receitaLiquida": 32.98
+   },
+   "FLEX - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 339.1,
+    "charge": 157.25,
+    "comissao": 0.0,
+    "repasse": 123.33,
+    "receitaLiquida": 33.92
+   },
+   "FONSECA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 473.01,
+    "charge": 232.98,
+    "comissao": 0.0,
+    "repasse": 183.48,
+    "receitaLiquida": 49.5
+   },
+   "FRADEILHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 140.89,
+    "charge": 71.39,
+    "comissao": 0.0,
+    "repasse": 55.66,
+    "receitaLiquida": 15.73
+   },
+   "FRUTTO DA TERRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 15.28,
+    "charge": 7.92,
+    "comissao": 0.0,
+    "repasse": 6.15,
+    "receitaLiquida": 1.77
+   },
+   "FÊNIX SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 109.71,
+    "charge": 64.58,
+    "comissao": 0.0,
+    "repasse": 51.02,
+    "receitaLiquida": 13.55
+   },
+   "GARCIA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 202.21,
+    "charge": 90.21,
+    "comissao": 0.0,
+    "repasse": 71.54,
+    "receitaLiquida": 18.67
+   },
+   "GAROTO ATACADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 14.76,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "GBARBOSA": {
+    "spendTech": 0.0,
+    "spendNetwork": 12063.2,
+    "charge": 11230.47,
+    "comissao": 0.0,
+    "repasse": 7633.35,
+    "receitaLiquida": 3597.12
+   },
+   "GBARBOSA - PUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 9281.28,
+    "charge": 9028.98,
+    "comissao": 0.0,
+    "repasse": 7452.07,
+    "receitaLiquida": 1576.91
+   },
+   "GROWD ADS": {
+    "spendTech": 28511.28,
+    "spendNetwork": 19704.8,
+    "charge": 18386.55,
+    "comissao": 2851.13,
+    "repasse": 15256.39,
+    "receitaLiquida": 5981.29
+   },
+   "GRUPO MATEUS": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.0,
+    "charge": 3.24,
+    "comissao": 0.0,
+    "repasse": 2.52,
+    "receitaLiquida": 0.72
+   },
+   "GUARANI SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 133.32,
+    "charge": 72.43,
+    "comissao": 0.0,
+    "repasse": 57.73,
+    "receitaLiquida": 14.69
+   },
+   "HAPVIDA - PUBLISHER": {
+    "spendTech": 32468.16,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 4870.22,
+    "repasse": 0.0,
+    "receitaLiquida": 4870.22
+   },
+   "HIPER BERGAMINI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 162.3,
+    "charge": 83.68,
+    "comissao": 0.0,
+    "repasse": 66.9,
+    "receitaLiquida": 16.78
+   },
+   "HIPER NATASHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 24.82,
+    "charge": 11.11,
+    "comissao": 0.0,
+    "repasse": 8.79,
+    "receitaLiquida": 2.31
+   },
+   "HIROTA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 1355.77,
+    "charge": 742.76,
+    "comissao": 0.0,
+    "repasse": 583.17,
+    "receitaLiquida": 159.59
+   },
+   "HORTIFRUTI BR - NATURAL DA TERRA - PUBLISHER - HML": {
+    "spendTech": 0.58,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.06,
+    "repasse": 0.0,
+    "receitaLiquida": 0.06
+   },
+   "IPANEMA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 83.04,
+    "charge": 48.24,
+    "comissao": 0.0,
+    "repasse": 38.36,
+    "receitaLiquida": 9.87
+   },
+   "JAGUARE": {
+    "spendTech": 0.0,
+    "spendNetwork": 98.1,
+    "charge": 53.57,
+    "comissao": 0.0,
+    "repasse": 42.26,
+    "receitaLiquida": 11.31
+   },
+   "JB DE FRUTAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 88.78,
+    "charge": 45.45,
+    "comissao": 0.0,
+    "repasse": 36.26,
+    "receitaLiquida": 9.19
+   },
+   "KABUM": {
+    "spendTech": 1652840.97,
+    "spendNetwork": 14974.94,
+    "charge": 2241.82,
+    "comissao": 0.0,
+    "repasse": 11923.35,
+    "receitaLiquida": -9681.53
+   },
+   "KABUM STAGING": {
+    "spendTech": 580.24,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "LEROY MERLIN": {
+    "spendTech": 97625.0,
+    "spendNetwork": 19400.13,
+    "charge": 0.0,
+    "comissao": 9762.5,
+    "repasse": 16953.77,
+    "receitaLiquida": -7191.27
+   },
+   "LEROY MERLIN STAGING": {
+    "spendTech": 12.51,
+    "spendNetwork": 0.07,
+    "charge": 0.07,
+    "comissao": 1.25,
+    "repasse": 0.06,
+    "receitaLiquida": 1.26
+   },
+   "LOCATEL": {
+    "spendTech": 4532.79,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 611.93,
+    "repasse": 0.0,
+    "receitaLiquida": 611.93
+   },
+   "LOJAS IMPÉRIO ADS": {
+    "spendTech": 877.6,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 87.76,
+    "repasse": 0.0,
+    "receitaLiquida": 87.76
+   },
+   "LUZITANA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 47.2,
+    "charge": 26.59,
+    "comissao": 0.0,
+    "repasse": 21.02,
+    "receitaLiquida": 5.57
+   },
+   "MADEIRA ADS": {
+    "spendTech": 112553.31,
+    "spendNetwork": 22030.29,
+    "charge": 0.0,
+    "comissao": 10129.8,
+    "repasse": 19466.18,
+    "receitaLiquida": -9336.39
+   },
+   "MARKETPLACE CUIDAÊ - PUBLISHER": {
+    "spendTech": 1.2,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "MERCADO AJUBÁ": {
+    "spendTech": 0.0,
+    "spendNetwork": 26.76,
+    "charge": 12.43,
+    "comissao": 0.0,
+    "repasse": 9.65,
+    "receitaLiquida": 2.77
+   },
+   "MERCADO DO JOAO CARLOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 16.21,
+    "charge": 10.39,
+    "comissao": 0.0,
+    "repasse": 8.38,
+    "receitaLiquida": 2.02
+   },
+   "MERCANTIL ATACADO": {
+    "spendTech": 0.0,
+    "spendNetwork": 3778.5,
+    "charge": 3551.3,
+    "comissao": 0.0,
+    "repasse": 1724.16,
+    "receitaLiquida": 1827.14
+   },
+   "MERCANTIL NOVA ERA LTDA": {
+    "spendTech": 0.0,
+    "spendNetwork": 1999.1,
+    "charge": 1887.95,
+    "comissao": 0.0,
+    "repasse": 916.6,
+    "receitaLiquida": 971.35
+   },
+   "MESCHKE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 94.16,
+    "charge": 56.01,
+    "comissao": 0.0,
+    "repasse": 44.78,
+    "receitaLiquida": 11.24
+   },
+   "MEU PRATA SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 94.95,
+    "charge": 59.42,
+    "comissao": 0.0,
+    "repasse": 47.82,
+    "receitaLiquida": 11.6
+   },
+   "MEVO FARMA": {
+    "spendTech": 0.0,
+    "spendNetwork": 753.4,
+    "charge": 712.45,
+    "comissao": 0.0,
+    "repasse": 488.34,
+    "receitaLiquida": 224.11
+   },
+   "NIPPO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 28.14,
+    "charge": 19.42,
+    "comissao": 0.0,
+    "repasse": 15.59,
+    "receitaLiquida": 3.83
+   },
+   "NORDESTÃO SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 774.57,
+    "charge": 360.96,
+    "comissao": 0.0,
+    "repasse": 288.18,
+    "receitaLiquida": 72.78
+   },
+   "O MUNDO DAS EMBALAGENS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 3.96,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "OLIMPICA CO - PUBLISHER": {
+    "spendTech": 30872.61,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1543.63,
+    "repasse": 0.0,
+    "receitaLiquida": 1543.63
+   },
+   "OXAN SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 694.64,
+    "charge": 385.24,
+    "comissao": 0.0,
+    "repasse": 304.3,
+    "receitaLiquida": 80.93
+   },
+   "PAGUE MENOS": {
+    "spendTech": 37867.34,
+    "spendNetwork": 774789.78,
+    "charge": 756335.36,
+    "comissao": 3408.06,
+    "repasse": 667223.26,
+    "receitaLiquida": 92520.16
+   },
+   "PANVEL": {
+    "spendTech": 74120.25,
+    "spendNetwork": 489788.21,
+    "charge": 477131.48,
+    "comissao": 7412.03,
+    "repasse": 389760.07,
+    "receitaLiquida": 94783.44
+   },
+   "PAULISTÃO ATACADISTA": {
+    "spendTech": 0.0,
+    "spendNetwork": 1089.7,
+    "charge": 1036.46,
+    "comissao": 0.0,
+    "repasse": 855.44,
+    "receitaLiquida": 181.02
+   },
+   "PECITO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 37.22,
+    "charge": 19.46,
+    "comissao": 0.0,
+    "repasse": 15.21,
+    "receitaLiquida": 4.25
+   },
+   "PERIM - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 206.82,
+    "charge": 115.47,
+    "comissao": 0.0,
+    "repasse": 90.74,
+    "receitaLiquida": 24.73
+   },
+   "PETLOVE ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 8989.37,
+    "charge": 8989.37,
+    "comissao": 0.0,
+    "repasse": 7419.38,
+    "receitaLiquida": 1569.99
+   },
+   "PHOCESI CARNES - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 0.09,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "PICPAY PUBLISHER": {
+    "spendTech": 4532.86,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 407.96,
+    "repasse": 0.0,
+    "receitaLiquida": 407.96
+   },
+   "PICPAY STAGING PUBLISHER": {
+    "spendTech": 34.38,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "PILAR - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 190.66,
+    "charge": 105.93,
+    "comissao": 0.0,
+    "repasse": 83.43,
+    "receitaLiquida": 22.5
+   },
+   "PINHEIRO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 584.48,
+    "charge": 392.38,
+    "comissao": 0.0,
+    "repasse": 314.18,
+    "receitaLiquida": 78.2
+   },
+   "POC LIVELO - HOMOLOG - PUBLISHER": {
+    "spendTech": 47.68,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "PORTO EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 49.0,
+    "charge": 27.36,
+    "comissao": 0.0,
+    "repasse": 21.42,
+    "receitaLiquida": 5.94
+   },
+   "PREZUNIC": {
+    "spendTech": 945.86,
+    "spendNetwork": 36728.9,
+    "charge": 23694.12,
+    "comissao": 94.59,
+    "repasse": 16104.89,
+    "receitaLiquida": 7683.81
+   },
+   "PROMOFARMA - PUBLISHER": {
+    "spendTech": 572.72,
+    "spendNetwork": 2581.54,
+    "charge": 2346.81,
+    "comissao": 114.54,
+    "repasse": 1481.19,
+    "receitaLiquida": 980.17
+   },
+   "PRÓ BRAZILIAN - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 50.92,
+    "charge": 21.56,
+    "comissao": 0.0,
+    "repasse": 17.16,
+    "receitaLiquida": 4.4
+   },
+   "PÉROLA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 217.99,
+    "charge": 123.48,
+    "comissao": 0.0,
+    "repasse": 97.55,
+    "receitaLiquida": 25.93
+   },
+   "REDE COMPRAS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 447.2,
+    "charge": 222.62,
+    "comissao": 0.0,
+    "repasse": 176.09,
+    "receitaLiquida": 46.53
+   },
+   "REDEMARKET - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 193.91,
+    "charge": 101.81,
+    "comissao": 0.0,
+    "repasse": 81.04,
+    "receitaLiquida": 20.77
+   },
+   "REDETOP - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 166.11,
+    "charge": 141.52,
+    "comissao": 0.0,
+    "repasse": 115.92,
+    "receitaLiquida": 25.6
+   },
+   "RETAIL MEDIA CASAS BAHIA STAGING": {
+    "spendTech": 13948.96,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "ROSSI DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 1531.37,
+    "charge": 822.24,
+    "comissao": 0.0,
+    "repasse": 646.6,
+    "receitaLiquida": 175.64
+   },
+   "ROYAL SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 124.28,
+    "charge": 42.53,
+    "comissao": 0.0,
+    "repasse": 34.24,
+    "receitaLiquida": 8.29
+   },
+   "SAN MICHEL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 99.0,
+    "charge": 51.65,
+    "comissao": 0.0,
+    "repasse": 40.75,
+    "receitaLiquida": 10.9
+   },
+   "SANTAREM SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 214.93,
+    "charge": 117.72,
+    "comissao": 0.0,
+    "repasse": 92.44,
+    "receitaLiquida": 25.28
+   },
+   "SEPHORA ADS PUBLISHER": {
+    "spendTech": 582233.32,
+    "spendNetwork": 55085.9,
+    "charge": 53313.1,
+    "comissao": 26200.5,
+    "repasse": 42448.96,
+    "receitaLiquida": 37064.64
+   },
+   "SFURTADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 759.66,
+    "charge": 355.83,
+    "comissao": 0.0,
+    "repasse": 276.41,
+    "receitaLiquida": 79.42
+   },
+   "SHOPSTAR PUBLISHER": {
+    "spendTech": 143.62,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 28.72,
+    "repasse": 0.0,
+    "receitaLiquida": 28.72
+   },
+   "SILVEIRA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 35.28,
+    "charge": 18.58,
+    "comissao": 0.0,
+    "repasse": 14.63,
+    "receitaLiquida": 3.95
+   },
+   "SIMPATIA ONLINE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 476.51,
+    "charge": 244.34,
+    "comissao": 0.0,
+    "repasse": 193.06,
+    "receitaLiquida": 51.28
+   },
+   "SORRISO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 43.37,
+    "charge": 26.75,
+    "comissao": 0.0,
+    "repasse": 21.4,
+    "receitaLiquida": 5.35
+   },
+   "STYLLUS SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 54.77,
+    "charge": 39.18,
+    "comissao": 0.0,
+    "repasse": 31.63,
+    "receitaLiquida": 7.55
+   },
+   "SUPER ANGELONI": {
+    "spendTech": 445.8,
+    "spendNetwork": 10306.72,
+    "charge": 8871.23,
+    "comissao": 44.58,
+    "repasse": 6029.77,
+    "receitaLiquida": 2886.03
+   },
+   "SUPER ECONÔMICO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 64.92,
+    "charge": 44.56,
+    "comissao": 0.0,
+    "repasse": 35.77,
+    "receitaLiquida": 8.79
+   },
+   "SUPER G SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.58,
+    "charge": 6.07,
+    "comissao": 0.0,
+    "repasse": 4.94,
+    "receitaLiquida": 1.14
+   },
+   "SUPER LOCAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 9.68,
+    "charge": 4.82,
+    "comissao": 0.0,
+    "repasse": 3.75,
+    "receitaLiquida": 1.08
+   },
+   "SUPER MUFFATO DELIVERY": {
+    "spendTech": 0.0,
+    "spendNetwork": 5948.02,
+    "charge": 5443.76,
+    "comissao": 0.0,
+    "repasse": 4228.71,
+    "receitaLiquida": 1215.05
+   },
+   "SUPER NOSSO": {
+    "spendTech": 14.4,
+    "spendNetwork": 14745.05,
+    "charge": 12989.15,
+    "comissao": 0.72,
+    "repasse": 10720.6,
+    "receitaLiquida": 2269.28
+   },
+   "SUPER VALE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 49.7,
+    "charge": 29.57,
+    "comissao": 0.0,
+    "repasse": 23.6,
+    "receitaLiquida": 5.97
+   },
+   "SUPER XTRA - PUBLISHER": {
+    "spendTech": 3.13,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.47,
+    "repasse": 0.0,
+    "receitaLiquida": 0.47
+   },
+   "SUPERMERCADO DO ROBERTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 66.95,
+    "charge": 34.88,
+    "comissao": 0.0,
+    "repasse": 27.24,
+    "receitaLiquida": 7.64
+   },
+   "SUPERMERCADO DONA MARIA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 0.45,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "SUPERMERCADO MANAÍRA": {
+    "spendTech": 0.0,
+    "spendNetwork": 205.16,
+    "charge": 114.59,
+    "comissao": 0.0,
+    "repasse": 90.54,
+    "receitaLiquida": 24.05
+   },
+   "SUPERMERCADO SAVEGNAGO": {
+    "spendTech": 78.18,
+    "spendNetwork": 6956.32,
+    "charge": 6287.97,
+    "comissao": 7.82,
+    "repasse": 5189.78,
+    "receitaLiquida": 1106.01
+   },
+   "SUPERMERCADOS DAOLIO": {
+    "spendTech": 0.0,
+    "spendNetwork": 201.25,
+    "charge": 108.68,
+    "comissao": 0.0,
+    "repasse": 85.11,
+    "receitaLiquida": 23.57
+   },
+   "SUPERSUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 7.11,
+    "charge": 3.64,
+    "comissao": 0.0,
+    "repasse": 2.91,
+    "receitaLiquida": 0.73
+   },
+   "SUPERVILLE SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 74.2,
+    "charge": 41.58,
+    "comissao": 0.0,
+    "repasse": 32.82,
+    "receitaLiquida": 8.75
+   },
+   "SÃO RAFAEL SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.71,
+    "charge": 3.51,
+    "comissao": 0.0,
+    "repasse": 2.73,
+    "receitaLiquida": 0.78
+   },
+   "TELERIO ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 0.6,
+    "charge": 0.22,
+    "comissao": 0.0,
+    "repasse": 0.15,
+    "receitaLiquida": 0.07
+   },
+   "TENDA ATACADO - PUBLISHER": {
+    "spendTech": 19530.56,
+    "spendNetwork": 45196.38,
+    "charge": 40096.39,
+    "comissao": 1953.06,
+    "repasse": 33093.55,
+    "receitaLiquida": 8955.89
+   },
+   "TENDA ATACADO ADS HML": {
+    "spendTech": 118.2,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 11.82,
+    "repasse": 0.0,
+    "receitaLiquida": 11.82
+   },
+   "TIAOZINHO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 457.35,
+    "charge": 255.14,
+    "comissao": 0.0,
+    "repasse": 201.13,
+    "receitaLiquida": 54.01
+   },
+   "TONIN SUPERATACADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 498.89,
+    "charge": 236.67,
+    "comissao": 0.0,
+    "repasse": 185.49,
+    "receitaLiquida": 51.17
+   },
+   "TRENTO SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 15.87,
+    "charge": 6.14,
+    "comissao": 0.0,
+    "repasse": 4.77,
+    "receitaLiquida": 1.37
+   },
+   "UNICOMPRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 230.0,
+    "charge": 132.56,
+    "comissao": 0.0,
+    "repasse": 105.03,
+    "receitaLiquida": 27.53
+   },
+   "URBANIC - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 29.58,
+    "charge": 10.54,
+    "comissao": 0.0,
+    "repasse": 8.19,
+    "receitaLiquida": 2.35
+   },
+   "VENÂNCIO": {
+    "spendTech": 0.0,
+    "spendNetwork": 21639.34,
+    "charge": 21226.44,
+    "comissao": 0.0,
+    "repasse": 14153.63,
+    "receitaLiquida": 7072.81
+   },
+   "VIEIRAO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 35.67,
+    "charge": 16.83,
+    "comissao": 0.0,
+    "repasse": 13.08,
+    "receitaLiquida": 3.76
+   },
+   "VILA RICA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 28.08,
+    "charge": 14.08,
+    "comissao": 0.0,
+    "repasse": 11.01,
+    "receitaLiquida": 3.07
+   },
+   "VILA SUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 186.84,
+    "charge": 102.6,
+    "comissao": 0.0,
+    "repasse": 81.36,
+    "receitaLiquida": 21.24
+   },
+   "VILLARREAL ONLINE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 270.55,
+    "charge": 133.81,
+    "comissao": 0.0,
+    "repasse": 104.88,
+    "receitaLiquida": 28.92
+   },
+   "VIOLETA EXPRESS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 1562.09,
+    "charge": 920.19,
+    "comissao": 0.0,
+    "repasse": 731.2,
+    "receitaLiquida": 188.99
+   },
+   "VIP COMMERCE - SUBPUBLISHER SANDBOX": {
+    "spendTech": 34.58,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 3.46,
+    "repasse": 0.0,
+    "receitaLiquida": 3.46
+   },
+   "VIPCOMMERCE STAGING - SUBPUBLISHER": {
+    "spendTech": 10.35,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "VR ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 249.88,
+    "charge": 249.88,
+    "comissao": 0.0,
+    "repasse": 198.96,
+    "receitaLiquida": 50.92
+   },
+   "VR ADS HML": {
+    "spendTech": 104.1,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 10.41,
+    "repasse": 0.0,
+    "receitaLiquida": 10.41
+   },
+   "VTEX ELETRO STORE": {
+    "spendTech": 0.02,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "VTEX GROCERY": {
+    "spendTech": 0.58,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.06,
+    "repasse": 0.0,
+    "receitaLiquida": 0.06
+   },
+   "ZONA SUL ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 10906.7,
+    "charge": 9354.36,
+    "comissao": 0.0,
+    "repasse": 7266.47,
+    "receitaLiquida": 2087.89
+   },
+   "ZOOM": {
+    "spendTech": 18969.07,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1896.91,
+    "repasse": 0.0,
+    "receitaLiquida": 1896.91
+   },
+   "ÉPOCA COSMÉTICOS ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 5698.5,
+    "charge": 5501.56,
+    "comissao": 0.0,
+    "repasse": 4486.08,
+    "receitaLiquida": 1015.49
+   }
+  },
+  "2026-04": {
+   "2 BEM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 12.7,
+    "charge": 8.56,
+    "comissao": 0.0,
+    "repasse": 7.07,
+    "receitaLiquida": 1.5
+   },
+   "AIQFOME PUBLISHER - SANDBOX": {
+    "spendTech": 0.04,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "ALABARCE DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 44.8,
+    "charge": 30.2,
+    "comissao": 0.0,
+    "repasse": 24.93,
+    "receitaLiquida": 5.27
+   },
+   "AMERICANAS": {
+    "spendTech": 108385.7,
+    "spendNetwork": 13049.28,
+    "charge": 10722.49,
+    "comissao": 16257.86,
+    "repasse": 8290.76,
+    "receitaLiquida": 18689.59
+   },
+   "AMERICANAS STAGING": {
+    "spendTech": 25.56,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "AMOBELEZA": {
+    "spendTech": 0.0,
+    "spendNetwork": 280.5,
+    "charge": 267.35,
+    "comissao": 0.0,
+    "repasse": 220.66,
+    "receitaLiquida": 46.69
+   },
+   "ARCOMIX - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 60.1,
+    "charge": 40.52,
+    "comissao": 0.0,
+    "repasse": 33.44,
+    "receitaLiquida": 7.08
+   },
+   "ARMAZEM DO GRÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 285.8,
+    "charge": 192.67,
+    "comissao": 0.0,
+    "repasse": 159.02,
+    "receitaLiquida": 33.65
+   },
+   "ARMAÇÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 19.2,
+    "charge": 12.94,
+    "comissao": 0.0,
+    "repasse": 10.68,
+    "receitaLiquida": 2.26
+   },
+   "ATACADISTA MEGA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 62.8,
+    "charge": 42.34,
+    "comissao": 0.0,
+    "repasse": 34.94,
+    "receitaLiquida": 7.39
+   },
+   "AUCHAN POC": {
+    "spendTech": 1.65,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "BEMOL": {
+    "spendTech": 291522.95,
+    "spendNetwork": 20678.41,
+    "charge": 4785.35,
+    "comissao": 58304.59,
+    "repasse": 15810.6,
+    "receitaLiquida": 47279.34
+   },
+   "BEMOL QA (STAGING)": {
+    "spendTech": 221.65,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "BISTEK SUPERMERCADOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 45.7,
+    "charge": 39.54,
+    "comissao": 0.0,
+    "repasse": 30.25,
+    "receitaLiquida": 9.29
+   },
+   "BISTURI DISTRIBUIDORA DE MATERIAL HOSPITALAR LTDA": {
+    "spendTech": 0.0,
+    "spendNetwork": 9.0,
+    "charge": 6.07,
+    "comissao": 0.0,
+    "repasse": 5.01,
+    "receitaLiquida": 1.06
+   },
+   "BRAMIL EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 797.2,
+    "charge": 537.43,
+    "comissao": 0.0,
+    "repasse": 443.56,
+    "receitaLiquida": 93.86
+   },
+   "BRETAS": {
+    "spendTech": 0.0,
+    "spendNetwork": 1230.5,
+    "charge": 1164.89,
+    "comissao": 0.0,
+    "repasse": 849.79,
+    "receitaLiquida": 315.1
+   },
+   "BRETAS - PUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 124.35,
+    "charge": 101.32,
+    "comissao": 0.0,
+    "repasse": 68.86,
+    "receitaLiquida": 32.45
+   },
+   "BUSCAPE": {
+    "spendTech": 6275.44,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 627.54,
+    "repasse": 0.0,
+    "receitaLiquida": 627.54
+   },
+   "BUSCAPE STAGING": {
+    "spendTech": 9.5,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "CALEGARIS EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 15.4,
+    "charge": 10.38,
+    "comissao": 0.0,
+    "repasse": 8.57,
+    "receitaLiquida": 1.81
+   },
+   "CAMBUI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 143.2,
+    "charge": 96.54,
+    "comissao": 0.0,
+    "repasse": 79.68,
+    "receitaLiquida": 16.86
+   },
+   "CARROSSEL NO LAR - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 45.1,
+    "charge": 30.4,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 30.4
+   },
+   "CARVALHO SUPERSHOP - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 123.2,
+    "charge": 83.05,
+    "comissao": 0.0,
+    "repasse": 68.55,
+    "receitaLiquida": 14.51
+   },
+   "CASAS BAHIA ADS": {
+    "spendTech": 3271834.01,
+    "spendNetwork": 24100.79,
+    "charge": 15800.22,
+    "comissao": 276003.03,
+    "repasse": 21182.58,
+    "receitaLiquida": 270620.66
+   },
+   "CELEIRO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 36.0,
+    "charge": 24.27,
+    "comissao": 0.0,
+    "repasse": 20.03,
+    "receitaLiquida": 4.24
+   },
+   "CENTERPAO ATE VOCE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.7,
+    "charge": 1.82,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 1.82
+   },
+   "CENTRAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 173.4,
+    "charge": 116.9,
+    "comissao": 0.0,
+    "repasse": 96.48,
+    "receitaLiquida": 20.42
+   },
+   "CENTRAL DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 46.9,
+    "charge": 31.62,
+    "comissao": 0.0,
+    "repasse": 26.1,
+    "receitaLiquida": 5.52
+   },
+   "CHEDRAUI MX - PUBLISHER": {
+    "spendTech": 0.35,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.04,
+    "repasse": 0.0,
+    "receitaLiquida": 0.04
+   },
+   "CIA LATINO AMERICANA DE MEDICAMENTOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 10285.67,
+    "charge": 9724.94,
+    "comissao": 0.0,
+    "repasse": 8111.49,
+    "receitaLiquida": 1613.45
+   },
+   "CLUBBI": {
+    "spendTech": 7708.91,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 770.89,
+    "repasse": 0.0,
+    "receitaLiquida": 770.89
+   },
+   "CLUBBI STAGING": {
+    "spendTech": 0.16,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "COBASI ADS": {
+    "spendTech": 927.6,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 92.76,
+    "repasse": 0.0,
+    "receitaLiquida": 92.76
+   },
+   "COOCERQUI SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 29.2,
+    "charge": 19.68,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 19.68
+   },
+   "CVC - PUBLISHER": {
+    "spendTech": 0.48,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "DE ANGELINA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 46.2,
+    "charge": 31.15,
+    "comissao": 0.0,
+    "repasse": 25.71,
+    "receitaLiquida": 5.44
+   },
+   "DECATLHON ADS": {
+    "spendTech": 237.0,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 23.7,
+    "repasse": 0.0,
+    "receitaLiquida": 23.7
+   },
+   "DELTASUPER - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 178.9,
+    "charge": 120.6,
+    "comissao": 0.0,
+    "repasse": 99.54,
+    "receitaLiquida": 21.06
+   },
+   "DIA ADS": {
+    "spendTech": 5778.68,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 866.8,
+    "repasse": 0.0,
+    "receitaLiquida": 866.8
+   },
+   "DINIZ SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 153.0,
+    "charge": 103.14,
+    "comissao": 0.0,
+    "repasse": 85.13,
+    "receitaLiquida": 18.01
+   },
+   "DIVVINO": {
+    "spendTech": 0.0,
+    "spendNetwork": 0.6,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "DROGAL ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 94223.17,
+    "charge": 83519.95,
+    "comissao": 0.0,
+    "repasse": 40768.87,
+    "receitaLiquida": 42751.08
+   },
+   "DROGAL ADS HML": {
+    "spendTech": 4.04,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "DROGARIA SÃO PAULO ADS": {
+    "spendTech": 119897.46,
+    "spendNetwork": 2026372.54,
+    "charge": 1976185.72,
+    "comissao": 11989.75,
+    "repasse": 1535585.79,
+    "receitaLiquida": 452589.68
+   },
+   "ELETRO ANGELONI": {
+    "spendTech": 0.0,
+    "spendNetwork": 535.17,
+    "charge": 535.17,
+    "comissao": 0.0,
+    "repasse": 363.76,
+    "receitaLiquida": 171.41
+   },
+   "EMPORIOPIRANA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 6.2,
+    "charge": 4.18,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 4.18
+   },
+   "ENXUTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 126.5,
+    "charge": 85.28,
+    "comissao": 0.0,
+    "repasse": 70.38,
+    "receitaLiquida": 14.89
+   },
+   "FARMACITY CONECT": {
+    "spendTech": 808330.13,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 109124.57,
+    "repasse": 0.0,
+    "receitaLiquida": 109124.57
+   },
+   "FARMACITYQA": {
+    "spendTech": 15.82,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "FARMÁCIA INDIANA ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 7017.85,
+    "charge": 6696.27,
+    "comissao": 0.0,
+    "repasse": 3295.71,
+    "receitaLiquida": 3400.57
+   },
+   "FASOUTO - VIPCOMMERCE SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 17.7,
+    "charge": 11.93,
+    "comissao": 0.0,
+    "repasse": 9.85,
+    "receitaLiquida": 2.08
+   },
+   "FAST SHOP": {
+    "spendTech": 82242.17,
+    "spendNetwork": 10162.59,
+    "charge": 3504.59,
+    "comissao": 4112.11,
+    "repasse": 2892.51,
+    "receitaLiquida": 4724.18
+   },
+   "FAVORITO SUPERMERCADOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 49.1,
+    "charge": 33.1,
+    "comissao": 0.0,
+    "repasse": 27.32,
+    "receitaLiquida": 5.78
+   },
+   "FEDERZONI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 16.6,
+    "charge": 11.19,
+    "comissao": 0.0,
+    "repasse": 9.24,
+    "receitaLiquida": 1.95
+   },
+   "FEIRA NOVA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 78.8,
+    "charge": 53.12,
+    "comissao": 0.0,
+    "repasse": 43.84,
+    "receitaLiquida": 9.28
+   },
+   "FERREIRA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 188.0,
+    "charge": 126.74,
+    "comissao": 0.0,
+    "repasse": 104.6,
+    "receitaLiquida": 22.13
+   },
+   "FLEX - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 195.6,
+    "charge": 131.86,
+    "comissao": 0.0,
+    "repasse": 108.83,
+    "receitaLiquida": 23.03
+   },
+   "FONSECA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 271.8,
+    "charge": 183.23,
+    "comissao": 0.0,
+    "repasse": 151.23,
+    "receitaLiquida": 32.0
+   },
+   "FRADEILHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 75.8,
+    "charge": 51.1,
+    "comissao": 0.0,
+    "repasse": 42.18,
+    "receitaLiquida": 8.92
+   },
+   "FRUTTO DA TERRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 13.9,
+    "charge": 9.37,
+    "comissao": 0.0,
+    "repasse": 7.73,
+    "receitaLiquida": 1.64
+   },
+   "FÊNIX SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 78.5,
+    "charge": 52.92,
+    "comissao": 0.0,
+    "repasse": 43.68,
+    "receitaLiquida": 9.24
+   },
+   "GARCIA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 71.6,
+    "charge": 48.27,
+    "comissao": 0.0,
+    "repasse": 39.84,
+    "receitaLiquida": 8.43
+   },
+   "GBARBOSA": {
+    "spendTech": 0.0,
+    "spendNetwork": 5904.8,
+    "charge": 5610.86,
+    "comissao": 0.0,
+    "repasse": 3820.5,
+    "receitaLiquida": 1790.36
+   },
+   "GBARBOSA - PUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 7947.64,
+    "charge": 7650.07,
+    "comissao": 0.0,
+    "repasse": 6313.99,
+    "receitaLiquida": 1336.09
+   },
+   "GROWD ADS": {
+    "spendTech": 23006.59,
+    "spendNetwork": 30839.54,
+    "charge": 29872.06,
+    "comissao": 2300.66,
+    "repasse": 24706.9,
+    "receitaLiquida": 7465.82
+   },
+   "GUARANI SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 82.3,
+    "charge": 55.48,
+    "comissao": 0.0,
+    "repasse": 45.79,
+    "receitaLiquida": 9.69
+   },
+   "HAPVIDA - PUBLISHER": {
+    "spendTech": 568510.32,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "HIPER BERGAMINI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 103.2,
+    "charge": 69.57,
+    "comissao": 0.0,
+    "repasse": 57.42,
+    "receitaLiquida": 12.15
+   },
+   "HIPER NATASHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 6.9,
+    "charge": 4.65,
+    "comissao": 0.0,
+    "repasse": 3.84,
+    "receitaLiquida": 0.81
+   },
+   "HIROTA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 850.6,
+    "charge": 573.42,
+    "comissao": 0.0,
+    "repasse": 473.28,
+    "receitaLiquida": 100.15
+   },
+   "HORTIFRUTI BR - NATURAL DA TERRA - PUBLISHER - HML": {
+    "spendTech": 112.04,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 11.2,
+    "repasse": 0.0,
+    "receitaLiquida": 11.2
+   },
+   "IPANEMA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 43.1,
+    "charge": 29.06,
+    "comissao": 0.0,
+    "repasse": 23.98,
+    "receitaLiquida": 5.07
+   },
+   "JAGUARE": {
+    "spendTech": 0.0,
+    "spendNetwork": 49.1,
+    "charge": 33.1,
+    "comissao": 0.0,
+    "repasse": 27.32,
+    "receitaLiquida": 5.78
+   },
+   "JB DE FRUTAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 32.2,
+    "charge": 21.71,
+    "comissao": 0.0,
+    "repasse": 17.92,
+    "receitaLiquida": 3.79
+   },
+   "KABUM": {
+    "spendTech": 1047250.13,
+    "spendNetwork": 63066.54,
+    "charge": 3054.32,
+    "comissao": 0.0,
+    "repasse": 15915.51,
+    "receitaLiquida": -12861.19
+   },
+   "KABUM STAGING": {
+    "spendTech": 822.7,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "LEROY MERLIN": {
+    "spendTech": 79941.77,
+    "spendNetwork": 21850.71,
+    "charge": 0.0,
+    "comissao": 7994.18,
+    "repasse": 19095.33,
+    "receitaLiquida": -11101.16
+   },
+   "LEROY MERLIN STAGING": {
+    "spendTech": 4.09,
+    "spendNetwork": 0.06,
+    "charge": 0.06,
+    "comissao": 0.41,
+    "repasse": 0.05,
+    "receitaLiquida": 0.42
+   },
+   "LOCATEL": {
+    "spendTech": 3755.66,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 507.01,
+    "repasse": 0.0,
+    "receitaLiquida": 507.01
+   },
+   "LOJAS IMPÉRIO ADS": {
+    "spendTech": 2685.2,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 268.52,
+    "repasse": 0.0,
+    "receitaLiquida": 268.52
+   },
+   "LUZITANA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 16.4,
+    "charge": 11.06,
+    "comissao": 0.0,
+    "repasse": 9.13,
+    "receitaLiquida": 1.93
+   },
+   "MADEIRA ADS": {
+    "spendTech": 127577.89,
+    "spendNetwork": 25414.15,
+    "charge": 0.0,
+    "comissao": 11482.01,
+    "repasse": 22456.2,
+    "receitaLiquida": -10974.19
+   },
+   "MARKETPLACE CUIDAÊ - PUBLISHER": {
+    "spendTech": 0.02,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "MEGA SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 28.0,
+    "charge": 18.88,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 18.88
+   },
+   "MERCADO AJUBÁ": {
+    "spendTech": 0.0,
+    "spendNetwork": 25.4,
+    "charge": 17.12,
+    "comissao": 0.0,
+    "repasse": 14.13,
+    "receitaLiquida": 2.99
+   },
+   "MERCADO DO JOAO CARLOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 7.0,
+    "charge": 4.72,
+    "comissao": 0.0,
+    "repasse": 3.89,
+    "receitaLiquida": 0.82
+   },
+   "MERCANTIL ATACADO": {
+    "spendTech": 0.0,
+    "spendNetwork": 2837.9,
+    "charge": 2728.67,
+    "comissao": 0.0,
+    "repasse": 1324.77,
+    "receitaLiquida": 1403.9
+   },
+   "MERCANTIL NOVA ERA LTDA": {
+    "spendTech": 0.0,
+    "spendNetwork": 1088.6,
+    "charge": 1040.63,
+    "comissao": 0.0,
+    "repasse": 506.2,
+    "receitaLiquida": 534.43
+   },
+   "MEU PRATA SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 66.0,
+    "charge": 44.49,
+    "comissao": 0.0,
+    "repasse": 36.72,
+    "receitaLiquida": 7.77
+   },
+   "MEVO FARMA": {
+    "spendTech": 0.0,
+    "spendNetwork": 1.8,
+    "charge": 1.7,
+    "comissao": 0.0,
+    "repasse": 1.16,
+    "receitaLiquida": 0.55
+   },
+   "NIPPO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 10.7,
+    "charge": 7.21,
+    "comissao": 0.0,
+    "repasse": 5.95,
+    "receitaLiquida": 1.26
+   },
+   "NORDESTÃO SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 407.3,
+    "charge": 274.58,
+    "comissao": 0.0,
+    "repasse": 226.62,
+    "receitaLiquida": 47.96
+   },
+   "OLIMPICA CO - PUBLISHER": {
+    "spendTech": 51077.15,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 2553.86,
+    "repasse": 0.0,
+    "receitaLiquida": 2553.86
+   },
+   "OXAN SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 84.0,
+    "charge": 56.63,
+    "comissao": 0.0,
+    "repasse": 46.74,
+    "receitaLiquida": 9.89
+   },
+   "PAGUE MENOS": {
+    "spendTech": 75933.82,
+    "spendNetwork": 768748.11,
+    "charge": 734578.97,
+    "comissao": 6834.04,
+    "repasse": 654814.18,
+    "receitaLiquida": 86598.83
+   },
+   "PANVEL": {
+    "spendTech": 117005.91,
+    "spendNetwork": 410428.66,
+    "charge": 387972.87,
+    "comissao": 11700.59,
+    "repasse": 308757.25,
+    "receitaLiquida": 90916.21
+   },
+   "PAULISTÃO ATACADISTA": {
+    "spendTech": 0.0,
+    "spendNetwork": 823.5,
+    "charge": 767.83,
+    "comissao": 0.0,
+    "repasse": 634.56,
+    "receitaLiquida": 133.28
+   },
+   "PECITO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 23.0,
+    "charge": 15.51,
+    "comissao": 0.0,
+    "repasse": 12.8,
+    "receitaLiquida": 2.71
+   },
+   "PERIM - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 126.6,
+    "charge": 85.35,
+    "comissao": 0.0,
+    "repasse": 70.44,
+    "receitaLiquida": 14.91
+   },
+   "PETLOVE ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 23519.99,
+    "charge": 22851.19,
+    "comissao": 0.0,
+    "repasse": 19412.22,
+    "receitaLiquida": 3438.97
+   },
+   "PICPAY PUBLISHER": {
+    "spendTech": 21464.24,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1931.78,
+    "repasse": 0.0,
+    "receitaLiquida": 1931.78
+   },
+   "PICPAY STAGING PUBLISHER": {
+    "spendTech": 42.6,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "PILAR - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 175.3,
+    "charge": 118.18,
+    "comissao": 0.0,
+    "repasse": 97.54,
+    "receitaLiquida": 20.64
+   },
+   "PINHEIRO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 364.9,
+    "charge": 245.99,
+    "comissao": 0.0,
+    "repasse": 203.03,
+    "receitaLiquida": 42.96
+   },
+   "POC LIVELO - HOMOLOG - PUBLISHER": {
+    "spendTech": 79.3,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "PORTO EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 55.6,
+    "charge": 37.48,
+    "comissao": 0.0,
+    "repasse": 30.94,
+    "receitaLiquida": 6.55
+   },
+   "PREZUNIC": {
+    "spendTech": 0.0,
+    "spendNetwork": 19252.13,
+    "charge": 18491.1,
+    "comissao": 0.0,
+    "repasse": 12578.59,
+    "receitaLiquida": 5912.5
+   },
+   "PROMOFARMA - PUBLISHER": {
+    "spendTech": 571.9,
+    "spendNetwork": 2795.55,
+    "charge": 2742.31,
+    "comissao": 114.38,
+    "repasse": 1737.75,
+    "receitaLiquida": 1118.94
+   },
+   "PRÓ BRAZILIAN - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 27.3,
+    "charge": 18.4,
+    "comissao": 0.0,
+    "repasse": 15.19,
+    "receitaLiquida": 3.21
+   },
+   "PÉROLA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 147.7,
+    "charge": 99.57,
+    "comissao": 0.0,
+    "repasse": 82.18,
+    "receitaLiquida": 17.39
+   },
+   "REDE COMPRAS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 307.8,
+    "charge": 207.5,
+    "comissao": 0.0,
+    "repasse": 171.26,
+    "receitaLiquida": 36.24
+   },
+   "REDEMARKET - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 115.3,
+    "charge": 77.73,
+    "comissao": 0.0,
+    "repasse": 64.15,
+    "receitaLiquida": 13.58
+   },
+   "REDETOP - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 40.0,
+    "charge": 26.97,
+    "comissao": 0.0,
+    "repasse": 22.26,
+    "receitaLiquida": 4.71
+   },
+   "RETAIL MEDIA CASAS BAHIA STAGING": {
+    "spendTech": 10069.27,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "ROSSI DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 1108.2,
+    "charge": 747.08,
+    "comissao": 0.0,
+    "repasse": 616.61,
+    "receitaLiquida": 130.48
+   },
+   "ROYAL SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 29.9,
+    "charge": 20.16,
+    "comissao": 0.0,
+    "repasse": 16.64,
+    "receitaLiquida": 3.52
+   },
+   "SAN MICHEL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 64.9,
+    "charge": 43.75,
+    "comissao": 0.0,
+    "repasse": 36.11,
+    "receitaLiquida": 7.64
+   },
+   "SANTAREM SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 108.5,
+    "charge": 73.14,
+    "comissao": 0.0,
+    "repasse": 60.37,
+    "receitaLiquida": 12.77
+   },
+   "SEPHORA ADS PUBLISHER": {
+    "spendTech": 470908.68,
+    "spendNetwork": 70291.55,
+    "charge": 64919.4,
+    "comissao": 21190.89,
+    "repasse": 51753.82,
+    "receitaLiquida": 34356.47
+   },
+   "SFURTADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 587.0,
+    "charge": 395.72,
+    "comissao": 0.0,
+    "repasse": 326.61,
+    "receitaLiquida": 69.11
+   },
+   "SHOPSTAR PUBLISHER": {
+    "spendTech": 56.63,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 11.33,
+    "repasse": 0.0,
+    "receitaLiquida": 11.33
+   },
+   "SILVA INDAIA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.0,
+    "charge": 1.35,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 1.35
+   },
+   "SILVEIRA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 31.8,
+    "charge": 21.44,
+    "comissao": 0.0,
+    "repasse": 17.69,
+    "receitaLiquida": 3.74
+   },
+   "SIMPATIA ONLINE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 250.4,
+    "charge": 168.81,
+    "comissao": 0.0,
+    "repasse": 139.32,
+    "receitaLiquida": 29.48
+   },
+   "SORRISO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 53.4,
+    "charge": 36.0,
+    "comissao": 0.0,
+    "repasse": 29.71,
+    "receitaLiquida": 6.29
+   },
+   "STYLLUS SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 44.3,
+    "charge": 29.86,
+    "comissao": 0.0,
+    "repasse": 24.65,
+    "receitaLiquida": 5.22
+   },
+   "SUPER ANGELONI": {
+    "spendTech": 201.74,
+    "spendNetwork": 2887.95,
+    "charge": 2623.48,
+    "comissao": 20.17,
+    "repasse": 1796.1,
+    "receitaLiquida": 847.56
+   },
+   "SUPER ECONÔMICO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 38.5,
+    "charge": 25.95,
+    "comissao": 0.0,
+    "repasse": 21.42,
+    "receitaLiquida": 4.53
+   },
+   "SUPER G SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 3.0,
+    "charge": 2.02,
+    "comissao": 0.0,
+    "repasse": 1.67,
+    "receitaLiquida": 0.35
+   },
+   "SUPER MUFFATO DELIVERY": {
+    "spendTech": 0.0,
+    "spendNetwork": 2386.53,
+    "charge": 2204.15,
+    "comissao": 0.0,
+    "repasse": 1733.16,
+    "receitaLiquida": 470.99
+   },
+   "SUPER NOSSO": {
+    "spendTech": 22.8,
+    "spendNetwork": 8349.28,
+    "charge": 7997.32,
+    "comissao": 1.14,
+    "repasse": 6617.92,
+    "receitaLiquida": 1380.54
+   },
+   "SUPER VALE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 19.6,
+    "charge": 13.21,
+    "comissao": 0.0,
+    "repasse": 10.91,
+    "receitaLiquida": 2.31
+   },
+   "SUPER XTRA - PUBLISHER": {
+    "spendTech": 1.83,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.27,
+    "repasse": 0.0,
+    "receitaLiquida": 0.27
+   },
+   "SUPERMERCADO DO ROBERTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 25.8,
+    "charge": 17.39,
+    "comissao": 0.0,
+    "repasse": 14.36,
+    "receitaLiquida": 3.04
+   },
+   "SUPERMERCADO MANAÍRA": {
+    "spendTech": 0.0,
+    "spendNetwork": 114.6,
+    "charge": 77.26,
+    "comissao": 0.0,
+    "repasse": 63.76,
+    "receitaLiquida": 13.49
+   },
+   "SUPERMERCADO SAVEGNAGO": {
+    "spendTech": 56.12,
+    "spendNetwork": 3305.31,
+    "charge": 3048.84,
+    "comissao": 5.61,
+    "repasse": 2538.65,
+    "receitaLiquida": 515.81
+   },
+   "SUPERMERCADOS DAOLIO": {
+    "spendTech": 0.0,
+    "spendNetwork": 151.4,
+    "charge": 102.07,
+    "comissao": 0.0,
+    "repasse": 84.24,
+    "receitaLiquida": 17.83
+   },
+   "SUPERSUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 1.4,
+    "charge": 0.94,
+    "comissao": 0.0,
+    "repasse": 0.78,
+    "receitaLiquida": 0.16
+   },
+   "SUPERVILLE SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 36.2,
+    "charge": 24.4,
+    "comissao": 0.0,
+    "repasse": 20.14,
+    "receitaLiquida": 4.26
+   },
+   "SÃO JOÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 28.9,
+    "charge": 19.48,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 19.48
+   },
+   "SÃO RAFAEL SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 0.7,
+    "charge": 0.47,
+    "comissao": 0.0,
+    "repasse": 0.39,
+    "receitaLiquida": 0.08
+   },
+   "TENDA ATACADO - PUBLISHER": {
+    "spendTech": 21902.28,
+    "spendNetwork": 16588.56,
+    "charge": 14275.79,
+    "comissao": 2190.23,
+    "repasse": 11933.57,
+    "receitaLiquida": 4532.46
+   },
+   "TENDA ATACADO ADS HML": {
+    "spendTech": 10.44,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1.04,
+    "repasse": 0.0,
+    "receitaLiquida": 1.04
+   },
+   "TIAOZINHO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 170.9,
+    "charge": 115.21,
+    "comissao": 0.0,
+    "repasse": 95.09,
+    "receitaLiquida": 20.12
+   },
+   "TONIN SUPERATACADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 270.3,
+    "charge": 182.22,
+    "comissao": 0.0,
+    "repasse": 150.4,
+    "receitaLiquida": 31.82
+   },
+   "TRENTO SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 17.2,
+    "charge": 11.6,
+    "comissao": 0.0,
+    "repasse": 9.57,
+    "receitaLiquida": 2.03
+   },
+   "UNICOMPRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 202.6,
+    "charge": 136.58,
+    "comissao": 0.0,
+    "repasse": 112.73,
+    "receitaLiquida": 23.85
+   },
+   "URBANIC - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 17.0,
+    "charge": 11.46,
+    "comissao": 0.0,
+    "repasse": 9.46,
+    "receitaLiquida": 2.0
+   },
+   "VENÂNCIO": {
+    "spendTech": 0.74,
+    "spendNetwork": 16502.62,
+    "charge": 15730.27,
+    "comissao": 0.0,
+    "repasse": 10743.52,
+    "receitaLiquida": 4986.75
+   },
+   "VIEIRAO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 27.8,
+    "charge": 18.74,
+    "comissao": 0.0,
+    "repasse": 15.47,
+    "receitaLiquida": 3.27
+   },
+   "VILA RICA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 51.7,
+    "charge": 34.85,
+    "comissao": 0.0,
+    "repasse": 28.77,
+    "receitaLiquida": 6.09
+   },
+   "VILA SUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 92.2,
+    "charge": 62.16,
+    "comissao": 0.0,
+    "repasse": 51.3,
+    "receitaLiquida": 10.86
+   },
+   "VILLARREAL ONLINE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 124.4,
+    "charge": 83.86,
+    "comissao": 0.0,
+    "repasse": 69.22,
+    "receitaLiquida": 14.65
+   },
+   "VIOLETA EXPRESS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 514.0,
+    "charge": 346.51,
+    "comissao": 0.0,
+    "repasse": 285.99,
+    "receitaLiquida": 60.52
+   },
+   "VIP COMMERCE - SUBPUBLISHER SANDBOX": {
+    "spendTech": 34.98,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 3.5,
+    "repasse": 0.0,
+    "receitaLiquida": 3.5
+   },
+   "VIPCOMMERCE STAGING - SUBPUBLISHER": {
+    "spendTech": 37.45,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "VISCARDI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 27.6,
+    "charge": 18.61,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 18.61
+   },
+   "VTEX - DEMO STORE B2C": {
+    "spendTech": 1.02,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "VTEX ELETRO STORE": {
+    "spendTech": 1.52,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.15,
+    "repasse": 0.0,
+    "receitaLiquida": 0.15
+   },
+   "VTEX GROCERY": {
+    "spendTech": 14.56,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1.46,
+    "repasse": 0.0,
+    "receitaLiquida": 1.46
+   },
+   "ZONA SUL ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 8832.35,
+    "charge": 8275.37,
+    "comissao": 0.0,
+    "repasse": 6438.41,
+    "receitaLiquida": 1836.96
+   },
+   "ZOOM": {
+    "spendTech": 4313.33,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 431.33,
+    "repasse": 0.0,
+    "receitaLiquida": 431.33
+   },
+   "ÉPOCA COSMÉTICOS ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 14066.6,
+    "charge": 12055.17,
+    "comissao": 0.0,
+    "repasse": 11870.34,
+    "receitaLiquida": 184.84
+   }
+  },
+  "2026-05": {
+   "2 BEM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 1.4,
+    "charge": 1.26,
+    "comissao": 0.0,
+    "repasse": 1.04,
+    "receitaLiquida": 0.22
+   },
+   "ALABARCE DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.8,
+    "charge": 2.52,
+    "comissao": 0.0,
+    "repasse": 2.08,
+    "receitaLiquida": 0.44
+   },
+   "AMERICANAS": {
+    "spendTech": 59963.88,
+    "spendNetwork": 26892.9,
+    "charge": 26769.01,
+    "comissao": 8994.58,
+    "repasse": 19494.53,
+    "receitaLiquida": 16269.06
+   },
+   "AMERICANAS STAGING": {
+    "spendTech": 9.94,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "AMOBELEZA": {
+    "spendTech": 0.0,
+    "spendNetwork": 462.6,
+    "charge": 454.51,
+    "comissao": 0.0,
+    "repasse": 375.13,
+    "receitaLiquida": 79.38
+   },
+   "ARCOMIX - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 15.2,
+    "charge": 13.7,
+    "comissao": 0.0,
+    "repasse": 11.31,
+    "receitaLiquida": 2.39
+   },
+   "ARMAZEM DO GRÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 64.1,
+    "charge": 57.77,
+    "comissao": 0.0,
+    "repasse": 47.68,
+    "receitaLiquida": 10.09
+   },
+   "ARMAÇÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.8,
+    "charge": 4.33,
+    "comissao": 0.0,
+    "repasse": 3.57,
+    "receitaLiquida": 0.76
+   },
+   "ATACADISTA MEGA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 34.4,
+    "charge": 31.0,
+    "comissao": 0.0,
+    "repasse": 25.59,
+    "receitaLiquida": 5.41
+   },
+   "AUCHAN POC": {
+    "spendTech": 0.1,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "BEMOL": {
+    "spendTech": 427126.07,
+    "spendNetwork": 9617.53,
+    "charge": 3820.59,
+    "comissao": 85425.21,
+    "repasse": 7363.85,
+    "receitaLiquida": 81881.95
+   },
+   "BEMOL QA (STAGING)": {
+    "spendTech": 47.62,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "BIGGY ADS": {
+    "spendTech": 0.6,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.06,
+    "repasse": 0.0,
+    "receitaLiquida": 0.06
+   },
+   "BISTEK SUPERMERCADOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 70.1,
+    "charge": 68.41,
+    "comissao": 0.0,
+    "repasse": 49.82,
+    "receitaLiquida": 18.59
+   },
+   "BRAMIL EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 222.1,
+    "charge": 200.15,
+    "comissao": 0.0,
+    "repasse": 165.2,
+    "receitaLiquida": 34.96
+   },
+   "BRETAS": {
+    "spendTech": 0.0,
+    "spendNetwork": 1182.8,
+    "charge": 1156.02,
+    "comissao": 0.0,
+    "repasse": 841.87,
+    "receitaLiquida": 314.15
+   },
+   "BRETAS - PUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 168.36,
+    "charge": 168.36,
+    "comissao": 0.0,
+    "repasse": 114.43,
+    "receitaLiquida": 53.93
+   },
+   "BUSCAPE": {
+    "spendTech": 3509.4,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 350.94,
+    "repasse": 0.0,
+    "receitaLiquida": 350.94
+   },
+   "BUSCAPE STAGING": {
+    "spendTech": 5.02,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "CALEGARIS EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 9.4,
+    "charge": 8.47,
+    "comissao": 0.0,
+    "repasse": 6.99,
+    "receitaLiquida": 1.48
+   },
+   "CAMBUI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 55.6,
+    "charge": 50.11,
+    "comissao": 0.0,
+    "repasse": 41.36,
+    "receitaLiquida": 8.75
+   },
+   "CARROSSEL NO LAR - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 51.7,
+    "charge": 46.59,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 46.59
+   },
+   "CARVALHO SUPERSHOP - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 36.2,
+    "charge": 32.62,
+    "comissao": 0.0,
+    "repasse": 26.93,
+    "receitaLiquida": 5.7
+   },
+   "CASAS BAHIA ADS": {
+    "spendTech": 3991470.18,
+    "spendNetwork": 32564.55,
+    "charge": 15140.96,
+    "comissao": 339274.97,
+    "repasse": 28711.93,
+    "receitaLiquida": 325703.99
+   },
+   "CENTERPAO ATE VOCE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.1,
+    "charge": 3.69,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 3.69
+   },
+   "CENTRAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 72.0,
+    "charge": 64.89,
+    "comissao": 0.0,
+    "repasse": 53.55,
+    "receitaLiquida": 11.33
+   },
+   "CENTRAL DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 26.3,
+    "charge": 23.7,
+    "comissao": 0.0,
+    "repasse": 19.56,
+    "receitaLiquida": 4.14
+   },
+   "CIA LATINO AMERICANA DE MEDICAMENTOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 3206.04,
+    "charge": 3031.27,
+    "comissao": 0.0,
+    "repasse": 2501.86,
+    "receitaLiquida": 529.41
+   },
+   "CLUBBI": {
+    "spendTech": 9335.13,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 933.51,
+    "repasse": 0.0,
+    "receitaLiquida": 933.51
+   },
+   "CLUBBI STAGING": {
+    "spendTech": 0.2,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "COBASI ADS": {
+    "spendTech": 885.0,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "COOCERQUI SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 10.3,
+    "charge": 9.28,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 9.28
+   },
+   "CVC - PUBLISHER": {
+    "spendTech": 0.14,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "DE ANGELINA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 9.7,
+    "charge": 8.74,
+    "comissao": 0.0,
+    "repasse": 7.21,
+    "receitaLiquida": 1.53
+   },
+   "DECATLHON ADS": {
+    "spendTech": 1.2,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.12,
+    "repasse": 0.0,
+    "receitaLiquida": 0.12
+   },
+   "DECATLHON ADS - ON HOLD": {
+    "spendTech": 0.6,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "DELIVERY HORTISABOR - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.8,
+    "charge": 2.52,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 2.52
+   },
+   "DELTASUPER - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 44.1,
+    "charge": 39.74,
+    "comissao": 0.0,
+    "repasse": 32.8,
+    "receitaLiquida": 6.94
+   },
+   "DIA ADS": {
+    "spendTech": 13364.33,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 2004.65,
+    "repasse": 0.0,
+    "receitaLiquida": 2004.65
+   },
+   "DIA ADS HML": {
+    "spendTech": 13.03,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "DINIZ SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 80.0,
+    "charge": 72.1,
+    "comissao": 0.0,
+    "repasse": 59.5,
+    "receitaLiquida": 12.59
+   },
+   "DROGAL ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 95979.24,
+    "charge": 90785.04,
+    "comissao": 0.0,
+    "repasse": 44740.42,
+    "receitaLiquida": 46044.62
+   },
+   "DROGARIA SÃO PAULO ADS": {
+    "spendTech": 172201.98,
+    "spendNetwork": 2508061.91,
+    "charge": 2447856.54,
+    "comissao": 17220.2,
+    "repasse": 1900269.46,
+    "receitaLiquida": 564807.28
+   },
+   "EITRI PUBLISHER": {
+    "spendTech": 21.93,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "ELETRO ANGELONI": {
+    "spendTech": 0.0,
+    "spendNetwork": 289.0,
+    "charge": 289.0,
+    "comissao": 0.0,
+    "repasse": 196.43,
+    "receitaLiquida": 92.57
+   },
+   "ENXUTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 11.6,
+    "charge": 10.45,
+    "comissao": 0.0,
+    "repasse": 8.63,
+    "receitaLiquida": 1.83
+   },
+   "FARMACITY CONECT": {
+    "spendTech": 1364788.86,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 184246.5,
+    "repasse": 0.0,
+    "receitaLiquida": 184246.5
+   },
+   "FARMACITYQA": {
+    "spendTech": 4797.11,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 647.61,
+    "repasse": 0.0,
+    "receitaLiquida": 647.61
+   },
+   "FARMÁCIA INDIANA ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 8952.33,
+    "charge": 8521.1,
+    "comissao": 0.0,
+    "repasse": 4157.9,
+    "receitaLiquida": 4363.2
+   },
+   "FASOUTO - VIPCOMMERCE SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 12.5,
+    "charge": 11.26,
+    "comissao": 0.0,
+    "repasse": 9.3,
+    "receitaLiquida": 1.97
+   },
+   "FAST SHOP": {
+    "spendTech": 87565.99,
+    "spendNetwork": 13285.86,
+    "charge": 4637.86,
+    "comissao": 4378.3,
+    "repasse": 3827.86,
+    "receitaLiquida": 5188.3
+   },
+   "FAVORITO SUPERMERCADOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 23.0,
+    "charge": 20.73,
+    "comissao": 0.0,
+    "repasse": 17.11,
+    "receitaLiquida": 3.62
+   },
+   "FEDERZONI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 6.1,
+    "charge": 5.5,
+    "comissao": 0.0,
+    "repasse": 4.54,
+    "receitaLiquida": 0.96
+   },
+   "FEIRA NOVA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 16.0,
+    "charge": 14.42,
+    "comissao": 0.0,
+    "repasse": 11.9,
+    "receitaLiquida": 2.52
+   },
+   "FERREIRA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 78.0,
+    "charge": 70.29,
+    "comissao": 0.0,
+    "repasse": 58.02,
+    "receitaLiquida": 12.28
+   },
+   "FLEX - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 39.4,
+    "charge": 35.51,
+    "comissao": 0.0,
+    "repasse": 29.31,
+    "receitaLiquida": 6.2
+   },
+   "FONSECA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 63.0,
+    "charge": 56.78,
+    "comissao": 0.0,
+    "repasse": 46.86,
+    "receitaLiquida": 9.92
+   },
+   "FRADEILHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 14.7,
+    "charge": 13.25,
+    "comissao": 0.0,
+    "repasse": 10.93,
+    "receitaLiquida": 2.31
+   },
+   "FRUTTO DA TERRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 3.5,
+    "charge": 3.15,
+    "comissao": 0.0,
+    "repasse": 2.6,
+    "receitaLiquida": 0.55
+   },
+   "FÊNIX SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 35.1,
+    "charge": 31.63,
+    "comissao": 0.0,
+    "repasse": 26.11,
+    "receitaLiquida": 5.52
+   },
+   "GARCIA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 19.9,
+    "charge": 17.93,
+    "comissao": 0.0,
+    "repasse": 14.8,
+    "receitaLiquida": 3.13
+   },
+   "GBARBOSA": {
+    "spendTech": 0.0,
+    "spendNetwork": 6768.57,
+    "charge": 6555.77,
+    "comissao": 0.0,
+    "repasse": 4455.96,
+    "receitaLiquida": 2099.81
+   },
+   "GBARBOSA - PUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 12004.48,
+    "charge": 11856.26,
+    "comissao": 0.0,
+    "repasse": 9785.56,
+    "receitaLiquida": 2070.7
+   },
+   "GROWD ADS": {
+    "spendTech": 26700.49,
+    "spendNetwork": 42640.5,
+    "charge": 41516.48,
+    "comissao": 2670.05,
+    "repasse": 34266.93,
+    "receitaLiquida": 9919.6
+   },
+   "GUARANI SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 12.2,
+    "charge": 10.99,
+    "comissao": 0.0,
+    "repasse": 9.07,
+    "receitaLiquida": 1.92
+   },
+   "HAPVIDA - PUBLISHER": {
+    "spendTech": 961103.62,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "HIPER BERGAMINI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 26.0,
+    "charge": 23.43,
+    "comissao": 0.0,
+    "repasse": 19.34,
+    "receitaLiquida": 4.09
+   },
+   "HIPER NATASHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 11.6,
+    "charge": 10.45,
+    "comissao": 0.0,
+    "repasse": 8.63,
+    "receitaLiquida": 1.83
+   },
+   "HIROTA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 179.4,
+    "charge": 161.67,
+    "comissao": 0.0,
+    "repasse": 133.44,
+    "receitaLiquida": 28.24
+   },
+   "HORTIFRUTI BR - NATURAL DA TERRA - PUBLISHER - HML": {
+    "spendTech": 190.62,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "IPANEMA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.1,
+    "charge": 3.69,
+    "comissao": 0.0,
+    "repasse": 3.05,
+    "receitaLiquida": 0.65
+   },
+   "IRMÃOS SILVA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.9,
+    "charge": 4.42,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 4.42
+   },
+   "JAGUARE": {
+    "spendTech": 0.0,
+    "spendNetwork": 15.2,
+    "charge": 13.7,
+    "comissao": 0.0,
+    "repasse": 11.31,
+    "receitaLiquida": 2.39
+   },
+   "JB DE FRUTAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.0,
+    "charge": 1.8,
+    "comissao": 0.0,
+    "repasse": 1.49,
+    "receitaLiquida": 0.31
+   },
+   "KABUM": {
+    "spendTech": 1814885.8,
+    "spendNetwork": 27307.45,
+    "charge": 2917.96,
+    "comissao": 0.0,
+    "repasse": 6547.84,
+    "receitaLiquida": -3629.88
+   },
+   "KABUM STAGING": {
+    "spendTech": 306.12,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "LEROY MERLIN": {
+    "spendTech": 71612.12,
+    "spendNetwork": 13404.9,
+    "charge": 0.0,
+    "comissao": 7161.21,
+    "repasse": 11714.54,
+    "receitaLiquida": -4553.33
+   },
+   "LEROY MERLIN STAGING": {
+    "spendTech": 2.56,
+    "spendNetwork": 0.06,
+    "charge": 0.06,
+    "comissao": 0.26,
+    "repasse": 0.05,
+    "receitaLiquida": 0.27
+   },
+   "LIVELO - PUBLISHER": {
+    "spendTech": 60660.16,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "LOCATEL": {
+    "spendTech": 5072.94,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 684.85,
+    "repasse": 0.0,
+    "receitaLiquida": 684.85
+   },
+   "LOJAS IMPÉRIO ADS": {
+    "spendTech": 3488.0,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 348.8,
+    "repasse": 0.0,
+    "receitaLiquida": 348.8
+   },
+   "LUZITANA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.1,
+    "charge": 7.3,
+    "comissao": 0.0,
+    "repasse": 6.02,
+    "receitaLiquida": 1.27
+   },
+   "MADEIRA ADS": {
+    "spendTech": 151222.06,
+    "spendNetwork": 321.8,
+    "charge": 0.0,
+    "comissao": 13609.99,
+    "repasse": 284.35,
+    "receitaLiquida": 13325.64
+   },
+   "MADEIRA MADEIRA - PUBLISHER TESTE": {
+    "spendTech": 6.0,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "MARKETPLACE CUIDAÊ - PUBLISHER": {
+    "spendTech": 2.2,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "MEGA SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 12.9,
+    "charge": 11.63,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 11.63
+   },
+   "MERCADO AJUBÁ": {
+    "spendTech": 0.0,
+    "spendNetwork": 7.2,
+    "charge": 6.49,
+    "comissao": 0.0,
+    "repasse": 5.36,
+    "receitaLiquida": 1.13
+   },
+   "MERCANTIL ATACADO": {
+    "spendTech": 0.0,
+    "spendNetwork": 2236.66,
+    "charge": 2179.63,
+    "comissao": 0.0,
+    "repasse": 1058.21,
+    "receitaLiquida": 1121.42
+   },
+   "MERCANTIL NOVA ERA LTDA": {
+    "spendTech": 0.0,
+    "spendNetwork": 1121.53,
+    "charge": 1083.11,
+    "comissao": 0.0,
+    "repasse": 525.85,
+    "receitaLiquida": 557.26
+   },
+   "MEU PRATA SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 20.7,
+    "charge": 18.65,
+    "comissao": 0.0,
+    "repasse": 15.4,
+    "receitaLiquida": 3.26
+   },
+   "NIPPO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 3.2,
+    "charge": 2.88,
+    "comissao": 0.0,
+    "repasse": 2.38,
+    "receitaLiquida": 0.5
+   },
+   "NORDESTÃO SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 127.4,
+    "charge": 114.81,
+    "comissao": 0.0,
+    "repasse": 94.76,
+    "receitaLiquida": 20.05
+   },
+   "OLIMPICA CO - PUBLISHER": {
+    "spendTech": 140556.42,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 7027.82,
+    "repasse": 0.0,
+    "receitaLiquida": 7027.82
+   },
+   "OXAN SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 10.1,
+    "charge": 9.1,
+    "comissao": 0.0,
+    "repasse": 7.51,
+    "receitaLiquida": 1.59
+   },
+   "PAGUE MENOS": {
+    "spendTech": 117070.57,
+    "spendNetwork": 799472.25,
+    "charge": 770083.69,
+    "comissao": 10536.35,
+    "repasse": 680631.87,
+    "receitaLiquida": 99988.18
+   },
+   "PANVEL": {
+    "spendTech": 140585.3,
+    "spendNetwork": 499563.7,
+    "charge": 481758.94,
+    "comissao": 14058.53,
+    "repasse": 396253.61,
+    "receitaLiquida": 99563.85
+   },
+   "PAULISTÃO ATACADISTA": {
+    "spendTech": 0.0,
+    "spendNetwork": 688.4,
+    "charge": 676.14,
+    "comissao": 0.0,
+    "repasse": 558.05,
+    "receitaLiquida": 118.09
+   },
+   "PECITO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 23.7,
+    "charge": 21.36,
+    "comissao": 0.0,
+    "repasse": 17.63,
+    "receitaLiquida": 3.73
+   },
+   "PERIM - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 25.8,
+    "charge": 23.25,
+    "comissao": 0.0,
+    "repasse": 19.19,
+    "receitaLiquida": 4.06
+   },
+   "PETLOVE ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 85922.36,
+    "charge": 72418.46,
+    "comissao": 0.0,
+    "repasse": 59770.58,
+    "receitaLiquida": 12647.88
+   },
+   "PICPAY PUBLISHER": {
+    "spendTech": 13121.74,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1180.96,
+    "repasse": 0.0,
+    "receitaLiquida": 1180.96
+   },
+   "PICPAY STAGING PUBLISHER": {
+    "spendTech": 9.6,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "PILAR - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 29.0,
+    "charge": 26.13,
+    "comissao": 0.0,
+    "repasse": 21.57,
+    "receitaLiquida": 4.56
+   },
+   "PINHEIRO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 90.4,
+    "charge": 81.47,
+    "comissao": 0.0,
+    "repasse": 67.24,
+    "receitaLiquida": 14.23
+   },
+   "PORTO EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.4,
+    "charge": 7.57,
+    "comissao": 0.0,
+    "repasse": 6.25,
+    "receitaLiquida": 1.32
+   },
+   "PREZUNIC": {
+    "spendTech": 0.0,
+    "spendNetwork": 23491.15,
+    "charge": 22653.45,
+    "comissao": 0.0,
+    "repasse": 15397.55,
+    "receitaLiquida": 7255.9
+   },
+   "PROMOFARMA - PUBLISHER": {
+    "spendTech": 436.5,
+    "spendNetwork": 2227.62,
+    "charge": 2180.25,
+    "comissao": 87.3,
+    "repasse": 1376.07,
+    "receitaLiquida": 891.49
+   },
+   "PRÓ BRAZILIAN - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 5.6,
+    "charge": 5.05,
+    "comissao": 0.0,
+    "repasse": 4.17,
+    "receitaLiquida": 0.88
+   },
+   "PÉROLA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 54.2,
+    "charge": 48.84,
+    "comissao": 0.0,
+    "repasse": 40.31,
+    "receitaLiquida": 8.53
+   },
+   "REDE COMPRAS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 89.0,
+    "charge": 80.21,
+    "comissao": 0.0,
+    "repasse": 66.2,
+    "receitaLiquida": 14.01
+   },
+   "REDEMARKET - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 37.6,
+    "charge": 33.88,
+    "comissao": 0.0,
+    "repasse": 27.97,
+    "receitaLiquida": 5.92
+   },
+   "REDETOP - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 15.0,
+    "charge": 13.52,
+    "comissao": 0.0,
+    "repasse": 11.16,
+    "receitaLiquida": 2.36
+   },
+   "RETAIL MEDIA CASAS BAHIA STAGING": {
+    "spendTech": 26.74,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "ROSSI DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 151.1,
+    "charge": 136.17,
+    "comissao": 0.0,
+    "repasse": 112.39,
+    "receitaLiquida": 23.78
+   },
+   "ROYAL SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.9,
+    "charge": 4.42,
+    "comissao": 0.0,
+    "repasse": 3.64,
+    "receitaLiquida": 0.77
+   },
+   "SAN MICHEL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 10.4,
+    "charge": 9.37,
+    "comissao": 0.0,
+    "repasse": 7.74,
+    "receitaLiquida": 1.64
+   },
+   "SANTAREM SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.8,
+    "charge": 4.33,
+    "comissao": 0.0,
+    "repasse": 3.57,
+    "receitaLiquida": 0.76
+   },
+   "SEPHORA ADS PUBLISHER": {
+    "spendTech": 458911.72,
+    "spendNetwork": 43237.4,
+    "charge": 43237.4,
+    "comissao": 20651.03,
+    "repasse": 34426.48,
+    "receitaLiquida": 29461.94
+   },
+   "SHOPSTAR PUBLISHER HML": {
+    "spendTech": 7101.41,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1065.21,
+    "repasse": 0.0,
+    "receitaLiquida": 1065.21
+   },
+   "SILVA INDAIA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 7.5,
+    "charge": 6.76,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 6.76
+   },
+   "SILVEIRA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.1,
+    "charge": 1.89,
+    "comissao": 0.0,
+    "repasse": 1.56,
+    "receitaLiquida": 0.33
+   },
+   "SIMPATIA ONLINE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 87.5,
+    "charge": 78.85,
+    "comissao": 0.0,
+    "repasse": 65.08,
+    "receitaLiquida": 13.77
+   },
+   "SORRISO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 12.2,
+    "charge": 10.99,
+    "comissao": 0.0,
+    "repasse": 9.07,
+    "receitaLiquida": 1.92
+   },
+   "STYLLUS SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 9.5,
+    "charge": 8.56,
+    "comissao": 0.0,
+    "repasse": 7.07,
+    "receitaLiquida": 1.5
+   },
+   "SUPER ANGELONI": {
+    "spendTech": 0.18,
+    "spendNetwork": 2469.76,
+    "charge": 2388.29,
+    "comissao": 0.02,
+    "repasse": 1623.32,
+    "receitaLiquida": 764.99
+   },
+   "SUPER ECONÔMICO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 14.3,
+    "charge": 12.89,
+    "comissao": 0.0,
+    "repasse": 10.64,
+    "receitaLiquida": 2.25
+   },
+   "SUPER G SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.7,
+    "charge": 2.43,
+    "comissao": 0.0,
+    "repasse": 2.01,
+    "receitaLiquida": 0.42
+   },
+   "SUPER MUFFATO DELIVERY": {
+    "spendTech": 0.0,
+    "spendNetwork": 2628.71,
+    "charge": 2597.45,
+    "comissao": 0.0,
+    "repasse": 2017.7,
+    "receitaLiquida": 579.75
+   },
+   "SUPER NOSSO": {
+    "spendTech": 30.6,
+    "spendNetwork": 10619.8,
+    "charge": 10300.5,
+    "comissao": 1.53,
+    "repasse": 8501.52,
+    "receitaLiquida": 1800.51
+   },
+   "SUPER VALE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.2,
+    "charge": 3.79,
+    "comissao": 0.0,
+    "repasse": 3.12,
+    "receitaLiquida": 0.66
+   },
+   "SUPER XTRA - PUBLISHER": {
+    "spendTech": 261.4,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 39.21,
+    "repasse": 0.0,
+    "receitaLiquida": 39.21
+   },
+   "SUPERMERCADO DO ROBERTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 26.5,
+    "charge": 23.88,
+    "comissao": 0.0,
+    "repasse": 19.71,
+    "receitaLiquida": 4.17
+   },
+   "SUPERMERCADO MANAÍRA": {
+    "spendTech": 0.0,
+    "spendNetwork": 31.2,
+    "charge": 28.12,
+    "comissao": 0.0,
+    "repasse": 23.21,
+    "receitaLiquida": 4.91
+   },
+   "SUPERMERCADO SAVEGNAGO": {
+    "spendTech": 62.34,
+    "spendNetwork": 2660.35,
+    "charge": 2612.42,
+    "comissao": 6.23,
+    "repasse": 2156.16,
+    "receitaLiquida": 462.49
+   },
+   "SUPERMERCADOS DAOLIO": {
+    "spendTech": 0.0,
+    "spendNetwork": 43.5,
+    "charge": 39.2,
+    "comissao": 0.0,
+    "repasse": 32.36,
+    "receitaLiquida": 6.85
+   },
+   "SUPERSUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.0,
+    "charge": 1.8,
+    "comissao": 0.0,
+    "repasse": 1.49,
+    "receitaLiquida": 0.31
+   },
+   "SUPERVILLE SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.9,
+    "charge": 8.02,
+    "comissao": 0.0,
+    "repasse": 6.62,
+    "receitaLiquida": 1.4
+   },
+   "SÃO JOÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 17.6,
+    "charge": 15.86,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 15.86
+   },
+   "TENDA ATACADO - PUBLISHER": {
+    "spendTech": 37216.44,
+    "spendNetwork": 16851.84,
+    "charge": 15714.64,
+    "comissao": 3721.64,
+    "repasse": 12970.07,
+    "receitaLiquida": 6466.2
+   },
+   "TENDA ATACADO ADS HML": {
+    "spendTech": 2.92,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "TONIN SUPERATACADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 46.2,
+    "charge": 41.64,
+    "comissao": 0.0,
+    "repasse": 34.36,
+    "receitaLiquida": 7.27
+   },
+   "TRENTO SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.8,
+    "charge": 2.52,
+    "comissao": 0.0,
+    "repasse": 2.08,
+    "receitaLiquida": 0.44
+   },
+   "UNICOMPRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 62.2,
+    "charge": 56.05,
+    "comissao": 0.0,
+    "repasse": 46.26,
+    "receitaLiquida": 9.79
+   },
+   "URBANIC - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 6.0,
+    "charge": 5.41,
+    "comissao": 0.0,
+    "repasse": 4.46,
+    "receitaLiquida": 0.94
+   },
+   "VENÂNCIO": {
+    "spendTech": 0.0,
+    "spendNetwork": 32262.04,
+    "charge": 31072.21,
+    "comissao": 0.0,
+    "repasse": 21119.78,
+    "receitaLiquida": 9952.43
+   },
+   "VIEIRAO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 3.5,
+    "charge": 3.15,
+    "comissao": 0.0,
+    "repasse": 2.6,
+    "receitaLiquida": 0.55
+   },
+   "VILA RICA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.2,
+    "charge": 7.39,
+    "comissao": 0.0,
+    "repasse": 6.1,
+    "receitaLiquida": 1.29
+   },
+   "VILA SUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 24.1,
+    "charge": 21.72,
+    "comissao": 0.0,
+    "repasse": 17.93,
+    "receitaLiquida": 3.79
+   },
+   "VILLARREAL ONLINE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 26.3,
+    "charge": 23.7,
+    "comissao": 0.0,
+    "repasse": 19.56,
+    "receitaLiquida": 4.14
+   },
+   "VIOLETA EXPRESS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 313.6,
+    "charge": 282.61,
+    "comissao": 0.0,
+    "repasse": 233.26,
+    "receitaLiquida": 49.36
+   },
+   "VIP COMMERCE - SUBPUBLISHER SANDBOX": {
+    "spendTech": 36.16,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 3.62,
+    "repasse": 0.0,
+    "receitaLiquida": 3.62
+   },
+   "VIPCOMMERCE STAGING - SUBPUBLISHER": {
+    "spendTech": 68.1,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "VISCARDI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 9.6,
+    "charge": 8.65,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 8.65
+   },
+   "VTEX - DEMO STORE B2C": {
+    "spendTech": 0.1,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "VTEX ELETRO STORE": {
+    "spendTech": 0.24,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.02,
+    "repasse": 0.0,
+    "receitaLiquida": 0.02
+   },
+   "VTEX GROCERY": {
+    "spendTech": 7.08,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.71,
+    "repasse": 0.0,
+    "receitaLiquida": 0.71
+   },
+   "VTEX GROCERY B2B": {
+    "spendTech": 0.02,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "ZONA SUL ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 8399.14,
+    "charge": 7813.47,
+    "comissao": 0.0,
+    "repasse": 6069.5,
+    "receitaLiquida": 1743.97
+   },
+   "ZOOM": {
+    "spendTech": 2050.55,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 205.06,
+    "repasse": 0.0,
+    "receitaLiquida": 205.06
+   },
+   "ÉPOCA COSMÉTICOS ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 38695.05,
+    "charge": 38000.4,
+    "comissao": 0.0,
+    "repasse": 33208.55,
+    "receitaLiquida": 4791.85
+   }
+  },
+  "2026-06": {
+   "2 BEM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.0,
+    "charge": 4.0,
+    "comissao": 0.0,
+    "repasse": 3.3,
+    "receitaLiquida": 0.7
+   },
+   "AGROMIX PET CENTER - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.0,
+    "charge": 8.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 8.0
+   },
+   "AIQFOME PUBLISHER - SANDBOX": {
+    "spendTech": 0.04,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "ALABARCE DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 16.0,
+    "charge": 16.0,
+    "comissao": 0.0,
+    "repasse": 13.21,
+    "receitaLiquida": 2.79
+   },
+   "AMERICANAS": {
+    "spendTech": 70655.35,
+    "spendNetwork": 18857.06,
+    "charge": 18650.79,
+    "comissao": 10598.3,
+    "repasse": 13582.43,
+    "receitaLiquida": 15666.65
+   },
+   "AMERICANAS STAGING": {
+    "spendTech": 18.72,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "AMOBELEZA": {
+    "spendTech": 0.0,
+    "spendNetwork": 99.0,
+    "charge": 99.0,
+    "comissao": 0.0,
+    "repasse": 81.71,
+    "receitaLiquida": 17.29
+   },
+   "ARMAZEM DO GRÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 138.0,
+    "charge": 138.0,
+    "comissao": 0.0,
+    "repasse": 113.9,
+    "receitaLiquida": 24.1
+   },
+   "ARMAÇÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 6.0,
+    "charge": 6.0,
+    "comissao": 0.0,
+    "repasse": 4.95,
+    "receitaLiquida": 1.05
+   },
+   "ATACADISTA MEGA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 90.0,
+    "charge": 90.0,
+    "comissao": 0.0,
+    "repasse": 74.28,
+    "receitaLiquida": 15.72
+   },
+   "ATALAIA RAÇÕES - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 22.0,
+    "charge": 22.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 22.0
+   },
+   "AUCHAN POC": {
+    "spendTech": 168.05,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "BEMOL": {
+    "spendTech": 380012.32,
+    "spendNetwork": 14461.51,
+    "charge": 0.0,
+    "comissao": 76002.46,
+    "repasse": 11233.7,
+    "receitaLiquida": 64768.76
+   },
+   "BEMOL QA (STAGING)": {
+    "spendTech": 38.12,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "BISTEK SUPERMERCADOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 19.4,
+    "charge": 18.98,
+    "comissao": 0.0,
+    "repasse": 13.82,
+    "receitaLiquida": 5.16
+   },
+   "BOI BOM CARNES E FRIOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.0,
+    "charge": 2.0,
+    "comissao": 0.0,
+    "repasse": 1.65,
+    "receitaLiquida": 0.35
+   },
+   "BRAMIL EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 484.0,
+    "charge": 484.0,
+    "comissao": 0.0,
+    "repasse": 399.47,
+    "receitaLiquida": 84.53
+   },
+   "BRETAS": {
+    "spendTech": 0.0,
+    "spendNetwork": 439.9,
+    "charge": 439.5,
+    "comissao": 0.0,
+    "repasse": 320.07,
+    "receitaLiquida": 119.43
+   },
+   "BRETAS - PUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 83.33,
+    "charge": 83.33,
+    "comissao": 0.0,
+    "repasse": 60.69,
+    "receitaLiquida": 22.64
+   },
+   "BUONA GENTE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 30.0,
+    "charge": 30.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 30.0
+   },
+   "BUSCAPE": {
+    "spendTech": 2739.6,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 273.96,
+    "repasse": 0.0,
+    "receitaLiquida": 273.96
+   },
+   "BUSCAPE STAGING": {
+    "spendTech": 1.18,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "CALEGARIS EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 6.0,
+    "charge": 6.0,
+    "comissao": 0.0,
+    "repasse": 4.95,
+    "receitaLiquida": 1.05
+   },
+   "CAMBUI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 66.0,
+    "charge": 66.0,
+    "comissao": 0.0,
+    "repasse": 54.47,
+    "receitaLiquida": 11.53
+   },
+   "CARROSSEL NO LAR - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 104.0,
+    "charge": 104.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 104.0
+   },
+   "CARVALHO SUPERSHOP - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 66.0,
+    "charge": 66.0,
+    "comissao": 0.0,
+    "repasse": 54.47,
+    "receitaLiquida": 11.53
+   },
+   "CASAS BAHIA ADS": {
+    "spendTech": 3663410.94,
+    "spendNetwork": 29196.34,
+    "charge": 0.0,
+    "comissao": 311389.93,
+    "repasse": 10823.39,
+    "receitaLiquida": 300566.54
+   },
+   "CENTERPAO ATE VOCE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 14.0,
+    "charge": 14.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 14.0
+   },
+   "CENTRAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 86.0,
+    "charge": 86.0,
+    "comissao": 0.0,
+    "repasse": 70.98,
+    "receitaLiquida": 15.02
+   },
+   "CENTRAL DELIVERY - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 46.0,
+    "charge": 46.0,
+    "comissao": 0.0,
+    "repasse": 37.97,
+    "receitaLiquida": 8.03
+   },
+   "CLUBBI": {
+    "spendTech": 8300.25,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 830.03,
+    "repasse": 0.0,
+    "receitaLiquida": 830.03
+   },
+   "CLUBBI STAGING": {
+    "spendTech": 0.04,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "COBASI ADS": {
+    "spendTech": 817.8,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "COOCERQUI SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.0,
+    "charge": 2.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 2.0
+   },
+   "CVC - PUBLISHER": {
+    "spendTech": 453.08,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "DE ANGELINA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 32.0,
+    "charge": 32.0,
+    "comissao": 0.0,
+    "repasse": 26.41,
+    "receitaLiquida": 5.59
+   },
+   "DECATLHON ADS": {
+    "spendTech": 0.8,
+    "spendNetwork": 1.2,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "DELIVERY HORTISABOR - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 22.0,
+    "charge": 22.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 22.0
+   },
+   "DELTASUPER - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 188.0,
+    "charge": 188.0,
+    "comissao": 0.0,
+    "repasse": 155.17,
+    "receitaLiquida": 32.83
+   },
+   "DIA ADS": {
+    "spendTech": 24014.66,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 3602.2,
+    "repasse": 0.0,
+    "receitaLiquida": 3602.2
+   },
+   "DINIZ SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 184.0,
+    "charge": 184.0,
+    "comissao": 0.0,
+    "repasse": 151.86,
+    "receitaLiquida": 32.14
+   },
+   "DROGAL ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 103492.16,
+    "charge": 104907.03,
+    "comissao": 0.0,
+    "repasse": 49026.76,
+    "receitaLiquida": 55880.28
+   },
+   "DROGARIA CATARINENSE": {
+    "spendTech": 0.0,
+    "spendNetwork": 85.25,
+    "charge": 83.28,
+    "comissao": 0.0,
+    "repasse": 68.73,
+    "receitaLiquida": 14.54
+   },
+   "DROGARIA SÃO PAULO ADS": {
+    "spendTech": 218713.77,
+    "spendNetwork": 2973093.23,
+    "charge": 2884390.43,
+    "comissao": 21851.88,
+    "repasse": 2229222.74,
+    "receitaLiquida": 677019.56
+   },
+   "EITRI PUBLISHER": {
+    "spendTech": 17.61,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "EMPORIOPIRANA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.0,
+    "charge": 4.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 4.0
+   },
+   "ENXUTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 24.0,
+    "charge": 24.0,
+    "comissao": 0.0,
+    "repasse": 19.81,
+    "receitaLiquida": 4.19
+   },
+   "ESFERA ADS HML": {
+    "spendTech": 11.0,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "FARMACITY CONECT": {
+    "spendTech": 1323471.88,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 178668.7,
+    "repasse": 0.0,
+    "receitaLiquida": 178668.7
+   },
+   "FARMACITYQA": {
+    "spendTech": 1029.91,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 139.04,
+    "repasse": 0.0,
+    "receitaLiquida": 139.04
+   },
+   "FARMÁCIA INDIANA ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 8637.56,
+    "charge": 9022.73,
+    "comissao": 0.0,
+    "repasse": 4142.33,
+    "receitaLiquida": 4880.39
+   },
+   "FASOUTO - VIPCOMMERCE SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 28.0,
+    "charge": 28.0,
+    "comissao": 0.0,
+    "repasse": 23.11,
+    "receitaLiquida": 4.89
+   },
+   "FAST SHOP": {
+    "spendTech": 93024.0,
+    "spendNetwork": 22063.39,
+    "charge": 22627.61,
+    "comissao": 4651.2,
+    "repasse": 18209.87,
+    "receitaLiquida": 9068.94
+   },
+   "FAVORITO SUPERMERCADOS": {
+    "spendTech": 0.0,
+    "spendNetwork": 14.0,
+    "charge": 14.0,
+    "comissao": 0.0,
+    "repasse": 11.55,
+    "receitaLiquida": 2.45
+   },
+   "FEDERZONI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 56.0,
+    "charge": 56.0,
+    "comissao": 0.0,
+    "repasse": 46.22,
+    "receitaLiquida": 9.78
+   },
+   "FEIRA NOVA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 38.0,
+    "charge": 38.0,
+    "comissao": 0.0,
+    "repasse": 31.36,
+    "receitaLiquida": 6.64
+   },
+   "FERREIRA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 62.0,
+    "charge": 62.0,
+    "comissao": 0.0,
+    "repasse": 51.17,
+    "receitaLiquida": 10.83
+   },
+   "FLEX - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 82.0,
+    "charge": 82.0,
+    "comissao": 0.0,
+    "repasse": 67.68,
+    "receitaLiquida": 14.32
+   },
+   "FONSECA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 82.0,
+    "charge": 82.0,
+    "comissao": 0.0,
+    "repasse": 67.68,
+    "receitaLiquida": 14.32
+   },
+   "FRADEILHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 58.0,
+    "charge": 58.0,
+    "comissao": 0.0,
+    "repasse": 47.87,
+    "receitaLiquida": 10.13
+   },
+   "FÊNIX SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 76.0,
+    "charge": 76.0,
+    "comissao": 0.0,
+    "repasse": 62.73,
+    "receitaLiquida": 13.27
+   },
+   "GARCIA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.0,
+    "charge": 8.0,
+    "comissao": 0.0,
+    "repasse": 6.6,
+    "receitaLiquida": 1.4
+   },
+   "GAROTO ATACADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 84.0,
+    "charge": 84.0,
+    "comissao": 0.0,
+    "repasse": 69.33,
+    "receitaLiquida": 14.67
+   },
+   "GBARBOSA": {
+    "spendTech": 0.0,
+    "spendNetwork": 5150.6,
+    "charge": 5147.1,
+    "comissao": 0.0,
+    "repasse": 3748.38,
+    "receitaLiquida": 1398.72
+   },
+   "GBARBOSA - PUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 9392.57,
+    "charge": 9392.57,
+    "comissao": 0.0,
+    "repasse": 6840.14,
+    "receitaLiquida": 2552.43
+   },
+   "GROWD ADS": {
+    "spendTech": 34275.03,
+    "spendNetwork": 41332.03,
+    "charge": 41561.87,
+    "comissao": 3427.5,
+    "repasse": 33608.91,
+    "receitaLiquida": 11380.47
+   },
+   "GUARANI SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 34.0,
+    "charge": 34.0,
+    "comissao": 0.0,
+    "repasse": 28.06,
+    "receitaLiquida": 5.94
+   },
+   "HAPVIDA - PUBLISHER": {
+    "spendTech": 1061005.44,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 74270.38,
+    "repasse": 0.0,
+    "receitaLiquida": 74270.38
+   },
+   "HIPER BERGAMINI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 64.0,
+    "charge": 64.0,
+    "comissao": 0.0,
+    "repasse": 52.82,
+    "receitaLiquida": 11.18
+   },
+   "HIPER NATASHA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 14.0,
+    "charge": 14.0,
+    "comissao": 0.0,
+    "repasse": 11.55,
+    "receitaLiquida": 2.45
+   },
+   "HIROTA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 234.0,
+    "charge": 234.0,
+    "comissao": 0.0,
+    "repasse": 193.13,
+    "receitaLiquida": 40.87
+   },
+   "HORTIFRUTI BR - NATURAL DA TERRA - PUBLISHER": {
+    "spendTech": 1219.42,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "IPANEMA SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 48.0,
+    "charge": 48.0,
+    "comissao": 0.0,
+    "repasse": 39.62,
+    "receitaLiquida": 8.38
+   },
+   "IRMÃOS SILVA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 10.0,
+    "charge": 10.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 10.0
+   },
+   "JAGUARE": {
+    "spendTech": 0.0,
+    "spendNetwork": 42.0,
+    "charge": 42.0,
+    "comissao": 0.0,
+    "repasse": 34.66,
+    "receitaLiquida": 7.34
+   },
+   "JB DE FRUTAL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 46.0,
+    "charge": 46.0,
+    "comissao": 0.0,
+    "repasse": 37.97,
+    "receitaLiquida": 8.03
+   },
+   "KABUM": {
+    "spendTech": 1349232.8,
+    "spendNetwork": 45952.56,
+    "charge": 3602.96,
+    "comissao": 0.0,
+    "repasse": 16406.38,
+    "receitaLiquida": -12803.42
+   },
+   "KABUM STAGING": {
+    "spendTech": 698.74,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "LEROY MERLIN": {
+    "spendTech": 73678.81,
+    "spendNetwork": 22200.73,
+    "charge": 2298.5,
+    "comissao": 7367.88,
+    "repasse": 19267.31,
+    "receitaLiquida": -9600.93
+   },
+   "LEROY MERLIN STAGING": {
+    "spendTech": 2.94,
+    "spendNetwork": 0.06,
+    "charge": 0.06,
+    "comissao": 0.29,
+    "repasse": 0.05,
+    "receitaLiquida": 0.3
+   },
+   "LIVELO - PUBLISHER": {
+    "spendTech": 10025.98,
+    "spendNetwork": 16442.78,
+    "charge": 30000.0,
+    "comissao": 0.0,
+    "repasse": 9579.57,
+    "receitaLiquida": 20420.43
+   },
+   "LOCATEL": {
+    "spendTech": 3269.05,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 441.32,
+    "repasse": 0.0,
+    "receitaLiquida": 441.32
+   },
+   "LOJAS IMPÉRIO ADS": {
+    "spendTech": 63.2,
+    "spendNetwork": 5900.6,
+    "charge": 5900.6,
+    "comissao": 6.32,
+    "repasse": 4870.06,
+    "receitaLiquida": 1036.86
+   },
+   "LUZITANA EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 14.0,
+    "charge": 14.0,
+    "comissao": 0.0,
+    "repasse": 11.55,
+    "receitaLiquida": 2.45
+   },
+   "MADEIRA ADS": {
+    "spendTech": 128989.1,
+    "spendNetwork": 1885.12,
+    "charge": 0.0,
+    "comissao": 11609.02,
+    "repasse": 1665.71,
+    "receitaLiquida": 9943.31
+   },
+   "MADEIRA MADEIRA - PUBLISHER TESTE": {
+    "spendTech": 3.0,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "MEGA SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 6.0,
+    "charge": 6.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 6.0
+   },
+   "MERCADO AJUBÁ": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.0,
+    "charge": 4.0,
+    "comissao": 0.0,
+    "repasse": 3.3,
+    "receitaLiquida": 0.7
+   },
+   "MERCADO DO JOAO CARLOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.0,
+    "charge": 2.0,
+    "comissao": 0.0,
+    "repasse": 1.65,
+    "receitaLiquida": 0.35
+   },
+   "MERCANTIL ATACADO": {
+    "spendTech": 0.0,
+    "spendNetwork": 957.8,
+    "charge": 955.38,
+    "comissao": 0.0,
+    "repasse": 695.76,
+    "receitaLiquida": 259.63
+   },
+   "MERCANTIL NOVA ERA LTDA": {
+    "spendTech": 0.0,
+    "spendNetwork": 797.0,
+    "charge": 1006.79,
+    "comissao": 0.0,
+    "repasse": 386.71,
+    "receitaLiquida": 620.08
+   },
+   "NIPPO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.0,
+    "charge": 4.0,
+    "comissao": 0.0,
+    "repasse": 3.3,
+    "receitaLiquida": 0.7
+   },
+   "NORDESTÃO SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 350.0,
+    "charge": 350.0,
+    "comissao": 0.0,
+    "repasse": 288.87,
+    "receitaLiquida": 61.13
+   },
+   "OLIMPICA CO - PUBLISHER": {
+    "spendTech": 129456.88,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 6472.84,
+    "repasse": 0.0,
+    "receitaLiquida": 6472.84
+   },
+   "OXAN SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 26.0,
+    "charge": 26.0,
+    "comissao": 0.0,
+    "repasse": 21.46,
+    "receitaLiquida": 4.54
+   },
+   "PAGUE MENOS": {
+    "spendTech": 129734.67,
+    "spendNetwork": 828276.02,
+    "charge": 816980.38,
+    "comissao": 11676.12,
+    "repasse": 711743.69,
+    "receitaLiquida": 116912.81
+   },
+   "PANVEL": {
+    "spendTech": 165925.94,
+    "spendNetwork": 607561.93,
+    "charge": 589576.82,
+    "comissao": 16592.59,
+    "repasse": 484603.31,
+    "receitaLiquida": 121566.1
+   },
+   "PAULISTÃO ATACADISTA": {
+    "spendTech": 0.0,
+    "spendNetwork": 285.2,
+    "charge": 419.81,
+    "comissao": 0.0,
+    "repasse": 230.79,
+    "receitaLiquida": 189.02
+   },
+   "PECITO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 16.0,
+    "charge": 16.0,
+    "comissao": 0.0,
+    "repasse": 13.21,
+    "receitaLiquida": 2.79
+   },
+   "PERIM - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 88.0,
+    "charge": 88.0,
+    "comissao": 0.0,
+    "repasse": 72.63,
+    "receitaLiquida": 15.37
+   },
+   "PETLOVE ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 28931.77,
+    "charge": 77913.77,
+    "comissao": 0.0,
+    "repasse": 23878.84,
+    "receitaLiquida": 54034.93
+   },
+   "PICPAY PUBLISHER": {
+    "spendTech": 10018.95,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 901.71,
+    "repasse": 0.0,
+    "receitaLiquida": 901.71
+   },
+   "PILAR - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 40.0,
+    "charge": 40.0,
+    "comissao": 0.0,
+    "repasse": 33.01,
+    "receitaLiquida": 6.99
+   },
+   "PINHEIRO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 190.0,
+    "charge": 190.0,
+    "comissao": 0.0,
+    "repasse": 156.82,
+    "receitaLiquida": 33.18
+   },
+   "PORTO EM CASA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 20.0,
+    "charge": 20.0,
+    "comissao": 0.0,
+    "repasse": 16.51,
+    "receitaLiquida": 3.49
+   },
+   "PREZUNIC": {
+    "spendTech": 0.0,
+    "spendNetwork": 32422.99,
+    "charge": 32684.62,
+    "comissao": 0.0,
+    "repasse": 23598.4,
+    "receitaLiquida": 9086.22
+   },
+   "PRIME GOODS VTEX": {
+    "spendTech": 0.1,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "PROMOFARMA - PUBLISHER": {
+    "spendTech": 317.5,
+    "spendNetwork": 3107.66,
+    "charge": 3086.48,
+    "comissao": 63.5,
+    "repasse": 1948.03,
+    "receitaLiquida": 1201.95
+   },
+   "PRÓ BRAZILIAN - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 76.0,
+    "charge": 76.0,
+    "comissao": 0.0,
+    "repasse": 62.73,
+    "receitaLiquida": 13.27
+   },
+   "PÉROLA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 46.0,
+    "charge": 46.0,
+    "comissao": 0.0,
+    "repasse": 37.97,
+    "receitaLiquida": 8.03
+   },
+   "REDE COMPRAS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 140.0,
+    "charge": 140.0,
+    "comissao": 0.0,
+    "repasse": 115.55,
+    "receitaLiquida": 24.45
+   },
+   "REDEMARKET - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 36.0,
+    "charge": 36.0,
+    "comissao": 0.0,
+    "repasse": 29.71,
+    "receitaLiquida": 6.29
+   },
+   "REDETOP - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 44.0,
+    "charge": 44.0,
+    "comissao": 0.0,
+    "repasse": 36.32,
+    "receitaLiquida": 7.68
+   },
+   "RETAIL MEDIA CASAS BAHIA STAGING": {
+    "spendTech": 4581.95,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "ROYAL SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.0,
+    "charge": 8.0,
+    "comissao": 0.0,
+    "repasse": 6.6,
+    "receitaLiquida": 1.4
+   },
+   "SAN MICHEL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 44.0,
+    "charge": 44.0,
+    "comissao": 0.0,
+    "repasse": 36.32,
+    "receitaLiquida": 7.68
+   },
+   "SANTAREM SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 24.0,
+    "charge": 24.0,
+    "comissao": 0.0,
+    "repasse": 19.81,
+    "receitaLiquida": 4.19
+   },
+   "SEPHORA ADS PUBLISHER": {
+    "spendTech": 418007.53,
+    "spendNetwork": 33394.7,
+    "charge": 33394.7,
+    "comissao": 18810.34,
+    "repasse": 26589.53,
+    "receitaLiquida": 25615.51
+   },
+   "SHOPSTAR PUBLISHER": {
+    "spendTech": 5314.5,
+    "spendNetwork": 804.58,
+    "charge": 0.0,
+    "comissao": 1062.9,
+    "repasse": 625.0,
+    "receitaLiquida": 437.9
+   },
+   "SILVA INDAIA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 58.0,
+    "charge": 58.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 58.0
+   },
+   "SIMPATIA ONLINE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 88.0,
+    "charge": 88.0,
+    "comissao": 0.0,
+    "repasse": 72.63,
+    "receitaLiquida": 15.37
+   },
+   "SORRISO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 32.0,
+    "charge": 32.0,
+    "comissao": 0.0,
+    "repasse": 26.41,
+    "receitaLiquida": 5.59
+   },
+   "STYLLUS SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 26.0,
+    "charge": 26.0,
+    "comissao": 0.0,
+    "repasse": 21.46,
+    "receitaLiquida": 4.54
+   },
+   "SUPER ANGELONI": {
+    "spendTech": 0.0,
+    "spendNetwork": 2736.1,
+    "charge": 2731.89,
+    "comissao": 0.0,
+    "repasse": 1856.86,
+    "receitaLiquida": 875.02
+   },
+   "SUPER ECONÔMICO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 24.0,
+    "charge": 24.0,
+    "comissao": 0.0,
+    "repasse": 19.81,
+    "receitaLiquida": 4.19
+   },
+   "SUPER G SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.0,
+    "charge": 2.0,
+    "comissao": 0.0,
+    "repasse": 1.65,
+    "receitaLiquida": 0.35
+   },
+   "SUPER MUFFATO DELIVERY": {
+    "spendTech": 0.0,
+    "spendNetwork": 2387.2,
+    "charge": 2568.59,
+    "comissao": 0.0,
+    "repasse": 1777.49,
+    "receitaLiquida": 791.09
+   },
+   "SUPER NOSSO": {
+    "spendTech": 28.8,
+    "spendNetwork": 7329.14,
+    "charge": 7142.27,
+    "comissao": 1.44,
+    "repasse": 5894.87,
+    "receitaLiquida": 1248.84
+   },
+   "SUPER VALE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 16.0,
+    "charge": 16.0,
+    "comissao": 0.0,
+    "repasse": 13.21,
+    "receitaLiquida": 2.79
+   },
+   "SUPER XTRA - PUBLISHER": {
+    "spendTech": 8613.44,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1292.02,
+    "repasse": 0.0,
+    "receitaLiquida": 1292.02
+   },
+   "SUPERMERCADO DO ROBERTO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 10.0,
+    "charge": 10.0,
+    "comissao": 0.0,
+    "repasse": 8.25,
+    "receitaLiquida": 1.75
+   },
+   "SUPERMERCADO MANAÍRA": {
+    "spendTech": 0.0,
+    "spendNetwork": 84.0,
+    "charge": 84.0,
+    "comissao": 0.0,
+    "repasse": 69.33,
+    "receitaLiquida": 14.67
+   },
+   "SUPERMERCADO SAVEGNAGO": {
+    "spendTech": 51.94,
+    "spendNetwork": 3110.06,
+    "charge": 3078.18,
+    "comissao": 5.19,
+    "repasse": 2540.57,
+    "receitaLiquida": 542.8
+   },
+   "SUPERMERCADOS DAOLIO": {
+    "spendTech": 0.0,
+    "spendNetwork": 78.0,
+    "charge": 78.0,
+    "comissao": 0.0,
+    "repasse": 64.38,
+    "receitaLiquida": 13.62
+   },
+   "SUPERSUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 2.0,
+    "charge": 2.0,
+    "comissao": 0.0,
+    "repasse": 1.65,
+    "receitaLiquida": 0.35
+   },
+   "SUPERVILLE SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 46.0,
+    "charge": 46.0,
+    "comissao": 0.0,
+    "repasse": 37.97,
+    "receitaLiquida": 8.03
+   },
+   "SÃO JOÃO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.0,
+    "charge": 8.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 8.0
+   },
+   "SÃO RAFAEL SUPERMERCADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 4.0,
+    "charge": 4.0,
+    "comissao": 0.0,
+    "repasse": 3.3,
+    "receitaLiquida": 0.7
+   },
+   "TENDA ATACADO - PUBLISHER": {
+    "spendTech": 16882.32,
+    "spendNetwork": 23660.41,
+    "charge": 31694.26,
+    "comissao": 1688.23,
+    "repasse": 19159.15,
+    "receitaLiquida": 14223.34
+   },
+   "TENDA ATACADO ADS HML": {
+    "spendTech": 6.74,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "TONIN SUPERATACADO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 156.0,
+    "charge": 156.0,
+    "comissao": 0.0,
+    "repasse": 128.75,
+    "receitaLiquida": 27.25
+   },
+   "TOTALPASS - PUBLISHER - POC": {
+    "spendTech": 3.2,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "TRENTO SUPERMERCADOS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 6.0,
+    "charge": 6.0,
+    "comissao": 0.0,
+    "repasse": 4.95,
+    "receitaLiquida": 1.05
+   },
+   "UNICOMPRA - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 54.0,
+    "charge": 54.0,
+    "comissao": 0.0,
+    "repasse": 44.57,
+    "receitaLiquida": 9.43
+   },
+   "URBANIC - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 8.0,
+    "charge": 8.0,
+    "comissao": 0.0,
+    "repasse": 6.6,
+    "receitaLiquida": 1.4
+   },
+   "VENÂNCIO": {
+    "spendTech": 0.0,
+    "spendNetwork": 33990.82,
+    "charge": 34287.87,
+    "comissao": 0.0,
+    "repasse": 22590.86,
+    "receitaLiquida": 11697.01
+   },
+   "VIEIRAO - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 12.0,
+    "charge": 12.0,
+    "comissao": 0.0,
+    "repasse": 9.9,
+    "receitaLiquida": 2.1
+   },
+   "VILA SUL - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 66.0,
+    "charge": 66.0,
+    "comissao": 0.0,
+    "repasse": 54.47,
+    "receitaLiquida": 11.53
+   },
+   "VILLARREAL ONLINE - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 44.0,
+    "charge": 44.0,
+    "comissao": 0.0,
+    "repasse": 36.32,
+    "receitaLiquida": 7.68
+   },
+   "VIOLETA EXPRESS - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 514.0,
+    "charge": 514.0,
+    "comissao": 0.0,
+    "repasse": 424.23,
+    "receitaLiquida": 89.77
+   },
+   "VIP COMMERCE - SUBPUBLISHER SANDBOX": {
+    "spendTech": 11.0,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 1.1,
+    "repasse": 0.0,
+    "receitaLiquida": 1.1
+   },
+   "VIPCOMMERCE STAGING - SUBPUBLISHER": {
+    "spendTech": 123.8,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "VISCARDI - SUBPUBLISHER": {
+    "spendTech": 0.0,
+    "spendNetwork": 16.0,
+    "charge": 16.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 16.0
+   },
+   "VR ADS HML": {
+    "spendTech": 210.44,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "VTEX - DEMO STORE B2C": {
+    "spendTech": 0.1,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.0,
+    "repasse": 0.0,
+    "receitaLiquida": 0.0
+   },
+   "VTEX ELETRO STORE": {
+    "spendTech": 0.22,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.02,
+    "repasse": 0.0,
+    "receitaLiquida": 0.02
+   },
+   "VTEX GROCERY": {
+    "spendTech": 2.34,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 0.23,
+    "repasse": 0.0,
+    "receitaLiquida": 0.23
+   },
+   "ZONA SUL ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 6536.9,
+    "charge": 7579.09,
+    "comissao": 0.0,
+    "repasse": 5070.75,
+    "receitaLiquida": 2508.34
+   },
+   "ZOOM": {
+    "spendTech": 1721.65,
+    "spendNetwork": 0.0,
+    "charge": 0.0,
+    "comissao": 172.17,
+    "repasse": 0.0,
+    "receitaLiquida": 172.17
+   },
+   "ÉPOCA COSMÉTICOS ADS": {
+    "spendTech": 0.0,
+    "spendNetwork": 25152.34,
+    "charge": 24937.1,
+    "comissao": 0.0,
+    "repasse": 21792.54,
+    "receitaLiquida": 3144.57
+   }
+  }
+ }
+}
