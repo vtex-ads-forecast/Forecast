@@ -717,8 +717,8 @@ const NA = 20;  // Actual days in current month (1-20)
 const TD = 31;  // Total Julho days
 const PREV_MONTH_SPEND = 11018043;
 const PREV_MONTH_REV = 1370731;
-const META_SPEND_TOTAL = 22947743;
-const META_REV_TOTAL = 3727052;
+const META_SPEND_TOTAL = 17810252; // meta JUL/26 (nova meta oficial 21/07)
+const META_REV_TOTAL = 2806618; // receita bruta meta JUL/26
 const ADV_AVG_FACTOR = NA > 0 ? TD / NA : TD;
 
 // ACTUALS - Real April spend by day
@@ -749,8 +749,8 @@ const META_APRIL = {
   "Instore + Offsite": {"spendMeta": 100000, "revMeta": 25000, "publishers": {"Offsite": {"spendMeta": 50000, "revMeta": 10000, "spendTech": 0, "spendNetwork": 50000, "trTech": 0, "trNetwork": 0.2}, "Instore": {"spendMeta": 50000, "revMeta": 15000, "spendTech": 0, "spendNetwork": 50000, "trTech": 0, "trNetwork": 0.3}}},
   "Performance Fee": {"spendMeta": 0, "revMeta": 73500, "publishers": {}},
   "Other Incomes": {"spendMeta": 0, "revMeta": 185000, "publishers": {}},
+};
 
-  
 /* Blended TR from REAL data — recalculated dynamically when TRs change */
 let _realSpendTech=0,_realSpendNet=0,_realRevTech=0,_realRevNet=0,_realSpendTotal=0,_realRevTotal=0;
 let BLENDED_TR=0,BLENDED_TR_TECH=0.10,BLENDED_TR_NET=0.15;
