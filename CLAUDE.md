@@ -103,31 +103,20 @@ Dropdown options: Instore + Offsite, Offsite, Instore, Performance Fee, Fees, Ot
 - Linear, Weighted, Custom spend per day
 - `BLENDED_TR` = weighted average TR across all publishers
 
-## Monthly Meta Source File (ARQUIVO FONTE DA META)
-**⚠️ CRITICAL — NUNCA PERGUNTE AO USUÁRIO OS VALORES DA META. USE ESTE ARQUIVO.**
+## Monthly Meta Source File — ATUALIZADO em 2026-07-21 (NOVA META OFICIAL Jun–Dez)
 
-O arquivo fonte com as metas mensais por segmento e publisher é:
-- **Arquivo:** `/sessions/pensive-zen-dirac/mnt/uploads/Untitled spreadsheet-6.xlsx`
-- **Sheet:** `Sheet1`
-- **Estrutura:** Linha 1 = headers dos meses (2026-01 até 2026-09+). Primeira seção = Ad Spend meta, segunda seção = Revenue meta.
-- **Linhas principais:** Linha 3 = "Current Publishers BR" (total BR), depois breakdown por segmento com sub-linhas de publishers.
-- **Mapeamento de colunas:** B=Jan, C=Fev, D=Mar, E=Abr, F=Mai, G=Jun, H=Jul, I=Ago, J=Set
-- **Total geral:** Linha com nome vazio após todos os segmentos = META_SPEND_TOTAL / META_REV_TOTAL
+⚠️ O arquivo antigo ("Untitled spreadsheet-6.xlsx") está OBSOLETO. A fonte oficial da meta agora é:
+- **Planilha:** "Forecast + Meta Ads - 2026" (Google Sheets, João) — docs.google.com/spreadsheets/d/1vYZsrJvQ9OFRN_xSaIiBY5tboJG6-wI2dFNo_kE_9xA
+- **Aba oficial:** "Meta - Forecast" (as abas "Visão As-Is" e "Copy of" NÃO valem)
+- **Estrutura:** seção AD SPEND (linhas ~6–115) e seção RECEITA (linhas ~118–173), hierarquia Segmento > Publisher > AdTech/AdNetwork; colunas Jun..Dez. Meta de receita do dashboard = RECEITA BRUTA.
+- **Snapshot granular:** meta_oficial_2026_snapshot.json (neste repo) + doc no vault Finance (hub-finance-ads/meta-oficial-2026.md)
+- Mapeamento de segmentos: "Novos Publishers"→New Publishers BR · "Other Segments (legado)"→Others Segments · Offsite+Instore→"Instore + Offsite" · Performance Fee e Other Incomes → segmentos próprios · Kabum receita = proxy flat 150k/mês (300k nov).
 
-### Processo de atualização mensal da meta
-Sempre que o mês mudar (transição automática via update.py), atualizar:
-1. Ler a coluna do novo mês neste arquivo
-2. Atualizar `META_SPEND_TOTAL` e `META_REV_TOTAL` no index.html
-3. Atualizar o objeto `META_APRIL` com os valores por segmento e publisher
-4. Mapeamento de nomes: "Grocery" (planilha) → "Groceries" (dashboard)
-
-### Histórico de metas (META_SPEND_TOTAL / META_REV_TOTAL)
-- Jan: 9,415,241 / 1,358,997
-- Fev: 11,597,866 / 1,672,283
-- Mar: 16,712,634 / 2,654,555
-- Abr: 16,211,039 / 2,558,171
-- Mai: 18,642,352 / 3,366,953
-- Jun: 22,947,743 / 3,727,052
+### Histórico de metas NOVO (META_SPEND_TOTAL / META_REV_TOTAL — receita bruta)
+- Jan: 9.415.241 / 1.358.997 · Fev: 11.597.866 / 1.672.283 · Mar: 16.712.634 / 2.654.555 · Abr: 16.211.039 / 2.558.171 · Mai: 18.642.352 / 3.366.953 (meta antiga, meses já comunicados)
+- **Jun: 15.880.868 / 2.297.568 (RETROATIVO — decisão João 21/07)**
+- Jul: 17.810.252 / 2.806.618 · Ago: 20.284.614 / 3.301.112 · Set: 24.623.129 / 4.012.935
+- Out: 28.574.887 / 4.755.644 · Nov: 59.565.096 / 9.813.656 · Dez: 33.591.776 / 5.496.963
 
 ## FX Rates (for LATAM)
 - ARS → BRL: 0.0036
@@ -152,7 +141,7 @@ Offsite + Instore: #14B8A6, Fees: #8B5CF6
 ## Daily Gap Report (Slack)
 
 ### What it is
-Daily report showing gap between realized ad spend vs R$ 18.6M monthly meta, with chart + text for Slack.
+Daily report showing gap between realized ad spend vs monthly meta (META_SPEND_TOTAL vigente — jul/26: R$ 17.8M), with chart + text for Slack.
 
 ### Chart spec (VTEX Brand Guidelines)
 - **Background:** white (#FFFFFF), generous whitespace
