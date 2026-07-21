@@ -2,17 +2,20 @@
   "CASAS BAHIA ADS": {
     "seg": "Electronics",
     "trTech": 0.085,
-    "trNetwork": 0.1
+    "trNetwork": 0.085,
+    "nota": "Take network oficial 8,5% (repasse 91,5%). Escada tech: 8,5% até 5M; 6,5%; 6%; 5%."
   },
   "KABUM": {
     "seg": "Electronics",
     "trTech": 0.07,
-    "trNetwork": 0.18
+    "trNetwork": 0.18,
+    "nota": "PROXY consciente (João 21/07): trTech 7% aproxima a receita Ad Request. Não é o contrato (comissão 0%; receita real via calculadora)."
   },
   "BEMOL": {
     "seg": "Electronics",
-    "trTech": 0.2,
-    "trNetwork": 0.2
+    "trTech": 0.19,
+    "trNetwork": 0.2,
+    "nota": "Escada 20%/15% acima de 300k — 19% = efetivo jun; recalibrar mensal."
   },
   "AMERICANAS": {
     "seg": "Electronics",
@@ -42,7 +45,8 @@
   "PANVEL": {
     "seg": "Pharma",
     "trTech": 0.1,
-    "trNetwork": 0.18
+    "trNetwork": 0.27,
+    "nota": "VIGÊNCIA: 27% APENAS jul-set/2026 (repasse temporário 73%); a partir de out/26 voltar a 15%."
   },
   "DROGAL ADS": {
     "seg": "Pharma",
@@ -51,8 +55,9 @@
   },
   "FARMACITY CONECT": {
     "seg": "LATAM",
-    "trTech": 0.2,
-    "trNetwork": 0.15
+    "trTech": 0.135,
+    "trNetwork": 0.1,
+    "nota": "Oficial: comissão 13,5% / repasse 90%."
   },
   "Olimpica": {
     "seg": "LATAM",
@@ -81,8 +86,9 @@
   },
   "SEPHORA ADS PUBLISHER": {
     "seg": "Beauty",
-    "trTech": 0.08,
-    "trNetwork": 0.18
+    "trTech": 0.045,
+    "trNetwork": 0.18,
+    "nota": "Contrato: 4,5% (fechamento paralelo da Sephora; valores são provisão)."
   },
   "ÉPOCA COSMÉTICOS ADS": {
     "seg": "Beauty",
@@ -91,13 +97,15 @@
   },
   "AMOBELEZA": {
     "seg": "Beauty",
-    "trTech": 0.0,
-    "trNetwork": 0.15
+    "trTech": 0.3,
+    "trNetwork": 0.3,
+    "nota": "Contrato validado 17/07: comissão 30% / repasse 70%."
   },
   "HAPVIDA - PUBLISHER": {
     "seg": "Long Tail",
-    "trTech": 0.0,
-    "trNetwork": 0.15
+    "trTech": 0.07,
+    "trNetwork": 0.3,
+    "nota": "Contrato 15%, mas spend ~todo institucional a 7% — usado o efetivo. Repasse 70%."
   },
   "GROWD ADS": {
     "seg": "Long Tail",
@@ -131,8 +139,9 @@
   },
   "PETLOVE ADS": {
     "seg": "Long Tail",
-    "trTech": 0.0,
-    "trNetwork": 0.1
+    "trTech": 0.07,
+    "trNetwork": 0.15,
+    "nota": "Oficial: comissão 7% / repasse 85%."
   },
   "PROMOFARMA - PUBLISHER": {
     "seg": "Long Tail",
@@ -147,7 +156,8 @@
   "LOJAS IMPÉRIO ADS": {
     "seg": "Long Tail",
     "trTech": 0.1,
-    "trNetwork": 0.0
+    "trNetwork": 0.15,
+    "nota": "Oficial: repasse 85%."
   },
   "BRETAS": {
     "seg": "Long Tail",
@@ -721,8 +731,9 @@
   },
   "PREZUNIC": {
     "seg": "Groceries",
-    "trTech": 0.0,
-    "trNetwork": 0.3
+    "trTech": 0.2,
+    "trNetwork": 0.25,
+    "nota": "Oficial: comissão 20% / repasse 75%."
   },
   "ZONA SUL ADS": {
     "seg": "Groceries",
@@ -741,8 +752,9 @@
   },
   "GBARBOSA - PUBLISHER": {
     "seg": "Groceries",
-    "trTech": 0.0,
-    "trNetwork": 0.15
+    "trTech": 0.2,
+    "trNetwork": 0.25,
+    "nota": "Oficial: comissão 20% / repasse 75%."
   },
   "SUPERMERCADO SAVEGNAGO": {
     "seg": "Groceries",
@@ -756,8 +768,9 @@
   },
   "SUPER MUFFATO DELIVERY": {
     "seg": "Groceries",
-    "trTech": 0.0,
-    "trNetwork": 0.8
+    "trTech": 0.2,
+    "trNetwork": 0.2,
+    "nota": "CORREÇÃO: 0,80 era o REPASSE cadastrado no campo de take. Oficial: comissão 20% / repasse 80%."
   },
   "BISTEK SUPERMERCADOS": {
     "seg": "Groceries",
@@ -766,8 +779,9 @@
   },
   "OLIMPICA CO - PUBLISHER": {
     "seg": "LATAM",
-    "trTech": 0.1,
-    "trNetwork": 0.0
+    "trTech": 0.05,
+    "trNetwork": 0.15,
+    "nota": "Oficial: comissão 5% / repasse 85%."
   },
   "TENDA ATACADO - PUBLISHER": {
     "seg": "Groceries",
@@ -776,8 +790,9 @@
   },
   "GBARBOSA": {
     "seg": "Groceries",
-    "trTech": 0.0,
-    "trNetwork": 0.15
+    "trTech": 0.2,
+    "trNetwork": 0.25,
+    "nota": "Oficial: comissão 20% / repasse 75%."
   },
   "SUPER NOSSO": {
     "seg": "Groceries",
@@ -796,8 +811,9 @@
   },
   "SHOPSTAR PUBLISHER": {
     "seg": "LATAM",
-    "trTech": 0.1,
-    "trNetwork": 0.0
+    "trTech": 0.2,
+    "trNetwork": 0.4,
+    "nota": "Oficial: comissão 20% / repasse 60%."
   },
   "SHOPSTAR PUBLISHER HML": {
     "seg": "LATAM",
@@ -826,8 +842,9 @@
   },
   "LIVELO - PUBLISHER": {
     "seg": "Long Tail",
-    "trTech": 0.1,
-    "trNetwork": 0.15
+    "trTech": 0.2,
+    "trNetwork": 0.4,
+    "nota": "Oficial: comissão 20% / repasse 60%."
   },
   "LIVELO - PUBLISHER HML": {
     "seg": "Long Tail",
@@ -851,7 +868,8 @@
   },
   "SUPER XTRA - PUBLISHER": {
     "seg": "Long Tail",
-    "trTech": 0.1,
-    "trNetwork": 0.15
+    "trTech": 0.15,
+    "trNetwork": 0.15,
+    "nota": "Oficial: comissão 15%."
   }
 }
