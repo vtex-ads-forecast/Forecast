@@ -303,7 +303,6 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
   <nav>
     <div class="nav-item active" id="nav-forecasting" onclick="switchPage('forecasting')">📈 Forecasting</div>
     <div class="nav-item" id="nav-scenarios" onclick="switchPage('scenarios')">🧪 Cenários</div>
-    <div class="nav-item" id="nav-advertisers" onclick="switchPage('advertisers')">👥 Advertisers</div>
     <div class="nav-item" id="nav-settings" onclick="switchPage('settings')">⚙️ Settings</div>
   </nav>
   <div class="sidebar-user">
@@ -1020,9 +1019,9 @@ const REAL_CLOSED_2026_06 = {"Electronics":{spendReal:5640501,revReal:513683,spe
 "Others":{spendReal:0,revReal:0,spendTech:0,spendNetwork:0,revTech:0,revNetwork:0,publishers:{}}};
 
 const CLOSED_DETAIL = {
-  "2026-04": { real: REAL_CLOSED_APR ,
-  "2026-05": { real: REAL_CLOSED_2026_05 ,
-  "2026-06": { real: REAL_CLOSED_2026_06 }}}
+  "2026-04": { real: REAL_CLOSED_APR },
+  "2026-05": { real: REAL_CLOSED_2026_05 },
+  "2026-06": { real: REAL_CLOSED_2026_06 }
 };
 
 
@@ -1038,7 +1037,7 @@ function _buildLTpubs(ltSpendMeta, ltRevMeta) {
   const totalRealRev = ltReal.revReal || 1;
   entries.forEach(([name, rp]) => {
     const spShare = rp.spendReal / totalRealSpend;
-    const rvShare = rp.revReal / totalRealRev;
+    const rvShare = spShare; /* rateio pela participação de SPEND — receita real por publisher vem zerada do Metabase p/ vários (ex.: Hapvida), o que distorcia o rateio (João 21/07) */
     const sm = Math.round(ltSpendMeta * spShare);
     const tRatio = (rp.spendReal > 0) ? (rp.spendTech || 0) / rp.spendReal : 0;
     pubs[name] = {
@@ -1181,10 +1180,10 @@ const MONTHS_DATA = {
 ,
   "2026-06": {
     status: "closed", label: "Junho 2026", days: 30, actualDays: 30,
-    metaSpend: 22947743, metaRev: 3727052,
+    metaSpend: 15880868, metaRev: 2297568, /* NOVA meta oficial (retroativa, João 21/07) */
     realSpend: 14201173,
     realRev: 1786486,
-    segMetas: null,
+    segMetas: {Beauty:571611,Electronics:6606355,Grocery:65990,Groceries:65990,"Home Center":243922,Pharma:5098485,LATAM:1424974,"Long Tail":1787188,"Others Segments":5343,"Other Segments":5343,"New Publishers BR":2000,"Instore + Offsite":75000,"Performance Fee":0,"Other Incomes":0},
     others: null,
     forecastUsed: null
   }
@@ -1447,7 +1446,7 @@ const SEG_C = {
 // ============================================================================
 
 let state = {
-  selectedMonth: '2026-05',
+  selectedMonth: (AVAILABLE_MONTHS.find(k=>MONTHS_DATA[k].status==='current') || AVAILABLE_MONTHS[AVAILABLE_MONTHS.length-1]), /* mês vigente por padrão (João 21/07) */
   modelType: 'weighted',
   viewType: 'daily',
   metric: 'adspend',
@@ -1915,12 +1914,17 @@ let mainChart = null;
 function renderMainChart(){
   const all=getAllDays();const m=state.metric;
   const metaTotal=m==="adspend"?META_SPEND_TOTAL:META_REV_TOTAL;
-  /* Quadratic ramp: starts low (~2.4%), accelerates toward month end (~5.2%) */
-  /* Reflects budget flush pattern — last week concentrates ~28% of monthly spend */
-  const META_DAILY_WEIGHTS=[0.0240,0.0241,0.0242,0.0243,0.0245,0.0248,0.0252,0.0256,0.0261,0.0267,0.0273,0.0280,0.0287,0.0295,0.0304,0.0314,0.0324,0.0335,0.0346,0.0358,0.0371,0.0384,0.0398,0.0413,0.0428,0.0444,0.0461,0.0478,0.0496,0.0515];
+  /* Sazonalidade REAL por dia do mês — derivada do realizado jan–jun/26 (participação média de cada dia no total do mês) */
+  const SEASONAL_DAY_WEIGHTS=[0.02095,0.02365,0.02659,0.02829,0.02838,0.02795,0.02677,0.02720,0.02804,0.02884,0.03000,0.03191,0.03345,0.03491,0.03491,0.03520,0.03603,0.03759,0.03781,0.03579,0.03359,0.03223,0.03194,0.03225,0.03299,0.03421,0.03575,0.03738,0.03843,0.03859,0.03837]; /* participação média diária do realizado jan–jun/26, suavizada (MM3) */
+  const _wS=SEASONAL_DAY_WEIGHTS.slice(0,TD);const _wT=_wS.reduce((s,w)=>s+w,0);
+  const _wN=_wS.map(w=>w/_wT);
+  const _realized=all.filter(d=>!d.isFc).reduce((s,d)=>s+d[m],0);
+  const _remMeta=Math.max(metaTotal-_realized,0);
+  const _wFut=_wN.slice(NA).reduce((s,w)=>s+w,0)||1;
+  /* Dias passados: meta sazonal de referência. Dias futuros: ritmo diário NECESSÁRIO p/ bater a meta (meta restante distribuída pela sazonalidade). */
   const metaByDay=all.map(d=>{
-    const w=META_DAILY_WEIGHTS[Math.min(d.day-1,29)]||1/TD;
-    return metaTotal*w;
+    const w=_wN[Math.min(d.day-1,TD-1)];
+    return d.day<=NA ? metaTotal*w : _remMeta*(w/_wFut);
   });
 
   let labels,actualData,fcData,upperData,lowerData,metaLine;
@@ -3140,10 +3144,10 @@ function _loadSettingsOverrides() {
       if (el) el.textContent = '✓ settings.json carregado';
     }
   } catch(e) {}
-  try {
-    var raw = localStorage.getItem(_LS_SETTINGS_KEY);
-    if (raw) _applyOverrides(JSON.parse(raw));
-  } catch(e) {}
+  /* GOVERNANÇA (João 21/07): settings.json (gerado da aba takerate) é a FONTE ÚNICA.
+     O override de localStorage causava 'volta ao passado' dos take rates — agora é limpo a cada load.
+     Edições na tabela continuam valendo na sessão (simulação), mas não sobrevivem ao reload. */
+  try { localStorage.removeItem(_LS_SETTINGS_KEY); } catch(e) {}
 }
 function exportSettingsJson() {
   var overrides = _buildOverridesSnapshot();
