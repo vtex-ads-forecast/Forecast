@@ -1,4 +1,19 @@
 # VTEX Ads Forecast Dashboard — Project Context
+## ⚠️ FONTE OFICIAL DE REGRAS E TAKE RATES (adicionado em 2026-07-21)
+
+Este dashboard CONSOME regras de negócio cuja fonte da verdade vive FORA deste repo:
+
+- **Take rates (settings.json): NÃO EDITAR NA MÃO.** O arquivo é GERADO a partir da aba
+  `takerate` do Fechamento Simplificado (Google Drive · pasta "Finance VTEX Ads" do João).
+  Mudou um acordo → atualiza-se a aba takerate → o settings.json é regerado pelo Claude
+  na sessão Cowork do projeto Finance. Exceções conscientes (proxies) têm campo "nota".
+- **Regras de negócio** (AdTech×AdNetwork, escadas progressivas, institucionais, publishers
+  de teste, vigências temporárias como Panvel 73% jul-set/26, bonificadas, teto de PI):
+  documentadas no vault Obsidian `Finance VTEX Ads/Documentação/` (fechamento-regras-de-negocio.md,
+  fechamento-take-rates.md, forecast-divergencias-settings.md).
+- **Receita realizada oficial** = fechamento mensal (charge/comissão/repasse), NÃO spend×TR.
+  Calibração mensal via historico_fechamentos.json (a ser gerado do fechamento oficial).
+- Proxies conscientes ativos: KABUM trTech 7% (aproxima receita Ad Request) — decisão João 21/07.
 
 ## Overview
 Single-file dashboard (`index.html`) hosted on GitHub Pages that shows ad spend forecasting for VTEX Ads. Data is pulled daily from Metabase via GitHub Actions and embedded directly in the HTML.
