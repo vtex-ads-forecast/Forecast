@@ -203,7 +203,7 @@
       "cat": "Fees",
       "spend": 0,
       "rev": 5000,
-      "desc": "Globo (medley validar valor)"
+      "desc": "Globo - Medley"
     },
     {
       "id": 1783961048076,
@@ -218,13 +218,6 @@
       "spend": 0,
       "rev": 0,
       "desc": "Globo (fees)"
-    },
-    {
-      "id": 1783961191137,
-      "cat": "Fees",
-      "spend": 0,
-      "rev": 5000,
-      "desc": "Globo australian gold"
     },
     {
       "id": 1785175901387,
