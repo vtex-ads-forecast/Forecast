@@ -195,7 +195,7 @@
       "id": 1783961018493,
       "cat": "Performance Fee",
       "spend": 0,
-      "rev": 11000,
+      "rev": 6000,
       "desc": "Petlove Performance Fee"
     },
     {
@@ -253,6 +253,13 @@
       "spend": 0,
       "rev": 0,
       "desc": "Olimpica (placeholder)"
+    },
+    {
+      "id": 1785177045659,
+      "cat": "",
+      "spend": 0,
+      "rev": 0,
+      "desc": ""
     }
   ]
 }
