@@ -45,8 +45,8 @@
   "PANVEL": {
     "seg": "Pharma",
     "trTech": 0.1,
-    "trNetwork": 0.27,
-    "nota": "VIGÊNCIA: 27% APENAS jul-set/2026 (repasse temporário 73%); a partir de out/26 voltar a 15%."
+    "trNetwork": 0.3,
+    "nota": "VIGÊNCIA: 30% APENAS jul-set/2026 (repasse temporário 70%); a partir de out/26 voltar a 15%."
   },
   "DROGAL ADS": {
     "seg": "Pharma",
