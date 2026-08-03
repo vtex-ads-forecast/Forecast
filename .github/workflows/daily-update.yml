@@ -67,11 +67,17 @@ jobs:
       - name: Ensure no duplication
         run: python3 scripts/dedup_html.py
 
+      - name: Update abas data (AdNetwork/AdTech)
+        env:
+          METABASE_USER: ${{ secrets.METABASE_USER }}
+          METABASE_PASS: ${{ secrets.METABASE_PASS }}
+        run: python scripts/update_abas.py || true
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html
+          git add index.html abas-data.json
           git diff --staged --quiet || git commit -m "chore: update dashboard data ($(date +%Y-%m-%d))"
           git push
 
