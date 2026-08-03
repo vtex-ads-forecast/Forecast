@@ -73,6 +73,9 @@ jobs:
           METABASE_PASS: ${{ secrets.METABASE_PASS }}
         run: python scripts/update_abas.py || true
 
+      - name: Sync meta do mês vigente
+        run: python scripts/sync_meta.py || true
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
@@ -92,13 +95,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: main  # pega o commit mais recente (pós-update)
+          ref: main # pega o commit mais recente (pós-update)
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+
         with:
           path: '.'
 
