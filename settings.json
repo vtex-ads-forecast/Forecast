@@ -786,7 +786,8 @@
   "TENDA ATACADO - PUBLISHER": {
     "seg": "Groceries",
     "trTech": 0.1,
-    "trNetwork": 0.0
+    "trNetwork": 0.15,
+    "nota": "CORREÇÃO 02/08: network cobrado (take 15%, repasse 85%) — estava 0 no settings."
   },
   "GBARBOSA": {
     "seg": "Groceries",
@@ -871,5 +872,11 @@
     "trTech": 0.15,
     "trNetwork": 0.15,
     "nota": "Oficial: comissão 15%."
+  },
+  "TOTALPASS - PUBLISHER - POC": {
+    "seg": "Long Tail",
+    "trTech": 0.1,
+    "trNetwork": 0.15,
+    "nota": "POC — efetivo jul/26 (R$10k). Ajustar quando contrato definir."
   }
 }
