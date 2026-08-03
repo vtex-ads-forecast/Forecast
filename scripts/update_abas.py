@@ -55,6 +55,12 @@ def main():
     if mkey in fechados:
         safe_exit(f"{mkey} é mês FECHADO (fechamento oficial manda) — não sobrescrever")
 
+    # fração do mês decorrida: o valor gravado é o MTD PROJETADO para o mês cheio
+    # (consistente com a semântica da coluna * nas abas; correção 04/08 — MTD cru quebrava as projeções)
+    import calendar
+    dias_mes = calendar.monthrange(ontem.year, ontem.month)[1]
+    frac = max(ontem.day / dias_mes, 1.0 / dias_mes)
+
     try:
         token = metabase_auth()
         rows = fetch_data(token, ontem.replace(day=1).isoformat(), ontem.isoformat())
@@ -88,6 +94,7 @@ def main():
             fx = FX_RATES.get((r.get("currency_code") or r.get("currency") or "BRL").strip(), 1.0)
             cost_brl = cost * fx
             advU = adv.upper()
+            cost_brl = cost_brl / frac  # projeta o MTD para o mês cheio
             if "vtexads" in low:  # AdNetwork (mesma regra do update.py)
                 rev = cost_brl * tr_of(pub, "net")
                 a = an_adv.setdefault(advU, [0.0, 0.0]); a[0] += cost_brl; a[1] += rev
