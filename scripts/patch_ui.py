@@ -43,6 +43,48 @@ PATCHES.append((
     "const reqG = (base,metaV)=>{ if(n<=0) return '—'; if(metaV<=0) return '—'; if(base<=0) return 'novo';",
 ))
 
+# ---------- 1b. MoM no mês vigente = acelera só o RESTANTE do mês (João 04/08) ----------
+AN_N_NEW = "function anN(){ const b=AN_MESES[AN_LAST].split('-').map(Number), t=anState.alvo.split('-').map(Number); return Math.max((t[0]*12+t[1])-(b[0]*12+b[1]),0); }"
+PATCHES.append((
+    "an-helpers", AN_N_NEW,
+    AN_N_NEW + """
+function anFrac(){const h=new Date(),dm=new Date(h.getFullYear(),h.getMonth()+1,0).getDate();return Math.min(Math.max(h.getDate()-1,1),dm)/dm;}
+function anCurBase(){const h=new Date();return AN_MESES[AN_LAST]===h.getFullYear()+'-'+String(h.getMonth()+1).padStart(2,'0');}
+function anFactor(g,n){if(n>0)return Math.pow(1+g,n);if(!anCurBase())return 1;const f=anFrac();return f+(1-f)*(1+g);}""",
+))
+AT_N_NEW = "function atN(){const b=AT_MESES[AT_LAST].split('-').map(Number), t=atState.alvo.split('-').map(Number); return Math.max((t[0]*12+t[1])-(b[0]*12+b[1]),0);}"
+PATCHES.append((
+    "at-helpers", AT_N_NEW,
+    AT_N_NEW + """
+function atFactor(g,n){if(n>0)return Math.pow(1+g,n);const h=new Date();if(AT_MESES[AT_LAST]!==h.getFullYear()+'-'+String(h.getMonth()+1).padStart(2,'0'))return 1;const f=anFrac();return f+(1-f)*(1+g);}""",
+))
+for pid, old, new in [
+    ("an-f1", "t += anOthBase(oi).v*Math.pow(1+g,n);", "t += anOthBase(oi).v*anFactor(g,n);"),
+    ("an-f2", "ps+=anBase(a,0)*Math.pow(1+g,n); pr+=anBase(a,1)*Math.pow(1+g,n);",
+              "ps+=anBase(a,0)*anFactor(g,n); pr+=anBase(a,1)*anFactor(g,n);"),
+    ("an-f3", "return s+anBase(a,mi)*Math.pow(1+g,n)},0);", "return s+anBase(a,mi)*anFactor(g,n)},0);"),
+    ("an-f4", "const pj=b*Math.pow(1+g/100,n);", "const pj=b*anFactor(g/100,n);"),
+    ("an-f5", "const pj=ob.v*Math.pow(1+g/100,n);", "const pj=ob.v*anFactor(g/100,n);"),
+    ("an-f6", "const pj=lista.reduce((s,a)=>{const gg=(anState.grow[a]!==undefined?anState.grow[a]:anState.momDefault)/100;return s+anBase(a,mi)*Math.pow(1+gg,n)},0);",
+              "const pj=lista.reduce((s,a)=>{const gg=(anState.grow[a]!==undefined?anState.grow[a]:anState.momDefault)/100;return s+anBase(a,mi)*anFactor(gg,n)},0);"),
+    ("an-f7", "const projA=comAg.reduce((s,a)=>{const gg=(anState.grow[a]!==undefined?anState.grow[a]:anState.momDefault)/100;return s+anBase(a,mi)*Math.pow(1+gg,n)},0);",
+              "const projA=comAg.reduce((s,a)=>{const gg=(anState.grow[a]!==undefined?anState.grow[a]:anState.momDefault)/100;return s+anBase(a,mi)*anFactor(gg,n)},0);"),
+    ("at-f1", "t+=base*Math.pow(1+g,n);});return t;}", "t+=base*atFactor(g,n);});return t;}"),
+    ("at-f2", "return s+b*Math.pow(1+gg,n)},0);", "return s+b*atFactor(gg,n)},0);"),
+    ("at-f3", "const pj=base*Math.pow(1+g/100,n);", "const pj=base*atFactor(g/100,n);"),
+    ("at-f4", "const pjA=v[AT_LAST][mi]*Math.pow(1+g/100,n);", "const pjA=v[AT_LAST][mi]*atFactor(g/100,n);"),
+    ("an-note-n0", "projeção = base × (1+MoM)^${n} por anunciante",
+                   "projeção = ${n>0?'base × (1+MoM)^'+n:'MTD + restante do mês × (1+MoM)'} por anunciante"),
+    ("at-note-n0", "projeção = base × (1+MoM)^${n} por publisher",
+                   "projeção = ${n>0?'base × (1+MoM)^'+n:'MTD + restante do mês × (1+MoM)'} por publisher"),
+]:
+    PATCHES.append((pid, old, new))
+
+# reqG v2: no mês vigente mostra o % necessário no RESTANTE do mês
+REQG_V1 = "const reqG = (base,metaV)=>{ if(n<=0) return '—'; if(metaV<=0) return '—'; if(base<=0) return 'novo'; return ((Math.pow(metaV/base,1/n)-1)*100).toFixed(1)+'%/mês'; };"
+REQG_V2 = "const reqG = (base,metaV)=>{ if(base<=0) return metaV>0?'novo':'—'; if(metaV<=0) return '—'; if(n<=0){ if(!anCurBase()) return '—'; const f=anFrac(); return (((metaV/base-f)/(1-f)-1)*100).toFixed(1)+'% no resto do mês'; } return ((Math.pow(metaV/base,1/n)-1)*100).toFixed(1)+'%/mês'; };"
+PATCHES.append(("reqG-v2", REQG_V1, REQG_V2))
+
 # ---------- 2. cenário salvo (AN) + dados de fees por tipo ----------
 AN_STATE_ANCHOR = "               open:{onsA:false, onsC:false, off:false, ins:false, fee:false}};"
 AN_SCEN_BLOCK = AN_STATE_ANCHOR + """
@@ -149,7 +191,7 @@ FEE_V2 = FEE_ROW_ANCHOR + """
       }
     }"""
 # converte v1→v2 se v1 presente (opcional); senão aplica v2 direto na âncora
-OPTIONAL = {"fee-detail-v1to2"}
+OPTIONAL = {"fee-detail-v1to2", "reqG-n0"}
 PATCHES.append(("fee-detail-v1to2", FEE_V1, FEE_V2))
 PATCHES.append(("fee-detail", FEE_ROW_ANCHOR, FEE_V2))
 
