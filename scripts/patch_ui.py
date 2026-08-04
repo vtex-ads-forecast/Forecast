@@ -43,21 +43,25 @@ PATCHES.append((
     "const reqG = (base,metaV)=>{ if(n<=0) return '—'; if(metaV<=0) return '—'; if(base<=0) return 'novo';",
 ))
 
-# ---------- 1b. MoM no mês vigente = acelera só o RESTANTE do mês (João 04/08) ----------
+# ---------- 1b. MoM ABSOLUTO: % aplica direto sobre o forecast do mês (João 04/08) ----------
 AN_N_NEW = "function anN(){ const b=AN_MESES[AN_LAST].split('-').map(Number), t=anState.alvo.split('-').map(Number); return Math.max((t[0]*12+t[1])-(b[0]*12+b[1]),0); }"
-PATCHES.append((
-    "an-helpers", AN_N_NEW,
-    AN_N_NEW + """
+AN_HELPERS_V1 = AN_N_NEW + """
 function anFrac(){const h=new Date(),dm=new Date(h.getFullYear(),h.getMonth()+1,0).getDate();return Math.min(Math.max(h.getDate()-1,1),dm)/dm;}
 function anCurBase(){const h=new Date();return AN_MESES[AN_LAST]===h.getFullYear()+'-'+String(h.getMonth()+1).padStart(2,'0');}
-function anFactor(g,n){if(n>0)return Math.pow(1+g,n);if(!anCurBase())return 1;const f=anFrac();return f+(1-f)*(1+g);}""",
-))
+function anFactor(g,n){if(n>0)return Math.pow(1+g,n);if(!anCurBase())return 1;const f=anFrac();return f+(1-f)*(1+g);}"""
+AN_HELPERS_V2 = AN_N_NEW + """
+function anFrac(){const h=new Date(),dm=new Date(h.getFullYear(),h.getMonth()+1,0).getDate();return Math.min(Math.max(h.getDate()-1,1),dm)/dm;}
+function anCurBase(){const h=new Date();return AN_MESES[AN_LAST]===h.getFullYear()+'-'+String(h.getMonth()+1).padStart(2,'0');}
+function anFactor(g,n){return 1+g;} /* % absoluto sobre o forecast do mês (João 04/08) */"""
+PATCHES.append(("an-helpers-v1to2", AN_HELPERS_V1, AN_HELPERS_V2))
+PATCHES.append(("an-helpers", AN_N_NEW, AN_HELPERS_V2))
 AT_N_NEW = "function atN(){const b=AT_MESES[AT_LAST].split('-').map(Number), t=atState.alvo.split('-').map(Number); return Math.max((t[0]*12+t[1])-(b[0]*12+b[1]),0);}"
-PATCHES.append((
-    "at-helpers", AT_N_NEW,
-    AT_N_NEW + """
-function atFactor(g,n){if(n>0)return Math.pow(1+g,n);const h=new Date();if(AT_MESES[AT_LAST]!==h.getFullYear()+'-'+String(h.getMonth()+1).padStart(2,'0'))return 1;const f=anFrac();return f+(1-f)*(1+g);}""",
-))
+AT_HELPERS_V1 = AT_N_NEW + """
+function atFactor(g,n){if(n>0)return Math.pow(1+g,n);const h=new Date();if(AT_MESES[AT_LAST]!==h.getFullYear()+'-'+String(h.getMonth()+1).padStart(2,'0'))return 1;const f=anFrac();return f+(1-f)*(1+g);}"""
+AT_HELPERS_V2 = AT_N_NEW + """
+function atFactor(g,n){return 1+g;} /* % absoluto sobre o forecast do mês (João 04/08) */"""
+PATCHES.append(("at-helpers-v1to2", AT_HELPERS_V1, AT_HELPERS_V2))
+PATCHES.append(("at-helpers", AT_N_NEW, AT_HELPERS_V2))
 for pid, old, new in [
     ("an-f1", "t += anOthBase(oi).v*Math.pow(1+g,n);", "t += anOthBase(oi).v*anFactor(g,n);"),
     ("an-f2", "ps+=anBase(a,0)*Math.pow(1+g,n); pr+=anBase(a,1)*Math.pow(1+g,n);",
@@ -73,17 +77,27 @@ for pid, old, new in [
     ("at-f2", "return s+b*Math.pow(1+gg,n)},0);", "return s+b*atFactor(gg,n)},0);"),
     ("at-f3", "const pj=base*Math.pow(1+g/100,n);", "const pj=base*atFactor(g/100,n);"),
     ("at-f4", "const pjA=v[AT_LAST][mi]*Math.pow(1+g/100,n);", "const pjA=v[AT_LAST][mi]*atFactor(g/100,n);"),
-    ("an-note-n0", "projeção = base × (1+MoM)^${n} por anunciante",
-                   "projeção = ${n>0?'base × (1+MoM)^'+n:'MTD + restante do mês × (1+MoM)'} por anunciante"),
-    ("at-note-n0", "projeção = base × (1+MoM)^${n} por publisher",
-                   "projeção = ${n>0?'base × (1+MoM)^'+n:'MTD + restante do mês × (1+MoM)'} por publisher"),
 ]:
     PATCHES.append((pid, old, new))
 
-# reqG v2: no mês vigente mostra o % necessário no RESTANTE do mês
+# notas: fórmula final = forecast do mês × (1+MoM)
+NOTE_AN_V0 = "projeção = base × (1+MoM)^${n} por anunciante"
+NOTE_AN_V1 = "projeção = ${n>0?'base × (1+MoM)^'+n:'MTD + restante do mês × (1+MoM)'} por anunciante"
+NOTE_AN_V2 = "projeção = forecast do mês × (1+MoM) por anunciante"
+NOTE_AT_V0 = "projeção = base × (1+MoM)^${n} por publisher"
+NOTE_AT_V1 = "projeção = ${n>0?'base × (1+MoM)^'+n:'MTD + restante do mês × (1+MoM)'} por publisher"
+NOTE_AT_V2 = "projeção = forecast do mês × (1+MoM) por publisher"
+PATCHES.append(("an-note-v1to2", NOTE_AN_V1, NOTE_AN_V2))
+PATCHES.append(("an-note", NOTE_AN_V0, NOTE_AN_V2))
+PATCHES.append(("at-note-v1to2", NOTE_AT_V1, NOTE_AT_V2))
+PATCHES.append(("at-note", NOTE_AT_V0, NOTE_AT_V2))
+
+# reqG v3: crescimento necessário p/ meta = % simples sobre o forecast do mês
 REQG_V1 = "const reqG = (base,metaV)=>{ if(n<=0) return '—'; if(metaV<=0) return '—'; if(base<=0) return 'novo'; return ((Math.pow(metaV/base,1/n)-1)*100).toFixed(1)+'%/mês'; };"
 REQG_V2 = "const reqG = (base,metaV)=>{ if(base<=0) return metaV>0?'novo':'—'; if(metaV<=0) return '—'; if(n<=0){ if(!anCurBase()) return '—'; const f=anFrac(); return (((metaV/base-f)/(1-f)-1)*100).toFixed(1)+'% no resto do mês'; } return ((Math.pow(metaV/base,1/n)-1)*100).toFixed(1)+'%/mês'; };"
-PATCHES.append(("reqG-v2", REQG_V1, REQG_V2))
+REQG_V3 = "const reqG = (base,metaV)=>{ if(base<=0) return metaV>0?'novo':'—'; if(metaV<=0) return '—'; return '+'+((metaV/base-1)*100).toFixed(1)+'%'; };"
+PATCHES.append(("reqG-v2to3", REQG_V2, REQG_V3))
+PATCHES.append(("reqG-v3", REQG_V1, REQG_V3))
 
 # ---------- 2. cenário salvo (AN) + dados de fees por tipo ----------
 AN_STATE_ANCHOR = "               open:{onsA:false, onsC:false, off:false, ins:false, fee:false}};"
@@ -191,7 +205,8 @@ FEE_V2 = FEE_ROW_ANCHOR + """
       }
     }"""
 # converte v1→v2 se v1 presente (opcional); senão aplica v2 direto na âncora
-OPTIONAL = {"fee-detail-v1to2", "reqG-n0"}
+OPTIONAL = {"fee-detail-v1to2", "reqG-n0", "an-helpers-v1to2", "at-helpers-v1to2",
+            "an-note-v1to2", "at-note-v1to2", "reqG-v2to3"}
 PATCHES.append(("fee-detail-v1to2", FEE_V1, FEE_V2))
 PATCHES.append(("fee-detail", FEE_ROW_ANCHOR, FEE_V2))
 
