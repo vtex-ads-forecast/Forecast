@@ -4167,8 +4167,11 @@ function renderAdvNet(){
       ${serie.map(v=>`<td${v>0?'':' class="an-dim"'}>${v>0?anFmt(v):'—'}</td>`).join('')}
       <td><input type="number" value="${g}" step="1" onclick="event.stopPropagation()" onchange="anState.growOth['${key}']=parseFloat(this.value)||0;renderAdvNet()"></td>
       <td style="font-weight:600">${anFmt(pj)} <span class="an-mut">meta ${anFmt(metaV)}</span></td></tr>`;
-    if(anState.open[key]&&feeMode&&typeof AN_FEE_DET!=='undefined'&&ob.key&&AN_FEE_DET[ob.key]){
-      AN_FEE_DET[ob.key].forEach(d=>{html+=`<tr><td class="an-name an-mut" style="padding-left:34px">↳ ${d[0]}</td><td colspan="${AN_LBL.length}" class="an-mut" style="font-size:11px">R$ ${anFmt(d[1])} em ${ob.mes} · ${d[2]}</td><td></td><td></td></tr>`});
+    if(anState.open[key]&&feeMode&&typeof AN_FEE_DET!=='undefined'){
+      var _fk=(ob.key&&AN_FEE_DET[ob.key])?ob.key:Object.keys(AN_FEE_DET).sort().pop();
+      if(_fk&&AN_FEE_DET[_fk]){var _flbl=AN_LBL[AN_MESES.indexOf(_fk)]||_fk;
+        AN_FEE_DET[_fk].forEach(d=>{html+=`<tr><td class="an-name an-mut" style="padding-left:34px">↳ ${d[0]}</td><td colspan="${AN_LBL.length}" class="an-mut" style="font-size:11px">R$ ${anFmt(d[1])} em ${_flbl}${_fk!==ob.key?' — última composição conhecida (base atual sem quebra por tipo)':''} · ${d[2]}</td><td></td><td></td></tr>`});
+      }
     }
   };
   if(AN_GROUPS){
