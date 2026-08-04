@@ -76,6 +76,9 @@ jobs:
       - name: Sync meta do mês vigente
         run: python scripts/sync_meta.py || true
 
+      - name: Patch UI abas (idempotente)
+        run: python scripts/patch_ui.py || true
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
