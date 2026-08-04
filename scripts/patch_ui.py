@@ -137,13 +137,21 @@ PATCHES.append((
     "    if(Math.abs(v)>0.5) return {v:v, mes:AN_LBL[i], key:AN_MESES[i]};",
 ))
 FEE_ROW_ANCHOR = "      <td style=\"font-weight:600\">${anFmt(pj)} <span class=\"an-mut\">meta ${anFmt(metaV)}</span></td></tr>`;"
-PATCHES.append((
-    "fee-detail", FEE_ROW_ANCHOR,
-    FEE_ROW_ANCHOR + """
+FEE_V1 = FEE_ROW_ANCHOR + """
     if(anState.open[key]&&feeMode&&typeof AN_FEE_DET!=='undefined'&&ob.key&&AN_FEE_DET[ob.key]){
       AN_FEE_DET[ob.key].forEach(d=>{html+=`<tr><td class="an-name an-mut" style="padding-left:34px">↳ ${d[0]}</td><td colspan="${AN_LBL.length}" class="an-mut" style="font-size:11px">R$ ${anFmt(d[1])} em ${ob.mes} · ${d[2]}</td><td></td><td></td></tr>`});
-    }""",
-))
+    }"""
+FEE_V2 = FEE_ROW_ANCHOR + """
+    if(anState.open[key]&&feeMode&&typeof AN_FEE_DET!=='undefined'){
+      var _fk=(ob.key&&AN_FEE_DET[ob.key])?ob.key:Object.keys(AN_FEE_DET).sort().pop();
+      if(_fk&&AN_FEE_DET[_fk]){var _flbl=AN_LBL[AN_MESES.indexOf(_fk)]||_fk;
+        AN_FEE_DET[_fk].forEach(d=>{html+=`<tr><td class="an-name an-mut" style="padding-left:34px">↳ ${d[0]}</td><td colspan="${AN_LBL.length}" class="an-mut" style="font-size:11px">R$ ${anFmt(d[1])} em ${_flbl}${_fk!==ob.key?' — última composição conhecida (base atual sem quebra por tipo)':''} · ${d[2]}</td><td></td><td></td></tr>`});
+      }
+    }"""
+# converte v1→v2 se v1 presente (opcional); senão aplica v2 direto na âncora
+OPTIONAL = {"fee-detail-v1to2"}
+PATCHES.append(("fee-detail-v1to2", FEE_V1, FEE_V2))
+PATCHES.append(("fee-detail", FEE_ROW_ANCHOR, FEE_V2))
 
 
 def main():
@@ -158,6 +166,9 @@ def main():
             continue
         n = html.count(old)
         if n != 1:
+            if pid in OPTIONAL and n == 0:
+                pulados.append(pid + "(n/a)")
+                continue
             safe_exit(f"patch '{pid}': âncora ocorre {n}x (esperado 1) — NADA foi alterado")
         html = html.replace(old, new, 1)
         aplicados.append(pid)
