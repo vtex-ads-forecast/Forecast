@@ -4063,7 +4063,7 @@ function anBase(adv, mi){ /* base = realizado do mês vigente, sem fallback — 
 function anN(){ const b=AN_MESES[AN_LAST].split('-').map(Number), t=anState.alvo.split('-').map(Number); return Math.max((t[0]*12+t[1])-(b[0]*12+b[1]),0); }
 function anFrac(){const h=new Date(),dm=new Date(h.getFullYear(),h.getMonth()+1,0).getDate();return Math.min(Math.max(h.getDate()-1,1),dm)/dm;}
 function anCurBase(){const h=new Date();return AN_MESES[AN_LAST]===h.getFullYear()+'-'+String(h.getMonth()+1).padStart(2,'0');}
-function anFactor(g,n){if(n>0)return Math.pow(1+g,n);if(!anCurBase())return 1;const f=anFrac();return f+(1-f)*(1+g);} /* meses de crescimento desde o mês-base */
+function anFactor(g,n){return 1+g;} /* % absoluto sobre o forecast do mês (João 04/08) */ /* meses de crescimento desde o mês-base */
 function anIsChurn(a){ /* churn = teve adspend no passado e está SEM adspend há 3 meses, incluindo o vigente (João 01/08) */
   const v=AN_DATA[a];
   const ini=Math.max(AN_LAST-2,0);
@@ -4125,7 +4125,7 @@ function renderAdvNet(){
     <td></td><td>${last||''}</td></tr>`;
   const sumSer=(lista)=>AN_MESES.map((m,i)=>lista.reduce((s,a)=>s+AN_DATA[a][i][mi],0));
   const sumProj=(lista)=>lista.reduce((s,a)=>{const g=(anState.grow[a]!==undefined?anState.grow[a]:anState.momDefault)/100;return s+anBase(a,mi)*anFactor(g,n)},0);
-  const reqG = (base,metaV)=>{ if(base<=0) return metaV>0?'novo':'—'; if(metaV<=0) return '—'; if(n<=0){ if(!anCurBase()) return '—'; const f=anFrac(); return (((metaV/base-f)/(1-f)-1)*100).toFixed(1)+'% no resto do mês'; } return ((Math.pow(metaV/base,1/n)-1)*100).toFixed(1)+'%/mês'; };
+  const reqG = (base,metaV)=>{ if(base<=0) return metaV>0?'novo':'—'; if(metaV<=0) return '—'; return '+'+((metaV/base-1)*100).toFixed(1)+'%'; };
   let html = `<table>
     <thead><tr>
     <th>Grupo / Advertiser</th>${AN_LBL.map(l=>`<th>${l}</th>`).join('')}
@@ -4221,7 +4221,7 @@ function renderAdvNet(){
     h2+=`<tr class="an-tot"><td>TOTAL AGÊNCIAS</td>${totA.map(v=>`<td>${anFmt(v)}</td>`).join('')}<td></td><td>${anFmt(projA)}</td></tr></tbody></table>`;
     document.getElementById('an-agencias').innerHTML=h2;
   }
-  document.getElementById('an-note').innerHTML=`<b>Composição:</b> projeção = ${n>0?'base × (1+MoM)^'+n:'MTD + restante do mês × (1+MoM)'} por anunciante${AN_GROUPS?' (onsite) e por grupo (offsite/instore/fees — valores declarados, MoM default 0%; mês vigente zerado recua ao último mês com valor)':''} · <b>gap = meta − projeções</b> · churn não soma projeção (base = o que faz hoje) · base = ${AN_HASJUL?'mês vigente projetado pelo produto ('+AN_JUL.info+' · por anunciante estimado pelo ritmo do publisher × mix de junho; exato entra com o fechamento)':'último mês fechado'} · crescimento composto por ${n} ${n>1?'meses':'mês'} até ${AN_MLBL[anState.alvo]} · Receita = spend × TR network do publisher (settings 27/07, Panvel 30%) · Meta = arquivo oficial "Forecast + Meta Ads - 2026"${AN_GROUPS?' (campanhas AdNetwork por publisher + Offsite + Instore + Perf. Fee + Other Incomes; receita de campanhas derivada por TR; sem managerial/adrequest e sem 150k/mês de Americanas em Other Incomes)':' (linhas AdTech por publisher; receita derivada por TR tech)'} · Churn = 3 meses sem adspend (incluindo o vigente), com histórico anterior.`;
+  document.getElementById('an-note').innerHTML=`<b>Composição:</b> projeção = forecast do mês × (1+MoM) por anunciante${AN_GROUPS?' (onsite) e por grupo (offsite/instore/fees — valores declarados, MoM default 0%; mês vigente zerado recua ao último mês com valor)':''} · <b>gap = meta − projeções</b> · churn não soma projeção (base = o que faz hoje) · base = ${AN_HASJUL?'mês vigente projetado pelo produto ('+AN_JUL.info+' · por anunciante estimado pelo ritmo do publisher × mix de junho; exato entra com o fechamento)':'último mês fechado'} · crescimento composto por ${n} ${n>1?'meses':'mês'} até ${AN_MLBL[anState.alvo]} · Receita = spend × TR network do publisher (settings 27/07, Panvel 30%) · Meta = arquivo oficial "Forecast + Meta Ads - 2026"${AN_GROUPS?' (campanhas AdNetwork por publisher + Offsite + Instore + Perf. Fee + Other Incomes; receita de campanhas derivada por TR; sem managerial/adrequest e sem 150k/mês de Americanas em Other Incomes)':' (linhas AdTech por publisher; receita derivada por TR tech)'} · Churn = 3 meses sem adspend (incluindo o vigente), com histórico anterior.`;
 }
 function anSetMode(m){anState.mode=m;document.getElementById('an-mode-spend').classList.toggle('active',m==='spend');document.getElementById('an-mode-rev').classList.toggle('active',m==='rev');renderAdvNet();}
 function anApplyAll(){const v=parseFloat(document.getElementById('an-mom').value)||0;anState.momDefault=v;anState.grow={};anState.growOth={};renderAdvNet();}
@@ -4292,7 +4292,7 @@ atLoadScen();
 function atToggle(k){atState.open[k]=!atState.open[k];renderAdvTech();}
 function atFmt(v){const a=Math.abs(v);return (v<0?'-':'')+(a>=1e6?(a/1e6).toFixed(2)+'M':a>=1e3?Math.round(a/1e3)+'k':Math.round(a));}
 function atN(){const b=AT_MESES[AT_LAST].split('-').map(Number), t=atState.alvo.split('-').map(Number); return Math.max((t[0]*12+t[1])-(b[0]*12+b[1]),0);}
-function atFactor(g,n){if(n>0)return Math.pow(1+g,n);const h=new Date();if(AT_MESES[AT_LAST]!==h.getFullYear()+'-'+String(h.getMonth()+1).padStart(2,'0'))return 1;const f=anFrac();return f+(1-f)*(1+g);}
+function atFactor(g,n){return 1+g;} /* % absoluto sobre o forecast do mês (João 04/08) */
 /* churn de anunciante (agregado entre publishers): ritmo atual < 20% da média histórica */
 const AT_ADV=(function(){const o={};Object.values(AT_PA).forEach(d=>Object.entries(d).forEach(([a,v])=>{
   if(!o[a])o[a]=v.map(x=>[x[0],x[1]]);else v.forEach((x,i)=>{o[a][i][0]+=x[0];o[a][i][1]+=x[1]});}));return o})();
@@ -4381,7 +4381,7 @@ function renderAdvTech(){
     ${totSerie.map(v=>`<td>${atFmt(v)}</td>`).join('')}
     <td></td><td>${atFmt(proj)} <span style="color:${gap>0?'#D33355':'#0A7D4F'};font-size:11px">(${gap>0?'-':'+'}${atFmt(Math.abs(gap))})</span> <span class="an-mut">meta ${atFmt(metaTot)}</span></td></tr></tbody></table>`;
   document.getElementById('at-table').innerHTML=html;
-  document.getElementById('at-note').innerHTML=`<b>Composição:</b> projeção = ${n>0?'base × (1+MoM)^'+n:'MTD + restante do mês × (1+MoM)'} por publisher (MoM do publisher aplica aos anunciantes do drill-down) · <b>gap = meta − projeções</b> · churn não soma projeção · base = ${AT_HASJUL?'mês vigente projetado pelo produto ('+AT_JUL.info+' · publisher exato; anunciante estimado pelo ritmo do publisher × mix de junho)':'último mês fechado'} · Receita = comissão real do fechamento (escadas, institucionais e exceções refletidos; Kabum: proxy 7% — cobrança via AdRequest) · Sellers incluídos como AdTech (receita = spend − repasse: Kabum 18%, Leroy 10%...) · Meta = linhas AdTech por publisher do arquivo oficial (receita derivada por TR tech) + 60% do lump Long Tail rateado nos publishers do segmento pelo spend do 1º sem · Churn = anunciante com 3 meses sem adspend (incluindo o vigente), com histórico anterior.`;
+  document.getElementById('at-note').innerHTML=`<b>Composição:</b> projeção = forecast do mês × (1+MoM) por publisher (MoM do publisher aplica aos anunciantes do drill-down) · <b>gap = meta − projeções</b> · churn não soma projeção · base = ${AT_HASJUL?'mês vigente projetado pelo produto ('+AT_JUL.info+' · publisher exato; anunciante estimado pelo ritmo do publisher × mix de junho)':'último mês fechado'} · Receita = comissão real do fechamento (escadas, institucionais e exceções refletidos; Kabum: proxy 7% — cobrança via AdRequest) · Sellers incluídos como AdTech (receita = spend − repasse: Kabum 18%, Leroy 10%...) · Meta = linhas AdTech por publisher do arquivo oficial (receita derivada por TR tech) + 60% do lump Long Tail rateado nos publishers do segmento pelo spend do 1º sem · Churn = anunciante com 3 meses sem adspend (incluindo o vigente), com histórico anterior.`;
 }
 function atSetMode(m){atState.mode=m;document.getElementById('at-mode-spend').classList.toggle('active',m==='spend');document.getElementById('at-mode-rev').classList.toggle('active',m==='rev');renderAdvTech();}
 function atApplyAll(){const v=parseFloat(document.getElementById('at-mom').value)||0;atState.momDefault=v;atState.grow={};renderAdvTech();}
