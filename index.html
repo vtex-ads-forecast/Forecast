@@ -651,7 +651,7 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
 <!-- ============ SETTINGS PAGE ============ -->
 <style>
 #page-advnet .content{max-width:1440px;margin:0 auto}
-#an-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+#an-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
 #an-kpis .card{display:flex;flex-direction:column;justify-content:center;min-height:96px;padding:14px 16px}
 #an-kpis .card > div:first-child{margin-bottom:4px}
 #an-table table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
@@ -687,7 +687,7 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
       </select>
       <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#6B7785">MoM padrão
         <input type="number" id="an-mom" value="15" style="width:56px;padding:6px;border:1px solid #E0E0E6;border-radius:6px;text-align:right;font-size:13px">%
-        <button onclick="anApplyAll()" style="padding:6px 12px;border:none;border-radius:6px;background:#F71963;color:#fff;font-size:12.5px;cursor:pointer;font-family:inherit">Aplicar a todos</button>
+        <button onclick="anApplyAll()" style="padding:6px 12px;border:none;border-radius:6px;background:#F71963;color:#fff;font-size:12.5px;cursor:pointer;font-family:inherit">Aplicar a todos</button><button onclick="anSaveScen()" style="padding:6px 12px;border:1px solid #F71963;border-radius:6px;background:#fff;color:#F71963;font-size:12.5px;cursor:pointer;font-family:inherit">💾 Salvar cenário</button><button onclick="anClearScen()" title="limpa o cenário salvo e volta ao padrão" style="padding:6px 10px;border:1px solid #E0E0E6;border-radius:6px;background:#fff;color:#6B7785;font-size:12.5px;cursor:pointer;font-family:inherit">↺</button><span id="an-scen-info" style="font-size:11px;color:#0A7D4F"></span>
       </div>
     </div>
   </div>
@@ -704,7 +704,7 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
 </div>
 <style>
 #page-advtech .content{max-width:1440px;margin:0 auto}
-#at-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+#at-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
 #at-kpis .card{display:flex;flex-direction:column;justify-content:center;min-height:96px;padding:14px 16px}
 #at-kpis .card > div:first-child{margin-bottom:4px}
 #at-table table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
@@ -740,7 +740,7 @@ th.sortable.sort-desc::after{content:'▼';color:#0F3E99;opacity:1}
       </select>
       <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#6B7785">MoM padrão
         <input type="number" id="at-mom" value="15" style="width:56px;padding:6px;border:1px solid #E0E0E6;border-radius:6px;text-align:right;font-size:13px">%
-        <button onclick="atApplyAll()" style="padding:6px 12px;border:none;border-radius:6px;background:#F71963;color:#fff;font-size:12.5px;cursor:pointer;font-family:inherit">Aplicar a todos</button>
+        <button onclick="atApplyAll()" style="padding:6px 12px;border:none;border-radius:6px;background:#F71963;color:#fff;font-size:12.5px;cursor:pointer;font-family:inherit">Aplicar a todos</button><button onclick="atSaveScen()" style="padding:6px 12px;border:1px solid #F71963;border-radius:6px;background:#fff;color:#F71963;font-size:12.5px;cursor:pointer;font-family:inherit">💾 Salvar cenário</button><button onclick="atClearScen()" title="limpa o cenário salvo e volta ao padrão" style="padding:6px 10px;border:1px solid #E0E0E6;border-radius:6px;background:#fff;color:#6B7785;font-size:12.5px;cursor:pointer;font-family:inherit">↺</button><span id="at-scen-info" style="font-size:11px;color:#0A7D4F"></span>
       </div>
     </div>
   </div>
@@ -4031,10 +4031,17 @@ const AN_LAST = AN_MESES.length-1;
 const AN_BASEM = AN_MESES[AN_LAST];
 let anState = {mode:'spend', alvo:anDefaultAlvo(), momDefault:15, grow:{}, growOth:{},
                open:{onsA:false, onsC:false, off:false, ins:false, fee:false}};
+/* fees por tipo — fonte: aba Others do fechamento oficial (04/08) */
+const AN_FEE_DET={'2026-07':[['AdNetwork Fee',67000,'Novo Nordisk 40k · Zoetis 10k · Brace 11k · Petlove 6k'],['Fixed Fee',58700,'Globo 28,7k · Zona Sul 25k · Clubbi 5k']]};
+/* cenário salvo no navegador (João 04/08) */
+function anSaveScen(){try{localStorage.setItem('anScen',JSON.stringify({momDefault:anState.momDefault,grow:anState.grow,growOth:anState.growOth,alvo:anState.alvo,ts:Date.now()}));var el=document.getElementById('an-scen-info');if(el)el.textContent='✓ salvo '+new Date().toLocaleString('pt-BR').slice(0,16);}catch(e){}}
+function anLoadScen(){try{var s=JSON.parse(localStorage.getItem('anScen')||'null');if(!s)return;if(typeof s.momDefault==='number')anState.momDefault=s.momDefault;anState.grow=s.grow||{};anState.growOth=s.growOth||{};if(s.alvo&&AN_MLBL[s.alvo])anState.alvo=s.alvo;var i=document.getElementById('an-mom');if(i)i.value=anState.momDefault;var el=document.getElementById('an-scen-info');if(el)el.textContent='cenário salvo '+new Date(s.ts).toLocaleString('pt-BR').slice(0,16);}catch(e){}}
+function anClearScen(){try{localStorage.removeItem('anScen');}catch(e){}anState.grow={};anState.growOth={};anState.momDefault=15;var i=document.getElementById('an-mom');if(i)i.value=15;var el=document.getElementById('an-scen-info');if(el)el.textContent='';renderAdvNet();}
+anLoadScen();
 function anOthBase(oi){ /* base dos declarados: mês vigente; se 0, recua até o último mês com valor (João 29/07) */
   for(let i=AN_MESES.length-1;i>=0;i--){
     const v=(AN_OTH[AN_MESES[i]]||[0,0,0,0,0])[oi];
-    if(Math.abs(v)>0.5) return {v:v, mes:AN_LBL[i]};
+    if(Math.abs(v)>0.5) return {v:v, mes:AN_LBL[i], key:AN_MESES[i]};
   }
   return {v:0, mes:null};
 }
@@ -4053,7 +4060,7 @@ function anFmt(v){const a=Math.abs(v);return (v<0?'-':'')+(a>=1e6?(a/1e6).toFixe
 function anBase(adv, mi){ /* base = realizado do mês vigente, sem fallback — churn não soma projeção (João 27/07) */
   return AN_DATA[adv][AN_LAST][mi];
 }
-function anN(){ return Object.keys(AN_MLBL).indexOf(anState.alvo)+(AN_HASJUL?0:1); } /* meses de crescimento desde o mês-base */
+function anN(){ const b=AN_MESES[AN_LAST].split('-').map(Number), t=anState.alvo.split('-').map(Number); return Math.max((t[0]*12+t[1])-(b[0]*12+b[1]),0); } /* meses de crescimento desde o mês-base */
 function anIsChurn(a){ /* churn = teve adspend no passado e está SEM adspend há 3 meses, incluindo o vigente (João 01/08) */
   const v=AN_DATA[a];
   const ini=Math.max(AN_LAST-2,0);
@@ -4096,7 +4103,14 @@ function renderAdvNet(){
   const gap = metaTot-projTot;
   const ch = anChurn();
   const chImp = mi===0?ch.ts:ch.trv;
+  const _hj=new Date(), _dm=new Date(_hj.getFullYear(),_hj.getMonth()+1,0).getDate();
+  const _dref=Math.min(Math.max(_hj.getDate()-1,1),_dm), _frac=_dref/_dm;
+  const asIsOns=Object.keys(AN_DATA).reduce((s,a)=>s+anBase(a,mi),0);
+  const asIsOth=AN_GROUPS?(mi===0?[0,2]:[1,3,4]).reduce((s,oi)=>s+anOthBase(oi).v,0):0;
+  const asIsTot=asIsOns+asIsOth, mtdOns=asIsOns*_frac;
   document.getElementById('an-kpis').innerHTML = `
+    <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">REALIZADO ${(AN_LBL[AN_LAST]||'').toUpperCase()} · ATÉ DIA ${_dref}</div><div style="font-size:22px;font-weight:700">R$ ${anFmt(mtdOns)}</div><div style="font-size:11px;color:#6B7785">onsite MTD · ritmo R$ ${anFmt(mtdOns/_dref)}/dia</div></div>
+    <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">FORECAST AS-IS · MÊS CHEIO</div><div style="font-size:22px;font-weight:700">R$ ${anFmt(asIsTot)}</div><div style="font-size:11px;color:#6B7785">ritmo atual, sem MoM (onsite ${anFmt(asIsOns)} + outros ${anFmt(asIsOth)})</div></div>
     <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">META ${anState.mode==='spend'?'ADSPEND':'RECEITA'} ADNETWORK · ${AN_MLBL[anState.alvo]}</div><div style="font-size:22px;font-weight:700">R$ ${anFmt(metaTot)}</div><div style="font-size:11px;color:#6B7785">${AN_GROUPS?`onsite ${anFmt(metaCamp)} (incl. 40% do long tail/novos: ${anFmt(metaLT)}) + off/ins/fees ${anFmt(metaFees)}`:''}</div></div>
     <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">PROJEÇÃO C/ MoM ATUAIS</div><div style="font-size:22px;font-weight:700">R$ ${anFmt(projTot)}</div><div style="font-size:11px;color:#6B7785">${AN_GROUPS?`onsite ${anFmt(projOns)} + offsite/instore/fees ${anFmt(projOth)}`:''}</div></div>
     <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">GAP vs META (meta − projeções)</div><div style="font-size:22px;font-weight:700;color:${gap>0?'#D33355':'#0A7D4F'}">${gap>0?'R$ '+anFmt(gap):'✓ coberta (+R$ '+anFmt(-gap)+')'}</div><div style="font-size:11px;color:#6B7785">o que ainda falta contratar/crescer</div></div>
@@ -4108,7 +4122,7 @@ function renderAdvNet(){
     <td></td><td>${last||''}</td></tr>`;
   const sumSer=(lista)=>AN_MESES.map((m,i)=>lista.reduce((s,a)=>s+AN_DATA[a][i][mi],0));
   const sumProj=(lista)=>lista.reduce((s,a)=>{const g=(anState.grow[a]!==undefined?anState.grow[a]:anState.momDefault)/100;return s+anBase(a,mi)*Math.pow(1+g,n)},0);
-  const reqG = (base,metaV)=>{ if(metaV<=0) return '—'; if(base<=0) return 'novo'; return ((Math.pow(metaV/base,1/n)-1)*100).toFixed(1)+'%/mês'; };
+  const reqG = (base,metaV)=>{ if(n<=0) return '—'; if(metaV<=0) return '—'; if(base<=0) return 'novo'; return ((Math.pow(metaV/base,1/n)-1)*100).toFixed(1)+'%/mês'; };
   let html = `<table>
     <thead><tr>
     <th>Grupo / Advertiser</th>${AN_LBL.map(l=>`<th>${l}</th>`).join('')}
@@ -4153,6 +4167,9 @@ function renderAdvNet(){
       ${serie.map(v=>`<td${v>0?'':' class="an-dim"'}>${v>0?anFmt(v):'—'}</td>`).join('')}
       <td><input type="number" value="${g}" step="1" onclick="event.stopPropagation()" onchange="anState.growOth['${key}']=parseFloat(this.value)||0;renderAdvNet()"></td>
       <td style="font-weight:600">${anFmt(pj)} <span class="an-mut">meta ${anFmt(metaV)}</span></td></tr>`;
+    if(anState.open[key]&&feeMode&&typeof AN_FEE_DET!=='undefined'&&ob.key&&AN_FEE_DET[ob.key]){
+      AN_FEE_DET[ob.key].forEach(d=>{html+=`<tr><td class="an-name an-mut" style="padding-left:34px">↳ ${d[0]}</td><td colspan="${AN_LBL.length}" class="an-mut" style="font-size:11px">R$ ${anFmt(d[1])} em ${ob.mes} · ${d[2]}</td><td></td><td></td></tr>`});
+    }
   };
   if(AN_GROUPS){
   if(mi===0){ /* spend: fees não têm spend nem na meta */
@@ -4262,9 +4279,13 @@ if(AT_HASJUL){
 }
 const AT_LAST=AT_MESES.length-1;
 let atState={mode:'spend',alvo:atDefaultAlvo(),momDefault:15,grow:{},open:{}};
+function atSaveScen(){try{localStorage.setItem('atScen',JSON.stringify({momDefault:atState.momDefault,grow:atState.grow,alvo:atState.alvo,ts:Date.now()}));var el=document.getElementById('at-scen-info');if(el)el.textContent='✓ salvo '+new Date().toLocaleString('pt-BR').slice(0,16);}catch(e){}}
+function atLoadScen(){try{var s=JSON.parse(localStorage.getItem('atScen')||'null');if(!s)return;if(typeof s.momDefault==='number')atState.momDefault=s.momDefault;atState.grow=s.grow||{};if(s.alvo&&AT_MLBL[s.alvo])atState.alvo=s.alvo;var i=document.getElementById('at-mom');if(i)i.value=atState.momDefault;var el=document.getElementById('at-scen-info');if(el)el.textContent='cenário salvo '+new Date(s.ts).toLocaleString('pt-BR').slice(0,16);}catch(e){}}
+function atClearScen(){try{localStorage.removeItem('atScen');}catch(e){}atState.grow={};atState.momDefault=15;var i=document.getElementById('at-mom');if(i)i.value=15;var el=document.getElementById('at-scen-info');if(el)el.textContent='';renderAdvTech();}
+atLoadScen();
 function atToggle(k){atState.open[k]=!atState.open[k];renderAdvTech();}
 function atFmt(v){const a=Math.abs(v);return (v<0?'-':'')+(a>=1e6?(a/1e6).toFixed(2)+'M':a>=1e3?Math.round(a/1e3)+'k':Math.round(a));}
-function atN(){return Object.keys(AT_MLBL).indexOf(atState.alvo)+(AT_HASJUL?0:1);}
+function atN(){const b=AT_MESES[AT_LAST].split('-').map(Number), t=atState.alvo.split('-').map(Number); return Math.max((t[0]*12+t[1])-(b[0]*12+b[1]),0);}
 /* churn de anunciante (agregado entre publishers): ritmo atual < 20% da média histórica */
 const AT_ADV=(function(){const o={};Object.values(AT_PA).forEach(d=>Object.entries(d).forEach(([a,v])=>{
   if(!o[a])o[a]=v.map(x=>[x[0],x[1]]);else v.forEach((x,i)=>{o[a][i][0]+=x[0];o[a][i][1]+=x[1]});}));return o})();
@@ -4292,7 +4313,12 @@ function renderAdvTech(){
   const gap=metaTot-proj;
   const ch=atChurn();
   const chImp=mi===0?ch.ts:ch.trv;
+  const _hj=new Date(), _dm=new Date(_hj.getFullYear(),_hj.getMonth()+1,0).getDate();
+  const _dref=Math.min(Math.max(_hj.getDate()-1,1),_dm), _frac=_dref/_dm;
+  const asIsTot=atPubs().reduce((s,pu)=>s+(AT_P[pu]?AT_P[pu][AT_LAST][mi]:0),0), mtdTot=asIsTot*_frac;
   document.getElementById('at-kpis').innerHTML=`
+    <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">REALIZADO ${(AT_LBL[AT_LAST]||'').toUpperCase()} · ATÉ DIA ${_dref}</div><div style="font-size:22px;font-weight:700">R$ ${atFmt(mtdTot)}</div><div style="font-size:11px;color:#6B7785">MTD · ritmo R$ ${atFmt(mtdTot/_dref)}/dia</div></div>
+    <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">FORECAST AS-IS · MÊS CHEIO</div><div style="font-size:22px;font-weight:700">R$ ${atFmt(asIsTot)}</div><div style="font-size:11px;color:#6B7785">ritmo atual, sem MoM aplicado</div></div>
     <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">META ${atState.mode==='spend'?'ADSPEND':'RECEITA'} ADTECH · ${AT_MLBL[atState.alvo]}</div><div style="font-size:22px;font-weight:700">R$ ${atFmt(metaTot)}</div><div style="font-size:11px;color:#6B7785"></div></div>
     <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">PROJEÇÃO C/ MoM ATUAIS</div><div style="font-size:22px;font-weight:700">R$ ${atFmt(proj)}</div><div style="font-size:11px;color:#6B7785"></div></div>
     <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">GAP vs META (meta − projeções)</div><div style="font-size:22px;font-weight:700;color:${gap>0?'#D33355':'#0A7D4F'}">${gap>0?'R$ '+atFmt(gap):'✓ coberta (+R$ '+atFmt(-gap)+')'}</div><div style="font-size:11px;color:#6B7785">o que ainda falta crescer</div></div>
