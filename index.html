@@ -4057,6 +4057,7 @@ try{
   if(MONTHS_DATA['2026-07']){MONTHS_DATA['2026-07'].realSpend=13527861;MONTHS_DATA['2026-07'].realRev=1736320;}
   Object.entries({"Pharma":[5305807,949681],"Electronics":[5097044,360486],"Long Tail":[1333757,197205],"Beauty":[569324,32630],"LATAM":[507755,64928],"Home Center":[326326,30553],"Others":[263162,83570],"Groceries":[124686,17267]}).forEach(function(e){if(typeof REAL_MONTHLY!=='undefined'&&REAL_MONTHLY[e[0]])REAL_MONTHLY[e[0]]['2026-07']={spend:e[1][0],rev:e[1][1]};});
 }catch(e){console.warn('detalhe julho falhou',e);}
+try{if(MONTHS_DATA['2026-07'])MONTHS_DATA['2026-07'].segMetas={"Pharma":6170294,"Electronics":7022839,"Long Tail":1965906,"Beauty":624119,"LATAM":1567472,"Home Center":260623,"Others":19811,"Grocery":79188};}catch(e){}
 function anOthBase(oi){ /* base dos declarados: mês vigente; se 0, recua até o último mês com valor (João 29/07) */
   for(let i=AN_MESES.length-1;i>=0;i--){
     const v=(AN_OTH[AN_MESES[i]]||[0,0,0,0,0])[oi];
