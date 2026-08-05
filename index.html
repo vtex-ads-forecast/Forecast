@@ -1995,17 +1995,30 @@ function renderComp(){
   /* ── META ── */
   const mS = META_SPEND_TOTAL;
   const mR = META_REV_TOTAL;
-  const mSTech = mS * rTech;  /* estimate meta split using current ratio */
-  const mSNet  = mS * rNet;
-  /* Split meta revenue by realized revenue ratio (tech vs network have different TRs) */
-  const rRevTech = _realRevTech / (_realRevTotal || 1);
-  const rRevNet  = _realRevNet / (_realRevTotal || 1);
-  const mRTech = mR * rRevTech;
-  const mRNet  = mR * rRevNet;
+  /* Meta por canal = OFICIAL (mesma alocação das abas: onsite+lump 40 | AdTech+60 | off/ins/fees) — João 05/08 */
+  let mSNet = mS * (_realSpendNet/(_realSpendTotal||1)), mSTech = mS * (_realSpendTech/(_realSpendTotal||1)), mSOth = null;
+  let mRNet = mR * (_realRevNet/(_realRevTotal||1)), mRTech = mR * (_realRevTech/(_realRevTotal||1)), mROth = null;
+  let declS = oS, declR = oR;
+  try{
+    const _k = Object.keys(MONTHS_DATA).find(k=>MONTHS_DATA[k].status==='current');
+    if(typeof AN_META!=='undefined' && AN_META[_k] && typeof AT_METAP!=='undefined'){
+      const _am = AN_META[_k];
+      mSNet = (_am[0]||0)+(_am[7]||0);
+      mSTech = Object.values(AT_METAP).reduce((s,d)=>s+(((d[_k]||[0])[0])||0),0);
+      mSOth = (_am[2]||0)+(_am[4]||0);
+      mRNet = (_am[1]||0)+(_am[8]||0);
+      mRTech = Object.values(AT_METAP).reduce((s,d)=>s+(((d[_k]||[0,0])[1])||0),0);
+      mROth = (_am[3]||0)+(_am[5]||0)+(_am[6]||0);
+    }
+    if(typeof anOthBase==='function' && typeof AN_GROUPS!=='undefined' && AN_GROUPS){
+      declS = [0,2].reduce((s,oi)=>s+anOthBase(oi).v,0);   /* offsite+instore spend (fallback último mês) */
+      declR = [1,3,4].reduce((s,oi)=>s+anOthBase(oi).v,0); /* offsite+instore+fees receita */
+    }
+  }catch(e){}
 
   /* Total projetado (ads + others) */
-  const totalS = projS + oS;
-  const totalR = projR + oR;
+  const totalS = projS + declS;
+  const totalR = projR + declR;
 
   function gC(v){ return v >= 0 ? 'gap-pos' : 'gap-neg'; }
   function gV(v){ return (v >= 0 ? '+' : '') + fB(v); }
@@ -2031,13 +2044,13 @@ function renderComp(){
     </tr>`;
   }
   /* Row: others (distinct) */
-  function rO(label, real, proj) {
+  function rO(label, real, proj, meta) {
     return `<tr style="color:#F59E0B;font-size:11px">
       <td style="padding-left:20px">${label}</td>
       <td class="comp-val">${fB(real)}</td>
       <td class="comp-val">${fB(proj)}</td>
-      <td class="comp-val">—</td>
-      <td>—</td>
+      <td class="comp-val">${meta!=null?fB(meta):'—'}</td>
+      <td class="${meta!=null?gC(proj-meta):''}">${meta!=null?gV(proj-meta):'—'}</td>
     </tr>`;
   }
   /* Separator */
@@ -2055,12 +2068,12 @@ function renderComp(){
       ${rP('Ad Spend Total', aS, totalS, mS, totalS - mS)}
       ${rC('Ad Spend Network', aSNet, projSNet, mSNet, projSNet - mSNet)}
       ${rC('Ad Spend AdTech', aSTech, projSTech, mSTech, projSTech - mSTech)}
-      ${rO('Others (Spend)', oS, oS)}
+      ${rO('Off/Instore/Fees AN (Spend)', oS, declS, mSOth)}
       ${sep}
       ${rP('Receita Total', aR, totalR, mR, totalR - mR)}
       ${rC('Receita Network', aRNet, projRNet, mRNet, projRNet - mRNet)}
       ${rC('Receita AdTech', aRTech, projRTech, mRTech, projRTech - mRTech)}
-      ${rO('Others (Receita)', oR, oR)}
+      ${rO('Off/Instore/Fees AN (Receita)', oR, declR, mROth)}
     </tbody>`;
 }
 
@@ -4110,7 +4123,7 @@ function renderAdvNet(){
   const _dref=Math.min(Math.max(_hj.getDate()-1,1),_dm), _frac=_dref/_dm;
   const asIsOns=Object.keys(AN_DATA).reduce((s,a)=>s+anBase(a,mi),0);
   const asIsOth=AN_GROUPS?(mi===0?[0,2]:[1,3,4]).reduce((s,oi)=>s+anOthBase(oi).v,0):0;
-  const asIsTot=asIsOns+asIsOth, mtdOns=asIsOns*_frac;
+  const asIsTot=asIsOns+asIsOth, mtdOns=(typeof _realSpendNet!=='undefined'&&anCurBase())?(mi===0?_realSpendNet:_realRevNet):asIsOns*_frac;
   document.getElementById('an-kpis').innerHTML = `
     <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">REALIZADO ${(AN_LBL[AN_LAST]||'').toUpperCase()} · ATÉ DIA ${_dref}</div><div style="font-size:22px;font-weight:700">R$ ${anFmt(mtdOns)}</div><div style="font-size:11px;color:#6B7785">onsite MTD · ritmo R$ ${anFmt(mtdOns/_dref)}/dia</div></div>
     <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">FORECAST AS-IS · MÊS CHEIO</div><div style="font-size:22px;font-weight:700">R$ ${anFmt(asIsTot)}</div><div style="font-size:11px;color:#6B7785">ritmo atual, sem MoM (onsite ${anFmt(asIsOns)} + outros ${anFmt(asIsOth)})</div></div>
@@ -4322,7 +4335,7 @@ function renderAdvTech(){
   const chImp=mi===0?ch.ts:ch.trv;
   const _hj=new Date(), _dm=new Date(_hj.getFullYear(),_hj.getMonth()+1,0).getDate();
   const _dref=Math.min(Math.max(_hj.getDate()-1,1),_dm), _frac=_dref/_dm;
-  const asIsTot=atPubs().reduce((s,pu)=>s+(AT_P[pu]?AT_P[pu][AT_LAST][mi]:0),0), mtdTot=asIsTot*_frac;
+  const asIsTot=atPubs().reduce((s,pu)=>s+(AT_P[pu]?AT_P[pu][AT_LAST][mi]:0),0), mtdTot=(typeof _realSpendTech!=='undefined'&&anCurBase())?(mi===0?_realSpendTech:_realRevTech):asIsTot*_frac;
   document.getElementById('at-kpis').innerHTML=`
     <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">REALIZADO ${(AT_LBL[AT_LAST]||'').toUpperCase()} · ATÉ DIA ${_dref}</div><div style="font-size:22px;font-weight:700">R$ ${atFmt(mtdTot)}</div><div style="font-size:11px;color:#6B7785">MTD · ritmo R$ ${atFmt(mtdTot/_dref)}/dia</div></div>
     <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">FORECAST AS-IS · MÊS CHEIO</div><div style="font-size:22px;font-weight:700">R$ ${atFmt(asIsTot)}</div><div style="font-size:11px;color:#6B7785">ritmo atual, sem MoM aplicado</div></div>
@@ -4385,6 +4398,24 @@ function renderAdvTech(){
 }
 function atSetMode(m){atState.mode=m;document.getElementById('at-mode-spend').classList.toggle('active',m==='spend');document.getElementById('at-mode-rev').classList.toggle('active',m==='rev');renderAdvTech();}
 function atApplyAll(){const v=parseFloat(document.getElementById('at-mom').value)||0;atState.momDefault=v;atState.grow={};renderAdvTech();}
+/* Calibração: coluna do mês vigente (ago*) escalada para que a soma por canal = forecast do produto (João 05/08) */
+document.addEventListener('DOMContentLoaded', function(){
+  try{
+    if(typeof getTotalForecast!=='function' || !anCurBase()) return;
+    const _projS = getTotalForecast();
+    const _rN = _realSpendNet/(_realSpendTotal||1), _rT = _realSpendTech/(_realSpendTotal||1);
+    const _tSN = _projS*_rN, _tST = _projS*_rT;
+    const _tRN = _tSN*BLENDED_TR_NET, _tRT = _tST*BLENDED_TR_TECH;
+    let sN=0, rN=0; Object.values(AN_DATA).forEach(v=>{sN+=v[AN_LAST][0]; rN+=v[AN_LAST][1];});
+    if(sN>0 && _tSN>0){const f=_tSN/sN, fr=rN>0?_tRN/rN:_tSN/sN;
+      Object.values(AN_DATA).forEach(v=>{v[AN_LAST][0]*=f; v[AN_LAST][1]*=fr;});}
+    let sT=0, rT=0; Object.values(AT_P).forEach(v=>{sT+=v[AT_LAST][0]; rT+=v[AT_LAST][1];});
+    if(sT>0 && _tST>0){const f=_tST/sT, fr=rT>0?_tRT/rT:_tST/sT;
+      Object.values(AT_P).forEach(v=>{v[AT_LAST][0]*=f; v[AT_LAST][1]*=fr;});
+      Object.values(AT_PA).forEach(d=>Object.values(d).forEach(v=>{v[AT_LAST][0]*=f; v[AT_LAST][1]*=fr;}));}
+    console.log('abas calibradas ao forecast do produto ✓');
+  }catch(e){console.warn('calibração das abas falhou (mantido linear):',e);}
+});
 
 </script>
 
