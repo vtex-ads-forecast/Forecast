@@ -299,6 +299,10 @@ JUL_NEW = "anLoadScen();\n/* julho fechado — detalhe OFICIAL por publisher (fe
 PATCHES.append(("closed-jul-detail", JUL_ANCHOR, JUL_NEW))
 
 
+# metas por segmento de julho (arquivo oficial; close nao arquiva segMetas) — João 05/08
+PATCHES.append(("closed-jul-segmetas", "}catch(e){console.warn('detalhe julho falhou',e);}", "}catch(e){console.warn('detalhe julho falhou',e);}\ntry{if(MONTHS_DATA['2026-07'])MONTHS_DATA['2026-07'].segMetas={\"Pharma\":6170294,\"Electronics\":7022839,\"Long Tail\":1965906,\"Beauty\":624119,\"LATAM\":1567472,\"Home Center\":260623,\"Others\":19811,\"Grocery\":79188};}catch(e){}"))
+
+
 def main():
     if not os.path.exists(HTML):
         safe_exit("index.html não encontrado")
