@@ -3771,6 +3771,11 @@ function renderClosedMonth() {
     const gapRv = totalRv - m.metaRev;
     function gC(v){return v>=0?'gap-pos':'gap-neg'}
     function gV(v){return (v>=0?'+':'')+fB(v)}
+    const _adsMS = m.segMetas ? Object.values(m.segMetas).reduce((s,v)=>s+v,0) : null;
+    const _othMS = _adsMS!=null ? m.metaSpend - _adsMS : null;
+    const _adsMR = (m.revAdsMeta!=null)? m.revAdsMeta : null;
+    const _othMR = (m.revOthersMeta!=null)? m.revOthersMeta : null;
+    const mc = (real, meta)=> meta!=null ? '<td class="comp-val">'+fB(meta)+'</td><td class="'+gC(real-meta)+'">'+gV(real-meta)+'</td><td class="comp-val">'+fP(pct(real, meta))+'</td>' : '<td class="comp-val">\u2014</td><td>\u2014</td><td class="comp-val">\u2014</td>';
     compGrid.innerHTML = `
       <thead><tr>
         <th style="text-align:left">Métrica</th>
@@ -3780,11 +3785,11 @@ function renderClosedMonth() {
         <th>Atingimento</th>
       </tr></thead>
       <tbody>
-        <tr><td>Ad Spend (Ads)</td><td class="comp-val">${fB(m.realSpend)}</td><td class="comp-val">—</td><td>—</td><td class="comp-val">—</td></tr>
-        ${oSp > 0 || oRv > 0 ? '<tr style="color:#F59E0B;font-size:11px"><td style="padding-left:12px">Others</td><td class="comp-val">'+fB(oSp)+'</td><td class="comp-val">—</td><td>—</td><td class="comp-val">—</td></tr>' : ''}
+        <tr><td>Ad Spend (Ads)</td><td class="comp-val">${fB(m.realSpend)}</td>${mc(m.realSpend,_adsMS)}</tr>
+        ${oSp > 0 || oRv > 0 ? '<tr style="color:#F59E0B;font-size:11px"><td style="padding-left:12px">Others</td><td class="comp-val">'+fB(oSp)+'</td>'+mc(oSp,_othMS)+'</tr>' : ''}
         <tr style="font-weight:700"><td>Ad Spend Total</td><td class="comp-val">${fB(totalSp)}</td><td class="comp-val">${fB(m.metaSpend)}</td><td class="${gC(gapSp)}">${gV(gapSp)}</td><td class="comp-val">${fP(pct(totalSp, m.metaSpend))}</td></tr>
-        <tr><td>Receita (Ads)</td><td class="comp-val">${fB(m.realRev)}</td><td class="comp-val">—</td><td>—</td><td class="comp-val">—</td></tr>
-        ${oRv > 0 ? '<tr style="color:#F59E0B;font-size:11px"><td style="padding-left:12px">Others Rev</td><td class="comp-val">'+fB(oRv)+'</td><td class="comp-val">—</td><td>—</td><td class="comp-val">—</td></tr>' : ''}
+        <tr><td>Receita (Ads)</td><td class="comp-val">${fB(m.realRev)}</td>${mc(m.realRev,_adsMR)}</tr>
+        ${oRv > 0 ? '<tr style="color:#F59E0B;font-size:11px"><td style="padding-left:12px">Others Rev</td><td class="comp-val">'+fB(oRv)+'</td>'+mc(oRv,_othMR)+'</tr>' : ''}
         <tr style="font-weight:700"><td>Receita Total</td><td class="comp-val">${fB(totalRv)}</td><td class="comp-val">${fB(m.metaRev)}</td><td class="${gC(gapRv)}">${gV(gapRv)}</td><td class="comp-val">${fP(pct(totalRv, m.metaRev))}</td></tr>
       </tbody>`;
   }
@@ -4058,6 +4063,7 @@ try{
   Object.entries({"Pharma":[5305807,949681],"Electronics":[5097044,360486],"Long Tail":[1333757,197205],"Beauty":[569324,32630],"LATAM":[507755,64928],"Home Center":[326326,30553],"Others":[263162,83570],"Groceries":[124686,17267]}).forEach(function(e){if(typeof REAL_MONTHLY!=='undefined'&&REAL_MONTHLY[e[0]])REAL_MONTHLY[e[0]]['2026-07']={spend:e[1][0],rev:e[1][1]};});
 }catch(e){console.warn('detalhe julho falhou',e);}
 try{if(MONTHS_DATA['2026-07'])MONTHS_DATA['2026-07'].segMetas={"Pharma":6170294,"Electronics":7022839,"Long Tail":1965906,"Beauty":624119,"LATAM":1567472,"Home Center":260623,"Others":19811,"Grocery":79188};}catch(e){}
+try{if(MONTHS_DATA['2026-07']){MONTHS_DATA['2026-07'].revAdsMeta=2523118;MONTHS_DATA['2026-07'].revOthersMeta=283500;}}catch(e){}
 function anOthBase(oi){ /* base dos declarados: mês vigente; se 0, recua até o último mês com valor (João 29/07) */
   for(let i=AN_MESES.length-1;i>=0;i--){
     const v=(AN_OTH[AN_MESES[i]]||[0,0,0,0,0])[oi];
