@@ -92,6 +92,87 @@ PATCHES.append(("an-note", NOTE_AN_V0, NOTE_AN_V2))
 PATCHES.append(("at-note-v1to2", NOTE_AT_V1, NOTE_AT_V2))
 PATCHES.append(("at-note", NOTE_AT_V0, NOTE_AT_V2))
 
+# ---------- 5. CONCILIAÇÃO tab Forecast × abas (João 05/08) ----------
+# 5a. meta por canal na Composição = OFICIAL (mesma alocação das abas), não mix realizado
+COMP_META_V1 = """  const mSTech = mS * rTech;  /* estimate meta split using current ratio */
+  const mSNet  = mS * rNet;
+  /* Split meta revenue by realized revenue ratio (tech vs network have different TRs) */
+  const rRevTech = _realRevTech / (_realRevTotal || 1);
+  const rRevNet  = _realRevNet / (_realRevTotal || 1);
+  const mRTech = mR * rRevTech;
+  const mRNet  = mR * rRevNet;"""
+COMP_META_V2 = """  /* Meta por canal = OFICIAL (mesma alocação das abas: onsite+lump 40 | AdTech+60 | off/ins/fees) — João 05/08 */
+  let mSNet = mS * (_realSpendNet/(_realSpendTotal||1)), mSTech = mS * (_realSpendTech/(_realSpendTotal||1)), mSOth = null;
+  let mRNet = mR * (_realRevNet/(_realRevTotal||1)), mRTech = mR * (_realRevTech/(_realRevTotal||1)), mROth = null;
+  let declS = oS, declR = oR;
+  try{
+    const _k = Object.keys(MONTHS_DATA).find(k=>MONTHS_DATA[k].status==='current');
+    if(typeof AN_META!=='undefined' && AN_META[_k] && typeof AT_METAP!=='undefined'){
+      const _am = AN_META[_k];
+      mSNet = (_am[0]||0)+(_am[7]||0);
+      mSTech = Object.values(AT_METAP).reduce((s,d)=>s+(((d[_k]||[0])[0])||0),0);
+      mSOth = (_am[2]||0)+(_am[4]||0);
+      mRNet = (_am[1]||0)+(_am[8]||0);
+      mRTech = Object.values(AT_METAP).reduce((s,d)=>s+(((d[_k]||[0,0])[1])||0),0);
+      mROth = (_am[3]||0)+(_am[5]||0)+(_am[6]||0);
+    }
+    if(typeof anOthBase==='function' && typeof AN_GROUPS!=='undefined' && AN_GROUPS){
+      declS = [0,2].reduce((s,oi)=>s+anOthBase(oi).v,0);   /* offsite+instore spend (fallback último mês) */
+      declR = [1,3,4].reduce((s,oi)=>s+anOthBase(oi).v,0); /* offsite+instore+fees receita */
+    }
+  }catch(e){}"""
+PATCHES.append(("comp-meta-oficial", COMP_META_V1, COMP_META_V2))
+
+# 5b. linha Others da Composição vira Off/Instore/Fees AN com meta e valores das abas
+RO_V1 = """  function rO(label, real, proj) {
+    return `<tr style="color:#F59E0B;font-size:11px">
+      <td style="padding-left:20px">${label}</td>
+      <td class="comp-val">${fB(real)}</td>
+      <td class="comp-val">${fB(proj)}</td>
+      <td class="comp-val">—</td>
+      <td>—</td>
+    </tr>`;
+  }"""
+RO_V2 = """  function rO(label, real, proj, meta) {
+    return `<tr style="color:#F59E0B;font-size:11px">
+      <td style="padding-left:20px">${label}</td>
+      <td class="comp-val">${fB(real)}</td>
+      <td class="comp-val">${fB(proj)}</td>
+      <td class="comp-val">${meta!=null?fB(meta):'—'}</td>
+      <td class="${meta!=null?gC(proj-meta):''}">${meta!=null?gV(proj-meta):'—'}</td>
+    </tr>`;
+  }"""
+PATCHES.append(("comp-rO", RO_V1, RO_V2))
+PATCHES.append(("comp-rO-spend", "${rO('Others (Spend)', oS, oS)}",
+                "${rO('Off/Instore/Fees AN (Spend)', oS, declS, mSOth)}"))
+PATCHES.append(("comp-rO-rev", "${rO('Others (Receita)', oR, oR)}",
+                "${rO('Off/Instore/Fees AN (Receita)', oR, declR, mROth)}"))
+PATCHES.append(("comp-totalS", "  const totalS = projS + oS;", "  const totalS = projS + declS;"))
+PATCHES.append(("comp-totalR", "  const totalR = projR + oR;", "  const totalR = projR + declR;"))
+
+# 5c. calibra o mês vigente das abas ao forecast do produto (mesmo modelo do tab)
+AT_APPLY = "function atApplyAll(){const v=parseFloat(document.getElementById('at-mom').value)||0;atState.momDefault=v;atState.grow={};renderAdvTech();}"
+CALIB = AT_APPLY + """
+/* Calibração: coluna do mês vigente (ago*) escalada para que a soma por canal = forecast do produto (João 05/08) */
+document.addEventListener('DOMContentLoaded', function(){
+  try{
+    if(typeof getTotalForecast!=='function' || !anCurBase()) return;
+    const _projS = getTotalForecast();
+    const _rN = _realSpendNet/(_realSpendTotal||1), _rT = _realSpendTech/(_realSpendTotal||1);
+    const _tSN = _projS*_rN, _tST = _projS*_rT;
+    const _tRN = _tSN*BLENDED_TR_NET, _tRT = _tST*BLENDED_TR_TECH;
+    let sN=0, rN=0; Object.values(AN_DATA).forEach(v=>{sN+=v[AN_LAST][0]; rN+=v[AN_LAST][1];});
+    if(sN>0 && _tSN>0){const f=_tSN/sN, fr=rN>0?_tRN/rN:_tSN/sN;
+      Object.values(AN_DATA).forEach(v=>{v[AN_LAST][0]*=f; v[AN_LAST][1]*=fr;});}
+    let sT=0, rT=0; Object.values(AT_P).forEach(v=>{sT+=v[AT_LAST][0]; rT+=v[AT_LAST][1];});
+    if(sT>0 && _tST>0){const f=_tST/sT, fr=rT>0?_tRT/rT:_tST/sT;
+      Object.values(AT_P).forEach(v=>{v[AT_LAST][0]*=f; v[AT_LAST][1]*=fr;});
+      Object.values(AT_PA).forEach(d=>Object.values(d).forEach(v=>{v[AT_LAST][0]*=f; v[AT_LAST][1]*=fr;}));}
+    console.log('abas calibradas ao forecast do produto ✓');
+  }catch(e){console.warn('calibração das abas falhou (mantido linear):',e);}
+});"""
+PATCHES.append(("abas-calibracao", AT_APPLY, CALIB))
+
 # reqG v3: crescimento necessário p/ meta = % simples sobre o forecast do mês
 REQG_V1 = "const reqG = (base,metaV)=>{ if(n<=0) return '—'; if(metaV<=0) return '—'; if(base<=0) return 'novo'; return ((Math.pow(metaV/base,1/n)-1)*100).toFixed(1)+'%/mês'; };"
 REQG_V2 = "const reqG = (base,metaV)=>{ if(base<=0) return metaV>0?'novo':'—'; if(metaV<=0) return '—'; if(n<=0){ if(!anCurBase()) return '—'; const f=anFrac(); return (((metaV/base-f)/(1-f)-1)*100).toFixed(1)+'% no resto do mês'; } return ((Math.pow(metaV/base,1/n)-1)*100).toFixed(1)+'%/mês'; };"
@@ -142,15 +223,16 @@ PATCHES.append((
 
 # ---------- 3. header: realizado + as-is ----------
 AN_CHIMP = "  const chImp = mi===0?ch.ts:ch.trv;"
-PATCHES.append((
-    "an-asis-calc", AN_CHIMP,
-    AN_CHIMP + """
+AN_ASIS_COMMON = AN_CHIMP + """
   const _hj=new Date(), _dm=new Date(_hj.getFullYear(),_hj.getMonth()+1,0).getDate();
   const _dref=Math.min(Math.max(_hj.getDate()-1,1),_dm), _frac=_dref/_dm;
   const asIsOns=Object.keys(AN_DATA).reduce((s,a)=>s+anBase(a,mi),0);
   const asIsOth=AN_GROUPS?(mi===0?[0,2]:[1,3,4]).reduce((s,oi)=>s+anOthBase(oi).v,0):0;
-  const asIsTot=asIsOns+asIsOth, mtdOns=asIsOns*_frac;""",
-))
+"""
+AN_ASIS_V1 = AN_ASIS_COMMON + "  const asIsTot=asIsOns+asIsOth, mtdOns=asIsOns*_frac;"
+AN_ASIS_V2 = AN_ASIS_COMMON + "  const asIsTot=asIsOns+asIsOth, mtdOns=(typeof _realSpendNet!=='undefined'&&anCurBase())?(mi===0?_realSpendNet:_realRevNet):asIsOns*_frac;"
+PATCHES.append(("an-asis-v1to2", AN_ASIS_V1, AN_ASIS_V2))
+PATCHES.append(("an-asis-calc", AN_CHIMP, AN_ASIS_V2))
 AN_KPI_ANCHOR = "  document.getElementById('an-kpis').innerHTML = `"
 PATCHES.append((
     "an-asis-cards", AN_KPI_ANCHOR,
@@ -159,13 +241,14 @@ PATCHES.append((
     <div class="card" style="padding:14px"><div style="font-size:11px;color:#6B7785">FORECAST AS-IS · MÊS CHEIO</div><div style="font-size:22px;font-weight:700">R$ ${anFmt(asIsTot)}</div><div style="font-size:11px;color:#6B7785">ritmo atual, sem MoM (onsite ${anFmt(asIsOns)} + outros ${anFmt(asIsOth)})</div></div>""",
 ))
 AT_CHIMP = "  const chImp=mi===0?ch.ts:ch.trv;"
-PATCHES.append((
-    "at-asis-calc", AT_CHIMP,
-    AT_CHIMP + """
+AT_ASIS_COMMON = AT_CHIMP + """
   const _hj=new Date(), _dm=new Date(_hj.getFullYear(),_hj.getMonth()+1,0).getDate();
   const _dref=Math.min(Math.max(_hj.getDate()-1,1),_dm), _frac=_dref/_dm;
-  const asIsTot=atPubs().reduce((s,pu)=>s+(AT_P[pu]?AT_P[pu][AT_LAST][mi]:0),0), mtdTot=asIsTot*_frac;""",
-))
+"""
+AT_ASIS_V1 = AT_ASIS_COMMON + "  const asIsTot=atPubs().reduce((s,pu)=>s+(AT_P[pu]?AT_P[pu][AT_LAST][mi]:0),0), mtdTot=asIsTot*_frac;"
+AT_ASIS_V2 = AT_ASIS_COMMON + "  const asIsTot=atPubs().reduce((s,pu)=>s+(AT_P[pu]?AT_P[pu][AT_LAST][mi]:0),0), mtdTot=(typeof _realSpendTech!=='undefined'&&anCurBase())?(mi===0?_realSpendTech:_realRevTech):asIsTot*_frac;"
+PATCHES.append(("at-asis-v1to2", AT_ASIS_V1, AT_ASIS_V2))
+PATCHES.append(("at-asis-calc", AT_CHIMP, AT_ASIS_V2))
 AT_KPI_ANCHOR = "  document.getElementById('at-kpis').innerHTML=`"
 PATCHES.append((
     "at-asis-cards", AT_KPI_ANCHOR,
@@ -206,7 +289,7 @@ FEE_V2 = FEE_ROW_ANCHOR + """
     }"""
 # converte v1→v2 se v1 presente (opcional); senão aplica v2 direto na âncora
 OPTIONAL = {"fee-detail-v1to2", "reqG-n0", "an-helpers-v1to2", "at-helpers-v1to2",
-            "an-note-v1to2", "at-note-v1to2", "reqG-v2to3"}
+            "an-note-v1to2", "at-note-v1to2", "reqG-v2to3", "an-asis-v1to2", "at-asis-v1to2"}
 PATCHES.append(("fee-detail-v1to2", FEE_V1, FEE_V2))
 PATCHES.append(("fee-detail", FEE_ROW_ANCHOR, FEE_V2))
 
@@ -217,9 +300,15 @@ def main():
     html = open(HTML, encoding="utf-8").read()
     orig = html
     aplicados, pulados = [], []
+    # se o marcador v1 ainda existe e o v1to2 não casou, NÃO reaplica (evita duplicação)
+    SKIP_IF = {"an-asis-calc": "mtdOns=asIsOns*_frac", "at-asis-calc": "mtdTot=asIsTot*_frac"}
     for pid, old, new in PATCHES:
         if new in html:
             pulados.append(pid)
+            continue
+        marker = SKIP_IF.get(pid)
+        if marker and marker in html:
+            pulados.append(pid + "(v1-presente)")
             continue
         n = html.count(old)
         if n != 1:
