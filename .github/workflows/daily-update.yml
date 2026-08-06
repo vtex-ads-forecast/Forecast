@@ -67,6 +67,12 @@ jobs:
       - name: Ensure no duplication
         run: python3 scripts/dedup_html.py
 
+      - name: Rebuild REAL_APRIL (mes-a-data do zero, evita dupla contagem)
+        env:
+          METABASE_USER: ${{ secrets.METABASE_USER }}
+          METABASE_PASS: ${{ secrets.METABASE_PASS }}
+        run: python scripts/rebuild_real_april.py || true
+
       - name: Update abas data (AdNetwork/AdTech)
         env:
           METABASE_USER: ${{ secrets.METABASE_USER }}
