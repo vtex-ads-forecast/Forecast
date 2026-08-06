@@ -312,6 +312,10 @@ PATCHES.append(("closed-row-othrv", "'<tr style=\"color:#F59E0B;font-size:11px\"
 PATCHES.append(("closed-jul-revmeta", "try{if(MONTHS_DATA['2026-07'])MONTHS_DATA['2026-07'].segMetas={\"Pharma\":6170294,\"Electronics\":7022839,\"Long Tail\":1965906,\"Beauty\":624119,\"LATAM\":1567472,\"Home Center\":260623,\"Others\":19811,\"Grocery\":79188};}catch(e){}", "try{if(MONTHS_DATA['2026-07'])MONTHS_DATA['2026-07'].segMetas={\"Pharma\":6170294,\"Electronics\":7022839,\"Long Tail\":1965906,\"Beauty\":624119,\"LATAM\":1567472,\"Home Center\":260623,\"Others\":19811,\"Grocery\":79188};}catch(e){}\ntry{if(MONTHS_DATA['2026-07']){MONTHS_DATA['2026-07'].revAdsMeta=2523118;MONTHS_DATA['2026-07'].revOthersMeta=283500;}}catch(e){}"))
 
 
+# ---------- 8. meta de receita das sub-linhas Tech/Network = rateio da meta OFICIAL (João 06/08) ----------
+PATCHES.append(("pubmeta-rev-concilia", "          const metaRevTech=(pubMeta.spendTech||0)*(pubMeta.trTech||0);\n          const metaRevNet=(pubMeta.spendNetwork||0)*(pubMeta.trNetwork||0);", "          let metaRevTech=(pubMeta.spendTech||0)*(pubMeta.trTech||0);\n          let metaRevNet=(pubMeta.spendNetwork||0)*(pubMeta.trNetwork||0);\n          /* concilia sub-linhas com a meta OFICIAL de receita do publisher: rateia revMeta pelo mix TR-ponderado (Farmacity/Hapvida — João 06/08) */\n          if((pubMeta.revMeta||0)>0){const _mrs=metaRevTech+metaRevNet;\n            if(_mrs>0){const _f=pubMeta.revMeta/_mrs;metaRevTech*=_f;metaRevNet*=_f;}\n            else{metaRevTech=pubMeta.revMeta*tRatio;metaRevNet=pubMeta.revMeta*nRatio;}}"))
+
+
 def main():
     if not os.path.exists(HTML):
         safe_exit("index.html não encontrado")
