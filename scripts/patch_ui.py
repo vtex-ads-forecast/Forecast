@@ -171,7 +171,28 @@ document.addEventListener('DOMContentLoaded', function(){
     console.log('abas calibradas ao forecast do produto ✓');
   }catch(e){console.warn('calibração das abas falhou (mantido linear):',e);}
 });"""
-PATCHES.append(("abas-calibracao", AT_APPLY, CALIB))
+CALIB2 = AT_APPLY + """
+/* Calibração: coluna do mês vigente (ago*) escalada para que a soma por canal = forecast do produto (João 05/08) */
+document.addEventListener('DOMContentLoaded', function(){
+  try{
+    if(typeof getTotalForecast!=='function' || !anCurBase()) return;
+    const _projS = getTotalForecast();
+    const _fS = _projS - REALIZED_TOTAL;
+    const _rN = _realSpendNet/(_realSpendTotal||1), _rT = _realSpendTech/(_realSpendTotal||1);
+    const _tSN = _realSpendNet + _fS*_rN, _tST = _realSpendTech + _fS*_rT;
+    const _tRN = _realRevNet + (_tSN-_realSpendNet)*BLENDED_TR_NET, _tRT = _realRevTech + (_tST-_realSpendTech)*BLENDED_TR_TECH;
+    let sN=0, rN=0; Object.values(AN_DATA).forEach(v=>{sN+=v[AN_LAST][0]; rN+=v[AN_LAST][1];});
+    if(sN>0 && _tSN>0){const f=_tSN/sN, fr=rN>0?_tRN/rN:_tSN/sN;
+      Object.values(AN_DATA).forEach(v=>{v[AN_LAST][0]*=f; v[AN_LAST][1]*=fr;});}
+    let sT=0, rT=0; Object.values(AT_P).forEach(v=>{sT+=v[AT_LAST][0]; rT+=v[AT_LAST][1];});
+    if(sT>0 && _tST>0){const f=_tST/sT, fr=rT>0?_tRT/rT:_tST/sT;
+      Object.values(AT_P).forEach(v=>{v[AT_LAST][0]*=f; v[AT_LAST][1]*=fr;});
+      Object.values(AT_PA).forEach(d=>Object.values(d).forEach(v=>{v[AT_LAST][0]*=f; v[AT_LAST][1]*=fr;}));}
+    console.log('abas calibradas ao forecast do produto ✓');
+  }catch(e){console.warn('calibração das abas falhou (mantido linear):',e);}
+});"""
+PATCHES.append(("abas-calib-v1to2", CALIB, CALIB2))
+PATCHES.append(("abas-calibracao", AT_APPLY, CALIB2))
 
 # reqG v3: crescimento necessário p/ meta = % simples sobre o forecast do mês
 REQG_V1 = "const reqG = (base,metaV)=>{ if(n<=0) return '—'; if(metaV<=0) return '—'; if(base<=0) return 'novo'; return ((Math.pow(metaV/base,1/n)-1)*100).toFixed(1)+'%/mês'; };"
@@ -289,7 +310,7 @@ FEE_V2 = FEE_ROW_ANCHOR + """
     }"""
 # converte v1→v2 se v1 presente (opcional); senão aplica v2 direto na âncora
 OPTIONAL = {"fee-detail-v1to2", "reqG-n0", "an-helpers-v1to2", "at-helpers-v1to2",
-            "an-note-v1to2", "at-note-v1to2", "reqG-v2to3", "an-asis-v1to2", "at-asis-v1to2"}
+            "an-note-v1to2", "at-note-v1to2", "reqG-v2to3", "an-asis-v1to2", "at-asis-v1to2", "abas-calib-v1to2"}
 PATCHES.append(("fee-detail-v1to2", FEE_V1, FEE_V2))
 PATCHES.append(("fee-detail", FEE_ROW_ANCHOR, FEE_V2))
 
@@ -316,6 +337,11 @@ PATCHES.append(("closed-jul-revmeta", "try{if(MONTHS_DATA['2026-07'])MONTHS_DATA
 PATCHES.append(("pubmeta-rev-concilia", "          const metaRevTech=(pubMeta.spendTech||0)*(pubMeta.trTech||0);\n          const metaRevNet=(pubMeta.spendNetwork||0)*(pubMeta.trNetwork||0);", "          let metaRevTech=(pubMeta.spendTech||0)*(pubMeta.trTech||0);\n          let metaRevNet=(pubMeta.spendNetwork||0)*(pubMeta.trNetwork||0);\n          /* concilia sub-linhas com a meta OFICIAL de receita do publisher: rateia revMeta pelo mix TR-ponderado (Farmacity/Hapvida — João 06/08) */\n          if((pubMeta.revMeta||0)>0){const _mrs=metaRevTech+metaRevNet;\n            if(_mrs>0){const _f=pubMeta.revMeta/_mrs;metaRevTech*=_f;metaRevNet*=_f;}\n            else{metaRevTech=pubMeta.revMeta*tRatio;metaRevNet=pubMeta.revMeta*nRatio;}}"))
 
 
+# ---------- 9. Composição: projeção por canal = real do canal + futuro × mix (João 06/08) ----------
+PATCHES.append(("comp-proj-canal", "  const projSTech = projS * rTech;                  /* projetado tech */\n  const projSNet  = projS * rNet;                   /* projetado network */", "  const projSTech = aSTech + fS * rTech;            /* projetado tech = real do canal + futuro x mix (unificado c/ cards - Joao 06/08) */\n  const projSNet  = aSNet + fS * rNet;              /* projetado network */"))
+PATCHES.append(("comp-projrev-canal", "  const projRTech = projSTech * BLENDED_TR_TECH;    /* projetado receita tech */\n  const projRNet  = projSNet * BLENDED_TR_NET;      /* projetado receita network */", "  const projRTech = aRTech + (projSTech - aSTech) * BLENDED_TR_TECH;    /* receita = real do canal + futuro x TR */\n  const projRNet  = aRNet + (projSNet - aSNet) * BLENDED_TR_NET;"))
+
+
 def main():
     if not os.path.exists(HTML):
         safe_exit("index.html não encontrado")
@@ -323,7 +349,8 @@ def main():
     orig = html
     aplicados, pulados = [], []
     # se o marcador v1 ainda existe e o v1to2 não casou, NÃO reaplica (evita duplicação)
-    SKIP_IF = {"an-asis-calc": "mtdOns=asIsOns*_frac", "at-asis-calc": "mtdTot=asIsTot*_frac"}
+    SKIP_IF = {"an-asis-calc": "mtdOns=asIsOns*_frac", "at-asis-calc": "mtdTot=asIsTot*_frac",
+               "abas-calibracao": "calibradas ao forecast do produto"}
     for pid, old, new in PATCHES:
         if new in html:
             pulados.append(pid)
