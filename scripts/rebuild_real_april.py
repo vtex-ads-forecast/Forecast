@@ -103,7 +103,9 @@ def main():
     if len(segd) < 3 or n_pubs < 20:
         safe_exit(f"dados insuficientes (segs={len(segd)}, pubs={n_pubs})")
 
-    old_total = sum(int(x) for x in re.findall(r'"\w[^"]*":\{spendReal:(\d+)', old_block))
+    # só segmentos de topo (têm ,publishers: logo após os 6 campos) — publishers não entram
+    old_total = sum(int(x) for x in re.findall(
+        r'"[^"]+":\{spendReal:(\d+),revReal:\d+,spendTech:\d+,spendNetwork:\d+,revTech:\d+,revNetwork:\d+,publishers:', old_block))
     new_total = round(sum(v["sp"] for v in segd.values()))
     if old_total > 0 and not (0.5 * old_total <= new_total <= 1.5 * old_total):
         safe_exit(f"total novo fora da faixa de segurança (novo={new_total}, antigo={old_total})")
