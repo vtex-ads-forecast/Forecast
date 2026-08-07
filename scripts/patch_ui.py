@@ -342,6 +342,11 @@ PATCHES.append(("comp-proj-canal", "  const projSTech = projS * rTech;          
 PATCHES.append(("comp-projrev-canal", "  const projRTech = projSTech * BLENDED_TR_TECH;    /* projetado receita tech */\n  const projRNet  = projSNet * BLENDED_TR_NET;      /* projetado receita network */", "  const projRTech = aRTech + (projSTech - aSTech) * BLENDED_TR_TECH;    /* receita = real do canal + futuro x TR */\n  const projRNet  = aRNet + (projSNet - aSNet) * BLENDED_TR_NET;"))
 
 
+# ---------- 10. drill-down inclui publishers sem meta (pai = soma dos filhos) — João 07/08 ----------
+PATCHES.append(("seg-pubs-sem-meta", "      const pubs=Object.entries(meta.publishers).sort((a,b)=>b[1].spendMeta-a[1].spendMeta);", "      /* inclui publishers com realizado mas SEM meta (pai = soma dos filhos) \u2014 Jo\u00e3o 07/08 */\n      const _extras=Object.entries(realPubs).filter(function(e){return !meta.publishers[e[0]] && ((e[1].spendReal||0)>0.5);}).map(function(e){return [e[0],{spendMeta:0,revMeta:0,spendTech:e[1].spendTech||0,spendNetwork:e[1].spendNetwork||0,trTech:e[1].trTech||0,trNetwork:e[1].trNetwork||0}];});\n      const pubs=Object.entries(meta.publishers).concat(_extras).sort(function(a,b){return (b[1].spendMeta-a[1].spendMeta)||(((realPubs[b[0]]||{}).spendReal||0)-((realPubs[a[0]]||{}).spendReal||0));});"))
+PATCHES.append(("seg-pubcount", "    const pubCount = isOthersSeg ? othersCount : Object.keys(meta.publishers).length;", "    const pubCount = isOthersSeg ? othersCount : (Object.keys(meta.publishers).length + Object.keys(real.publishers||{}).filter(function(p){return !meta.publishers[p] && (((real.publishers||{})[p].spendReal)||0)>0.5;}).length);"))
+
+
 def main():
     if not os.path.exists(HTML):
         safe_exit("index.html não encontrado")
