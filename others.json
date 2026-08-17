@@ -360,6 +360,13 @@
       "spend": 0,
       "rev": 15000,
       "desc": "Setup Fee Globo - Medley"
+    },
+    {
+      "id": 1787001580046,
+      "cat": "",
+      "spend": 0,
+      "rev": 0,
+      "desc": ""
     }
   ]
 }
