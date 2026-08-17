@@ -358,7 +358,7 @@
       "id": 1786986248588,
       "cat": "Fees",
       "spend": 0,
-      "rev": 0,
+      "rev": 10000,
       "desc": "Setup Fee Globo"
     }
   ]
