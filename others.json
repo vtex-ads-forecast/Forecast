@@ -272,7 +272,14 @@
     },
     {
       "id": 1786981171547,
-      "cat": "",
+      "cat": "Offsite",
+      "spend": 80000,
+      "rev": 24000,
+      "desc": "Hypera"
+    },
+    {
+      "id": 1786981196790,
+      "cat": "Instore",
       "spend": 0,
       "rev": 0,
       "desc": ""
