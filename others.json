@@ -274,15 +274,8 @@
       "id": 1786981171547,
       "cat": "Offsite",
       "spend": 80000,
-      "rev": 24000,
-      "desc": "Hypera - DPSP"
-    },
-    {
-      "id": 1786981196790,
-      "cat": "Instore",
-      "spend": 20000,
-      "rev": 10000,
-      "desc": "EMS Drogal"
+      "rev": 0,
+      "desc": "Hypera + DPSP"
     }
   ]
 }
