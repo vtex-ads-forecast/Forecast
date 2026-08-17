@@ -290,6 +290,13 @@
       "spend": 15000,
       "rev": 3000,
       "desc": "Campari + Cencosud"
+    },
+    {
+      "id": 1786981361458,
+      "cat": "",
+      "spend": 0,
+      "rev": 0,
+      "desc": ""
     }
   ]
 }
