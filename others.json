@@ -335,6 +335,13 @@
     },
     {
       "id": 1786981485720,
+      "cat": "Performance Fee",
+      "spend": 0,
+      "rev": 18200,
+      "desc": "Kelocote"
+    },
+    {
+      "id": 1786981505273,
       "cat": "",
       "spend": 0,
       "rev": 0,
