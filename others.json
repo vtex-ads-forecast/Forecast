@@ -344,8 +344,15 @@
       "id": 1786981505273,
       "cat": "Performance Fee",
       "spend": 0,
-      "rev": 0,
+      "rev": 11000,
       "desc": "Lidexor"
+    },
+    {
+      "id": 1786981518786,
+      "cat": "",
+      "spend": 0,
+      "rev": 0,
+      "desc": ""
     }
   ]
 }
