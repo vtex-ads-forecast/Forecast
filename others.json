@@ -330,8 +330,15 @@
       "id": 1786981474524,
       "cat": "Performance Fee",
       "spend": 0,
-      "rev": 0,
+      "rev": 4000,
       "desc": "koli d3 "
+    },
+    {
+      "id": 1786981485720,
+      "cat": "",
+      "spend": 0,
+      "rev": 0,
+      "desc": ""
     }
   ]
 }
