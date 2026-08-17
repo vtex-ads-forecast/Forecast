@@ -323,6 +323,13 @@
       "id": 1786981465651,
       "cat": "Performance Fee",
       "spend": 0,
+      "rev": 12000,
+      "desc": "ems"
+    },
+    {
+      "id": 1786981474524,
+      "cat": "",
+      "spend": 0,
       "rev": 0,
       "desc": ""
     }
