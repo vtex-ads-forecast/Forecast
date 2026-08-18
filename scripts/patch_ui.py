@@ -347,6 +347,11 @@ PATCHES.append(("seg-pubs-sem-meta", "      const pubs=Object.entries(meta.publi
 PATCHES.append(("seg-pubcount", "    const pubCount = isOthersSeg ? othersCount : Object.keys(meta.publishers).length;", "    const pubCount = isOthersSeg ? othersCount : (Object.keys(meta.publishers).length + Object.keys(real.publishers||{}).filter(function(p){return !meta.publishers[p] && (((real.publishers||{})[p].spendReal)||0)>0.5;}).length);"))
 
 
+# ---------- 11. Composição: total REALIZADO = soma das 3 linhas exibidas (inclui Off/Fees) — João 09/08 ----------
+PATCHES.append(("comp-real-total-spend", "${rP('Ad Spend Total', aS, totalS, mS, totalS - mS)}", "${rP('Ad Spend Total', aSNet+aSTech+oS, totalS, mS, totalS - mS)}"))
+PATCHES.append(("comp-real-total-rev", "${rP('Receita Total', aR, totalR, mR, totalR - mR)}", "${rP('Receita Total', aRNet+aRTech+oR, totalR, mR, totalR - mR)}"))
+
+
 def main():
     if not os.path.exists(HTML):
         safe_exit("index.html não encontrado")
