@@ -93,7 +93,15 @@ def main():
     try:
         pub_seg, pub_tr = extract_pub_mapping(html)
         token = metabase_auth()
-        raw = fetch_data(token, first.isoformat(), ontem.isoformat())
+        # Busca DIA A DIA: a janela do mes inteiro estoura o teto de linhas do
+        # Metabase. Visto em 21/08/26: 52.000 linhas no limite de seguranca e,
+        # como o SQL ordena por "day DESC", os PRIMEIROS dias do mes eram
+        # descartados -> acumulado ~20% menor que a serie diaria (ACTUALS).
+        raw = []
+        _d = first
+        while _d <= ontem:
+            raw.extend(fetch_data(token, _d.isoformat(), _d.isoformat()))
+            _d += timedelta(days=1)
         data = process_rows(raw, pub_seg, pub_tr)
     except Exception as e:
         safe_exit(f"fetch/process falhou: {e}")
@@ -109,6 +117,16 @@ def main():
     new_total = round(sum(v["sp"] for v in segd.values()))
     if old_total > 0 and not (0.5 * old_total <= new_total <= 1.5 * old_total):
         safe_exit(f"total novo fora da faixa de segurança (novo={new_total}, antigo={old_total})")
+
+    # GUARDA NOVA (21/08/26): o acumulado tem que bater com a serie diaria do
+    # proprio index.html. A guarda de 50-150% compara com o valor ANTERIOR e por
+    # isso nao enxerga EROSAO GRADUAL — foi assim que o mes derreteu ~20% sem
+    # nenhum step do workflow falhar. Esta compara com uma fonte independente.
+    am = re.search(r"const ACTUALS\s*=\s*\[(.*?)\]", html, re.S)
+    if am:
+        daily_total = sum(float(x) for x in re.findall(r"adspend:\s*([\d.]+)", am.group(1)))
+        if daily_total > 0 and abs(new_total - daily_total) > 0.03 * daily_total:
+            safe_exit(f"divergencia vs serie diaria: rebuild={new_total:,.0f} x ACTUALS={daily_total:,.0f}")
 
     def fmt_pub(name, v):
         tri = pub_tr.get(name, {"tech": 0.1, "net": 0.15})
