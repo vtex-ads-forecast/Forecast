@@ -18,8 +18,13 @@ total exibido.
 Agora o script vira o granular junto, e os TOTAIS sao DERIVADOS da soma dos
 segmentos. Por construcao, o topo da tela sempre bate com a tabela.
 
+O META_APRIL e JSON valido (chaves entre aspas), entao usamos json.loads em vez
+de regex -- e a serializacao reproduz o layout original (1 segmento por linha,
+publishers inline) para nao mexer nas ancoras do patch_ui.py.
+
 FAIL-SAFE: qualquer anomalia => aviso e exit 0, sem tocar no arquivo.
 """
+import json
 import os
 import re
 import sys
@@ -28,7 +33,7 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 HTML_PATH = os.path.join(ROOT, "index.html")
 
 # ---------------------------------------------------------------- meta oficial
-# chave = nome do segmento COMO ESTA NO META_APRIL do app (nao como na planilha).
+# chave = nome do segmento COMO ESTA NO META_APRIL do app.
 # valor = (ad spend, receita bruta)
 META_SEG = {
     "2026-08": {
@@ -79,8 +84,8 @@ META_SEG = {
 }
 
 # grao de publisher (aba "Meta - Forecast BASE"): spend, spendTech, spendNetwork.
-# publisher do app que NAO estiver aqui recebe o residuo do segmento rateado pela
-# proporcao que ja tinha -- assim a soma dos filhos sempre fecha com o pai.
+# publisher do app que NAO estiver aqui recebe o residuo do segmento, rateado
+# pela proporcao que ja tinha -- a soma dos filhos sempre fecha com o pai.
 PUB_META = {
     "2026-08": {
         "Electronics": {
@@ -92,14 +97,14 @@ PUB_META = {
             "ELETRO ANGELONI": (284, 0, 284),
         },
         "Pharma": {
-            "DROGARIA SAO PAULO ADS": (4889603, 228642, 4660961),
+            "DROGARIA SÃO PAULO ADS": (4889603, 228642, 4660961),
             "PAGUE MENOS": (1422193, 175523, 1246670),
             "PANVEL": (1057742, 197935, 859807),
             "DROGAL ADS": (107875, 0, 107875),
         },
         "Beauty": {
             "SEPHORA ADS PUBLISHER": (616755, 543762, 72993),
-            "EPOCA COSMETICOS ADS": (65522, 0, 65522),
+            "ÉPOCA COSMÉTICOS ADS": (65522, 0, 65522),
             "AMOBELEZA": (526, 526, 0),
         },
         "Home Center": {
@@ -119,13 +124,6 @@ PUB_META = {
     },
 }
 
-# acentos: o META_APRIL usa os nomes com acento; a tabela acima usa sem, para
-# evitar problema de encoding. este de-para resolve.
-ALIAS = {
-    "DROGARIA SAO PAULO ADS": "DROGARIA SÃO PAULO ADS",
-    "EPOCA COSMETICOS ADS": "ÉPOCA COSMÉTICOS ADS",
-}
-
 
 def safe_exit(msg):
     print(f"[sync_meta] {msg} -- pulando sem erro")
@@ -133,12 +131,11 @@ def safe_exit(msg):
 
 
 def find_block(html, name):
-    off = html.find(f"const {name}=")
-    if off == -1:
-        off = html.find(f"const {name} =")
-    if off == -1:
+    """(inicio, fim) do literal de objeto de 'const <name> = {...}'."""
+    m = re.search(r"const\s+" + name + r"\s*=\s*\{", html)
+    if not m:
         return None, None
-    brace = html.find("{", off)
+    brace = html.index("{", m.start())
     d = 0
     for i in range(brace, len(html)):
         if html[i] == "{":
@@ -150,22 +147,82 @@ def find_block(html, name):
     return None, None
 
 
-def seg_span(block, seg):
-    """(inicio, fim) do sub-bloco de um segmento dentro do META_APRIL."""
-    key = f'"{seg}":'
-    p = block.find(key)
-    if p == -1:
-        return None
-    brace = block.find("{", p)
-    d = 0
-    for i in range(brace, len(block)):
-        if block[i] == "{":
-            d += 1
-        elif block[i] == "}":
-            d -= 1
-            if d == 0:
-                return (p, i + 1)
-    return None
+def num(x):
+    """int vira '7442335'; float vira '0.085' (sem zeros a toa)."""
+    if isinstance(x, int):
+        return str(x)
+    s = repr(float(x))
+    return s
+
+
+def dump_meta_april(data):
+    """serializa no MESMO layout do original: 1 segmento por linha, pubs inline."""
+    linhas = []
+    for seg, v in data.items():
+        pubs = v.get("publishers")
+        if pubs is None:
+            linhas.append('  "%s": {"spendMeta": %d, "revMeta": %d}'
+                          % (seg, v["spendMeta"], v["revMeta"]))
+            continue
+        inner = ", ".join(
+            '"%s": {%s}' % (p, ", ".join('"%s": %s' % (k, num(pv)) for k, pv in d.items()))
+            for p, d in pubs.items())
+        linhas.append('  "%s": {"spendMeta": %d, "revMeta": %d, "publishers": {%s}}'
+                      % (seg, v["spendMeta"], v["revMeta"], inner))
+    return "{\n" + ",\n".join(linhas) + "\n}"
+
+
+def aplica_segmento(v, sp, rv, oficial):
+    """reescreve um segmento e seus publishers, garantindo que os filhos somem o pai."""
+    v["spendMeta"], v["revMeta"] = sp, rv
+    pubs = v.get("publishers")
+    if not pubs:
+        return
+
+    conhecidos, resto = {}, []
+    for nome, d in pubs.items():
+        if nome in oficial:
+            conhecidos[nome] = list(oficial[nome])
+        else:
+            resto.append(nome)
+
+    residuo = sp - sum(x[0] for x in conhecidos.values())
+    base = sum(pubs[n].get("spendMeta", 0) for n in resto)
+    for nome in resto:
+        d = pubs[nome]
+        antigo = d.get("spendMeta", 0)
+        quota = round(residuo * antigo / base) if base > 0 else (
+            round(residuo / len(resto)) if resto else 0)
+        t_old, n_old = d.get("spendTech", 0), d.get("spendNetwork", 0)
+        tot = t_old + n_old
+        t = round(quota * t_old / tot) if tot > 0 else quota
+        conhecidos[nome] = [quota, t, quota - t]
+
+    if conhecidos:
+        dif = sp - sum(x[0] for x in conhecidos.values())
+        if dif:
+            maior = max(conhecidos, key=lambda k: conhecidos[k][0])
+            conhecidos[maior][0] += dif
+            conhecidos[maior][2] += dif
+
+    # receita por publisher = tech*trTech + net*trNetwork, normalizada para
+    # somar exatamente a receita oficial do segmento
+    brutos = {}
+    for nome, (s, t, n) in conhecidos.items():
+        d = pubs[nome]
+        brutos[nome] = t * d.get("trTech", 0) + n * d.get("trNetwork", 0)
+    soma = sum(brutos.values())
+    revs = {k: (round(rv * brutos[k] / soma) if soma > 0 else 0) for k in conhecidos}
+    if revs:
+        dif = rv - sum(revs.values())
+        if dif:
+            revs[max(revs, key=lambda k: revs[k])] += dif
+
+    for nome, (s, t, n) in conhecidos.items():
+        pubs[nome]["spendMeta"] = s
+        pubs[nome]["revMeta"] = revs.get(nome, 0)
+        pubs[nome]["spendTech"] = t
+        pubs[nome]["spendNetwork"] = n
 
 
 def main():
@@ -188,104 +245,41 @@ def main():
     b0, b1 = find_block(html, "META_APRIL")
     if b0 is None:
         safe_exit("bloco META_APRIL nao encontrado")
-    block = html[b0:b1]
-    orig_block = block
+    try:
+        data = json.loads(html[b0:b1])
+    except Exception as e:
+        safe_exit(f"META_APRIL nao e JSON valido: {e}")
 
     tocados = []
     for seg, (sp, rv) in segs.items():
-        span = seg_span(block, seg)
-        if span is None:
+        if seg not in data:
             print(f"[sync_meta] aviso: segmento '{seg}' nao existe no META_APRIL -- ignorado")
             continue
-        s0, s1 = span
-        sub = block[s0:s1]
-
-        # --- publishers do segmento
-        pub_rows = list(re.finditer(
-            r'"([^"]+)":\{spendMeta:(\d+),revMeta:(\d+),spendTech:(\d+),spendNetwork:(\d+),'
-            r'trTech:([\d.]+),trNetwork:([\d.]+)\}', sub))
-        if pub_rows:
-            oficial = {ALIAS.get(k, k): v for k, v in pubs_of.get(seg, {}).items()}
-            novo = {}
-            for pr in pub_rows:
-                nome = pr.group(1)
-                if nome in oficial:
-                    novo[nome] = list(oficial[nome])
-            resto = [pr for pr in pub_rows if pr.group(1) not in novo]
-            residuo = sp - sum(v[0] for v in novo.values())
-            base = sum(int(pr.group(2)) for pr in resto)
-            for pr in resto:
-                nome = pr.group(1)
-                antigo_sp = int(pr.group(2))
-                quota = round(residuo * (antigo_sp / base)) if base > 0 else (
-                    round(residuo / len(resto)) if resto else 0)
-                antigo_t, antigo_n = int(pr.group(4)), int(pr.group(5))
-                tot = antigo_t + antigo_n
-                t = round(quota * (antigo_t / tot)) if tot > 0 else quota
-                novo[nome] = [quota, t, quota - t]
-            # ajuste de centavo no maior, para fechar exatamente com o segmento
-            if novo:
-                dif = sp - sum(v[0] for v in novo.values())
-                if dif:
-                    maior = max(novo, key=lambda k: novo[k][0])
-                    novo[maior][0] += dif
-                    novo[maior][2] += dif
-
-            # receita por publisher = tech*trTech + net*trNetwork, normalizada
-            # para somar exatamente a receita oficial do segmento
-            tr = {pr.group(1): (float(pr.group(6)), float(pr.group(7))) for pr in pub_rows}
-            brutos = {k: novo[k][1] * tr[k][0] + novo[k][2] * tr[k][1] for k in novo}
-            soma = sum(brutos.values())
-            revs = {}
-            for k in novo:
-                revs[k] = round(rv * (brutos[k] / soma)) if soma > 0 else 0
-            if revs:
-                dif = rv - sum(revs.values())
-                if dif:
-                    revs[max(revs, key=lambda k: revs[k])] += dif
-
-            def repl(mo):
-                nome = mo.group(1)
-                if nome not in novo:
-                    return mo.group(0)
-                s, t, n = novo[nome]
-                return ('"%s":{spendMeta:%d,revMeta:%d,spendTech:%d,spendNetwork:%d,'
-                        'trTech:%s,trNetwork:%s}' % (nome, s, revs.get(nome, 0), t, n,
-                                                     mo.group(6), mo.group(7)))
-
-            sub = re.sub(
-                r'"([^"]+)":\{spendMeta:(\d+),revMeta:(\d+),spendTech:(\d+),spendNetwork:(\d+),'
-                r'trTech:([\d.]+),trNetwork:([\d.]+)\}', repl, sub)
-
-        # --- o proprio segmento
-        sub_novo, n = re.subn(r'^("' + re.escape(seg) + r'":\{)spendMeta:\d+,revMeta:\d+',
-                              r'\g<1>spendMeta:%d,revMeta:%d' % (sp, rv), sub, count=1)
-        if n != 1:
-            safe_exit(f"nao consegui reescrever o cabecalho do segmento '{seg}'")
-        block = block[:s0] + sub_novo + block[s1:]
+        aplica_segmento(data[seg], sp, rv, pubs_of.get(seg, {}))
         tocados.append(seg)
 
     if len(tocados) < 5:
         safe_exit(f"poucos segmentos reescritos ({len(tocados)}) -- abortando")
 
-    # --- guarda final: a soma dos segmentos TEM que bater com o total
-    somas = [int(x) for x in re.findall(
-        r'"[^"]+":\{spendMeta:(\d+),revMeta:\d+,publishers:', block)]
-    if somas and sum(somas) != sp_total:
-        safe_exit(f"soma dos segmentos ({sum(somas):,}) != total ({sp_total:,}) -- abortando")
+    # guarda: soma dos segmentos TEM que bater com o total, e cada segmento
+    # TEM que bater com a soma dos seus publishers
+    if sum(v["spendMeta"] for v in data.values()) != sp_total:
+        safe_exit("soma dos segmentos != total de spend -- abortando")
+    if sum(v["revMeta"] for v in data.values()) != rv_total:
+        safe_exit("soma dos segmentos != total de receita -- abortando")
+    for seg, v in data.items():
+        pubs = v.get("publishers")
+        if pubs and sum(p["spendMeta"] for p in pubs.values()) != v["spendMeta"]:
+            safe_exit(f"'{seg}': soma dos publishers != o segmento -- abortando")
 
-    html = html[:b0] + block + html[b1:]
+    html = html[:b0] + dump_meta_april(data) + html[b1:]
 
-    # --- totais derivados da propria tabela (nunca mais divergem do breakdown)
     html, n1 = re.subn(r"const META_SPEND_TOTAL\s*=\s*\d+",
                        f"const META_SPEND_TOTAL = {sp_total}", html, count=1)
     html, n2 = re.subn(r"const META_REV_TOTAL\s*=\s*\d+",
                        f"const META_REV_TOTAL = {rv_total}", html, count=1)
     if not (n1 and n2):
         safe_exit("constantes META_*_TOTAL nao encontradas")
-
-    if block == orig_block and n1 and n2:
-        print(f"[sync_meta] META_APRIL de {mkey} ja estava sincronizado")
 
     tmp = HTML_PATH + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
