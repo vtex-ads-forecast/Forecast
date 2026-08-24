@@ -17,6 +17,7 @@ Receita = cost_brl × TR do settings.json (trNetwork / trTech por publisher).
 """
 import json
 import os
+import re
 import sys
 from datetime import date, timedelta
 
@@ -63,7 +64,16 @@ def main():
 
     try:
         token = metabase_auth()
-        rows = fetch_data(token, ontem.replace(day=1).isoformat(), ontem.isoformat())
+        # Busca DIA A DIA. A janela do mes inteiro estoura o teto de linhas do
+        # Metabase (fetch_data pagina de 2.000 e corta em 52.000) e, como o SQL
+        # ordena por "day DESC", o corte descartava os PRIMEIROS dias do mes.
+        # Efeito visto em 23/08/26: as abas AdNetwork/AdTech vinham ~32% abaixo
+        # do realizado do mes. Mesma correcao ja aplicada no rebuild_real_april.
+        rows = []
+        _d = ontem.replace(day=1)
+        while _d <= ontem:
+            rows.extend(fetch_data(token, _d.isoformat(), _d.isoformat()))
+            _d += timedelta(days=1)
     except Exception as e:
         safe_exit(f"Metabase falhou: {e}")
     if not rows:
@@ -143,6 +153,31 @@ def main():
         abas["_atualizado"] = ontem.isoformat()
     except Exception as e:
         safe_exit(f"montagem falhou: {e}")
+
+    # GUARDA (23/08/26): a coluna do mes vigente e uma PROJECAO do MTD, entao
+    # tem que ficar ACIMA do realizado ate ontem. Vir ABAIXO significa que o
+    # fetch voltou truncado -- foi exatamente o sintoma que escondeu este bug.
+    try:
+        _html = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+        _mtd = sum(int(x) for x in re.findall(
+            r'"[^"]+":\{spendReal:(\d+),revReal:\d+,spendTech:\d+,'
+            r'spendNetwork:\d+,revTech:\d+,revNetwork:\d+,publishers:', _html))
+        _i = abas["AN_MESES"].index(mkey)
+        _j = abas["AT_MESES"].index(mkey)
+        _novo = (sum((v[_i][0] if len(v) > _i and v[_i] else 0)
+                     for v in abas["AN_DATA"].values())
+                 + sum((v[_j][0] if len(v) > _j and v[_j] else 0)
+                       for v in abas["AT_P"].values()))
+        if _mtd > 0 and _novo < _mtd:
+            safe_exit(f"coluna de {mkey} ({_novo:,.0f}) abaixo do realizado do "
+                      f"mes ({_mtd:,.0f}) -- fetch provavelmente truncado")
+        if _mtd > 0:
+            print(f"[abas] check: projecao {_novo:,.0f} vs MTD {_mtd:,.0f} "
+                  f"({_novo / _mtd:.2f}x)")
+    except SystemExit:
+        raise
+    except Exception as _e:
+        print(f"[abas] aviso: check de consistencia nao rodou ({_e}) -- seguindo")
 
     tmp = ABAS_PATH + ".tmp"
     json.dump(abas, open(tmp, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
