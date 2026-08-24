@@ -168,12 +168,16 @@ def main():
                      for v in abas["AN_DATA"].values())
                  + sum((v[_j][0] if len(v) > _j and v[_j] else 0)
                        for v in abas["AT_P"].values()))
-        if _mtd > 0 and _novo < _mtd:
-            safe_exit(f"coluna de {mkey} ({_novo:,.0f}) abaixo do realizado do "
-                      f"mes ({_mtd:,.0f}) -- fetch provavelmente truncado")
-        if _mtd > 0:
-            print(f"[abas] check: projecao {_novo:,.0f} vs MTD {_mtd:,.0f} "
-                  f"({_novo / _mtd:.2f}x)")
+        _razao = (_novo / _mtd) if _mtd > 0 else 0
+        print(f"[abas] check: coluna {mkey} {_novo:,.0f} | MTD REAL_APRIL "
+              f"{_mtd:,.0f} | razao {_razao:.2f}x")
+        # as abas cobrem um SUBCONJUNTO do universo do REAL_APRIL (46 publishers
+        # de AdTech + 144 advertisers de AdNetwork), entao a razao nunca e 1:1.
+        # O corte serve so para pegar truncamento catastrofico, nao diferenca
+        # de cobertura -- por isso 0.5x e nao 1.0x.
+        if _mtd > 0 and _razao < 0.5:
+            safe_exit(f"coluna de {mkey} em {_razao:.2f}x do realizado do mes "
+                      f"-- fetch provavelmente truncado")
     except SystemExit:
         raise
     except Exception as _e:
