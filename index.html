@@ -824,8 +824,8 @@ const NA = 3;  // Actual days in current month (1-3)
 const TD = 30;  // Total Setembro days
 const PREV_MONTH_SPEND = 11018043;
 const PREV_MONTH_REV = 1370731;
-const META_SPEND_TOTAL = 24623130; // meta JUL/26 (nova meta oficial 21/07)
-const META_REV_TOTAL = 4012936; // receita bruta meta JUL/26
+const META_SPEND_TOTAL = 17035635; // meta JUL/26 (nova meta oficial 21/07)
+const META_REV_TOTAL = 2920735; // receita bruta meta JUL/26
 const ADV_AVG_FACTOR = NA > 0 ? TD / NA : TD;
 
 // ACTUALS - Real April spend by day
@@ -982,27 +982,349 @@ const REAL_APRIL={"Electronics":{spendReal:357341,revReal:31665,spendTech:353024
 
 
 const META_APRIL = {
-  "Electronics": {"spendMeta": 7905387, "revMeta": 838500, "publishers": {"CASAS BAHIA ADS": {"spendMeta": 4717944, "revMeta": 471794, "spendTech": 4687945, "spendNetwork": 29999, "trTech": 0.085, "trNetwork": 0.085}, "KABUM": {"spendMeta": 1998557, "revMeta": 150000, "spendTech": 1966663, "spendNetwork": 31894, "trTech": 0.07, "trNetwork": 0.18}, "BEMOL": {"spendMeta": 940935, "revMeta": 187487, "spendTech": 872979, "spendNetwork": 67955, "trTech": 0.19, "trNetwork": 0.2}, "FAST SHOP": {"spendMeta": 111474, "revMeta": 7008, "spendTech": 84903, "spendNetwork": 26571, "trTech": 0.05, "trNetwork": 0.15}, "AMERICANAS": {"spendMeta": 136192, "revMeta": 22126, "spendTech": 80748, "spendNetwork": 55444, "trTech": 0.15, "trNetwork": 0.25}, "ELETRO ANGELONI": {"spendMeta": 285, "revMeta": 85, "spendTech": 0, "spendNetwork": 285, "trTech": 0.0, "trNetwork": 0.3}}},
-  "Pharma": {"spendMeta": 10427907, "revMeta": 1848690, "publishers": {"DROGARIA SÃO PAULO ADS": {"spendMeta": 6031098, "revMeta": 1170777, "spendTech": 251506, "spendNetwork": 5779592, "trTech": 0.1, "trNetwork": 0.2}, "PAGUE MENOS": {"spendMeta": 3015549, "revMeta": 367897, "spendTech": 125753, "spendNetwork": 2889796, "trTech": 0.09, "trNetwork": 0.09}, "PANVEL": {"spendMeta": 1267992, "revMeta": 253598, "spendTech": 227625, "spendNetwork": 1040367, "trTech": 0.1, "trNetwork": 0.27}, "DROGAL ADS": {"spendMeta": 113268, "revMeta": 56418, "spendTech": 0, "spendNetwork": 113268, "trTech": 0.0, "trNetwork": 0.5}}},
-  "Beauty": {"spendMeta": 748596, "revMeta": 61686, "publishers": {"SEPHORA ADS PUBLISHER": {"spendMeta": 669417, "revMeta": 53702, "spendTech": 581826, "spendNetwork": 87591, "trTech": 0.045, "trNetwork": 0.18}, "AMOBELEZA": {"spendMeta": 552, "revMeta": 83, "spendTech": 0, "spendNetwork": 552, "trTech": 0.3, "trNetwork": 0.3}, "ÉPOCA COSMÉTICOS ADS": {"spendMeta": 78627, "revMeta": 7901, "spendTech": 0, "spendNetwork": 78627, "trTech": 0.1, "trNetwork": 0.1}}},
-  "Home Center": {"spendMeta": 297993, "revMeta": 28053, "publishers": {"LEROY MERLIN": {"spendMeta": 119933, "revMeta": 12014, "spendTech": 119933, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.16}, "MADEIRA ADS": {"spendMeta": 178060, "revMeta": 16039, "spendTech": 178060, "spendNetwork": 0, "trTech": 0.09, "trNetwork": 0.09}}},
-  "Groceries": {"spendMeta": 114032, "revMeta": 26093, "publishers": {"Super Nosso": {"spendMeta": 21850, "revMeta": 3269, "spendTech": 19, "spendNetwork": 21831, "trTech": 0.05, "trNetwork": 0.15}, "PREZUNIC": {"spendMeta": 45567, "revMeta": 13494, "spendTech": 0, "spendNetwork": 45567, "trTech": 0.2, "trNetwork": 0.25}, "SUPERMERCADO SAVEGNAGO": {"spendMeta": 5350, "revMeta": 799, "spendTech": 126, "spendNetwork": 5223, "trTech": 0.1, "trNetwork": 0.15}, "ZONA SUL ADS": {"spendMeta": 17001, "revMeta": 3397, "spendTech": 0, "spendNetwork": 17001, "trTech": 0.0, "trNetwork": 0.2}, "SUPER ANGELONI": {"spendMeta": 4898, "revMeta": 1440, "spendTech": 0, "spendNetwork": 4898, "trTech": 0.1, "trNetwork": 0.3}, "GBARBOSA": {"spendMeta": 14107, "revMeta": 2116, "spendTech": 0, "spendNetwork": 14107, "trTech": 0.2, "trNetwork": 0.25}, "SUPER MUFFATO DELIVERY": {"spendMeta": 5259, "revMeta": 1578, "spendTech": 0, "spendNetwork": 5259, "trTech": 0.2, "trNetwork": 0.2}}},
-  "LATAM": {"spendMeta": 1896641, "revMeta": 321806, "publishers": {"FARMACITY CONECT": {"spendMeta": 1896641, "revMeta": 321806, "spendTech": 1896641, "spendNetwork": 0, "trTech": 0.135, "trNetwork": 0.1}}},
-  "Others Segments": {"spendMeta": 6185, "revMeta": 588, "publishers": {"BUSCAPE": {"spendMeta": 3899, "revMeta": 372, "spendTech": 3899, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}, "ZOOM": {"spendMeta": 2286, "revMeta": 216, "spendTech": 2286, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}}},
-  "New Publishers BR": {"spendMeta": 17642, "revMeta": 4946, "publishers": {"CVC": {"spendMeta": 4840, "revMeta": 968, "spendTech": 2420, "spendNetwork": 2420, "trTech": 0.1, "trNetwork": 0.1}, "Livelo": {"spendMeta": 2662, "revMeta": 799, "spendTech": 0, "spendNetwork": 2662, "trTech": 0.1, "trNetwork": 0.1}, "C&A": {"spendMeta": 6050, "revMeta": 1815, "spendTech": 2420, "spendNetwork": 3630, "trTech": 0.1, "trNetwork": 0.1}, "On City": {"spendMeta": 2880, "revMeta": 1152, "spendTech": 0, "spendNetwork": 2880, "trTech": 0.1, "trNetwork": 0.1}, "Santander Esfera": {"spendMeta": 0, "revMeta": 0, "spendTech": 0, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.1}, "TotalPass": {"spendMeta": 1210, "revMeta": 212, "spendTech": 605, "spendNetwork": 605, "trTech": 0.1, "trNetwork": 0.1}}},
-  "Long Tail": {"spendMeta": 2378747, "revMeta": 342540, "publishers": {}},
-  "Soft Launch New Publishers BR": {"spendMeta": 0, "revMeta": 0, "publishers": {}},
-  "Instore + Offsite": {"spendMeta": 830000, "revMeta": 224000, "publishers": {"Offsite": {"spendMeta": 500000, "revMeta": 125000, "spendTech": 0, "spendNetwork": 500000, "trTech": 0, "trNetwork": 0.2}, "Instore": {"spendMeta": 330000, "revMeta": 99000, "spendTech": 0, "spendNetwork": 330000, "trTech": 0, "trNetwork": 0.3}}},
-  "Performance Fee": {"spendMeta": 0, "revMeta": 81034, "publishers": {}},
-  "Other Incomes": {"spendMeta": 0, "revMeta": 235000, "publishers": {}}
-};
+    "Electronics": { spendMeta: 4658733, revMeta: 426957, publishers: {
+      "CASAS BAHIA ADS": { spendMeta: 1779999, revMeta: 137961, spendTech: 1750000, spendNetwork: 29999, trTech: 0.085, trNetwork: 0.085 },
+      "KABUM": { spendMeta: 1998557, revMeta: 150000, spendTech: 1966663, spendNetwork: 31894, trTech: 0.07, trNetwork: 0.18 },
+      "BEMOL": { spendMeta: 632226, revMeta: 109679, spendTech: 603969, spendNetwork: 28257, trTech: 0.19, trNetwork: 0.2 },
+      "FAST SHOP": { spendMeta: 111474, revMeta: 7130, spendTech: 84903, spendNetwork: 26571, trTech: 0.05, trNetwork: 0.15 },
+      "AMERICANAS": { spendMeta: 136192, revMeta: 22121, spendTech: 80748, spendNetwork: 55444, trTech: 0.15, trNetwork: 0.25 },
+      "ELETRO ANGELONI": { spendMeta: 285, revMeta: 66, spendTech: 0, spendNetwork: 285, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Pharma": { spendMeta: 8484484, revMeta: 1679142, publishers: {
+      "DROGARIA SÃO PAULO ADS": { spendMeta: 5847063, revMeta: 1189923, spendTech: 852063, spendNetwork: 4995000, trTech: 0.1, trNetwork: 0.2 },
+      "PAGUE MENOS": { spendMeta: 1424547, revMeta: 146654, spendTech: 201851, spendNetwork: 1222696, trTech: 0.09, trNetwork: 0.09 },
+      "PANVEL": { spendMeta: 1064236, revMeta: 276701, spendTech: 247418, spendNetwork: 816817, trTech: 0.1, trNetwork: 0.27 },
+      "DROGAL ADS": { spendMeta: 148639, revMeta: 65864, spendTech: 0, spendNetwork: 148639, trTech: 0, trNetwork: 0.5 }
+    } },
+    "Beauty": { spendMeta: 748595, revMeta: 38530, publishers: {
+      "SEPHORA ADS PUBLISHER": { spendMeta: 669417, revMeta: 38437, spendTech: 581826, spendNetwork: 87591, trTech: 0.045, trNetwork: 0.18 },
+      "AMOBELEZA": { spendMeta: 552, revMeta: 94, spendTech: 0, spendNetwork: 552, trTech: 0.3, trNetwork: 0.3 },
+      "ÉPOCA COSMÉTICOS ADS": { spendMeta: 78627, revMeta: 0, spendTech: 0, spendNetwork: 78627, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Home Center": { spendMeta: 297993, revMeta: 28480, publishers: {
+      "LEROY MERLIN": { spendMeta: 119933, revMeta: 13389, spendTech: 119933, spendNetwork: 0, trTech: 0.1, trNetwork: 0.16 },
+      "MADEIRA ADS": { spendMeta: 178060, revMeta: 15091, spendTech: 178060, spendNetwork: 0, trTech: 0.09, trNetwork: 0.09 }
+    } },
+    "Groceries": { spendMeta: 114031, revMeta: 25322, publishers: {
+      "Super Nosso": { spendMeta: 21850, revMeta: 3411, spendTech: 19, spendNetwork: 21831, trTech: 0.05, trNetwork: 0.15 },
+      "PREZUNIC": { spendMeta: 45567, revMeta: 11209, spendTech: 0, spendNetwork: 45567, trTech: 0.2, trNetwork: 0.25 },
+      "SUPERMERCADO SAVEGNAGO": { spendMeta: 5350, revMeta: 801, spendTech: 126, spendNetwork: 5223, trTech: 0.1, trNetwork: 0.15 },
+      "ZONA SUL ADS": { spendMeta: 17001, revMeta: 3637, spendTech: 0, spendNetwork: 17001, trTech: 0, trNetwork: 0.2 },
+      "SUPER ANGELONI": { spendMeta: 4898, revMeta: 1136, spendTech: 0, spendNetwork: 4898, trTech: 0.1, trNetwork: 0.3 },
+      "GBARBOSA": { spendMeta: 14107, revMeta: 3591, spendTech: 0, spendNetwork: 14107, trTech: 0.2, trNetwork: 0.25 },
+      "SUPER MUFFATO DELIVERY": { spendMeta: 5259, revMeta: 1537, spendTech: 0, spendNetwork: 5259, trTech: 0.2, trNetwork: 0.2 }
+    } },
+    "LATAM": { spendMeta: 639450, revMeta: 86326, publishers: {
+      "FARMACITY CONECT": { spendMeta: 639450, revMeta: 86326, spendTech: 639450, spendNetwork: 0, trTech: 0.135, trNetwork: 0.1 }
+    } },
+    "Others Segments": { spendMeta: 6186, revMeta: 618, publishers: {
+      "BUSCAPE": { spendMeta: 3899, revMeta: 388, spendTech: 3899, spendNetwork: 0, trTech: 0.1, trNetwork: 0 },
+      "ZOOM": { spendMeta: 2286, revMeta: 230, spendTech: 2286, spendNetwork: 0, trTech: 0.1, trNetwork: 0 }
+    } },
+    "New Publishers BR": { spendMeta: 17642, revMeta: 4946, publishers: {
+      "CVC": { spendMeta: 4840, revMeta: 968, spendTech: 2420, spendNetwork: 2420, trTech: 0.1, trNetwork: 0.1 },
+      "Livelo": { spendMeta: 2662, revMeta: 799, spendTech: 0, spendNetwork: 2662, trTech: 0.1, trNetwork: 0.1 },
+      "C&A": { spendMeta: 6050, revMeta: 1815, spendTech: 2420, spendNetwork: 3630, trTech: 0.1, trNetwork: 0.1 },
+      "On City": { spendMeta: 2880, revMeta: 1152, spendTech: 0, spendNetwork: 2880, trTech: 0.1, trNetwork: 0.1 },
+      "Santander Esfera": { spendMeta: 0, revMeta: 0, spendTech: 0, spendNetwork: 0, trTech: 0.1, trNetwork: 0.1 },
+      "TotalPass": { spendMeta: 1210, revMeta: 212, spendTech: 605, spendNetwork: 605, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Long Tail": { spendMeta: 1238521, revMeta: 109983, publishers: {} },
+    "Soft Launch New Publishers BR": { spendMeta: 0, revMeta: 0, publishers: {} },
+    "Instore + Offsite": { spendMeta: 830000, revMeta: 204397, publishers: {
+      "Offsite": { spendMeta: 446030, revMeta: 89206, spendTech: 0, spendNetwork: 446030, trTech: 0, trNetwork: 0.2 },
+      "Instore": { spendMeta: 383970, revMeta: 115191, spendTech: 0, spendNetwork: 383970, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Performance Fee": { spendMeta: 0, revMeta: 81034, publishers: {} },
+    "Other Incomes": { spendMeta: 0, revMeta: 235000, publishers: {} }
+  };
 /* Metas futuras ago–dez/26 (fonte: planilha Meta - Forecast; mesma estrutura do META_APRIL) — João 21/07 */
 const META_FUTURE = {
-  "2026-08": {"Electronics": {"spendMeta": 7442336, "revMeta": 780463, "publishers": {"CASAS BAHIA ADS": {"spendMeta": 4489709, "revMeta": 448971, "spendTech": 4464710, "spendNetwork": 24999, "trTech": 0.085, "trNetwork": 0.085}, "KABUM": {"spendMeta": 1947691, "revMeta": 150000, "spendTech": 1918696, "spendNetwork": 28995, "trTech": 0.07, "trNetwork": 0.18}, "BEMOL": {"spendMeta": 784112, "revMeta": 156239, "spendTech": 727483, "spendNetwork": 56629, "trTech": 0.19, "trNetwork": 0.2}, "FAST SHOP": {"spendMeta": 107046, "revMeta": 6730, "spendTech": 84903, "spendNetwork": 22143, "trTech": 0.05, "trNetwork": 0.15}, "AMERICANAS": {"spendMeta": 113493, "revMeta": 18438, "spendTech": 67290, "spendNetwork": 46203, "trTech": 0.15, "trNetwork": 0.25}, "ELETRO ANGELONI": {"spendMeta": 285, "revMeta": 85, "spendTech": 0, "spendNetwork": 285, "trTech": 0.0, "trNetwork": 0.3}}}, "Pharma": {"spendMeta": 7477412, "revMeta": 1387972, "publishers": {"DROGARIA SÃO PAULO ADS": {"spendMeta": 4889603, "revMeta": 949186, "spendTech": 228642, "spendNetwork": 4660962, "trTech": 0.1, "trNetwork": 0.2}, "PAGUE MENOS": {"spendMeta": 1422193, "revMeta": 173507, "spendTech": 175523, "spendNetwork": 1246670, "trTech": 0.09, "trNetwork": 0.09}, "PANVEL": {"spendMeta": 1057742, "revMeta": 211548, "spendTech": 197935, "spendNetwork": 859808, "trTech": 0.1, "trNetwork": 0.27}, "DROGAL ADS": {"spendMeta": 107874, "revMeta": 53731, "spendTech": 0, "spendNetwork": 107874, "trTech": 0.0, "trNetwork": 0.5}}}, "Beauty": {"spendMeta": 682803, "revMeta": 56141, "publishers": {"SEPHORA ADS PUBLISHER": {"spendMeta": 616755, "revMeta": 49478, "spendTech": 543762, "spendNetwork": 72992, "trTech": 0.045, "trNetwork": 0.18}, "AMOBELEZA": {"spendMeta": 526, "revMeta": 79, "spendTech": 0, "spendNetwork": 526, "trTech": 0.3, "trNetwork": 0.3}, "ÉPOCA COSMÉTICOS ADS": {"spendMeta": 65522, "revMeta": 6584, "spendTech": 0, "spendNetwork": 65522, "trTech": 0.1, "trNetwork": 0.1}}}, "Home Center": {"spendMeta": 278610, "revMeta": 26197, "publishers": {"LEROY MERLIN": {"spendMeta": 109030, "revMeta": 10922, "spendTech": 109030, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.16}, "MADEIRA ADS": {"spendMeta": 169580, "revMeta": 15275, "spendTech": 169580, "spendNetwork": 0, "trTech": 0.09, "trNetwork": 0.09}}}, "Groceries": {"spendMeta": 95027, "revMeta": 21744, "publishers": {"Super Nosso": {"spendMeta": 18208, "revMeta": 2724, "spendTech": 16, "spendNetwork": 18192, "trTech": 0.05, "trNetwork": 0.15}, "PREZUNIC": {"spendMeta": 37973, "revMeta": 11245, "spendTech": 0, "spendNetwork": 37973, "trTech": 0.2, "trNetwork": 0.25}, "SUPERMERCADO SAVEGNAGO": {"spendMeta": 4458, "revMeta": 666, "spendTech": 105, "spendNetwork": 4353, "trTech": 0.1, "trNetwork": 0.15}, "ZONA SUL ADS": {"spendMeta": 14168, "revMeta": 2831, "spendTech": 0, "spendNetwork": 14168, "trTech": 0.0, "trNetwork": 0.2}, "SUPER ANGELONI": {"spendMeta": 4082, "revMeta": 1200, "spendTech": 0, "spendNetwork": 4082, "trTech": 0.1, "trNetwork": 0.3}, "GBARBOSA": {"spendMeta": 11756, "revMeta": 1763, "spendTech": 0, "spendNetwork": 11756, "trTech": 0.2, "trNetwork": 0.25}, "SUPER MUFFATO DELIVERY": {"spendMeta": 4382, "revMeta": 1315, "spendTech": 0, "spendNetwork": 4382, "trTech": 0.2, "trNetwork": 0.2}}}, "LATAM": {"spendMeta": 1724219, "revMeta": 292551, "publishers": {"FARMACITY CONECT": {"spendMeta": 1724219, "revMeta": 292551, "spendTech": 1724219, "spendNetwork": 0, "trTech": 0.135, "trNetwork": 0.1}}}, "Others Segments": {"spendMeta": 5891, "revMeta": 559, "publishers": {"BUSCAPE": {"spendMeta": 3714, "revMeta": 354, "spendTech": 3714, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}, "ZOOM": {"spendMeta": 2177, "revMeta": 205, "spendTech": 2177, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}}}, "New Publishers BR": {"spendMeta": 15820, "revMeta": 4408, "publishers": {"CVC": {"spendMeta": 4400, "revMeta": 880, "spendTech": 2200, "spendNetwork": 2200, "trTech": 0.1, "trNetwork": 0.1}, "Livelo": {"spendMeta": 2420, "revMeta": 726, "spendTech": 0, "spendNetwork": 2420, "trTech": 0.1, "trNetwork": 0.1}, "C&A": {"spendMeta": 5500, "revMeta": 1650, "spendTech": 2200, "spendNetwork": 3300, "trTech": 0.1, "trNetwork": 0.1}, "On City": {"spendMeta": 2400, "revMeta": 960, "spendTech": 0, "spendNetwork": 2400, "trTech": 0.1, "trNetwork": 0.1}, "Santander Esfera": {"spendMeta": 0, "revMeta": 0, "spendTech": 0, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.1}, "TotalPass": {"spendMeta": 1100, "revMeta": 192, "spendTech": 550, "spendNetwork": 550, "trTech": 0.1, "trNetwork": 0.1}}}, "Long Tail": {"spendMeta": 2162497, "revMeta": 311400, "publishers": {}}, "Soft Launch New Publishers BR": {"spendMeta": 0, "revMeta": 0, "publishers": {}}, "Instore + Offsite": {"spendMeta": 400000, "revMeta": 107500, "publishers": {"Offsite": {"spendMeta": 250000, "revMeta": 62500, "spendTech": 0, "spendNetwork": 250000, "trTech": 0, "trNetwork": 0.2}, "Instore": {"spendMeta": 150000, "revMeta": 45000, "spendTech": 0, "spendNetwork": 150000, "trTech": 0, "trNetwork": 0.3}}}, "Performance Fee": {"spendMeta": 0, "revMeta": 77175, "publishers": {}}, "Other Incomes": {"spendMeta": 0, "revMeta": 235000, "publishers": {}}},
-  "2026-09": {"Electronics": {"spendMeta": 7905387, "revMeta": 838500, "publishers": {"CASAS BAHIA ADS": {"spendMeta": 4717944, "revMeta": 471794, "spendTech": 4687945, "spendNetwork": 29999, "trTech": 0.085, "trNetwork": 0.085}, "KABUM": {"spendMeta": 1998557, "revMeta": 150000, "spendTech": 1966663, "spendNetwork": 31894, "trTech": 0.07, "trNetwork": 0.18}, "BEMOL": {"spendMeta": 940935, "revMeta": 187487, "spendTech": 872979, "spendNetwork": 67955, "trTech": 0.19, "trNetwork": 0.2}, "FAST SHOP": {"spendMeta": 111474, "revMeta": 7008, "spendTech": 84903, "spendNetwork": 26571, "trTech": 0.05, "trNetwork": 0.15}, "AMERICANAS": {"spendMeta": 136192, "revMeta": 22126, "spendTech": 80748, "spendNetwork": 55444, "trTech": 0.15, "trNetwork": 0.25}, "ELETRO ANGELONI": {"spendMeta": 285, "revMeta": 85, "spendTech": 0, "spendNetwork": 285, "trTech": 0.0, "trNetwork": 0.3}}}, "Pharma": {"spendMeta": 10427907, "revMeta": 1848690, "publishers": {"DROGARIA SÃO PAULO ADS": {"spendMeta": 6031098, "revMeta": 1170777, "spendTech": 251506, "spendNetwork": 5779592, "trTech": 0.1, "trNetwork": 0.2}, "PAGUE MENOS": {"spendMeta": 3015549, "revMeta": 367897, "spendTech": 125753, "spendNetwork": 2889796, "trTech": 0.09, "trNetwork": 0.09}, "PANVEL": {"spendMeta": 1267992, "revMeta": 253598, "spendTech": 227625, "spendNetwork": 1040367, "trTech": 0.1, "trNetwork": 0.27}, "DROGAL ADS": {"spendMeta": 113268, "revMeta": 56418, "spendTech": 0, "spendNetwork": 113268, "trTech": 0.0, "trNetwork": 0.5}}}, "Beauty": {"spendMeta": 748596, "revMeta": 61686, "publishers": {"SEPHORA ADS PUBLISHER": {"spendMeta": 669417, "revMeta": 53702, "spendTech": 581826, "spendNetwork": 87591, "trTech": 0.045, "trNetwork": 0.18}, "AMOBELEZA": {"spendMeta": 552, "revMeta": 83, "spendTech": 0, "spendNetwork": 552, "trTech": 0.3, "trNetwork": 0.3}, "ÉPOCA COSMÉTICOS ADS": {"spendMeta": 78627, "revMeta": 7901, "spendTech": 0, "spendNetwork": 78627, "trTech": 0.1, "trNetwork": 0.1}}}, "Home Center": {"spendMeta": 297993, "revMeta": 28053, "publishers": {"LEROY MERLIN": {"spendMeta": 119933, "revMeta": 12014, "spendTech": 119933, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.16}, "MADEIRA ADS": {"spendMeta": 178060, "revMeta": 16039, "spendTech": 178060, "spendNetwork": 0, "trTech": 0.09, "trNetwork": 0.09}}}, "Groceries": {"spendMeta": 114032, "revMeta": 26093, "publishers": {"Super Nosso": {"spendMeta": 21850, "revMeta": 3269, "spendTech": 19, "spendNetwork": 21831, "trTech": 0.05, "trNetwork": 0.15}, "PREZUNIC": {"spendMeta": 45567, "revMeta": 13494, "spendTech": 0, "spendNetwork": 45567, "trTech": 0.2, "trNetwork": 0.25}, "SUPERMERCADO SAVEGNAGO": {"spendMeta": 5350, "revMeta": 799, "spendTech": 126, "spendNetwork": 5223, "trTech": 0.1, "trNetwork": 0.15}, "ZONA SUL ADS": {"spendMeta": 17001, "revMeta": 3397, "spendTech": 0, "spendNetwork": 17001, "trTech": 0.0, "trNetwork": 0.2}, "SUPER ANGELONI": {"spendMeta": 4898, "revMeta": 1440, "spendTech": 0, "spendNetwork": 4898, "trTech": 0.1, "trNetwork": 0.3}, "GBARBOSA": {"spendMeta": 14107, "revMeta": 2116, "spendTech": 0, "spendNetwork": 14107, "trTech": 0.2, "trNetwork": 0.25}, "SUPER MUFFATO DELIVERY": {"spendMeta": 5259, "revMeta": 1578, "spendTech": 0, "spendNetwork": 5259, "trTech": 0.2, "trNetwork": 0.2}}}, "LATAM": {"spendMeta": 1896641, "revMeta": 321806, "publishers": {"FARMACITY CONECT": {"spendMeta": 1896641, "revMeta": 321806, "spendTech": 1896641, "spendNetwork": 0, "trTech": 0.135, "trNetwork": 0.1}}}, "Others Segments": {"spendMeta": 6185, "revMeta": 588, "publishers": {"BUSCAPE": {"spendMeta": 3899, "revMeta": 372, "spendTech": 3899, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}, "ZOOM": {"spendMeta": 2286, "revMeta": 216, "spendTech": 2286, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}}}, "New Publishers BR": {"spendMeta": 17642, "revMeta": 4946, "publishers": {"CVC": {"spendMeta": 4840, "revMeta": 968, "spendTech": 2420, "spendNetwork": 2420, "trTech": 0.1, "trNetwork": 0.1}, "Livelo": {"spendMeta": 2662, "revMeta": 799, "spendTech": 0, "spendNetwork": 2662, "trTech": 0.1, "trNetwork": 0.1}, "C&A": {"spendMeta": 6050, "revMeta": 1815, "spendTech": 2420, "spendNetwork": 3630, "trTech": 0.1, "trNetwork": 0.1}, "On City": {"spendMeta": 2880, "revMeta": 1152, "spendTech": 0, "spendNetwork": 2880, "trTech": 0.1, "trNetwork": 0.1}, "Santander Esfera": {"spendMeta": 0, "revMeta": 0, "spendTech": 0, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.1}, "TotalPass": {"spendMeta": 1210, "revMeta": 212, "spendTech": 605, "spendNetwork": 605, "trTech": 0.1, "trNetwork": 0.1}}}, "Long Tail": {"spendMeta": 2378747, "revMeta": 342540, "publishers": {}}, "Soft Launch New Publishers BR": {"spendMeta": 0, "revMeta": 0, "publishers": {}}, "Instore + Offsite": {"spendMeta": 830000, "revMeta": 224000, "publishers": {"Offsite": {"spendMeta": 500000, "revMeta": 125000, "spendTech": 0, "spendNetwork": 500000, "trTech": 0, "trNetwork": 0.2}, "Instore": {"spendMeta": 330000, "revMeta": 99000, "spendTech": 0, "spendNetwork": 330000, "trTech": 0, "trNetwork": 0.3}}}, "Performance Fee": {"spendMeta": 0, "revMeta": 81034, "publishers": {}}, "Other Incomes": {"spendMeta": 0, "revMeta": 235000, "publishers": {}}},
-  "2026-10": {"Electronics": {"spendMeta": 8418879, "revMeta": 904796, "publishers": {"CASAS BAHIA ADS": {"spendMeta": 4958341, "revMeta": 495834, "spendTech": 4922342, "spendNetwork": 35999, "trTech": 0.085, "trNetwork": 0.085}, "KABUM": {"spendMeta": 2050913, "revMeta": 150000, "spendTech": 2015830, "spendNetwork": 35083, "trTech": 0.07, "trNetwork": 0.18}, "BEMOL": {"spendMeta": 1129122, "revMeta": 224984, "spendTech": 1047575, "spendNetwork": 81546, "trTech": 0.19, "trNetwork": 0.2}, "FAST SHOP": {"spendMeta": 116788, "revMeta": 7342, "spendTech": 84903, "spendNetwork": 31885, "trTech": 0.05, "trNetwork": 0.15}, "AMERICANAS": {"spendMeta": 163430, "revMeta": 26551, "spendTech": 96898, "spendNetwork": 66533, "trTech": 0.15, "trNetwork": 0.25}, "ELETRO ANGELONI": {"spendMeta": 285, "revMeta": 85, "spendTech": 0, "spendNetwork": 285, "trTech": 0.0, "trNetwork": 0.3}}}, "Pharma": {"spendMeta": 12804572, "revMeta": 2262335, "publishers": {"DROGARIA SÃO PAULO ADS": {"spendMeta": 7443351, "revMeta": 1444929, "spendTech": 276657, "spendNetwork": 7166695, "trTech": 0.1, "trNetwork": 0.2}, "PAGUE MENOS": {"spendMeta": 3721676, "revMeta": 454044, "spendTech": 138328, "spendNetwork": 3583347, "trTech": 0.09, "trNetwork": 0.09}, "PANVEL": {"spendMeta": 1520613, "revMeta": 304123, "spendTech": 261769, "spendNetwork": 1258844, "trTech": 0.1, "trNetwork": 0.27}, "DROGAL ADS": {"spendMeta": 118932, "revMeta": 59239, "spendTech": 0, "spendNetwork": 118932, "trTech": 0.0, "trNetwork": 0.5}}}, "Beauty": {"spendMeta": 822594, "revMeta": 67943, "publishers": {"SEPHORA ADS PUBLISHER": {"spendMeta": 727663, "revMeta": 58375, "spendTech": 622553, "spendNetwork": 105109, "trTech": 0.045, "trNetwork": 0.18}, "AMOBELEZA": {"spendMeta": 579, "revMeta": 87, "spendTech": 0, "spendNetwork": 579, "trTech": 0.3, "trNetwork": 0.3}, "ÉPOCA COSMÉTICOS ADS": {"spendMeta": 94352, "revMeta": 9481, "spendTech": 0, "spendNetwork": 94352, "trTech": 0.1, "trNetwork": 0.1}}}, "Home Center": {"spendMeta": 318889, "revMeta": 30056, "publishers": {"LEROY MERLIN": {"spendMeta": 131927, "revMeta": 13215, "spendTech": 131927, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.16}, "MADEIRA ADS": {"spendMeta": 186962, "revMeta": 16841, "spendTech": 186962, "spendNetwork": 0, "trTech": 0.09, "trNetwork": 0.09}}}, "Groceries": {"spendMeta": 136837, "revMeta": 31312, "publishers": {"Super Nosso": {"spendMeta": 26219, "revMeta": 3923, "spendTech": 22, "spendNetwork": 26197, "trTech": 0.05, "trNetwork": 0.15}, "PREZUNIC": {"spendMeta": 54681, "revMeta": 16193, "spendTech": 0, "spendNetwork": 54681, "trTech": 0.2, "trNetwork": 0.25}, "SUPERMERCADO SAVEGNAGO": {"spendMeta": 6420, "revMeta": 959, "spendTech": 152, "spendNetwork": 6268, "trTech": 0.1, "trNetwork": 0.15}, "ZONA SUL ADS": {"spendMeta": 20402, "revMeta": 4077, "spendTech": 0, "spendNetwork": 20402, "trTech": 0.0, "trNetwork": 0.2}, "SUPER ANGELONI": {"spendMeta": 5877, "revMeta": 1728, "spendTech": 0, "spendNetwork": 5877, "trTech": 0.1, "trNetwork": 0.3}, "GBARBOSA": {"spendMeta": 16928, "revMeta": 2539, "spendTech": 0, "spendNetwork": 16928, "trTech": 0.2, "trNetwork": 0.25}, "SUPER MUFFATO DELIVERY": {"spendMeta": 6310, "revMeta": 1893, "spendTech": 0, "spendNetwork": 6310, "trTech": 0.2, "trNetwork": 0.2}}}, "LATAM": {"spendMeta": 2086305, "revMeta": 353986, "publishers": {"FARMACITY CONECT": {"spendMeta": 2086305, "revMeta": 353986, "spendTech": 2086305, "spendNetwork": 0, "trTech": 0.135, "trNetwork": 0.1}}}, "Others Segments": {"spendMeta": 6495, "revMeta": 617, "publishers": {"BUSCAPE": {"spendMeta": 4094, "revMeta": 391, "spendTech": 4094, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}, "ZOOM": {"spendMeta": 2401, "revMeta": 226, "spendTech": 2401, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}}}, "New Publishers BR": {"spendMeta": 19694, "revMeta": 5554, "publishers": {"CVC": {"spendMeta": 5324, "revMeta": 1065, "spendTech": 2662, "spendNetwork": 2662, "trTech": 0.1, "trNetwork": 0.1}, "Livelo": {"spendMeta": 2928, "revMeta": 878, "spendTech": 0, "spendNetwork": 2928, "trTech": 0.1, "trNetwork": 0.1}, "C&A": {"spendMeta": 6655, "revMeta": 1996, "spendTech": 2662, "spendNetwork": 3993, "trTech": 0.1, "trNetwork": 0.1}, "On City": {"spendMeta": 3456, "revMeta": 1382, "spendTech": 0, "spendNetwork": 3456, "trTech": 0.1, "trNetwork": 0.1}, "Santander Esfera": {"spendMeta": 0, "revMeta": 0, "spendTech": 0, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.1}, "TotalPass": {"spendMeta": 1331, "revMeta": 233, "spendTech": 666, "spendNetwork": 666, "trTech": 0.1, "trNetwork": 0.1}}}, "Long Tail": {"spendMeta": 2616621, "revMeta": 376793, "publishers": {}}, "Soft Launch New Publishers BR": {"spendMeta": 0, "revMeta": 0, "publishers": {}}, "Instore + Offsite": {"spendMeta": 1344000, "revMeta": 365700, "publishers": {"Offsite": {"spendMeta": 750000, "revMeta": 187500, "spendTech": 0, "spendNetwork": 750000, "trTech": 0, "trNetwork": 0.2}, "Instore": {"spendMeta": 594000, "revMeta": 178200, "spendTech": 0, "spendNetwork": 594000, "trTech": 0, "trNetwork": 0.3}}}, "Performance Fee": {"spendMeta": 0, "revMeta": 121551, "publishers": {}}, "Other Incomes": {"spendMeta": 0, "revMeta": 235000, "publishers": {}}},
-  "2026-11": {"Electronics": {"spendMeta": 22088681, "revMeta": 2499197, "publishers": {"CASAS BAHIA ADS": {"spendMeta": 15347996, "revMeta": 1534800, "spendTech": 15240000, "spendNetwork": 107996, "trTech": 0.085, "trNetwork": 0.085}, "KABUM": {"spendMeta": 3076370, "revMeta": 300000, "spendTech": 3023745, "spendNetwork": 52625, "trTech": 0.07, "trNetwork": 0.18}, "BEMOL": {"spendMeta": 2822804, "revMeta": 562460, "spendTech": 2618938, "spendNetwork": 203866, "trTech": 0.19, "trNetwork": 0.2}, "FAST SHOP": {"spendMeta": 350365, "revMeta": 22027, "spendTech": 254709, "spendNetwork": 95656, "trTech": 0.05, "trNetwork": 0.15}, "AMERICANAS": {"spendMeta": 490291, "revMeta": 79654, "spendTech": 290693, "spendNetwork": 199598, "trTech": 0.15, "trNetwork": 0.25}, "ELETRO ANGELONI": {"spendMeta": 855, "revMeta": 256, "spendTech": 0, "spendNetwork": 855, "trTech": 0.0, "trNetwork": 0.3}}}, "Pharma": {"spendMeta": 20234122, "revMeta": 3610473, "publishers": {"DROGARIA SÃO PAULO ADS": {"spendMeta": 11303355, "revMeta": 2194246, "spendTech": 553313, "spendNetwork": 10750042, "trTech": 0.1, "trNetwork": 0.2}, "PAGUE MENOS": {"spendMeta": 5651678, "revMeta": 689505, "spendTech": 276657, "spendNetwork": 5375021, "trTech": 0.09, "trNetwork": 0.09}, "PANVEL": {"spendMeta": 3041226, "revMeta": 608245, "spendTech": 523537, "spendNetwork": 2517689, "trTech": 0.1, "trNetwork": 0.27}, "DROGAL ADS": {"spendMeta": 237863, "revMeta": 118477, "spendTech": 0, "spendNetwork": 237863, "trTech": 0.0, "trNetwork": 0.5}}}, "Beauty": {"spendMeta": 1645767, "revMeta": 135973, "publishers": {"SEPHORA ADS PUBLISHER": {"spendMeta": 1455325, "revMeta": 116750, "spendTech": 1245107, "spendNetwork": 210218, "trTech": 0.045, "trNetwork": 0.18}, "AMOBELEZA": {"spendMeta": 1738, "revMeta": 261, "spendTech": 0, "spendNetwork": 1738, "trTech": 0.3, "trNetwork": 0.3}, "ÉPOCA COSMÉTICOS ADS": {"spendMeta": 188704, "revMeta": 18962, "spendTech": 0, "spendNetwork": 188704, "trTech": 0.1, "trNetwork": 0.1}}}, "Home Center": {"spendMeta": 956667, "revMeta": 90168, "publishers": {"LEROY MERLIN": {"spendMeta": 395780, "revMeta": 39646, "spendTech": 395780, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.16}, "MADEIRA ADS": {"spendMeta": 560887, "revMeta": 50522, "spendTech": 560887, "spendNetwork": 0, "trTech": 0.09, "trNetwork": 0.09}}}, "Groceries": {"spendMeta": 410512, "revMeta": 93936, "publishers": {"Super Nosso": {"spendMeta": 78658, "revMeta": 11768, "spendTech": 67, "spendNetwork": 78591, "trTech": 0.05, "trNetwork": 0.15}, "PREZUNIC": {"spendMeta": 164042, "revMeta": 48579, "spendTech": 0, "spendNetwork": 164042, "trTech": 0.2, "trNetwork": 0.25}, "SUPERMERCADO SAVEGNAGO": {"spendMeta": 19260, "revMeta": 2878, "spendTech": 455, "spendNetwork": 18804, "trTech": 0.1, "trNetwork": 0.15}, "ZONA SUL ADS": {"spendMeta": 61205, "revMeta": 12230, "spendTech": 0, "spendNetwork": 61205, "trTech": 0.0, "trNetwork": 0.2}, "SUPER ANGELONI": {"spendMeta": 17632, "revMeta": 5185, "spendTech": 0, "spendNetwork": 17632, "trTech": 0.1, "trNetwork": 0.3}, "GBARBOSA": {"spendMeta": 50784, "revMeta": 7617, "spendTech": 0, "spendNetwork": 50784, "trTech": 0.2, "trNetwork": 0.25}, "SUPER MUFFATO DELIVERY": {"spendMeta": 18931, "revMeta": 5679, "spendTech": 0, "spendNetwork": 18931, "trTech": 0.2, "trNetwork": 0.2}}}, "LATAM": {"spendMeta": 4172609, "revMeta": 707972, "publishers": {"FARMACITY CONECT": {"spendMeta": 4172609, "revMeta": 707972, "spendTech": 4172609, "spendNetwork": 0, "trTech": 0.135, "trNetwork": 0.1}}}, "Others Segments": {"spendMeta": 19485, "revMeta": 1851, "publishers": {"BUSCAPE": {"spendMeta": 12283, "revMeta": 1172, "spendTech": 12283, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}, "ZOOM": {"spendMeta": 7202, "revMeta": 679, "spendTech": 7202, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}}}, "New Publishers BR": {"spendMeta": 22008, "revMeta": 6248, "publishers": {"CVC": {"spendMeta": 5856, "revMeta": 1171, "spendTech": 2928, "spendNetwork": 2928, "trTech": 0.1, "trNetwork": 0.1}, "Livelo": {"spendMeta": 3221, "revMeta": 966, "spendTech": 0, "spendNetwork": 3221, "trTech": 0.1, "trNetwork": 0.1}, "C&A": {"spendMeta": 7320, "revMeta": 2196, "spendTech": 2928, "spendNetwork": 4392, "trTech": 0.1, "trNetwork": 0.1}, "On City": {"spendMeta": 4147, "revMeta": 1659, "spendTech": 0, "spendNetwork": 4147, "trTech": 0.1, "trNetwork": 0.1}, "Santander Esfera": {"spendMeta": 0, "revMeta": 0, "spendTech": 0, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.1}, "TotalPass": {"spendMeta": 1464, "revMeta": 256, "spendTech": 732, "spendNetwork": 732, "trTech": 0.1, "trNetwork": 0.1}}}, "Long Tail": {"spendMeta": 5233243, "revMeta": 753587, "publishers": {}}, "Soft Launch New Publishers BR": {"spendMeta": 0, "revMeta": 0, "publishers": {}}, "Instore + Offsite": {"spendMeta": 4782000, "revMeta": 1284600, "publishers": {"Offsite": {"spendMeta": 3000000, "revMeta": 750000, "spendTech": 0, "spendNetwork": 3000000, "trTech": 0, "trNetwork": 0.2}, "Instore": {"spendMeta": 1782000, "revMeta": 534600, "spendTech": 0, "spendNetwork": 1782000, "trTech": 0, "trNetwork": 0.3}}}, "Performance Fee": {"spendMeta": 0, "revMeta": 364652, "publishers": {}}, "Other Incomes": {"spendMeta": 0, "revMeta": 265000, "publishers": {}}},
-  "2026-12": {"Electronics": {"spendMeta": 10739451, "revMeta": 1131236, "publishers": {"CASAS BAHIA ADS": {"spendMeta": 6445843, "revMeta": 644584, "spendTech": 6399045, "spendNetwork": 46798, "trTech": 0.085, "trNetwork": 0.085}, "KABUM": {"spendMeta": 2461096, "revMeta": 150000, "spendTech": 2418996, "spendNetwork": 42100, "trTech": 0.07, "trNetwork": 0.18}, "BEMOL": {"spendMeta": 1467858, "revMeta": 292479, "spendTech": 1361848, "spendNetwork": 106010, "trTech": 0.19, "trNetwork": 0.2}, "FAST SHOP": {"spendMeta": 151825, "revMeta": 9545, "spendTech": 110374, "spendNetwork": 41451, "trTech": 0.05, "trNetwork": 0.15}, "AMERICANAS": {"spendMeta": 212459, "revMeta": 34517, "spendTech": 125967, "spendNetwork": 86493, "trTech": 0.15, "trNetwork": 0.25}, "ELETRO ANGELONI": {"spendMeta": 370, "revMeta": 111, "spendTech": 0, "spendNetwork": 370, "trTech": 0.0, "trNetwork": 0.3}}}, "Pharma": {"spendMeta": 13296435, "revMeta": 2371342, "publishers": {"DROGARIA SÃO PAULO ADS": {"spendMeta": 7443351, "revMeta": 1444929, "spendTech": 276657, "spendNetwork": 7166695, "trTech": 0.1, "trNetwork": 0.2}, "PAGUE MENOS": {"spendMeta": 3721676, "revMeta": 454044, "spendTech": 138328, "spendNetwork": 3583347, "trTech": 0.09, "trNetwork": 0.09}, "PANVEL": {"spendMeta": 1976797, "revMeta": 395359, "spendTech": 340299, "spendNetwork": 1636498, "trTech": 0.1, "trNetwork": 0.27}, "DROGAL ADS": {"spendMeta": 154611, "revMeta": 77010, "spendTech": 0, "spendNetwork": 154611, "trTech": 0.0, "trNetwork": 0.5}}}, "Beauty": {"spendMeta": 1069372, "revMeta": 88326, "publishers": {"SEPHORA ADS PUBLISHER": {"spendMeta": 945961, "revMeta": 75888, "spendTech": 809319, "spendNetwork": 136642, "trTech": 0.045, "trNetwork": 0.18}, "AMOBELEZA": {"spendMeta": 753, "revMeta": 113, "spendTech": 0, "spendNetwork": 753, "trTech": 0.3, "trNetwork": 0.3}, "ÉPOCA COSMÉTICOS ADS": {"spendMeta": 122658, "revMeta": 12325, "spendTech": 0, "spendNetwork": 122658, "trTech": 0.1, "trNetwork": 0.1}}}, "Home Center": {"spendMeta": 414555, "revMeta": 39073, "publishers": {"LEROY MERLIN": {"spendMeta": 171504, "revMeta": 17180, "spendTech": 171504, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.16}, "MADEIRA ADS": {"spendMeta": 243051, "revMeta": 21893, "spendTech": 243051, "spendNetwork": 0, "trTech": 0.09, "trNetwork": 0.09}}}, "Groceries": {"spendMeta": 177888, "revMeta": 40706, "publishers": {"Super Nosso": {"spendMeta": 34085, "revMeta": 5099, "spendTech": 29, "spendNetwork": 34056, "trTech": 0.05, "trNetwork": 0.15}, "PREZUNIC": {"spendMeta": 71085, "revMeta": 21051, "spendTech": 0, "spendNetwork": 71085, "trTech": 0.2, "trNetwork": 0.25}, "SUPERMERCADO SAVEGNAGO": {"spendMeta": 8346, "revMeta": 1247, "spendTech": 197, "spendNetwork": 8149, "trTech": 0.1, "trNetwork": 0.15}, "ZONA SUL ADS": {"spendMeta": 26522, "revMeta": 5300, "spendTech": 0, "spendNetwork": 26522, "trTech": 0.0, "trNetwork": 0.2}, "SUPER ANGELONI": {"spendMeta": 7641, "revMeta": 2247, "spendTech": 0, "spendNetwork": 7641, "trTech": 0.1, "trNetwork": 0.3}, "GBARBOSA": {"spendMeta": 22006, "revMeta": 3301, "spendTech": 0, "spendNetwork": 22006, "trTech": 0.2, "trNetwork": 0.25}, "SUPER MUFFATO DELIVERY": {"spendMeta": 8203, "revMeta": 2461, "spendTech": 0, "spendNetwork": 8203, "trTech": 0.2, "trNetwork": 0.2}}}, "LATAM": {"spendMeta": 2712196, "revMeta": 460182, "publishers": {"FARMACITY CONECT": {"spendMeta": 2712196, "revMeta": 460182, "spendTech": 2712196, "spendNetwork": 0, "trTech": 0.135, "trNetwork": 0.1}}}, "Others Segments": {"spendMeta": 8444, "revMeta": 802, "publishers": {"BUSCAPE": {"spendMeta": 5323, "revMeta": 508, "spendTech": 5323, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}, "ZOOM": {"spendMeta": 3121, "revMeta": 294, "spendTech": 3121, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.0}}}, "New Publishers BR": {"spendMeta": 24626, "revMeta": 7040, "publishers": {"CVC": {"spendMeta": 6442, "revMeta": 1288, "spendTech": 3221, "spendNetwork": 3221, "trTech": 0.1, "trNetwork": 0.1}, "Livelo": {"spendMeta": 3543, "revMeta": 1063, "spendTech": 0, "spendNetwork": 3543, "trTech": 0.1, "trNetwork": 0.1}, "C&A": {"spendMeta": 8053, "revMeta": 2416, "spendTech": 3221, "spendNetwork": 4832, "trTech": 0.1, "trNetwork": 0.1}, "On City": {"spendMeta": 4977, "revMeta": 1991, "spendTech": 0, "spendNetwork": 4977, "trTech": 0.1, "trNetwork": 0.1}, "Santander Esfera": {"spendMeta": 0, "revMeta": 0, "spendTech": 0, "spendNetwork": 0, "trTech": 0.1, "trNetwork": 0.1}, "TotalPass": {"spendMeta": 1611, "revMeta": 282, "spendTech": 805, "spendNetwork": 805, "trTech": 0.1, "trNetwork": 0.1}}}, "Long Tail": {"spendMeta": 3401608, "revMeta": 489832, "publishers": {}}, "Soft Launch New Publishers BR": {"spendMeta": 0, "revMeta": 0, "publishers": {}}, "Instore + Offsite": {"spendMeta": 1747200, "revMeta": 475410, "publishers": {"Offsite": {"spendMeta": 975000, "revMeta": 243750, "spendTech": 0, "spendNetwork": 975000, "trTech": 0, "trNetwork": 0.2}, "Instore": {"spendMeta": 772200, "revMeta": 231660, "spendTech": 0, "spendNetwork": 772200, "trTech": 0, "trNetwork": 0.3}}}, "Performance Fee": {"spendMeta": 0, "revMeta": 158016, "publishers": {}}, "Other Incomes": {"spendMeta": 0, "revMeta": 235000, "publishers": {}}},
+  "2026-08": {
+    "Electronics": { spendMeta: 7442336, revMeta: 780463, publishers: {
+      "CASAS BAHIA ADS": { spendMeta: 4489709, revMeta: 448971, spendTech: 4464710, spendNetwork: 24999, trTech: 0.085, trNetwork: 0.085 },
+      "KABUM": { spendMeta: 1947691, revMeta: 150000, spendTech: 1918696, spendNetwork: 28995, trTech: 0.07, trNetwork: 0.18 },
+      "BEMOL": { spendMeta: 784112, revMeta: 156239, spendTech: 727483, spendNetwork: 56629, trTech: 0.19, trNetwork: 0.2 },
+      "FAST SHOP": { spendMeta: 107046, revMeta: 6730, spendTech: 84903, spendNetwork: 22143, trTech: 0.05, trNetwork: 0.15 },
+      "AMERICANAS": { spendMeta: 113493, revMeta: 18438, spendTech: 67290, spendNetwork: 46203, trTech: 0.15, trNetwork: 0.25 },
+      "ELETRO ANGELONI": { spendMeta: 285, revMeta: 85, spendTech: 0, spendNetwork: 285, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Pharma": { spendMeta: 7477412, revMeta: 1387972, publishers: {
+      "DROGARIA SÃO PAULO ADS": { spendMeta: 4889603, revMeta: 949186, spendTech: 228642, spendNetwork: 4660962, trTech: 0.1, trNetwork: 0.2 },
+      "PAGUE MENOS": { spendMeta: 1422193, revMeta: 173507, spendTech: 175523, spendNetwork: 1246670, trTech: 0.09, trNetwork: 0.09 },
+      "PANVEL": { spendMeta: 1057742, revMeta: 211548, spendTech: 197935, spendNetwork: 859808, trTech: 0.1, trNetwork: 0.27 },
+      "DROGAL ADS": { spendMeta: 107874, revMeta: 53731, spendTech: 0, spendNetwork: 107874, trTech: 0, trNetwork: 0.5 }
+    } },
+    "Beauty": { spendMeta: 682803, revMeta: 56141, publishers: {
+      "SEPHORA ADS PUBLISHER": { spendMeta: 616755, revMeta: 49478, spendTech: 543762, spendNetwork: 72992, trTech: 0.045, trNetwork: 0.18 },
+      "AMOBELEZA": { spendMeta: 526, revMeta: 79, spendTech: 0, spendNetwork: 526, trTech: 0.3, trNetwork: 0.3 },
+      "ÉPOCA COSMÉTICOS ADS": { spendMeta: 65522, revMeta: 6584, spendTech: 0, spendNetwork: 65522, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Home Center": { spendMeta: 278610, revMeta: 26197, publishers: {
+      "LEROY MERLIN": { spendMeta: 109030, revMeta: 10922, spendTech: 109030, spendNetwork: 0, trTech: 0.1, trNetwork: 0.16 },
+      "MADEIRA ADS": { spendMeta: 169580, revMeta: 15275, spendTech: 169580, spendNetwork: 0, trTech: 0.09, trNetwork: 0.09 }
+    } },
+    "Groceries": { spendMeta: 95027, revMeta: 21744, publishers: {
+      "Super Nosso": { spendMeta: 18208, revMeta: 2724, spendTech: 16, spendNetwork: 18192, trTech: 0.05, trNetwork: 0.15 },
+      "PREZUNIC": { spendMeta: 37973, revMeta: 11245, spendTech: 0, spendNetwork: 37973, trTech: 0.2, trNetwork: 0.25 },
+      "SUPERMERCADO SAVEGNAGO": { spendMeta: 4458, revMeta: 666, spendTech: 105, spendNetwork: 4353, trTech: 0.1, trNetwork: 0.15 },
+      "ZONA SUL ADS": { spendMeta: 14168, revMeta: 2831, spendTech: 0, spendNetwork: 14168, trTech: 0, trNetwork: 0.2 },
+      "SUPER ANGELONI": { spendMeta: 4082, revMeta: 1200, spendTech: 0, spendNetwork: 4082, trTech: 0.1, trNetwork: 0.3 },
+      "GBARBOSA": { spendMeta: 11756, revMeta: 1763, spendTech: 0, spendNetwork: 11756, trTech: 0.2, trNetwork: 0.25 },
+      "SUPER MUFFATO DELIVERY": { spendMeta: 4382, revMeta: 1315, spendTech: 0, spendNetwork: 4382, trTech: 0.2, trNetwork: 0.2 }
+    } },
+    "LATAM": { spendMeta: 1724219, revMeta: 292551, publishers: {
+      "FARMACITY CONECT": { spendMeta: 1724219, revMeta: 292551, spendTech: 1724219, spendNetwork: 0, trTech: 0.135, trNetwork: 0.1 }
+    } },
+    "Others Segments": { spendMeta: 5891, revMeta: 559, publishers: {
+      "BUSCAPE": { spendMeta: 3714, revMeta: 354, spendTech: 3714, spendNetwork: 0, trTech: 0.1, trNetwork: 0 },
+      "ZOOM": { spendMeta: 2177, revMeta: 205, spendTech: 2177, spendNetwork: 0, trTech: 0.1, trNetwork: 0 }
+    } },
+    "New Publishers BR": { spendMeta: 15820, revMeta: 4408, publishers: {
+      "CVC": { spendMeta: 4400, revMeta: 880, spendTech: 2200, spendNetwork: 2200, trTech: 0.1, trNetwork: 0.1 },
+      "Livelo": { spendMeta: 2420, revMeta: 726, spendTech: 0, spendNetwork: 2420, trTech: 0.1, trNetwork: 0.1 },
+      "C&A": { spendMeta: 5500, revMeta: 1650, spendTech: 2200, spendNetwork: 3300, trTech: 0.1, trNetwork: 0.1 },
+      "On City": { spendMeta: 2400, revMeta: 960, spendTech: 0, spendNetwork: 2400, trTech: 0.1, trNetwork: 0.1 },
+      "Santander Esfera": { spendMeta: 0, revMeta: 0, spendTech: 0, spendNetwork: 0, trTech: 0.1, trNetwork: 0.1 },
+      "TotalPass": { spendMeta: 1100, revMeta: 192, spendTech: 550, spendNetwork: 550, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Long Tail": { spendMeta: 2162497, revMeta: 311400, publishers: {} },
+    "Soft Launch New Publishers BR": { spendMeta: 0, revMeta: 0, publishers: {} },
+    "Instore + Offsite": { spendMeta: 400000, revMeta: 107500, publishers: {
+      "Offsite": { spendMeta: 250000, revMeta: 62500, spendTech: 0, spendNetwork: 250000, trTech: 0, trNetwork: 0.2 },
+      "Instore": { spendMeta: 150000, revMeta: 45000, spendTech: 0, spendNetwork: 150000, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Performance Fee": { spendMeta: 0, revMeta: 77175, publishers: {} },
+    "Other Incomes": { spendMeta: 0, revMeta: 235000, publishers: {} }
+  },
+  "2026-09": {
+    "Electronics": { spendMeta: 4658733, revMeta: 426957, publishers: {
+      "CASAS BAHIA ADS": { spendMeta: 1779999, revMeta: 137961, spendTech: 1750000, spendNetwork: 29999, trTech: 0.085, trNetwork: 0.085 },
+      "KABUM": { spendMeta: 1998557, revMeta: 150000, spendTech: 1966663, spendNetwork: 31894, trTech: 0.07, trNetwork: 0.18 },
+      "BEMOL": { spendMeta: 632226, revMeta: 109679, spendTech: 603969, spendNetwork: 28257, trTech: 0.19, trNetwork: 0.2 },
+      "FAST SHOP": { spendMeta: 111474, revMeta: 7130, spendTech: 84903, spendNetwork: 26571, trTech: 0.05, trNetwork: 0.15 },
+      "AMERICANAS": { spendMeta: 136192, revMeta: 22121, spendTech: 80748, spendNetwork: 55444, trTech: 0.15, trNetwork: 0.25 },
+      "ELETRO ANGELONI": { spendMeta: 285, revMeta: 66, spendTech: 0, spendNetwork: 285, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Pharma": { spendMeta: 8484484, revMeta: 1679142, publishers: {
+      "DROGARIA SÃO PAULO ADS": { spendMeta: 5847063, revMeta: 1189923, spendTech: 852063, spendNetwork: 4995000, trTech: 0.1, trNetwork: 0.2 },
+      "PAGUE MENOS": { spendMeta: 1424547, revMeta: 146654, spendTech: 201851, spendNetwork: 1222696, trTech: 0.09, trNetwork: 0.09 },
+      "PANVEL": { spendMeta: 1064236, revMeta: 276701, spendTech: 247418, spendNetwork: 816817, trTech: 0.1, trNetwork: 0.27 },
+      "DROGAL ADS": { spendMeta: 148639, revMeta: 65864, spendTech: 0, spendNetwork: 148639, trTech: 0, trNetwork: 0.5 }
+    } },
+    "Beauty": { spendMeta: 748595, revMeta: 38530, publishers: {
+      "SEPHORA ADS PUBLISHER": { spendMeta: 669417, revMeta: 38437, spendTech: 581826, spendNetwork: 87591, trTech: 0.045, trNetwork: 0.18 },
+      "AMOBELEZA": { spendMeta: 552, revMeta: 94, spendTech: 0, spendNetwork: 552, trTech: 0.3, trNetwork: 0.3 },
+      "ÉPOCA COSMÉTICOS ADS": { spendMeta: 78627, revMeta: 0, spendTech: 0, spendNetwork: 78627, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Home Center": { spendMeta: 297993, revMeta: 28480, publishers: {
+      "LEROY MERLIN": { spendMeta: 119933, revMeta: 13389, spendTech: 119933, spendNetwork: 0, trTech: 0.1, trNetwork: 0.16 },
+      "MADEIRA ADS": { spendMeta: 178060, revMeta: 15091, spendTech: 178060, spendNetwork: 0, trTech: 0.09, trNetwork: 0.09 }
+    } },
+    "Groceries": { spendMeta: 114031, revMeta: 25322, publishers: {
+      "Super Nosso": { spendMeta: 21850, revMeta: 3411, spendTech: 19, spendNetwork: 21831, trTech: 0.05, trNetwork: 0.15 },
+      "PREZUNIC": { spendMeta: 45567, revMeta: 11209, spendTech: 0, spendNetwork: 45567, trTech: 0.2, trNetwork: 0.25 },
+      "SUPERMERCADO SAVEGNAGO": { spendMeta: 5350, revMeta: 801, spendTech: 126, spendNetwork: 5223, trTech: 0.1, trNetwork: 0.15 },
+      "ZONA SUL ADS": { spendMeta: 17001, revMeta: 3637, spendTech: 0, spendNetwork: 17001, trTech: 0, trNetwork: 0.2 },
+      "SUPER ANGELONI": { spendMeta: 4898, revMeta: 1136, spendTech: 0, spendNetwork: 4898, trTech: 0.1, trNetwork: 0.3 },
+      "GBARBOSA": { spendMeta: 14107, revMeta: 3591, spendTech: 0, spendNetwork: 14107, trTech: 0.2, trNetwork: 0.25 },
+      "SUPER MUFFATO DELIVERY": { spendMeta: 5259, revMeta: 1537, spendTech: 0, spendNetwork: 5259, trTech: 0.2, trNetwork: 0.2 }
+    } },
+    "LATAM": { spendMeta: 639450, revMeta: 86326, publishers: {
+      "FARMACITY CONECT": { spendMeta: 639450, revMeta: 86326, spendTech: 639450, spendNetwork: 0, trTech: 0.135, trNetwork: 0.1 }
+    } },
+    "Others Segments": { spendMeta: 6186, revMeta: 618, publishers: {
+      "BUSCAPE": { spendMeta: 3899, revMeta: 388, spendTech: 3899, spendNetwork: 0, trTech: 0.1, trNetwork: 0 },
+      "ZOOM": { spendMeta: 2286, revMeta: 230, spendTech: 2286, spendNetwork: 0, trTech: 0.1, trNetwork: 0 }
+    } },
+    "New Publishers BR": { spendMeta: 17642, revMeta: 4946, publishers: {
+      "CVC": { spendMeta: 4840, revMeta: 968, spendTech: 2420, spendNetwork: 2420, trTech: 0.1, trNetwork: 0.1 },
+      "Livelo": { spendMeta: 2662, revMeta: 799, spendTech: 0, spendNetwork: 2662, trTech: 0.1, trNetwork: 0.1 },
+      "C&A": { spendMeta: 6050, revMeta: 1815, spendTech: 2420, spendNetwork: 3630, trTech: 0.1, trNetwork: 0.1 },
+      "On City": { spendMeta: 2880, revMeta: 1152, spendTech: 0, spendNetwork: 2880, trTech: 0.1, trNetwork: 0.1 },
+      "Santander Esfera": { spendMeta: 0, revMeta: 0, spendTech: 0, spendNetwork: 0, trTech: 0.1, trNetwork: 0.1 },
+      "TotalPass": { spendMeta: 1210, revMeta: 212, spendTech: 605, spendNetwork: 605, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Long Tail": { spendMeta: 1238521, revMeta: 109983, publishers: {} },
+    "Soft Launch New Publishers BR": { spendMeta: 0, revMeta: 0, publishers: {} },
+    "Instore + Offsite": { spendMeta: 830000, revMeta: 204397, publishers: {
+      "Offsite": { spendMeta: 446030, revMeta: 89206, spendTech: 0, spendNetwork: 446030, trTech: 0, trNetwork: 0.2 },
+      "Instore": { spendMeta: 383970, revMeta: 115191, spendTech: 0, spendNetwork: 383970, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Performance Fee": { spendMeta: 0, revMeta: 81034, publishers: {} },
+    "Other Incomes": { spendMeta: 0, revMeta: 235000, publishers: {} }
+  },
+  "2026-10": {
+    "Electronics": { spendMeta: 4812864, revMeta: 443154, publishers: {
+      "CASAS BAHIA ADS": { spendMeta: 1785999, revMeta: 138426, spendTech: 1750000, spendNetwork: 35999, trTech: 0.085, trNetwork: 0.085 },
+      "KABUM": { spendMeta: 2050913, revMeta: 150000, spendTech: 2015830, spendNetwork: 35083, trTech: 0.07, trNetwork: 0.18 },
+      "BEMOL": { spendMeta: 695448, revMeta: 120647, spendTech: 664366, spendNetwork: 31082, trTech: 0.19, trNetwork: 0.2 },
+      "FAST SHOP": { spendMeta: 116788, revMeta: 7470, spendTech: 84903, spendNetwork: 31885, trTech: 0.05, trNetwork: 0.15 },
+      "AMERICANAS": { spendMeta: 163430, revMeta: 26545, spendTech: 96898, spendNetwork: 66533, trTech: 0.15, trNetwork: 0.25 },
+      "ELETRO ANGELONI": { spendMeta: 285, revMeta: 66, spendTech: 0, spendNetwork: 285, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Pharma": { spendMeta: 8746289, revMeta: 1698203, publishers: {
+      "DROGARIA SÃO PAULO ADS": { spendMeta: 4972158, revMeta: 1011873, spendTech: 739988, spendNetwork: 4232170, trTech: 0.1, trNetwork: 0.2 },
+      "PAGUE MENOS": { spendMeta: 2330317, revMeta: 279638, spendTech: 312869, spendNetwork: 2017448, trTech: 0.09, trNetwork: 0.09 },
+      "PANVEL": { spendMeta: 1272880, revMeta: 330949, spendTech: 284531, spendNetwork: 988349, trTech: 0.1, trNetwork: 0.27 },
+      "DROGAL ADS": { spendMeta: 170934, revMeta: 75743, spendTech: 0, spendNetwork: 170934, trTech: 0, trNetwork: 0.5 }
+    } },
+    "Beauty": { spendMeta: 822594, revMeta: 41880, publishers: {
+      "SEPHORA ADS PUBLISHER": { spendMeta: 727663, revMeta: 41781, spendTech: 622553, spendNetwork: 105109, trTech: 0.045, trNetwork: 0.18 },
+      "AMOBELEZA": { spendMeta: 579, revMeta: 98, spendTech: 0, spendNetwork: 579, trTech: 0.3, trNetwork: 0.3 },
+      "ÉPOCA COSMÉTICOS ADS": { spendMeta: 94352, revMeta: 0, spendTech: 0, spendNetwork: 94352, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Home Center": { spendMeta: 318889, revMeta: 30573, publishers: {
+      "LEROY MERLIN": { spendMeta: 131927, revMeta: 14727, spendTech: 131927, spendNetwork: 0, trTech: 0.1, trNetwork: 0.16 },
+      "MADEIRA ADS": { spendMeta: 186962, revMeta: 15846, spendTech: 186962, spendNetwork: 0, trTech: 0.09, trNetwork: 0.09 }
+    } },
+    "Groceries": { spendMeta: 136838, revMeta: 30386, publishers: {
+      "Super Nosso": { spendMeta: 26219, revMeta: 4093, spendTech: 22, spendNetwork: 26197, trTech: 0.05, trNetwork: 0.15 },
+      "PREZUNIC": { spendMeta: 54681, revMeta: 13451, spendTech: 0, spendNetwork: 54681, trTech: 0.2, trNetwork: 0.25 },
+      "SUPERMERCADO SAVEGNAGO": { spendMeta: 6420, revMeta: 961, spendTech: 152, spendNetwork: 6268, trTech: 0.1, trNetwork: 0.15 },
+      "ZONA SUL ADS": { spendMeta: 20402, revMeta: 4365, spendTech: 0, spendNetwork: 20402, trTech: 0, trNetwork: 0.2 },
+      "SUPER ANGELONI": { spendMeta: 5877, revMeta: 1363, spendTech: 0, spendNetwork: 5877, trTech: 0.1, trNetwork: 0.3 },
+      "GBARBOSA": { spendMeta: 16928, revMeta: 4309, spendTech: 0, spendNetwork: 16928, trTech: 0.2, trNetwork: 0.25 },
+      "SUPER MUFFATO DELIVERY": { spendMeta: 6310, revMeta: 1845, spendTech: 0, spendNetwork: 6310, trTech: 0.2, trNetwork: 0.2 }
+    } },
+    "LATAM": { spendMeta: 671422, revMeta: 90642, publishers: {
+      "FARMACITY CONECT": { spendMeta: 671422, revMeta: 90642, spendTech: 671422, spendNetwork: 0, trTech: 0.135, trNetwork: 0.1 }
+    } },
+    "Others Segments": { spendMeta: 6495, revMeta: 648, publishers: {
+      "BUSCAPE": { spendMeta: 4094, revMeta: 407, spendTech: 4094, spendNetwork: 0, trTech: 0.1, trNetwork: 0 },
+      "ZOOM": { spendMeta: 2401, revMeta: 241, spendTech: 2401, spendNetwork: 0, trTech: 0.1, trNetwork: 0 }
+    } },
+    "New Publishers BR": { spendMeta: 19694, revMeta: 5555, publishers: {
+      "CVC": { spendMeta: 5324, revMeta: 1065, spendTech: 2662, spendNetwork: 2662, trTech: 0.1, trNetwork: 0.1 },
+      "Livelo": { spendMeta: 2928, revMeta: 878, spendTech: 0, spendNetwork: 2928, trTech: 0.1, trNetwork: 0.1 },
+      "C&A": { spendMeta: 6655, revMeta: 1997, spendTech: 2662, spendNetwork: 3993, trTech: 0.1, trNetwork: 0.1 },
+      "On City": { spendMeta: 3456, revMeta: 1382, spendTech: 0, spendNetwork: 3456, trTech: 0.1, trNetwork: 0.1 },
+      "Santander Esfera": { spendMeta: 0, revMeta: 0, spendTech: 0, spendNetwork: 0, trTech: 0.1, trNetwork: 0.1 },
+      "TotalPass": { spendMeta: 1331, revMeta: 233, spendTech: 666, spendNetwork: 666, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Long Tail": { spendMeta: 1300447, revMeta: 115482, publishers: {} },
+    "Soft Launch New Publishers BR": { spendMeta: 0, revMeta: 0, publishers: {} },
+    "Instore + Offsite": { spendMeta: 1344000, revMeta: 335884, publishers: {
+      "Offsite": { spendMeta: 673160, revMeta: 134632, spendTech: 0, spendNetwork: 673160, trTech: 0, trNetwork: 0.2 },
+      "Instore": { spendMeta: 670840, revMeta: 201252, spendTech: 0, spendNetwork: 670840, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Performance Fee": { spendMeta: 0, revMeta: 121551, publishers: {} },
+    "Other Incomes": { spendMeta: 0, revMeta: 235000, publishers: {} }
+  },
+  "2026-11": {
+    "Electronics": { spendMeta: 9916773, revMeta: 920686, publishers: {
+      "CASAS BAHIA ADS": { spendMeta: 4607996, revMeta: 357147, spendTech: 4500000, spendNetwork: 107996, trTech: 0.085, trNetwork: 0.085 },
+      "KABUM": { spendMeta: 3076370, revMeta: 220000, spendTech: 3023745, spendNetwork: 52625, trTech: 0.07, trNetwork: 0.18 },
+      "BEMOL": { spendMeta: 1390897, revMeta: 241294, spendTech: 1328732, spendNetwork: 62165, trTech: 0.19, trNetwork: 0.2 },
+      "FAST SHOP": { spendMeta: 350365, revMeta: 22411, spendTech: 254709, spendNetwork: 95656, trTech: 0.05, trNetwork: 0.15 },
+      "AMERICANAS": { spendMeta: 490291, revMeta: 79635, spendTech: 290693, spendNetwork: 199598, trTech: 0.15, trNetwork: 0.25 },
+      "ELETRO ANGELONI": { spendMeta: 855, revMeta: 199, spendTech: 0, spendNetwork: 855, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Pharma": { spendMeta: 15993857, revMeta: 2938658, publishers: {
+      "DROGARIA SÃO PAULO ADS": { spendMeta: 8445594, revMeta: 1718744, spendTech: 1250905, spendNetwork: 7194689, trTech: 0.1, trNetwork: 0.2 },
+      "PAGUE MENOS": { spendMeta: 4660633, revMeta: 559276, spendTech: 625738, spendNetwork: 4034895, trTech: 0.09, trNetwork: 0.09 },
+      "PANVEL": { spendMeta: 2545760, revMeta: 509152, spendTech: 569062, spendNetwork: 1976698, trTech: 0.1, trNetwork: 0.27 },
+      "DROGAL ADS": { spendMeta: 341869, revMeta: 151486, spendTech: 0, spendNetwork: 341869, trTech: 0, trNetwork: 0.5 }
+    } },
+    "Beauty": { spendMeta: 1645768, revMeta: 83858, publishers: {
+      "SEPHORA ADS PUBLISHER": { spendMeta: 1455325, revMeta: 83562, spendTech: 1245107, spendNetwork: 210218, trTech: 0.045, trNetwork: 0.18 },
+      "AMOBELEZA": { spendMeta: 1738, revMeta: 295, spendTech: 0, spendNetwork: 1738, trTech: 0.3, trNetwork: 0.3 },
+      "ÉPOCA COSMÉTICOS ADS": { spendMeta: 188704, revMeta: 0, spendTech: 0, spendNetwork: 188704, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Home Center": { spendMeta: 956667, revMeta: 91720, publishers: {
+      "LEROY MERLIN": { spendMeta: 395780, revMeta: 44182, spendTech: 395780, spendNetwork: 0, trTech: 0.1, trNetwork: 0.16 },
+      "MADEIRA ADS": { spendMeta: 560887, revMeta: 47538, spendTech: 560887, spendNetwork: 0, trTech: 0.09, trNetwork: 0.09 }
+    } },
+    "Groceries": { spendMeta: 410513, revMeta: 91159, publishers: {
+      "Super Nosso": { spendMeta: 78658, revMeta: 12280, spendTech: 67, spendNetwork: 78591, trTech: 0.05, trNetwork: 0.15 },
+      "PREZUNIC": { spendMeta: 164042, revMeta: 40353, spendTech: 0, spendNetwork: 164042, trTech: 0.2, trNetwork: 0.25 },
+      "SUPERMERCADO SAVEGNAGO": { spendMeta: 19260, revMeta: 2883, spendTech: 455, spendNetwork: 18804, trTech: 0.1, trNetwork: 0.15 },
+      "ZONA SUL ADS": { spendMeta: 61205, revMeta: 13094, spendTech: 0, spendNetwork: 61205, trTech: 0, trNetwork: 0.2 },
+      "SUPER ANGELONI": { spendMeta: 17632, revMeta: 4090, spendTech: 0, spendNetwork: 17632, trTech: 0.1, trNetwork: 0.3 },
+      "GBARBOSA": { spendMeta: 50784, revMeta: 12927, spendTech: 0, spendNetwork: 50784, trTech: 0.2, trNetwork: 0.25 },
+      "SUPER MUFFATO DELIVERY": { spendMeta: 18931, revMeta: 5534, spendTech: 0, spendNetwork: 18931, trTech: 0.2, trNetwork: 0.2 }
+    } },
+    "LATAM": { spendMeta: 1342845, revMeta: 181284, publishers: {
+      "FARMACITY CONECT": { spendMeta: 1342845, revMeta: 181284, spendTech: 1342845, spendNetwork: 0, trTech: 0.135, trNetwork: 0.1 }
+    } },
+    "Others Segments": { spendMeta: 19485, revMeta: 1945, publishers: {
+      "BUSCAPE": { spendMeta: 12283, revMeta: 1222, spendTech: 12283, spendNetwork: 0, trTech: 0.1, trNetwork: 0 },
+      "ZOOM": { spendMeta: 7202, revMeta: 723, spendTech: 7202, spendNetwork: 0, trTech: 0.1, trNetwork: 0 }
+    } },
+    "New Publishers BR": { spendMeta: 22009, revMeta: 6248, publishers: {
+      "CVC": { spendMeta: 5856, revMeta: 1171, spendTech: 2928, spendNetwork: 2928, trTech: 0.1, trNetwork: 0.1 },
+      "Livelo": { spendMeta: 3221, revMeta: 966, spendTech: 0, spendNetwork: 3221, trTech: 0.1, trNetwork: 0.1 },
+      "C&A": { spendMeta: 7321, revMeta: 2196, spendTech: 2928, spendNetwork: 4392, trTech: 0.1, trNetwork: 0.1 },
+      "On City": { spendMeta: 4147, revMeta: 1659, spendTech: 0, spendNetwork: 4147, trTech: 0.1, trNetwork: 0.1 },
+      "Santander Esfera": { spendMeta: 0, revMeta: 0, spendTech: 0, spendNetwork: 0, trTech: 0.1, trNetwork: 0.1 },
+      "TotalPass": { spendMeta: 1464, revMeta: 256, spendTech: 732, spendNetwork: 732, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Long Tail": { spendMeta: 2600894, revMeta: 230964, publishers: {} },
+    "Soft Launch New Publishers BR": { spendMeta: 0, revMeta: 0, publishers: {} },
+    "Instore + Offsite": { spendMeta: 4782000, revMeta: 1167807, publishers: {
+      "Offsite": { spendMeta: 2667930, revMeta: 533586, spendTech: 0, spendNetwork: 2667930, trTech: 0, trNetwork: 0.2 },
+      "Instore": { spendMeta: 2114070, revMeta: 634221, spendTech: 0, spendNetwork: 2114070, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Performance Fee": { spendMeta: 0, revMeta: 182326, publishers: {} },
+    "Other Incomes": { spendMeta: 0, revMeta: 265000, publishers: {} }
+  },
+  "2026-12": {
+    "Electronics": { spendMeta: 5517307, revMeta: 488792, publishers: {
+      "CASAS BAHIA ADS": { spendMeta: 1796798, revMeta: 139263, spendTech: 1750000, spendNetwork: 46798, trTech: 0.085, trNetwork: 0.085 },
+      "KABUM": { spendMeta: 2461096, revMeta: 150000, spendTech: 2418996, spendNetwork: 42100, trTech: 0.07, trNetwork: 0.18 },
+      "BEMOL": { spendMeta: 894758, revMeta: 155223, spendTech: 863676, spendNetwork: 31082, trTech: 0.19, trNetwork: 0.2 },
+      "FAST SHOP": { spendMeta: 151825, revMeta: 9712, spendTech: 110374, spendNetwork: 41451, trTech: 0.05, trNetwork: 0.15 },
+      "AMERICANAS": { spendMeta: 212459, revMeta: 34508, spendTech: 125967, spendNetwork: 86493, trTech: 0.15, trNetwork: 0.25 },
+      "ELETRO ANGELONI": { spendMeta: 370, revMeta: 86, spendTech: 0, spendNetwork: 370, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Pharma": { spendMeta: 7529519, revMeta: 1372868, publishers: {
+      "DROGARIA SÃO PAULO ADS": { spendMeta: 3373524, revMeta: 686538, spendTech: 0, spendNetwork: 3373524, trTech: 0.1, trNetwork: 0.2 },
+      "PAGUE MENOS": { spendMeta: 2330317, revMeta: 279638, spendTech: 312869, spendNetwork: 2017448, trTech: 0.09, trNetwork: 0.09 },
+      "PANVEL": { spendMeta: 1654744, revMeta: 330949, spendTech: 369891, spendNetwork: 1284854, trTech: 0.1, trNetwork: 0.27 },
+      "DROGAL ADS": { spendMeta: 170934, revMeta: 75743, spendTech: 0, spendNetwork: 170934, trTech: 0, trNetwork: 0.5 }
+    } },
+    "Beauty": { spendMeta: 1069372, revMeta: 54443, publishers: {
+      "SEPHORA ADS PUBLISHER": { spendMeta: 945961, revMeta: 54315, spendTech: 809319, spendNetwork: 136642, trTech: 0.045, trNetwork: 0.18 },
+      "AMOBELEZA": { spendMeta: 753, revMeta: 128, spendTech: 0, spendNetwork: 753, trTech: 0.3, trNetwork: 0.3 },
+      "ÉPOCA COSMÉTICOS ADS": { spendMeta: 122658, revMeta: 0, spendTech: 0, spendNetwork: 122658, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Home Center": { spendMeta: 414556, revMeta: 39745, publishers: {
+      "LEROY MERLIN": { spendMeta: 171504, revMeta: 19146, spendTech: 171504, spendNetwork: 0, trTech: 0.1, trNetwork: 0.16 },
+      "MADEIRA ADS": { spendMeta: 243051, revMeta: 20600, spendTech: 243051, spendNetwork: 0, trTech: 0.09, trNetwork: 0.09 }
+    } },
+    "Groceries": { spendMeta: 177889, revMeta: 39502, publishers: {
+      "Super Nosso": { spendMeta: 34085, revMeta: 5322, spendTech: 29, spendNetwork: 34056, trTech: 0.05, trNetwork: 0.15 },
+      "PREZUNIC": { spendMeta: 71085, revMeta: 17486, spendTech: 0, spendNetwork: 71085, trTech: 0.2, trNetwork: 0.25 },
+      "SUPERMERCADO SAVEGNAGO": { spendMeta: 8346, revMeta: 1249, spendTech: 197, spendNetwork: 8149, trTech: 0.1, trNetwork: 0.15 },
+      "ZONA SUL ADS": { spendMeta: 26522, revMeta: 5674, spendTech: 0, spendNetwork: 26522, trTech: 0, trNetwork: 0.2 },
+      "SUPER ANGELONI": { spendMeta: 7641, revMeta: 1772, spendTech: 0, spendNetwork: 7641, trTech: 0.1, trNetwork: 0.3 },
+      "GBARBOSA": { spendMeta: 22006, revMeta: 5602, spendTech: 0, spendNetwork: 22006, trTech: 0.2, trNetwork: 0.25 },
+      "SUPER MUFFATO DELIVERY": { spendMeta: 8203, revMeta: 2398, spendTech: 0, spendNetwork: 8203, trTech: 0.2, trNetwork: 0.2 }
+    } },
+    "LATAM": { spendMeta: 872849, revMeta: 117835, publishers: {
+      "FARMACITY CONECT": { spendMeta: 872849, revMeta: 117835, spendTech: 872849, spendNetwork: 0, trTech: 0.135, trNetwork: 0.1 }
+    } },
+    "Others Segments": { spendMeta: 8443, revMeta: 843, publishers: {
+      "BUSCAPE": { spendMeta: 5323, revMeta: 530, spendTech: 5323, spendNetwork: 0, trTech: 0.1, trNetwork: 0 },
+      "ZOOM": { spendMeta: 3121, revMeta: 313, spendTech: 3121, spendNetwork: 0, trTech: 0.1, trNetwork: 0 }
+    } },
+    "New Publishers BR": { spendMeta: 24625, revMeta: 7040, publishers: {
+      "CVC": { spendMeta: 6442, revMeta: 1288, spendTech: 3221, spendNetwork: 3221, trTech: 0.1, trNetwork: 0.1 },
+      "Livelo": { spendMeta: 3543, revMeta: 1063, spendTech: 0, spendNetwork: 3543, trTech: 0.1, trNetwork: 0.1 },
+      "C&A": { spendMeta: 8053, revMeta: 2416, spendTech: 3221, spendNetwork: 4832, trTech: 0.1, trNetwork: 0.1 },
+      "On City": { spendMeta: 4977, revMeta: 1991, spendTech: 0, spendNetwork: 4977, trTech: 0.1, trNetwork: 0.1 },
+      "Santander Esfera": { spendMeta: 0, revMeta: 0, spendTech: 0, spendNetwork: 0, trTech: 0.1, trNetwork: 0.1 },
+      "TotalPass": { spendMeta: 1611, revMeta: 282, spendTech: 805, spendNetwork: 805, trTech: 0.1, trNetwork: 0.1 }
+    } },
+    "Long Tail": { spendMeta: 1690581, revMeta: 150127, publishers: {} },
+    "Soft Launch New Publishers BR": { spendMeta: 0, revMeta: 0, publishers: {} },
+    "Instore + Offsite": { spendMeta: 1747200, revMeta: 436649, publishers: {
+      "Offsite": { spendMeta: 875110, revMeta: 175022, spendTech: 0, spendNetwork: 875110, trTech: 0, trNetwork: 0.2 },
+      "Instore": { spendMeta: 872090, revMeta: 261627, spendTech: 0, spendNetwork: 872090, trTech: 0, trNetwork: 0.3 }
+    } },
+    "Performance Fee": { spendMeta: 0, revMeta: 121551, publishers: {} },
+    "Other Incomes": { spendMeta: 0, revMeta: 235000, publishers: {} }
+  }
 };
 
 /* Blended TR from REAL data — recalculated dynamically when TRs change */
